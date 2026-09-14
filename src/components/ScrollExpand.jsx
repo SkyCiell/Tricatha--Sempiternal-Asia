@@ -1,109 +1,212 @@
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowDown, MoveRight } from "lucide-react";
-import heroVideo from "../assets/0805.mp4";
+import React, { useRef, useEffect, useState } from "react";
+import plenaryPhoto from "../assets/DSC08824.JPG";
 
-export default function ScrollExpand({ scrollToSection }) {
+export default function ScrollExpand({
+  image = plenaryPhoto,
+  title = "Orchestrating High-Stakes Assemblies Across Southeast Asia",
+  subtitle = "From closed-door bilateral dialogues at The City Tower to monumental ministerial plenaries, TSA unites corporate strategy, sovereign protocol, and spatial scenography.",
+  tag = "Jakarta Plenary Operations · Head-of-State Standard",
+  startWidth = 42,
+  startHeight = 58,
+  startRadius = 22,
+  endRadius = 0,
+  mediaZoom = 1.28,
+  scrollDistance = 1.2,
+  holdDistance = 0.3,
+  smoothing = 0.09,
+  overlayScrim = 0.38
+}) {
   const containerRef = useRef(null);
+  const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  // Track scroll progress within the container
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
 
-  // Smooth scroll animations
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.4], [0.6, 0.9]);
-  const contentY = useTransform(scrollYProgress, [0, 0.3], [0, -10]);
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(motionQuery.matches);
+    const handleMotionChange = (e) => setPrefersReducedMotion(e.matches);
+    motionQuery.addEventListener("change", handleMotionChange);
+
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      motionQuery.removeEventListener("change", handleMotionChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    let animationFrameId;
+    let currentProgress = 0;
+    let targetProgress = 0;
+
+    const handleScroll = () => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const totalScrollableDistance = rect.height - window.innerHeight;
+
+      if (totalScrollableDistance <= 0) return;
+
+      const scrolled = -rect.top;
+      const rawProgress = Math.max(0, Math.min(1, scrolled / totalScrollableDistance));
+      targetProgress = rawProgress;
+    };
+
+    const updateLoop = () => {
+      currentProgress += (targetProgress - currentProgress) * smoothing;
+      setProgress(currentProgress);
+      animationFrameId = requestAnimationFrame(updateLoop);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    animationFrameId = requestAnimationFrame(updateLoop);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [smoothing, prefersReducedMotion]);
+
+  // If reduced motion is requested, render static full bleed
+  if (prefersReducedMotion) {
+    return (
+      <section className="relative w-full py-24 bg-[#0A1F44] text-white">
+        <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
+          <div className="relative aspect-[21/9] rounded-lg overflow-hidden border border-white/15 shadow-xl">
+            <img src={image} alt="TSA Assembly" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-[#0A1F44]/40" />
+            <div className="absolute inset-0 p-8 sm:p-12 flex flex-col justify-end">
+              <span className="font-mono text-xs text-[#C8102E] uppercase tracking-wider mb-2">
+                {tag}
+              </span>
+              <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white max-w-2xl leading-tight">
+                {title}
+              </h2>
+              <p className="text-sm text-slate-300 max-w-xl mt-2 leading-relaxed font-normal">
+                {subtitle}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Calculate expansion progress (0 to 1 over scrollDistance)
+  // holdDistance is the portion at 1 where the content is held full bleed
+  const expansionPortion = scrollDistance / (scrollDistance + holdDistance);
+  const expansionProgress = Math.min(1, progress / expansionPortion);
+
+  // Responsive start width
+  const responsiveStartWidth = isMobile ? 88 : startWidth;
+  const responsiveStartHeight = isMobile ? 65 : startHeight;
+
+  // Interpolated values
+  const currentWidth = responsiveStartWidth + (100 - responsiveStartWidth) * expansionProgress;
+  const currentHeight = responsiveStartHeight + (100 - responsiveStartHeight) * expansionProgress;
+  const currentRadius = startRadius * (1 - expansionProgress) + endRadius * expansionProgress;
+  const currentZoom = mediaZoom - (mediaZoom - 1) * expansionProgress;
 
   return (
-    <div ref={containerRef} className="relative w-full min-h-screen bg-[#071A2B] overflow-hidden flex items-center justify-center">
-      
-      {/* Full-Width Background Video (Layer z-0) */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover opacity-50 z-0"
+    <div
+      ref={containerRef}
+      className="relative w-full bg-[#FFFFFF]"
+      style={{
+        height: `${(1 + scrollDistance + holdDistance) * 100}vh`
+      }}
+    >
+      {/* Pinned Viewport Frame */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#FFFFFF]">
+        
+        {/* Expanding Media Container */}
+        <div
+          className="relative overflow-hidden shadow-2xl transition-shadow duration-300"
+          style={{
+            width: `${currentWidth}%`,
+            height: `${currentHeight}%`,
+            borderRadius: `${currentRadius}px`
+          }}
         >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-        <motion.div
-          style={{ opacity: overlayOpacity }}
-          className="absolute inset-0 bg-gradient-to-t from-[#071A2B] via-[#071A2B]/85 to-[#071A2B]/60 z-10"
-        />
-      </div>
+          {/* Background Image */}
+          <img
+            src={image}
+            alt="TSA High Stakes Plenary Staging"
+            className="absolute inset-0 w-full h-full object-cover object-center will-change-transform"
+            style={{
+              transform: `scale(${currentZoom})`
+            }}
+          />
 
-      {/* Main Narrative Content Overlay (Layer z-30) */}
-      <motion.div
-        style={{ y: contentY }}
-        className="relative z-30 max-w-7xl mx-auto px-6 sm:px-10 md:px-16 py-20 w-full flex flex-col justify-between min-h-[85vh]"
-      >
-        {/* Middle Main Headline */}
-        <div className="my-auto py-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-heading text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase tracking-tighter leading-[1.08] sm:leading-[1.04] max-w-5xl mb-6 flex flex-col gap-2 z-30 relative"
-          >
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-[#F4F6F2]"
-            >
-              STRATEGY.
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-[#155EEF]"
-            >
-              TECHNOLOGY.
-            </motion.span>
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="block text-[#42D3A5]"
-            >
-              CREATIVITY. IMPACT.
-            </motion.span>
-          </motion.h1>
+          {/* Subtle Readability Scrim (restrained dark navy, no neon/glassmorphism) */}
+          <div
+            className="absolute inset-0 bg-[#0A1F44] pointer-events-none transition-opacity duration-200"
+            style={{
+              opacity: overlayScrim + expansionProgress * 0.12
+            }}
+          />
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="text-slate-200 text-sm sm:text-base md:text-lg font-mono max-w-2xl leading-relaxed"
-          >
-            Tricatha Sempiternal Asia works at the intersection of sovereign advocacy, custom software engineering, broadcast media, and experiential summits.
-          </motion.p>
+          {/* Editorial Content Overlay */}
+          <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-between z-10 text-white">
+            
+            {/* Top Corner Meta Tag */}
+            <div className="flex items-center justify-between">
+              <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-xs border border-white/20 rounded text-[11px] font-mono tracking-widest text-white uppercase">
+                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+                <span>{tag}</span>
+              </span>
+
+              <span className="hidden sm:inline-block font-mono text-xs text-white/70">
+                SCROLL TO IMMERSE
+              </span>
+            </div>
+
+            {/* Middle / Bottom Headline & Supporting Content */}
+            <div className="max-w-3xl space-y-4">
+              <h2 className="font-heading text-xl sm:text-3xl lg:text-4xl font-medium tracking-tight text-white leading-[1.18]">
+                {title}
+              </h2>
+
+              {/* Supporting content revealed as it reaches full bleed */}
+              <div
+                className="transition-all duration-300 space-y-3"
+                style={{
+                  opacity: Math.max(0, (expansionProgress - 0.5) * 2),
+                  transform: `translateY(${(1 - expansionProgress) * 16}px)`
+                }}
+              >
+                <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal max-w-2xl">
+                  {subtitle}
+                </p>
+
+                <div className="pt-2 flex items-center gap-6 font-mono text-xs text-slate-300">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#C8102E] font-semibold">18+</span>
+                    <span>Sovereign Mandates</span>
+                  </div>
+                  <span className="text-white/30">•</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[#C8102E] font-semibold">45K+</span>
+                    <span>Summit Attendees</span>
+                  </div>
+                  <span className="text-white/30 hidden sm:inline">•</span>
+                  <div className="hidden sm:flex items-center gap-2">
+                    <span className="text-white">Zero Margin for Error</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
-        {/* Bottom Action Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center justify-end pt-6 border-t border-white/15 mt-12"
-        >
-          <motion.button
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={() => scrollToSection("about")}
-            className="px-8 py-4 bg-[#155EEF] hover:bg-[#087F5B] text-white font-heading font-bold text-xs uppercase tracking-[0.2em] rounded-full transition-colors duration-300 shadow-2xl flex items-center gap-2 cursor-pointer z-50"
-          >
-            <span>EXPLORE TSA</span>
-            <MoveRight className="w-4 h-4 text-[#42D3A5]" />
-          </motion.button>
-        </motion.div>
-      </motion.div>
-
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, CheckCircle2 } from "lucide-react";
 
 export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
@@ -15,86 +15,83 @@ export default function ProjectModal({ project, onClose }) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           onClick={onClose}
-          className="fixed inset-0 bg-[#071A33]/85 backdrop-blur-sm"
+          className="fixed inset-0 bg-[#0A1F44]/80 backdrop-blur-xs"
         />
 
         {/* Modal Container */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.97, y: 12 }}
+          initial={{ opacity: 0, scale: 0.98, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.97, y: 12 }}
+          exit={{ opacity: 0, scale: 0.98, y: 12 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="relative w-full max-w-3xl sm:max-w-4xl bg-[#0B1F3A] text-white border border-white/20 shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col"
+          className="relative w-full max-w-3xl sm:max-w-4xl bg-[#FFFFFF] text-[#0A1F44] border border-slate-200 shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col rounded-lg"
         >
           {/* Header Image */}
-          <div className="relative h-48 sm:h-60 w-full overflow-hidden shrink-0 bg-[#071A33]">
+          <div className="relative h-52 sm:h-72 w-full overflow-hidden shrink-0 bg-slate-900">
             <img
               src={project.image}
               alt={project.name}
-              className="w-full h-full object-cover grayscale contrast-115"
+              className="w-full h-full object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44]/90 via-[#0A1F44]/40 to-transparent" />
+            
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 bg-[#071A33] text-white hover:bg-[#C62828] transition-colors cursor-pointer border border-white/20"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/20 hover:bg-[#C8102E] text-white flex items-center justify-center transition-colors cursor-pointer backdrop-blur-xs"
               aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
-            <div className="absolute bottom-4 left-4 bg-[#C62828] text-white px-3 py-1 font-mono text-[11px] uppercase tracking-wider font-semibold">
-              CASE STUDY BRIEF
+
+            <div className="absolute bottom-5 left-6 right-6">
+              <span className="px-3 py-1 bg-[#C8102E] text-white font-mono text-[10px] uppercase tracking-wider font-semibold rounded">
+                CASE STUDY DOSSIER
+              </span>
+              <h2 className="font-heading text-xl sm:text-3xl font-semibold text-white tracking-tight mt-2 leading-tight">
+                {project.name}
+              </h2>
             </div>
           </div>
 
           {/* Body Content */}
-          <div className="p-6 sm:p-10 space-y-8 overflow-y-auto flex-1">
-            <div>
-              <div className="font-mono text-xs text-[#C62828] uppercase tracking-widest mb-2 font-bold">
-                {project.category}
-              </div>
-              <h2 className="font-heading text-2xl sm:text-4xl font-bold text-white uppercase tracking-tight">
-                {project.name}
-              </h2>
-            </div>
-
-            {/* Metadata Grid */}
-            <div className="py-5 border-y border-white/15 grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-xs">
+          <div className="p-6 sm:p-8 space-y-6 overflow-y-auto flex-1 font-sans">
+            {/* Metadata Strip */}
+            <div className="p-4 bg-[#F5F6F8] rounded border border-slate-200/80 grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
               <div>
-                <div className="text-[10px] text-[#94A3B8] uppercase tracking-widest mb-1">CLIENT / SECTOR</div>
-                <div className="font-semibold text-white leading-snug">{project.client}</div>
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">CLIENT PARTNER</span>
+                <span className="font-semibold text-[#0A1F44] block mt-0.5">{project.client}</span>
               </div>
               <div>
-                <div className="text-[10px] text-[#94A3B8] uppercase tracking-widest mb-1">TIMELINE</div>
-                <div className="font-semibold text-white leading-snug">{project.year}</div>
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">TIMELINE</span>
+                <span className="font-semibold text-[#0A1F44] block mt-0.5">{project.year}</span>
               </div>
               <div>
-                <div className="text-[10px] text-[#94A3B8] uppercase tracking-widest mb-1">MEASURED IMPACT</div>
-                <div className="font-semibold text-[#C62828] leading-snug">{project.impact}</div>
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">VERIFIED OUTCOME</span>
+                <span className="font-semibold text-[#C8102E] block mt-0.5">{project.impact}</span>
               </div>
             </div>
 
-            {/* Summary */}
+            {/* Overview */}
             <div className="space-y-2">
-              <h3 className="font-heading text-xs uppercase tracking-widest text-white font-bold">
-                EXECUTIVE OVERVIEW
+              <h3 className="font-mono text-xs uppercase tracking-wider text-[#0A1F44] font-semibold">
+                EXECUTIVE BRIEF &amp; STRATEGIC CONTEXT
               </h3>
-              <p className="text-[#CBD5E1] text-sm sm:text-base leading-relaxed max-w-3xl">
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
                 {project.description}
               </p>
             </div>
 
-            {/* Key Highlights */}
+            {/* Key Deliverables */}
             {project.highlights && project.highlights.length > 0 && (
-              <div className="space-y-3">
-                <h3 className="font-heading text-xs uppercase tracking-widest text-white font-bold">
-                  KEY EXECUTION DELIVERABLES
+              <div className="space-y-3 pt-2">
+                <h3 className="font-mono text-xs uppercase tracking-wider text-[#0A1F44] font-semibold">
+                  ACCREDITED EXECUTION HIGHLIGHTS
                 </h3>
-                <div className="space-y-3 pt-1">
+                <div className="space-y-2.5">
                   {project.highlights.map((highlight, idx) => (
-                    <div key={idx} className="pb-3 border-b border-white/10 flex items-start gap-3">
-                      <span className="w-1.5 h-1.5 bg-[#C62828] shrink-0 mt-2" />
-                      <span className="text-xs sm:text-sm text-[#CBD5E1] font-mono leading-relaxed">
-                        {highlight}
-                      </span>
+                    <div key={idx} className="p-3.5 bg-[#F5F6F8] rounded border border-slate-200/60 flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+                      <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
+                      <span>{highlight}</span>
                     </div>
                   ))}
                 </div>
@@ -103,15 +100,13 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           {/* Footer */}
-          <div className="p-5 px-8 border-t border-white/15 bg-[#071A33] flex items-center justify-between shrink-0">
-            <div className="text-xs font-mono text-[#94A3B8]">
-              PT TRICATHA SEMPITERNAL ASIA · THE CITY TOWER
-            </div>
+          <div className="p-4 px-6 sm:px-8 border-t border-slate-100 bg-[#F5F6F8] flex items-center justify-between shrink-0 font-mono text-xs">
+            <span className="text-slate-500">THE CITY TOWER · JAKARTA HQ</span>
             <button
               onClick={onClose}
-              className="text-xs font-mono font-bold uppercase tracking-widest text-white hover:text-[#C62828] transition-colors cursor-pointer"
+              className="px-4 py-2 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-semibold uppercase tracking-wider rounded transition-colors cursor-pointer"
             >
-              CLOSE BRIEF
+              Close Dossier
             </button>
           </div>
         </motion.div>

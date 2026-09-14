@@ -2,22 +2,26 @@
 
 :root {
   --color-navy: #0A1F44;
-  --color-navy-dark: #06152F;
+  --color-navy-dark: #050F22;
   --color-navy-light: #16366E;
   --color-red: #C8102E;
   --color-red-hover: #A50D25;
   --color-white: #FFFFFF;
-  --color-bg: #FFFFFF;
-  --color-bg-subtle: #F8F9FA;
-  --color-border: #E2E8F0;
-  --color-border-navy: rgba(10, 31, 68, 0.2);
-  --color-text-navy: #0A1F44;
-  --color-text-muted: #5B6B84;
+  --color-bg-light: #F5F6F8;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
 }
 
 html {
   scroll-behavior: smooth;
-  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #FFFFFF;
   color: #0A1F44;
   overflow-x: hidden;
@@ -30,151 +34,165 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Utility Classes */
-.font-display {
-  font-family: 'Space Grotesk', 'Syne', sans-serif;
-}
-
-.font-architect {
-  font-family: 'Caveat', cursive;
-}
-
-.font-mono {
-  font-family: 'Geist Mono', 'Space Mono', monospace;
+/* Typography Hierarchy */
+.font-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
 }
 
 .font-sans {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
-/* 16px Technical Drafting Grid - Subtle crisp line on White */
-.bg-grid {
-  background-color: #FFFFFF;
-  background-image:
-    repeating-linear-gradient(90deg, rgba(10, 31, 68, 0.04), rgba(10, 31, 68, 0.04) 1px, transparent 0, transparent 16px),
-    repeating-linear-gradient(0deg, rgba(10, 31, 68, 0.04), rgba(10, 31, 68, 0.04) 1px, transparent 0, transparent 16px);
-  background-size: 16px 16px;
+.font-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-/* Architectural Viewport Grid in Deep Navy */
-.bg-grid-navy {
+/* Editorial Surfaces */
+.bg-navy {
   background-color: #0A1F44;
-  background-image:
-    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08) 1px, transparent 0, transparent 16px),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08) 1px, transparent 0, transparent 16px);
-  background-size: 16px 16px;
 }
 
-/* Dual-layer Outline Text (illoca headline effect in Navy) */
-.text-stroke-1 {
-  -webkit-text-stroke: 1px currentColor;
+.bg-light-neutral {
+  background-color: #F5F6F8;
 }
 
-.text-stroke-2 {
-  -webkit-text-stroke: 2px currentColor;
+.border-navy-subtle {
+  border-color: rgba(10, 31, 68, 0.12);
 }
 
-/* Clean Architectural Paper Card - Crisp border, NO blur */
-.card-clean {
-  background-color: #FFFFFF;
-  border: 1px solid rgba(10, 31, 68, 0.18);
-  box-shadow: 3px 3px 0px rgba(10, 31, 68, 0.08);
+.border-white-subtle {
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
-.card-clean-subtle {
-  background-color: #F8F9FA;
-  border: 1px solid rgba(10, 31, 68, 0.15);
-  box-shadow: 3px 3px 0px rgba(10, 31, 68, 0.06);
-}
-
-.card-red-accent {
-  background-color: #C8102E;
-  border: 1px solid #A50D25;
-  box-shadow: 4px 4px 0px rgba(10, 31, 68, 0.15);
-}
-
-/* Animated Dotted Underline Links (Red Accent) */
-.underline-dots {
-  position: relative;
-  display: inline-block;
-}
-
-.underline-dots .dots-line {
-  width: 100%;
-  height: 2px;
-  display: block;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='2' fill='none' viewBox='0 0 4 2'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23C8102E'/%3E%3Ccircle cx='3' cy='1' r='1' fill='%23C8102E'/%3E%3C/svg%3E");
-  background-size: 4px 2px;
-  background-repeat: repeat-x;
-  transform: translateX(-105%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.underline-dots:hover .dots-line {
-  transform: translateX(0);
-}
-
-/* Technical Split Button (Navy & Red Accent) */
-.btn-tech-red {
-  height: 44px;
+/* Restrained Editorial Buttons */
+.btn-editorial-red {
   display: inline-flex;
-  align-items: stretch;
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background-color: #C8102E;
   color: #FFFFFF;
-  border: 1px solid #A50D25;
-  box-shadow: 2px 2px 0px rgba(10, 31, 68, 0.12);
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  font-family: 'Geist Mono', monospace;
-  font-size: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.375rem;
+  border-radius: 4px;
+  border: 1px solid #A50D25;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
-.btn-tech-red:hover {
+.btn-editorial-red:hover {
   background-color: #A50D25;
   transform: translateY(-1px);
-  box-shadow: 3px 3px 0px rgba(10, 31, 68, 0.16);
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.25);
 }
 
-.btn-tech-navy {
-  height: 44px;
+.btn-editorial-navy {
   display: inline-flex;
-  align-items: stretch;
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-  background-color: #FFFFFF;
-  color: #0A1F44;
-  border: 1px solid rgba(10, 31, 68, 0.25);
-  box-shadow: 2px 2px 0px rgba(10, 31, 68, 0.08);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  font-family: 'Geist Mono', monospace;
-  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #0A1F44;
+  color: #FFFFFF;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.375rem;
+  border-radius: 4px;
+  border: 1px solid rgba(10, 31, 68, 0.8);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
-.btn-tech-navy:hover {
-  border-color: #0A1F44;
+.btn-editorial-navy:hover {
+  background-color: #C8102E;
+  border-color: #A50D25;
   transform: translateY(-1px);
-  box-shadow: 3px 3px 0px rgba(10, 31, 68, 0.12);
+  box-shadow: 0 4px 14px rgba(10, 31, 68, 0.2);
+}
+
+.btn-editorial-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: #0A1F44;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.375rem;
+  border-radius: 4px;
+  border: 1px solid rgba(10, 31, 68, 0.22);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-editorial-outline:hover {
+  border-color: #0A1F44;
+  background-color: #0A1F44;
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+/* Image Frames */
+.editorial-image-frame {
+  position: relative;
+  overflow: hidden;
+  background-color: #F1F5F9;
+  border: 1px solid rgba(10, 31, 68, 0.08);
+}
+
+.editorial-image-frame img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-image-frame:hover img {
+  transform: scale(1.025);
+}
+
+/* Category Tag */
+.editorial-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 2px;
+  background-color: #F5F6F8;
+  color: #0A1F44;
+  border: 1px solid rgba(10, 31, 68, 0.1);
+}
+
+.editorial-tag-red {
+  background-color: #C8102E;
+  color: #FFFFFF;
+  border-color: #A50D25;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #F5F6F8;
 }
 
 ::-webkit-scrollbar-thumb {

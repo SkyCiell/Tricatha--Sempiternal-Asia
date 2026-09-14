@@ -57,6 +57,12 @@ export default function TiltCard({
     y.set(0);
   };
 
+  const glareBackground = useTransform(
+    [glareX, glareY],
+    ([gx, gy]) =>
+      `radial-gradient(circle at ${gx} ${gy}, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%)`
+  );
+
   return (
     <div style={{ perspective: 1200 }} className="w-full">
       <motion.div
@@ -82,11 +88,7 @@ export default function TiltCard({
             className="absolute inset-0 rounded-[inherit] pointer-events-none transition-opacity duration-300 z-30 mix-blend-overlay overflow-hidden"
             style={{
               opacity: isHovered ? 0.25 : 0,
-              background: useTransform(
-                [glareX, glareY],
-                ([gx, gy]) =>
-                  `radial-gradient(circle at ${gx} ${gy}, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%)`
-              )
+              background: glareBackground
             }}
           />
         )}

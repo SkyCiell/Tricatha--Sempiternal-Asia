@@ -69,7 +69,7 @@ export default function Contact({ preselectedService }) {
 
   return (
     <section id="contact" className="py-20 sm:py-28 bg-[#FFFFFF] text-[#0A1F44] border-b border-slate-100">
-      <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8">
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
         
         {/* Header Bar */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-slate-100 gap-6">
@@ -305,7 +305,7 @@ export default function Contact({ preselectedService }) {
 
                   <button
                     type="submit"
-                    className="btn-editorial w-full sm:w-auto px-7 py-3 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:shadow-md"
+                    className="btn-editorial-red w-full sm:w-auto"
                   >
                     <span>Transmit Mandate Brief</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />

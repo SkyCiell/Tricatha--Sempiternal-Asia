@@ -32,7 +32,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
 
   if (!event) {
     return (
-      <div className="min-h-screen bg-[#FFFFFF] text-[#0A1F44] pt-24 pb-16 flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#FFFFFF] text-[#0A1F44] pt-28 pb-16 flex items-center justify-center px-4">
         <div className="text-center space-y-4 max-w-md">
           <h2 className="text-2xl font-medium font-heading text-[#0A1F44]">
             Event Record Not Found
@@ -42,7 +42,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
           </p>
           <button
             onClick={handleBackToEvents}
-            className="btn-editorial px-6 py-2.5 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial cursor-pointer"
+            className="btn-editorial-navy"
           >
             Back to Events Archive
           </button>
@@ -56,16 +56,16 @@ export default function EventDetailPage({ slug, navigateTo }) {
     : [event.img];
 
   return (
-    <div className="bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans pt-16 sm:pt-20 pb-20 selection:bg-[#C8102E] selection:text-white">
+    <div className="bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans pt-20 sm:pt-24 pb-20 selection:bg-[#C8102E] selection:text-white">
       
       {/* 1. TOP BREADCRUMB & BACK CONTROL BAR */}
-      <section className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 py-4 border-b border-slate-100 flex items-center justify-between gap-4">
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-4 border-b border-slate-100 flex items-center justify-between gap-4">
         <button
           onClick={handleBackToEvents}
           className="group inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-[#0A1F44] hover:text-[#C8102E] transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1 text-[#C8102E]" />
-          <span>Back to Selected Works</span>
+          <span>Back to All Events</span>
         </button>
 
         <div className="hidden sm:flex items-center gap-2 text-xs font-mono text-slate-400">
@@ -84,8 +84,8 @@ export default function EventDetailPage({ slug, navigateTo }) {
         </div>
       </section>
 
-      {/* 2. EDITORIAL HERO SECTION - Controlled cinematic aspect ratio with refined typography */}
-      <section className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 pt-6 pb-6">
+      {/* 2. EDITORIAL HERO SECTION */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 pb-6">
         <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] min-h-[360px] max-h-[580px] rounded-lg overflow-hidden bg-slate-900 shadow-sm border border-slate-200/80">
           
           {/* Main Visual Image */}
@@ -94,13 +94,10 @@ export default function EventDetailPage({ slug, navigateTo }) {
             alt={event.title}
             className="w-full h-full object-cover object-center"
             loading="eager"
-            onError={(e) => {
-              e.currentTarget.style.display = "none";
-            }}
           />
 
           {/* Soft Dark Navy Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44] via-[#0A1F44]/55 to-[#0A1F44]/15 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44] via-[#0A1F44]/60 to-[#0A1F44]/20 pointer-events-none" />
 
           {/* Prominent Event Title & Meta in Hero */}
           <div className="absolute inset-0 p-6 sm:p-10 lg:p-14 flex flex-col justify-end z-10">
@@ -108,7 +105,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
               
               {/* Category & Year Tag */}
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="px-3 py-1 bg-[#C8102E] text-white text-[11px] font-mono font-semibold uppercase tracking-wider rounded-sm shadow-xs">
+                <span className="px-3 py-1 bg-[#C8102E] text-white text-[11px] font-mono font-semibold uppercase tracking-wider rounded shadow-xs">
                   {event.category}
                 </span>
                 <span className="text-white/80 text-xs font-mono">
@@ -124,8 +121,8 @@ export default function EventDetailPage({ slug, navigateTo }) {
                 )}
               </div>
 
-              {/* Event Title - Calm, Refined, Non-aggressive */}
-              <h1 className="text-2xl sm:text-4xl lg:text-[44px] font-medium font-heading text-white tracking-tight leading-[1.14]">
+              {/* Event Title */}
+              <h1 className="text-2xl sm:text-4xl lg:text-[44px] font-semibold font-heading text-white tracking-tight leading-[1.14]">
                 {event.title}
               </h1>
 
@@ -141,9 +138,9 @@ export default function EventDetailPage({ slug, navigateTo }) {
         </div>
       </section>
 
-      {/* 3. EVENT INFORMATION STRIP - Borderless horizontal strip with quiet elegance */}
-      <section className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 py-4">
-        <div className="bg-[#F5F6F8] rounded-lg p-6 sm:p-8 border border-slate-200/60">
+      {/* 3. EVENT INFORMATION STRIP */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-4">
+        <div className="bg-[#F5F6F8] rounded-lg p-6 sm:p-8 border border-slate-200/70">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-200/80">
             
             {/* 1. Client */}
@@ -190,8 +187,8 @@ export default function EventDetailPage({ slug, navigateTo }) {
         </div>
       </section>
 
-      {/* 4. EVENT GALLERY - Multi-column photographic documentation */}
-      <section className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 pt-10 sm:pt-14">
+      {/* 4. EVENT GALLERY */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-10 sm:pt-14">
         <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-100 pb-4">
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -209,18 +206,18 @@ export default function EventDetailPage({ slug, navigateTo }) {
           </span>
         </div>
 
-        {/* Gallery Grid with Restrained Zoom */}
+        {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
           {galleryImages.map((imgSrc, idx) => (
             <div
               key={idx}
               onClick={() => setSelectedPhoto(imgSrc)}
-              className="editorial-image-frame group relative overflow-hidden rounded-md bg-slate-100 aspect-[4/3] cursor-pointer shadow-xs border border-slate-200/70"
+              className="editorial-image-frame group relative overflow-hidden rounded bg-slate-100 aspect-[4/3] cursor-pointer shadow-xs border border-slate-200/70"
             >
               <img
                 src={imgSrc}
                 alt={`${event.title} record ${idx + 1}`}
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
 
@@ -235,8 +232,8 @@ export default function EventDetailPage({ slug, navigateTo }) {
         </div>
       </section>
 
-      {/* 5. EVENT NARRATIVE & SPECIFICATIONS - Editorial two-column split */}
-      <section className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 pt-12 sm:pt-16">
+      {/* 5. EVENT NARRATIVE & SPECIFICATIONS */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-12 sm:pt-16">
         <div className="border-t border-slate-100 pt-10 sm:pt-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
             
@@ -260,15 +257,15 @@ export default function EventDetailPage({ slug, navigateTo }) {
                   <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
                     Scope of Protocol &amp; Technical Execution
                   </h4>
-                  <div className="p-5 bg-[#F5F6F8] border border-slate-200/80 rounded-md text-sm text-[#0A1F44] font-normal leading-relaxed">
+                  <div className="p-5 bg-[#F5F6F8] border border-slate-200/80 rounded text-sm text-[#0A1F44] font-normal leading-relaxed">
                     {event.scope}
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Right Column: Structured Key Parameters on Light-Neutral */}
-            <div className="lg:col-span-4 bg-[#F5F6F8] p-6 sm:p-7 rounded-lg border border-slate-200/60 space-y-4">
+            {/* Right Column: Structured Key Parameters */}
+            <div className="lg:col-span-4 bg-[#F5F6F8] p-6 sm:p-7 rounded-lg border border-slate-200/70 space-y-4">
               <span className="text-xs font-mono font-medium uppercase tracking-wider text-[#0A1F44] block pb-3 border-b border-slate-200/80">
                 Key Parameters
               </span>
@@ -313,7 +310,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
               <div className="pt-4 border-t border-slate-200/80">
                 <button
                   onClick={handleContact}
-                  className="btn-editorial w-full py-3 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial flex items-center justify-center gap-2 cursor-pointer shadow-xs hover:shadow-md"
+                  className="btn-editorial-navy w-full flex items-center justify-center gap-2"
                 >
                   <span>Inquire Similar Format</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -326,7 +323,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
       </section>
 
       {/* 6. BOTTOM NAVIGATION BAR */}
-      <section className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 pt-12">
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-12">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-6 border-t border-slate-100">
           <button
             onClick={handleBackToEvents}
@@ -338,7 +335,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
 
           <button
             onClick={handleContact}
-            className="editorial-underline-link text-xs font-medium text-[#0A1F44] hover:text-[#C8102E] transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="text-xs font-medium text-[#0A1F44] hover:text-[#C8102E] transition-colors flex items-center gap-1.5 cursor-pointer"
           >
             <span>Consult Event Directors at Jakarta HQ</span>
             <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />

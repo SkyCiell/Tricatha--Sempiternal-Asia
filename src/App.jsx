@@ -18,7 +18,6 @@ import InternshipPage from "./pages/InternshipPage";
 import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 
-import HudMarginalia from "./components/HudMarginalia";
 
 const VALID_ROUTES = [
   "/",
@@ -167,9 +166,6 @@ export default function App() {
 
   return (
     <div className="bg-[#FFFFFF] min-h-screen flex flex-col selection:bg-[#C8102E] selection:text-white relative">
-      {/* Live HUD Marginalia (Cursor Coordinates & Architectural HUD) */}
-      <HudMarginalia />
-
       {/* 1. Universal Consistent Navbar across all pages */}
       <Navbar currentPath={currentPath} navigateTo={navigateTo} />
 

@@ -132,7 +132,7 @@ export default function Leadership() {
                 <span>PT Tricatha Sempiternal Asia</span>
                 <button
                   onClick={() => setActiveLeader(null)}
-                  className="btn-editorial px-4 py-2 bg-white/10 hover:bg-[#C8102E] text-white font-mono text-xs uppercase rounded-sm cursor-pointer transition-colors"
+                  className="px-4 py-2 bg-white/10 hover:bg-[#C8102E] text-white font-sans text-xs font-semibold uppercase tracking-wider rounded cursor-pointer transition-colors"
                 >
                   Dismiss
                 </button>

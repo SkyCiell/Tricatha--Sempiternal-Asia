@@ -36,51 +36,52 @@ export default function EventsPage({ navigateTo }) {
   };
 
   return (
-    <div className="bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans pt-20 sm:pt-28 pb-20">
+    <div className="bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
       
-      {/* 1. ARCHITECTURAL HEADER - illoca Typography & Framing */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-[#0A1F44]/15">
+      {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-slate-200">
           
           {/* Left Title & Statement (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-[56px] font-bold text-[#0A1F44] tracking-tight leading-[1.05]">
-              Selected Works &amp; Plenary Assemblies
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
+              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+              <span>FIELD DOCUMENTATION ARCHIVE</span>
+            </div>
+
+            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-[#0A1F44] tracking-tight leading-[1.08]">
+              Events &amp; Plenary Assemblies
             </h1>
             
-            <p className="text-[#5B6B84] text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
-              A curated portfolio of sovereign conferences, ministerial assemblies, nationwide trade expos, and high-level corporate retreats orchestrated with protocol rigor across Southeast Asia.
+            <p className="text-slate-600 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
+              A curated photographic record of sovereign conferences, ministerial assemblies, nationwide trade expos, and high-level corporate retreats orchestrated with protocol rigor across Southeast Asia.
             </p>
           </div>
 
           {/* Right Editorial Telemetry (4 cols) */}
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col justify-between items-start lg:items-end gap-5">
-            <div className="space-y-1 text-left lg:text-right font-mono text-xs text-[#5B6B84]">
-              <div>16 Curated Sovereign &amp; Enterprise Works</div>
+            <div className="space-y-1 text-left lg:text-right font-mono text-xs text-slate-500">
+              <div>16 Curated Works in Active Directory</div>
               <div className="text-[#C8102E] font-semibold">Corridor: Jakarta / ASEAN Plenaries</div>
             </div>
 
             <button
               onClick={handleInquiry}
-              className="btn-tech-red group focus:outline-none"
+              className="btn-editorial-red"
             >
-              <div className="w-10 h-full bg-[#A50D25] flex items-center justify-center text-white border-r border-white/20">
-                <ArrowUpRight className="w-4 h-4" />
-              </div>
-              <div className="px-5 h-full flex items-center font-mono text-xs font-semibold">
-                Inquire Plenary Mandate
-              </div>
+              <span>Inquire Plenary Mandate</span>
+              <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
 
         </div>
       </section>
 
-      {/* 2. MINIMAL DRAFTING FILTER BAR */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-8 py-3 sticky top-16 sm:top-20 z-30 bg-[#FFFFFF] border-b border-[#0A1F44]/15">
-        <div className="flex items-center justify-between gap-4 pb-2">
+      {/* 2. DRAFTING FILTER BAR (Clean, sticky, horizontally scrollable) */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-3 sticky top-16 sm:top-20 z-30 bg-[#FFFFFF] border-b border-slate-200">
+        <div className="flex items-center justify-between gap-4 pb-1">
           
-          {/* Scrollable Track */}
+          {/* Scrollable Category Track */}
           <div className="overflow-x-auto scrollbar-none pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 flex-grow">
             <div className="flex items-center gap-2 whitespace-nowrap min-w-max font-mono text-xs">
               {EVENT_CATEGORIES.map((cat) => {
@@ -94,18 +95,18 @@ export default function EventsPage({ navigateTo }) {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-3.5 py-1.5 rounded-[2px] transition-all cursor-pointer border flex items-center gap-2 ${
+                    className={`px-3.5 py-1.5 rounded transition-all cursor-pointer border flex items-center gap-2 ${
                       isActive
                         ? "bg-[#C8102E] text-white border-[#A50D25] font-semibold shadow-xs"
-                        : "bg-[#FFFFFF] text-[#0A1F44] border-[#0A1F44]/20 hover:border-[#0A1F44]"
+                        : "bg-[#FFFFFF] text-[#0A1F44] border-slate-200 hover:border-[#0A1F44]"
                     }`}
                   >
                     <span>{cat}</span>
                     <span
-                      className={`text-[10px] px-1.5 py-0.2 rounded-[2px] ${
+                      className={`text-[10px] px-1.5 py-0.5 rounded ${
                         isActive
                           ? "bg-white/25 text-white"
-                          : "text-[#5B6B84] bg-[#F8F9FA]"
+                          : "text-slate-500 bg-[#F5F6F8]"
                       }`}
                     >
                       {count}
@@ -124,16 +125,16 @@ export default function EventsPage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 3. MASONRY GALLERY - Photography Dominant, Clean Visual Flow */}
-      <section className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-2 sm:px-6 pt-6 pb-20">
+      {/* 3. MASONRY GALLERY - Required React Bits Specs */}
+      <section className="max-w-[1520px] mx-auto px-2 sm:px-6 pt-8 pb-20">
         <Masonry
           items={filteredEvents}
           ease="power3.out"
           duration={0.6}
-          stagger={0.03}
+          stagger={0.05}
           animateFrom="bottom"
           scaleOnHover={true}
-          hoverScale={0.99}
+          hoverScale={0.95}
           blurToFocus={true}
           _colorShiftOnHover={false}
           onItemClick={handleEventClick}
@@ -147,7 +148,7 @@ export default function EventsPage({ navigateTo }) {
             </p>
             <button
               onClick={() => setActiveCategory("All Events")}
-              className="mt-2 px-5 py-2.5 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-medium uppercase tracking-wide rounded-md cursor-pointer transition-colors"
+              className="mt-2 btn-editorial-navy"
             >
               Show All Events
             </button>
@@ -155,12 +156,12 @@ export default function EventsPage({ navigateTo }) {
         )}
       </section>
 
-      {/* 4. CLOSING INQUIRY PANEL - Editorial Light-Neutral #F5F6F8 Section */}
-      <section className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 mt-6">
-        <div className="bg-[#F5F6F8] text-[#0A1F44] rounded-lg p-10 sm:p-14 relative overflow-hidden">
+      {/* 4. CLOSING INQUIRY PANEL (Light Neutral #F5F6F8 Rhythm) */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 mt-6">
+        <div className="bg-[#F5F6F8] text-[#0A1F44] rounded-lg p-10 sm:p-14 border border-slate-200/80">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10">
             <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#C8102E] font-medium uppercase">
+              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
                 <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
                 <span>The City Tower, Jakarta · Executive Mandates</span>
               </div>
@@ -168,14 +169,14 @@ export default function EventsPage({ navigateTo }) {
                 Planning your next flagship assembly?
               </h2>
               <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
-                From ministerial plenaries and nationwide trade expos to exclusive corporate retreats, our protocol and spatial engineering teams ensure world-class delivery with zero tolerance for error.
+                From ministerial plenaries and nationwide trade expos to exclusive corporate retreats, our protocol and spatial engineering teams ensure world-class delivery with zero margin for error.
               </p>
             </div>
 
             <div className="shrink-0">
               <button
                 onClick={handleInquiry}
-                className="px-7 py-3.5 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md hover:scale-[1.02]"
+                className="btn-editorial-navy"
               >
                 <span>Consult Event Directors</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -186,9 +187,5 @@ export default function EventsPage({ navigateTo }) {
       </section>
 
     </div>
-
-
-
   );
 }
-
