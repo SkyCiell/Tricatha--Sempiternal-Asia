@@ -1,0 +1,148 @@
+import React, { useState } from "react";
+import FAQSection from "../components/FAQSection";
+import { ArrowUpRight } from "lucide-react";
+
+export default function FAQPage({ navigateTo }) {
+  const handleInquiry = () => {
+    if (navigateTo) navigateTo("/contact");
+  };
+
+  const additionalTopics = [
+    {
+      category: "SOVEREIGN CLEARANCE & PROTOCOL",
+      items: [
+        {
+          q: "How does TSA handle bilateral head-of-state protocol and diplomatic precedence?",
+          a: "Our protocol directors coordinate directly with Ministry of Foreign Affairs liaisons, state secretariats, and visiting embassy advance teams to establish accredited precedence orders, flag protocol, and security perimeters."
+        },
+        {
+          q: "What confidential vetting procedures are applied to personnel?",
+          a: "All on-site managers, technical directors, and protocol liaisons undergo rigorous institutional background checks and sign binding non-disclosure covenants (NDAs) enforceable under Indonesian and international commercial arbitration standards."
+        }
+      ]
+    },
+    {
+      category: "EVENT OPERATIONS & STUDIO BROADCAST",
+      items: [
+        {
+          q: "Does TSA supply turnkey audiovisual equipment or work with venue suppliers?",
+          a: "TSA provides end-to-end proprietary equipment—including 4K cinema broadcast switchers, Dante encrypted digital audio, spatial LED walls, and multi-camera jibs—guaranteeing zero reliance on unverified third parties."
+        },
+        {
+          q: "Can DNA Studio broadcast directly into sovereign government telepresence networks?",
+          a: "Yes. DNA Studio provides point-to-point hardware-encrypted video feeds compatible with sovereign ministry command centers, multilateral agencies, and encrypted satellite up-links."
+        }
+      ]
+    },
+    {
+      category: "RETAINERS & COMMERCIAL MANDATES",
+      items: [
+        {
+          q: "How are advisory and event management mandates structured commercially?",
+          a: "Mandates are structured either on an institutional retainer model for ongoing public affairs and strategy, or as fixed turnkey project contracts for major summits, assemblies, and media productions."
+        },
+        {
+          q: "What is the procedure to initiate an emergency or rapid-deployment mandate?",
+          a: "For crisis communications, emergency policy responses, or accelerated summit staging (under 4 weeks), the Jakarta Executive Secretariat activates a 24-hour rapid response protocol upon receipt of official credential letters."
+        }
+      ]
+    }
+  ];
+
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+
+  return (
+    <div className="pt-20 bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans selection:bg-[#C8102E] selection:text-white">
+      {/* 1. Hero Banner - Deep Navy #0A1F44 */}
+      <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
+        {/* Subtle dot matrix */}
+        <div
+          className="absolute inset-0 opacity-10 pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(white 1px, transparent 1px)",
+            backgroundSize: "28px 28px"
+          }}
+        />
+
+        <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 relative z-10">
+
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+            <div className="max-w-3xl space-y-4">
+              <h1 className="font-heading text-3xl sm:text-5xl lg:text-[54px] font-medium tracking-tight text-white leading-[1.14]">
+                Frequently Addressed <br />
+                <span className="text-white/85 font-normal">Protocol &amp; Operational Inquiries.</span>
+              </h1>
+              <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
+                Clear institutional parameters regarding bilateral clearances, confidentiality covenants, ASEAN logistics, and turnkey production execution at The City Tower, Jakarta.
+              </p>
+            </div>
+
+            <button
+              onClick={handleInquiry}
+              className="btn-editorial px-7 py-3.5 bg-[#C8102E] hover:bg-[#A50D25] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md shrink-0 self-start lg:self-auto"
+            >
+              <span>Submit Specific Query</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Primary Executive FAQ Component */}
+      <FAQSection scrollToSection={() => handleInquiry()} />
+
+      {/* 3. Deep-Dive Category Accordions - Light Neutral #F5F6F8 */}
+      <section className="py-20 sm:py-28 bg-[#F5F6F8] border-b border-slate-200/60">
+        <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8">
+          <div className="pb-8 border-b border-slate-200/80 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-2">
+              <h2 className="font-heading text-2xl sm:text-4xl font-medium tracking-tight text-[#0A1F44]">
+                Categorized Operational Details
+              </h2>
+            </div>
+            <p className="text-sm text-slate-600 max-w-sm">
+              Explore specific parameters by practice area below.
+            </p>
+          </div>
+
+          <div className="pt-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            {/* Category Tabs (4 cols) */}
+            <div className="lg:col-span-4 space-y-3">
+              {additionalTopics.map((topic, idx) => {
+                const isSelected = activeCategoryIndex === idx;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveCategoryIndex(idx)}
+                    className={`w-full text-left p-5 rounded-lg border font-mono text-xs uppercase tracking-wider transition-editorial cursor-pointer flex items-center justify-between ${
+                      isSelected
+                        ? "bg-[#0A1F44] border-[#0A1F44] text-white shadow-md font-medium"
+                        : "bg-[#FFFFFF] border-slate-200/80 text-slate-600 hover:text-[#0A1F44] shadow-2xs"
+                    }`}
+                  >
+                    <span>{topic.category}</span>
+                    <span className="text-[10px] opacity-75">0{idx + 1}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Questions for Selected Category (8 cols) */}
+            <div className="lg:col-span-8 bg-[#FFFFFF] border border-slate-200/80 rounded-lg p-8 sm:p-10 shadow-sm space-y-6">
+              {additionalTopics[activeCategoryIndex].items.map((item, qIdx) => (
+                <div key={qIdx} className="space-y-2 pb-6 last:pb-0 border-b last:border-b-0 border-slate-100">
+                  <h3 className="font-heading text-base sm:text-lg font-medium text-[#0A1F44] leading-snug">
+                    {item.q}
+                  </h3>
+                  <p className="text-sm text-slate-600 font-normal leading-relaxed">
+                    {item.a}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

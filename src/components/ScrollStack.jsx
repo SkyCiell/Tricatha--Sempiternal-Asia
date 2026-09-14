@@ -1,63 +1,82 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 export function ScrollStackItem({ project, index, total, onClick }) {
-  const topOffset = 100 + index * 24;
+  const containerRef = useRef(null);
+  const topOffset = 100 + index * 26;
+
+  // Track progress of this card relative to the viewport
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "start start"]
+  });
+
+  // Calculate subtle scaling as cards stack over each other
+  const scale = useTransform(scrollYProgress, [0, 1], [0.96, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0.6, 1]);
 
   return (
     <motion.div
-      style={{ top: `${topOffset}px` }}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      ref={containerRef}
+      style={{
+        top: `${topOffset}px`,
+        scale,
+        opacity
+      }}
       onClick={() => onClick && onClick(project)}
-      className="sticky w-full bg-[#071A2B] border border-white/15 rounded-3xl overflow-hidden shadow-2xl cursor-pointer group transition-all duration-300 hover:border-[#42D3A5] mb-8"
+      className="sticky w-full bg-[#FFFFFF] border border-[#0A1F44]/20 rounded-[4px] overflow-hidden shadow-[6px_6px_0px_rgba(10,31,68,0.08)] cursor-pointer group transition-colors duration-300 hover:border-[#C8102E]/60 mb-10"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[320px] sm:min-h-[360px]">
-        {/* Left Column: Visual Image Accent */}
-        <div className="lg:col-span-6 relative overflow-hidden h-56 sm:h-64 lg:h-full min-h-[220px]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[340px]">
+        {/* Left Column: Architectural Blueprint Illustration */}
+        <div className="lg:col-span-6 relative overflow-hidden bg-[#F8F9FA] border-b lg:border-b-0 lg:border-r border-[#0A1F44]/15 min-h-[260px] flex items-center justify-center p-4">
           <img
-            src={project.image}
+            src={project.image || project.blueprintImage}
             alt={project.name || project.title}
-            className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
+            className="w-full h-full object-contain rounded-[2px] group-hover:scale-[1.03] transition-transform duration-500 ease-out"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#071A2B] via-[#071A2B]/30 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-[#071A2B]" />
+          <div className="absolute top-3 left-3 bg-[#FFFFFF] border border-[#0A1F44]/20 px-2 py-0.5 rounded-[2px] font-mono text-[9px] text-[#0A1F44] tracking-wider uppercase shadow-2xs">
+            {project.blueprintLabel || "ARCHITECTURAL DRAFT"}
+          </div>
+          <div className="absolute bottom-3 right-3 bg-[#FFFFFF] border border-[#0A1F44]/20 px-2 py-0.5 rounded-[2px] font-mono text-[9px] text-[#C8102E] tracking-wider uppercase shadow-2xs">
+            {project.scale || "SCALE 1:100 METRIC"}
+          </div>
         </div>
 
-        {/* Right Column: Project Info & Typography */}
+        {/* Right Column: Mandate Specification & Typography */}
         <div className="lg:col-span-6 p-6 sm:p-8 flex flex-col justify-between space-y-6">
           {/* Category & Year */}
-          <div className="flex items-center justify-between font-mono text-xs text-slate-400">
-            <span className="text-[#42D3A5] uppercase tracking-widest font-semibold">
+          <div className="flex items-center justify-between font-mono text-xs text-[#5B6B84]">
+            <span className="text-[#C8102E] uppercase tracking-widest font-semibold">
               {project.category}
             </span>
-            <span className="font-mono text-slate-400">{project.year}</span>
+            <span className="font-mono text-[#5B6B84]">{project.year || "2024–2026"}</span>
           </div>
 
           {/* Project Headline */}
           <div>
-            <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#F4F6F2] group-hover:text-[#42D3A5] transition-colors uppercase tracking-tight leading-tight mb-3">
+            <h3 className="font-heading text-2xl sm:text-3xl font-medium text-[#0A1F44] group-hover:text-[#C8102E] transition-colors tracking-tight leading-tight mb-2.5">
               {project.name || project.title}
             </h3>
-            <p className="text-slate-300 font-mono text-xs sm:text-sm leading-relaxed line-clamp-2">
+            <p className="text-[#5B6B84] text-xs sm:text-sm font-normal leading-relaxed line-clamp-3">
               {project.shortDesc || project.description}
             </p>
           </div>
 
-          {/* Bottom Action / Impact */}
-          <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+          {/* Bottom Action / Outcome */}
+          <div className="pt-4 border-t border-[#0A1F44]/15 flex items-center justify-between font-mono text-xs">
             <div className="min-w-0 pr-2">
-              <span className="text-slate-400 uppercase text-[10px] block mb-0.5">IMPACT</span>
-              <span className="text-[#155EEF] font-bold uppercase truncate block">
-                {project.impact}
+              <span className="text-[#5B6B84] uppercase text-[9px] block mb-0.5 tracking-wider">MANDATE OUTCOME</span>
+              <span className="text-[#0A1F44] font-semibold uppercase truncate block">
+                {project.impact || "VERIFIED DIPLOMATIC ACCORD"}
               </span>
             </div>
 
-            <button className="flex items-center gap-1.5 font-heading text-xs font-bold uppercase tracking-wider text-[#F4F6F2] group-hover:text-[#42D3A5] transition-colors shrink-0">
-              <span className="hidden xs:inline">EXPLORE CASE STUDY</span>
-              <ArrowUpRight className="w-4 h-4 text-[#42D3A5] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            <button className="btn-tech-red px-4 py-2 text-xs font-semibold uppercase tracking-wider shrink-0">
+              <div className="flex items-center gap-1.5">
+                <span>View Dossier</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </div>
             </button>
           </div>
         </div>
@@ -68,7 +87,7 @@ export function ScrollStackItem({ project, index, total, onClick }) {
 
 export default function ScrollStack({ children, className = "" }) {
   return (
-    <div className={`relative w-full space-y-6 ${className}`}>
+    <div className={`relative w-full pb-12 ${className}`}>
       {children}
     </div>
   );

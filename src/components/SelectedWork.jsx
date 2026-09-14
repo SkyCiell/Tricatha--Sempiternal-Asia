@@ -1,73 +1,77 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { editorialProjects } from "../data/tsaData";
-import AccordionGallery from "./AccordionGallery";
-import ProjectModal from "./ProjectModal";
 import { ArrowUpRight } from "lucide-react";
+import ProjectModal from "./ProjectModal";
 
 export default function SelectedWork() {
-  const [activeProject, setActiveProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <section id="work" className="py-28 bg-[#071A2B] relative border-b border-white/10">
+    <section id="work" className="py-28 bg-[#0B0F17] text-[#F8FAFC] relative border-t border-slate-800/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#F4F6F2] tracking-tight uppercase">
-              SELECTED <span className="text-[#42D3A5]">WORKS.</span>
+            <div className="font-mono text-xs text-[#3B82F6] uppercase tracking-widest mb-2">
+              PORTFOLIO & CASE STUDIES
+            </div>
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-[#F8FAFC]">
+              EDITORIAL PROJECTS
             </h2>
           </div>
-          <div className="max-w-md text-slate-300 text-sm font-mono leading-relaxed border-l-2 border-[#155EEF] pl-4">
-            Interactive media gallery powered by GSAP. Hover or tap to expand project initiatives.
-          </div>
+          <p className="text-slate-400 text-sm font-normal max-w-md">
+            High-stakes government advocacy, GovTech software systems, diplomatic assemblies, and broadcast studio productions.
+          </p>
         </div>
 
-        {/* Core Focal Point: React Bits AccordionGallery (GSAP Powered) */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20"
-        >
-          <AccordionGallery
-            items={editorialProjects}
-            onSelectProject={(proj) => setActiveProject(proj)}
-          />
-        </motion.div>
-
-        {/* Secondary Editorial Showcase Grid */}
-        <div className="space-y-12">
-          {editorialProjects.map((project, idx) => (
+        {/* Clean Editorial Gallery Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {editorialProjects.map((project, index) => (
             <motion.div
-              key={project.name || project.title}
-              initial={{ opacity: 0, y: 24 }}
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              onClick={() => setActiveProject(project)}
-              className="group cursor-pointer border-b border-white/10 pb-8"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              onClick={() => setSelectedProject(project)}
+              className="group bg-[#111827] border border-slate-800 hover:border-[#3B82F6]/70 rounded-2xl overflow-hidden transition-all duration-300 cursor-pointer flex flex-col justify-between"
             >
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <div>
-                  <div className="text-xs font-mono text-[#42D3A5] uppercase tracking-widest mb-1.5 font-semibold">
-                    {project.category}
-                  </div>
-                  <h3 className="font-heading text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#F4F6F2] uppercase tracking-tight group-hover:text-[#42D3A5] transition-colors leading-tight">
-                    {project.name || project.title}
-                  </h3>
+              {/* Image Container with Soft Rounded Corners */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#0B0F17]">
+                <img
+                  src={project.image}
+                  alt={project.name}
+                  className="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 bg-[#0B0F17]/90 text-[11px] font-mono text-[#3B82F6] font-semibold uppercase tracking-wider rounded-lg border border-slate-800">
+                    {project.year}
+                  </span>
                 </div>
+              </div>
 
-                <div className="flex items-center gap-6 shrink-0">
-                  <div className="font-mono text-xs text-slate-300 uppercase tracking-widest hidden sm:block">
-                    MEASURED IMPACT: <span className="text-[#155EEF] font-bold">{project.impact}</span>
+              {/* Text Info Body */}
+              <div className="p-6 sm:p-8 space-y-4">
+                <div className="font-mono text-xs text-[#3B82F6] font-semibold uppercase tracking-wider">
+                  {project.category}
+                </div>
+                <h3 className="font-heading text-2xl font-bold text-[#F8FAFC] group-hover:text-[#3B82F6] transition-colors uppercase tracking-tight">
+                  {project.name}
+                </h3>
+                <p className="text-sm text-slate-300 font-normal line-clamp-2 leading-relaxed">
+                  {project.shortDesc}
+                </p>
+
+                {/* Footer Bar inside Card */}
+                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                  <span className="font-mono text-xs text-slate-400">
+                    {project.impact}
+                  </span>
+                  <div className="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-[#3B82F6] text-slate-300 group-hover:text-white flex items-center justify-center transition-colors">
+                    <ArrowUpRight className="w-4 h-4" />
                   </div>
-                  <button className="flex items-center gap-2 font-heading text-xs font-bold uppercase tracking-widest text-[#F4F6F2] group-hover:text-[#42D3A5] transition-colors cursor-pointer">
-                    <span>EXPLORE CASE STUDY</span>
-                    <ArrowUpRight className="w-5 h-5 text-[#42D3A5] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </button>
                 </div>
               </div>
             </motion.div>
@@ -76,10 +80,10 @@ export default function SelectedWork() {
 
       </div>
 
-      {/* Project Detail Modal */}
+      {/* Project Case Study Modal */}
       <ProjectModal
-        project={activeProject}
-        onClose={() => setActiveProject(null)}
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
       />
     </section>
   );

@@ -1,114 +1,101 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle2, ArrowRight } from "lucide-react";
+import { X, ArrowRight } from "lucide-react";
 
 export default function ServiceModal({ service, onClose, onSelectContact }) {
-  const isBlue = service?.theme === "blue";
+  if (!service) return null;
 
   return (
     <AnimatePresence>
-      {service && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-[#071A2B]/90 backdrop-blur-md"
-          />
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+        {/* Backdrop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={onClose}
+          className="fixed inset-0 bg-[#071A33]/85 backdrop-blur-sm"
+        />
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-3xl bg-[#0B2238] border border-white/20 shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col rounded-2xl"
-          >
-          {/* Top Header */}
-          <div className="relative h-48 sm:h-56 overflow-hidden">
-            <img
-              src={service.image}
-              alt={service.title}
-              className="w-full h-full object-cover grayscale contrast-125"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B2238] via-[#0B2238]/60 to-transparent" />
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 p-2.5 bg-[#071A2B]/80 text-white hover:text-[#42D3A5] rounded-full"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <div className="absolute bottom-4 left-6 right-6">
-              <span
-                className={`font-mono text-xl font-bold block mb-1 ${
-                  isBlue ? "text-[#1677FF]" : "text-[#42D3A5]"
-                }`}
-              >
+        {/* Modal Container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.97, y: 12 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className="relative w-full max-w-3xl bg-[#0B1F3A] border border-white/20 shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col text-white"
+        >
+          {/* Header */}
+          <div className="p-6 sm:p-8 border-b border-white/15 flex items-start justify-between bg-[#071A33]">
+            <div>
+              <div className="font-mono text-xs text-[#C62828] uppercase tracking-widest font-bold mb-1">
                 {service.category}
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-black text-white uppercase">
+              </div>
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold uppercase tracking-tight text-white">
                 {service.title}
               </h3>
             </div>
+            <button
+              onClick={onClose}
+              className="p-2 text-white hover:text-[#C62828] transition-colors cursor-pointer"
+              aria-label="Close"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
 
-          {/* Body */}
+          {/* Content */}
           <div className="p-6 sm:p-8 overflow-y-auto space-y-6 flex-1">
             <div>
-              <h4 className="text-xs font-mono uppercase text-slate-400 tracking-wider mb-2">
-                PRACTICE OVERVIEW
+              <h4 className="font-heading text-xs uppercase text-white font-bold tracking-wider mb-2">
+                PRACTICE MANDATE & SCOPE
               </h4>
-              <p className="text-slate-200 text-sm sm:text-base leading-relaxed">
-                {service.fullDesc}
+              <p className="text-[#CBD5E1] text-sm sm:text-base leading-relaxed">
+                {service.shortDesc}
               </p>
             </div>
 
-            <div>
-              <h4 className="text-xs font-mono uppercase text-slate-400 tracking-wider mb-4">
-                CORE DELIVERABLES & CAPABILITIES
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {service.deliverables.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3.5 bg-[#071A2B] border border-white/10 rounded-xl flex items-start gap-3"
-                  >
-                    <CheckCircle2
-                      className={`w-4 h-4 shrink-0 mt-0.5 ${
-                        isBlue ? "text-[#1677FF]" : "text-[#42D3A5]"
-                      }`}
-                    />
-                    <span className="text-xs text-slate-200 font-medium leading-snug">
-                      {item}
-                    </span>
-                  </div>
-                ))}
+            {service.deliverables && (
+              <div>
+                <h4 className="font-heading text-xs uppercase text-white font-bold tracking-wider mb-3">
+                  CORE DELIVERABLES & PROTOCOLS
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {service.deliverables.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 bg-[#071A33] border border-white/10 flex items-start gap-3"
+                    >
+                      <span className="w-1.5 h-1.5 bg-[#C62828] shrink-0 mt-1.5" />
+                      <span className="text-xs text-[#CBD5E1] font-mono leading-snug">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {/* Footer */}
-          <div className="p-6 border-t border-white/10 bg-[#071A2B] flex items-center justify-between">
-            <div className="text-xs font-mono text-slate-400">
-              PT Tricatha Sempiternal Asia
+          <div className="p-6 border-t border-white/15 bg-[#071A33] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-xs font-mono text-[#94A3B8]">
+              PT TRICATHA SEMPITERNAL ASIA · THE CITY TOWER
             </div>
             <button
               onClick={() => {
                 onClose();
-                onSelectContact(service.title);
+                if (onSelectContact) onSelectContact(service.title);
               }}
-              className={`px-6 py-3 font-mono font-bold text-xs uppercase tracking-widest text-white flex items-center gap-2 rounded-full ${
-                isBlue ? "bg-[#1677FF] hover:bg-[#087F5B]" : "bg-[#087F5B] hover:bg-[#42D3A5]"
-              }`}
+              className="w-full sm:w-auto px-7 py-3 bg-[#C62828] hover:bg-[#a82020] text-white font-mono font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all cursor-pointer rounded-full"
             >
-              <span>Inquire For Service</span>
+              <span>INQUIRE FOR THIS DISCIPLINE</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
         </motion.div>
       </div>
-      )}
     </AnimatePresence>
   );
 }

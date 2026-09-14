@@ -42,7 +42,7 @@ export default function Process() {
                     : "bg-[#0B2238] border-white/10 text-slate-400 hover:border-white/30 hover:text-white"
                 }`}
               >
-                <div className="text-[10px] opacity-75 mb-1">{step.number} //</div>
+                <div className="text-[10px] opacity-75 mb-1">{step.number}</div>
                 <div className="uppercase tracking-widest">{step.step}</div>
               </button>
             );

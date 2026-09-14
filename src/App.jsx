@@ -1,162 +1,195 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
-import "lenis/dist/lenis.css";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import TypographicBreaker from "./components/TypographicBreaker";
-import Services from "./components/Services";
-import SelectedWork from "./components/SelectedWork";
-import Approach from "./components/Approach";
-import ImpactNumbers from "./components/ImpactNumbers";
-import CTASection from "./components/CTASection";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
+// Dedicated Pages for Each Route
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import BrandsPage from "./pages/BrandsPage";
+import EventManagementPage from "./pages/EventManagementPage";
+import PortfolioPage from "./pages/PortfolioPage";
+import EventsPage from "./pages/EventsPage";
+import EventDetailPage from "./pages/EventDetailPage";
+import ArticlesPage from "./pages/ArticlesPage";
+import CareersPage from "./pages/CareersPage";
+import InternshipPage from "./pages/InternshipPage";
+import FAQPage from "./pages/FAQPage";
+import ContactPage from "./pages/ContactPage";
+
+import HudMarginalia from "./components/HudMarginalia";
+
+const VALID_ROUTES = [
+  "/",
+  "/home",
+  "/about",
+  "/business-group",
+  "/brands",
+  "/services",
+  "/event-management",
+  "/portfolio",
+  "/events",
+  "/articles",
+  "/careers",
+  "/internship",
+  "/faq",
+  "/contact"
+];
+
+function isRouteValid(path) {
+  if (!path) return false;
+  const normalized = path.toLowerCase().replace(/\/+$/, "") || "/";
+  if (normalized.startsWith("/events/") && normalized.length > 8) {
+    return true;
+  }
+  return VALID_ROUTES.includes(normalized);
+}
+
+// Helper to sanitize incoming pathname or hash
+function getInitialRoute() {
+  const pathname = window.location.pathname.toLowerCase().replace(/\/+$/, "") || "/";
+  const hash = window.location.hash.toLowerCase().replace("#", "").replace(/\/+$/, "");
+
+  if (isRouteValid(pathname)) {
+    return pathname;
+  }
+  if (hash && isRouteValid(`/${hash}`)) {
+    return `/${hash}`;
+  }
+  // Default to root home page
+  return "/";
+}
+
+
 export default function App() {
-  const [activeSection, setActiveSection] = useState("hero");
-  const [preselectedService, setPreselectedService] = useState("");
-  const lenisRef = useRef(null);
+  const [currentPath, setCurrentPath] = useState(getInitialRoute);
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      setActiveSection(id);
-      if (window.location.hash !== `#${id}`) {
-        window.history.pushState(null, "", `#${id}`);
-      }
-      if (lenisRef.current) {
-        lenisRef.current.scrollTo(el, {
-          offset: -60,
-          duration: 1.2,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-        });
-      } else {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
+  // Initialize Lenis smooth scroll and route synchronization on mount
   useEffect(() => {
-    // Initialize Lenis smooth scroll
+    const initialRoute = getInitialRoute();
+    if (window.location.pathname !== initialRoute) {
+      window.history.replaceState(null, "", initialRoute);
+    }
+    setCurrentPath(initialRoute);
+
+    // Initialize Lenis smooth momentum scrolling
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1.1,
+      wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
-      autoRaf: true
     });
 
-    lenisRef.current = lenis;
+    let animationFrameId;
+    function raf(time) {
+      lenis.raf(time);
+      animationFrameId = requestAnimationFrame(raf);
+    }
+    animationFrameId = requestAnimationFrame(raf);
+    window.__lenis = lenis;
 
-    const sections = ["hero", "about", "services", "work", "approach", "contact"];
-    
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 250;
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(sectionId);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Synchronize initial route or direct URL access (hash / path)
-    const handleUrlRoute = () => {
-      const hash = window.location.hash.replace("#", "");
-      const path = window.location.pathname.replace("/", "");
-      const targetId = hash || path;
-
-      if (targetId && sections.includes(targetId)) {
-        setTimeout(() => {
-          scrollToSection(targetId);
-        }, 150);
-      }
-    };
-
-    handleUrlRoute();
-
+    // Support Browser Back and Forward buttons (Popstate)
     const handlePopState = () => {
-      const hash = window.location.hash.replace("#", "");
-      const path = window.location.pathname.replace("/", "");
-      const targetId = hash || path || "hero";
-      if (sections.includes(targetId)) {
-        scrollToSection(targetId);
+      const activePath = getInitialRoute();
+      setCurrentPath(activePath);
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
       }
     };
 
     window.addEventListener("popstate", handlePopState);
-    window.addEventListener("hashchange", handlePopState);
-
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("popstate", handlePopState);
-      window.removeEventListener("hashchange", handlePopState);
+      cancelAnimationFrame(animationFrameId);
       lenis.destroy();
+      window.__lenis = null;
+      window.removeEventListener("popstate", handlePopState);
     };
   }, []);
 
+  // Route navigation handler - switches page and updates URL without section scrolling
+  const navigateTo = (path) => {
+    const normalizedPath = path.toLowerCase().replace(/\/+$/, "") || "/";
+    const targetRoute = isRouteValid(normalizedPath) ? normalizedPath : "/events";
+
+    if (window.location.pathname !== targetRoute) {
+      window.history.pushState(null, "", targetRoute);
+    }
+    setCurrentPath(targetRoute);
+    if (window.__lenis) {
+      window.__lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  };
+
+  // Render dedicated page component based on route
+  const renderCurrentPage = () => {
+    // Dynamic event detail route matching /events/:slug
+    if (currentPath.startsWith("/events/") && currentPath.length > 8) {
+      const slug = currentPath.substring(8);
+      return <EventDetailPage key={slug} slug={slug} navigateTo={navigateTo} />;
+    }
+
+    switch (currentPath) {
+      case "/":
+      case "/home":
+        return <HomePage key="home" navigateTo={navigateTo} />;
+      case "/about":
+        return <AboutPage key="about" navigateTo={navigateTo} />;
+      case "/business-group":
+      case "/brands":
+        return <BrandsPage key="business-group" navigateTo={navigateTo} />;
+      case "/services":
+      case "/event-management":
+        return <EventManagementPage key="services" navigateTo={navigateTo} />;
+      case "/portfolio":
+        return <PortfolioPage key="portfolio" navigateTo={navigateTo} />;
+      case "/articles":
+        return <ArticlesPage key="articles" navigateTo={navigateTo} />;
+      case "/careers":
+        return <CareersPage key="careers" navigateTo={navigateTo} />;
+      case "/internship":
+        return <InternshipPage key="internship" navigateTo={navigateTo} />;
+      case "/contact":
+        return <ContactPage key="contact" navigateTo={navigateTo} />;
+      case "/faq":
+        return <FAQPage key="faq" navigateTo={navigateTo} />;
+      case "/events":
+        return <EventsPage key="events" navigateTo={navigateTo} />;
+      default:
+        return <HomePage key="home" navigateTo={navigateTo} />;
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#071A2B] text-[#F4F6F2] selection:bg-[#155EEF] selection:text-white relative">
-      {/* Top Blue-Green Accent Line */}
-      <div className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#155EEF] via-[#42D3A5] to-[#155EEF] z-50 pointer-events-none" />
+    <div className="bg-[#FFFFFF] min-h-screen flex flex-col selection:bg-[#C8102E] selection:text-white relative">
+      {/* Live HUD Marginalia (Cursor Coordinates & Architectural HUD) */}
+      <HudMarginalia />
 
-      {/* Navigation */}
-      <Navbar activeSection={activeSection} scrollToSection={scrollToSection} />
+      {/* 1. Universal Consistent Navbar across all pages */}
+      <Navbar currentPath={currentPath} navigateTo={navigateTo} />
 
-      {/* Experimental Future Society Storytelling Trajectory */}
-      <main>
-        {/* 1. Hero with ScrollExpand */}
-        <Hero scrollToSection={scrollToSection} />
-
-        {/* 2. Editorial About Intro (Off-White contrast) */}
-        <About />
-
-        {/* Section Breaker: PEOPLE. */}
-        <TypographicBreaker word="PEOPLE." theme="blue" />
-
-        {/* 3. Services (Interactive Typographic List) */}
-        <Services
-          scrollToSection={scrollToSection}
-          onPreselectService={(title) => setPreselectedService(title)}
-        />
-
-        {/* Section Breaker: TECHNOLOGY. */}
-        <TypographicBreaker word="TECHNOLOGY." theme="navy" />
-
-        {/* 4. Selected Work featuring GSAP AccordionGallery */}
-        <SelectedWork />
-
-        {/* Section Breaker: CULTURE. */}
-        <TypographicBreaker word="CULTURE." theme="green" />
-
-
-        {/* 6. Approach Methodology (Sticky Scroll) */}
-        <Approach />
-
-        {/* Section Breaker: IMPACT. */}
-        <TypographicBreaker word="IMPACT." theme="navy" />
-
-        {/* 7. Statistics Oversized Typography */}
-        <ImpactNumbers />
-
-        {/* 8. CTA Closing Banner */}
-        <CTASection scrollToSection={scrollToSection} />
-
-        {/* 9. Contact */}
-        <Contact preselectedService={preselectedService} />
+      {/* 2. Route-Based Page Container with Smooth Fade Transitions */}
+      <main className="flex-grow">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPath}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          >
+            {renderCurrentPage()}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
-      {/* Footer */}
-      <Footer scrollToSection={scrollToSection} />
+      {/* 3. Universal Consistent Footer across all pages */}
+      <Footer navigateTo={navigateTo} />
     </div>
   );
 }

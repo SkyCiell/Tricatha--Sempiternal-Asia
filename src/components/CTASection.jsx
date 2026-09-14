@@ -1,38 +1,47 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 export default function CTASection({ scrollToSection }) {
   return (
-    <section className="py-32 bg-[#071A2B] text-[#F4F6F2] relative border-t border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl mx-auto"
-        >
-          <h2 className="font-heading text-5xl sm:text-7xl md:text-8xl font-black uppercase tracking-tighter leading-[0.88] mb-12">
-            LET’S MAKE <br />
-            <span className="text-[#155EEF]">SOMETHING</span> <br />
-            <span className="text-[#42D3A5]">WORTH MOVING.</span>
+    <section className="py-24 sm:py-32 lg:py-36 bg-[#071A33] text-white border-b border-white/10 relative overflow-hidden">
+      
+      {/* Background Subtle Watermark */}
+      <div className="absolute right-0 bottom-0 select-none pointer-events-none opacity-5 font-display text-[18vw] font-black text-white leading-none">
+        STRATEGY
+      </div>
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 relative z-10">
+        <div className="max-w-4xl space-y-8">
+          
+
+          <h2 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-black uppercase tracking-tight text-white leading-[0.98]">
+            LET’S BUILD <br />
+            THE RIGHT <span className="text-[#C62828]">ENGAGEMENT</span> <br />
+            FRAMEWORK.
           </h2>
 
-          <div className="flex justify-center">
-            <motion.button
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => scrollToSection("contact")}
-              className="px-10 py-5 bg-[#155EEF] hover:bg-[#087F5B] text-white font-heading font-bold text-xs uppercase tracking-[0.25em] rounded-full transition-colors duration-300 flex items-center gap-3 shadow-2xl shadow-[#155EEF]/30 cursor-pointer"
-            >
-              <span>WORK WITH TSA</span>
-              <ArrowUpRight className="w-5 h-5 text-[#42D3A5]" />
-            </motion.button>
-          </div>
-        </motion.div>
+          <p className="font-normal text-base sm:text-lg text-[#CBD5E1] leading-relaxed max-w-2xl">
+            Initiate a confidential discussion with TSA's partners at The City Tower in Jakarta to deliberate sovereign affairs, diplomatic summit rollouts, or strategic market expansion across Southeast Asia.
+          </p>
 
+          <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="px-8 py-4 bg-[#C62828] hover:bg-[#a82020] text-white text-xs font-mono font-bold uppercase tracking-[0.16em] rounded-full transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer shadow-lg hover:scale-105"
+            >
+              <span>INITIATE MANDATE CONSULTATION</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
+
+            <a
+              href="mailto:info@tsa-group.com"
+              className="px-8 py-4 border-2 border-white/30 hover:border-white hover:bg-white hover:text-[#071A33] text-white text-xs font-mono font-bold uppercase tracking-[0.16em] rounded-full transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <span>DIRECT EXECUTIVE DESK</span>
+            </a>
+          </div>
+
+        </div>
       </div>
     </section>
   );

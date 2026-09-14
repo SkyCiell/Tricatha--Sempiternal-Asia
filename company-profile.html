@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tricatha Sempiternal Asia | Solusi Bisnis & Kemitraan Terpercaya</title>
+  <meta name="description" content="Website Resmi PT Tricatha Sempiternal Asia — Solusi strategis terpercaya untuk pertumbuhan bisnis berkelanjutan di kawasan Asia.">
+  
+  <!-- Google Fonts: Poppins & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ----------------------------------------------------
+       THEME VARIABLES & RESET
+       Merah: #C8102E
+       Putih: #FFFFFF
+       Biru Gelap / Navy: #0A1F44
+       Biru Gelap Pekat (Footer): #050F22
+    ---------------------------------------------------- */
+    :root {
+      --color-navy: #0A1F44;
+      --color-navy-light: #16366E;
+      --color-navy-dark: #050F22;
+      --color-red: #C8102E;
+      --color-red-hover: #A50D25;
+      --color-red-soft: #FF6B81;
+      --color-white: #FFFFFF;
+      --color-bg-light: #F8FAFC;
+      --color-slate-100: #F1F5F9;
+      --color-slate-200: #E2E8F0;
+      --color-slate-600: #475569;
+      --color-slate-800: #1E293B;
+      --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-heading: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition-fast: 0.2s ease;
+      --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: var(--font-body);
+      color: var(--color-slate-800);
+      background-color: var(--color-white);
+    }
+
+    body {
+      overflow-x: hidden;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-navy);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-fast);
+    }
+
+    button, input, textarea {
+      font-family: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Red Accent Line Utility */
+    .accent-bar {
+      width: 64px;
+      height: 4px;
+      background-color: var(--color-red);
+      border-radius: 2px;
+      margin: 16px 0 24px;
+    }
+
+    .accent-bar.center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ----------------------------------------------------
+       1. HEADER / NAVBAR
+       Background: #0A1F44
+       Nav links: Putih, hover merah #C8102E
+    ---------------------------------------------------- */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--color-navy);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 12px rgba(10, 31, 68, 0.15);
+    }
+
+    .navbar-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-red);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 2px 6px rgba(200, 16, 46, 0.3);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-white);
+      letter-spacing: -0.01em;
+    }
+
+    .logo-subtitle {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #94A3B8;
+      font-weight: 500;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-item a {
+      color: var(--color-white);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav-item a:hover {
+      color: var(--color-red);
+    }
+
+    .nav-item a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background-color: var(--color-red);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-item a:hover::after {
+      width: 100%;
+    }
+
+    .btn-header {
+      background-color: var(--color-red);
+      color: var(--color-white) !important;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(200, 16, 46, 0.25);
+    }
+
+    .btn-header:hover {
+      background-color: var(--color-red-hover);
+      color: var(--color-white) !important;
+      transform: translateY(-1px);
+    }
+
+    .btn-header::after {
+      display: none !important;
+    }
+
+    /* Mobile Hamburger */
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--color-white);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ----------------------------------------------------
+       2. HERO SECTION
+       Gradient navy: #0A1F44 -> #1A3E7A
+       Teks putih & Tombol CTA merah
+    ---------------------------------------------------- */
+    .hero-section {
+      background: linear-gradient(135deg, var(--color-navy) 0%, #112B58 50%, #1A3E7A 100%);
+      color: var(--color-white);
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-tag-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-red);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--color-white);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #E2E8F0;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 680px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: var(--color-red);
+      color: var(--color-white);
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(200, 16, 46, 0.35);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-red-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200, 16, 46, 0.45);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-white);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      transition: var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: var(--color-white);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--color-white);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #CBD5E1;
+      margin-top: 4px;
+    }
+
+    /* ----------------------------------------------------
+       3. ABOUT SECTION
+       Background: Putih (#FFFFFF)
+       Judul: #0A1F44
+       Aksen: #C8102E
+    ---------------------------------------------------- */
+    .about-section {
+      background-color: var(--color-white);
+      padding: 100px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-red);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      letter-spacing: -0.02em;
+    }
+
+    .about-text {
+      color: var(--color-slate-600);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .about-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-slate-200);
+    }
+
+    .pillar-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background-color: #FEF2F2;
+      color: var(--color-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .pillar-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+
+    .pillar-desc {
+      font-size: 0.8rem;
+      color: var(--color-slate-600);
+      line-height: 1.5;
+    }
+
+    .about-feature-box {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 16px 36px rgba(10, 31, 68, 0.12);
+      position: relative;
+    }
+
+    .feature-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background-color: var(--color-red);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .feature-quote {
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: #E2E8F0;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .feature-author {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 0.85rem;
+      color: #94A3B8;
+    }
+
+    .feature-author strong {
+      color: var(--color-white);
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    /* ----------------------------------------------------
+       4. BUSINESS GROUP SECTION
+       Grid 5 kartu (3 kolom desktop, 2 kolom tablet, 1 mobile)
+    ---------------------------------------------------- */
+    .business-group-section {
+      background-color: var(--color-bg-light);
+      padding: 100px 0;
+      border-top: 1px solid var(--color-slate-200);
+      border-bottom: 1px solid var(--color-slate-200);
+    }
+
+    .business-group-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .group-card {
+      background-color: var(--color-white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid var(--color-slate-200);
+      border-top: 4px solid var(--color-red);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .group-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(10, 31, 68, 0.08);
+      border-color: rgba(200, 16, 46, 0.3);
+      border-top: 4px solid var(--color-red);
+    }
+
+    .group-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .group-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background-color: #FEF2F2;
+      border: 1px solid rgba(200, 16, 46, 0.2);
+      color: var(--color-red);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-fast);
+    }
+
+    .group-card:hover .group-badge {
+      background-color: var(--color-red);
+      color: var(--color-white);
+    }
+
+    .group-code-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-red);
+      background-color: #FEF2F2;
+      border: 1px solid rgba(200, 16, 46, 0.15);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .group-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 4px;
+      transition: var(--transition-fast);
+    }
+
+    .group-card:hover .group-title {
+      color: var(--color-red);
+    }
+
+    .group-category {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--color-slate-600);
+      margin-bottom: 16px;
+    }
+
+    .group-desc {
+      font-size: 0.875rem;
+      color: var(--color-slate-600);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .group-footer {
+      padding-top: 16px;
+      border-top: 1px solid var(--color-slate-100);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-slate-600);
+    }
+
+    .group-link {
+      color: var(--color-red);
+    }
+
+    /* ----------------------------------------------------
+       5. SERVICES SECTION
+       3-4 kartu dengan border merah tipis, background sangat muda
+    ---------------------------------------------------- */
+    .services-section {
+      background-color: var(--color-white);
+      padding: 100px 0;
+      border-top: 1px solid var(--color-slate-200);
+      border-bottom: 1px solid var(--color-slate-200);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+
+    .service-card {
+      background-color: var(--color-white);
+      border-radius: 12px;
+      padding: 32px 24px;
+      border: 1px solid var(--color-slate-200);
+      border-top: 4px solid var(--color-red);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      transition: var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(10, 31, 68, 0.08);
+      border-color: rgba(200, 16, 46, 0.3);
+      border-top: 4px solid var(--color-red);
+    }
+
+    .service-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background-color: #FEF2F2;
+      color: var(--color-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      transition: var(--transition-fast);
+    }
+
+    .service-card:hover .service-icon-wrap {
+      background-color: var(--color-red);
+      color: var(--color-white);
+    }
+
+    .service-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--color-slate-600);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .service-features {
+      list-style: none;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-slate-100);
+    }
+
+    .service-features li {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-slate-800);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .service-features li span {
+      color: var(--color-red);
+      font-weight: bold;
+    }
+
+    /* ----------------------------------------------------
+       5. PORTFOLIO / CLIENT SECTION
+       Grid logo klien & kartu rekam jejak
+    ---------------------------------------------------- */
+    .portfolio-section {
+      background-color: var(--color-white);
+      padding: 100px 0;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-bottom: 56px;
+    }
+
+    .portfolio-card {
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid var(--color-slate-200);
+      background-color: var(--color-white);
+      transition: var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .portfolio-card:hover {
+      border-color: rgba(200, 16, 46, 0.4);
+      box-shadow: 0 12px 28px rgba(10, 31, 68, 0.06);
+    }
+
+    .portfolio-sector {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-red);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .portfolio-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 10px;
+    }
+
+    .portfolio-desc {
+      font-size: 0.875rem;
+      color: var(--color-slate-600);
+      line-height: 1.6;
+    }
+
+    .portfolio-status {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-slate-100);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-navy);
+    }
+
+    .portfolio-status span.view-link {
+      color: var(--color-red);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Client Ticker Box */
+    .client-ticker-box {
+      background-color: var(--color-bg-light);
+      border-radius: 12px;
+      padding: 32px;
+      border: 1px solid var(--color-slate-200);
+      text-align: center;
+    }
+
+    .client-ticker-heading {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-slate-600);
+      margin-bottom: 24px;
+    }
+
+    .client-logos {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+    }
+
+    .client-logo-item {
+      padding: 14px 10px;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-slate-200);
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-slate-800);
+      transition: var(--transition-fast);
+    }
+
+    .client-logo-item:hover {
+      border-color: var(--color-red);
+      color: var(--color-red);
+    }
+
+    /* ----------------------------------------------------
+       6. CONTACT SECTION
+       Background: Biru Gelap (#0A1F44)
+       Form: Nama, email, pesan, tombol submit merah
+       Info kontak: Putih
+    ---------------------------------------------------- */
+    .contact-section {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      padding: 100px 0;
+    }
+
+    .contact-section .section-title {
+      color: var(--color-white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: stretch;
+    }
+
+    .contact-left-col {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-quick-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+
+    .contact-info-card-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .contact-info-card-item .contact-icon-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background-color: var(--color-red);
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .contact-info-card-item h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-white);
+      margin-bottom: 2px;
+    }
+
+    .contact-info-card-item p {
+      font-size: 0.8rem;
+      color: #CBD5E1;
+      line-height: 1.4;
+    }
+
+    /* Right column: Map */
+    .contact-right-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-map-card {
+      height: 100%;
+      min-height: 480px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid var(--color-red);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      background-color: rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-map-header {
+      padding: 14px 20px;
+      background-color: var(--color-navy);
+      border-bottom: 1px solid rgba(200, 16, 46, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    .contact-map-header span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-map-header a {
+      font-size: 0.8rem;
+      color: var(--color-red-soft);
+      font-weight: 600;
+    }
+
+    .contact-map-body {
+      flex: 1;
+      position: relative;
+      min-height: 380px;
+    }
+
+    .contact-map-body iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .contact-map-footer {
+      padding: 10px 20px;
+      background-color: var(--color-navy);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.75rem;
+      color: #CBD5E1;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Form Container */
+    .contact-form-card {
+      background-color: var(--color-white);
+      color: var(--color-slate-800);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      flex: 1;
+    }
+
+    .form-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      margin-bottom: 6px;
+    }
+
+    .form-desc {
+      font-size: 0.85rem;
+      color: var(--color-slate-600);
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-slate-800);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--color-slate-200);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: var(--color-slate-800);
+      transition: var(--transition-fast);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--color-red);
+      box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--color-red);
+      color: var(--color-white);
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition-fast);
+    }
+
+    .btn-submit:hover {
+      background-color: var(--color-red-hover);
+      box-shadow: 0 6px 16px rgba(200, 16, 46, 0.4);
+    }
+
+    .form-success-msg {
+      display: none;
+      background-color: #ECFDF5;
+      border: 1px solid #10B981;
+      color: #065F46;
+      padding: 14px 16px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      margin-bottom: 20px;
+    }
+
+    /* ----------------------------------------------------
+       7. FOOTER
+       Background: Biru gelap pekat / hitam kebiruan (#050F22)
+       Teks putih, link hover merah muda (#FF6B81)
+       Copyright text
+    ---------------------------------------------------- */
+    .footer-section {
+      background-color: var(--color-navy-dark);
+      color: var(--color-white);
+      padding: 80px 0 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-col h4 {
+      color: var(--color-white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .footer-col p {
+      font-size: 0.875rem;
+      color: #94A3B8;
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links a {
+      color: #94A3B8;
+      font-size: 0.875rem;
+      transition: var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-red-soft);
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 32px;
+      font-size: 0.8rem;
+      color: #94A3B8;
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--color-red-soft);
+    }
+
+    .scroll-top-btn {
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 6px;
+      color: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .scroll-top-btn:hover {
+      background-color: var(--color-red);
+    }
+
+    /* ----------------------------------------------------
+       RESPONSIVE BREAKPOINTS
+    ---------------------------------------------------- */
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .business-group-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .client-logos {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-navy);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        gap: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: none;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-item a {
+        display: block;
+        padding: 8px 0;
+      }
+
+      .btn-header {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .business-group-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .client-logos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Header / Navbar -->
+  <header class="navbar">
+    <div class="container navbar-container">
+      
+      <!-- Logo / Nama Perusahaan -->
+      <a href="#home" class="logo-link">
+        <div class="logo-badge">
+          <!-- SVG Shield Icon -->
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">Tricatha Sempiternal Asia</span>
+          <span class="logo-subtitle">Strategic Advisory & Management</span>
+        </div>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Buka Menu">
+        &#9776;
+      </button>
+
+      <!-- Menu Navigasi -->
+      <ul class="nav-menu" id="navMenu">
+        <li class="nav-item"><a href="#home">Home</a></li>
+        <li class="nav-item"><a href="#about">About</a></li>
+        <li class="nav-item"><a href="#business-group">Business Group</a></li>
+        <li class="nav-item"><a href="#services">Services</a></li>
+        <li class="nav-item"><a href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a href="#contact">Contact</a></li>
+        <li class="nav-item">
+          <a href="#contact" class="btn-header">
+            Hubungi Kami &rarr;
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+
+  <!-- 2. Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        
+
+        <h1 class="hero-title">
+          Mendorong Pertumbuhan & Keunggulan Bisnis Berkelanjutan di Asia
+        </h1>
+
+        <p class="hero-subtitle">
+          Tricatha Sempiternal Asia hadir sebagai mitra strategis dalam konsultasi manajemen, tata kelola proyek skala besar, dan akselerasi transformasi korporat berdaya saing global.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            Konsultasi Sekarang &rarr;
+          </a>
+          <a href="#about" class="btn-secondary">
+            Pelajari Profil Kami
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="hero-stats">
+        <div>
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Tahun Pengalaman</div>
+        </div>
+        <div>
+          <div class="stat-number">250+</div>
+          <div class="stat-label">Proyek Strategis Selesai</div>
+        </div>
+        <div>
+          <div class="stat-number">98.4%</div>
+          <div class="stat-label">Tingkat Kepuasan Klien</div>
+        </div>
+        <div>
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Jaringan Kawasan Asia</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        
+        <div>
+          <span class="section-eyebrow">Tentang Perusahaan</span>
+          <h2 class="section-title">
+            Membangun Kemitraan Terpercaya dengan Standar Keunggulan Tertinggi
+          </h2>
+          <div class="accent-bar"></div>
+
+          <p class="about-text">
+            Tricatha Sempiternal Asia didirikan untuk menjawab kebutuhan korporasi dan institusi strategis akan pendampingan bisnis yang solid, objektif, dan berorientasi pada hasil nyata. Kami memadukan wawasan mendalam dinamika pasar Asia dengan metodologi tata kelola kelas dunia.
+          </p>
+
+          <p class="about-text">
+            Setiap inisiatif dirancang secara presisi guna membantu para pemimpin organisasi mengatasi ketidakpastian pasar, mengoptimalkan alokasi sumber daya, dan menangkap peluang ekspansi regional secara berkelanjutan.
+          </p>
+
+          <!-- 3 Nilai Utama / Aksen Ikon Merah -->
+          <div class="about-pillars">
+            <div class="pillar-card">
+              <div class="pillar-icon">✓</div>
+              <h3 class="pillar-title">Integritas Penuh</h3>
+              <p class="pillar-desc">Transparansi dan standar etika profesional tanpa kompromi.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon">★</div>
+              <h3 class="pillar-title">Presisi Solusi</h3>
+              <p class="pillar-desc">Kajian berbasis data empiris dan analisis risiko mendalam.</p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-icon">❖</div>
+              <h3 class="pillar-title">Jaringan Asia</h3>
+              <p class="pillar-desc">Akses aliansi dan kemitraan kokoh di kawasan regional.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual Feature Box -->
+        <div class="about-feature-box">
+          <div class="feature-badge">★</div>
+          <h3 style="color: #FFFFFF; font-size: 1.4rem; margin-bottom: 16px;">Komitmen Keberhasilan</h3>
+          <p class="feature-quote">
+            "Keberhasilan klien adalah tolak ukur utama integritas kami. Kami mendampingi setiap langkah perubahan yang menentukan masa depan bisnis Anda."
+          </p>
+          <div class="feature-author">
+            <strong>Lokasi Kantor</strong>
+            Apartemen Sudirman Park, Jakarta
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Business Group Section — BARU -->
+  <section id="business-group" class="business-group-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Our Ecosystem</span>
+        <h2 class="section-title">Our Business Group</h2>
+        <div class="accent-bar center"></div>
+        <p style="color: var(--color-slate-600); font-size: 1rem; max-width: 680px; margin: 0 auto;">
+          Ekosistem terintegrasi yang menghadirkan kapabilitas lintas disiplin — mulai dari advisory korporat, komunikasi publik, advokasi kebijakan, perhelatan tingkat tinggi, hingga produksi multimedia modern.
+        </p>
+      </div>
+
+      <div class="business-group-grid">
+        
+        <!-- Kartu 1: TSA -->
+        <div class="group-card">
+          <div>
+            <div class="group-card-top">
+              <div class="group-badge">TSA</div>
+              <span class="group-code-pill">TSA</span>
+            </div>
+            <h3 class="group-title">Trichatha Sempiternal Asia</h3>
+            <div class="group-category">Strategic Advisory & Corporate Management</div>
+            <p class="group-desc">
+              Konsultasi strategi korporasi tingkat tinggi, restrukturisasi portofolio usaha, manajemen risiko eksekutif, dan fasilitasi investasi skala regional Asia Pasifik.
+            </p>
+          </div>
+          <div class="group-footer">
+            <span style="color: var(--color-slate-600); display: flex; align-items: center; gap: 6px;">
+              <span style="color: var(--color-red); font-size: 1rem;">&#10003;</span> Core Holding & Advisory
+            </span>
+            <span style="color: var(--color-red); font-size: 0.9rem;">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Kartu 2: GWI -->
+        <div class="group-card">
+          <div>
+            <div class="group-card-top">
+              <div class="group-badge">GWI</div>
+              <span class="group-code-pill">GWI</span>
+            </div>
+            <h3 class="group-title">Gema Waskita Interaktifa</h3>
+            <div class="group-category">Communications & Public Engagement</div>
+            <p class="group-desc">
+              Perancangan komunikasi strategis terintegrasi, manajemen reputasi krisis korporat, media relations, serta orkestrasi public affairs berskala nasional.
+            </p>
+          </div>
+          <div class="group-footer">
+            <span style="color: var(--color-slate-600); display: flex; align-items: center; gap: 6px;">
+              <span style="color: var(--color-red); font-size: 1rem;">&#10003;</span> Strategic Media & PR
+            </span>
+            <span style="color: var(--color-red); font-size: 0.9rem;">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Kartu 3: GOVADV -->
+        <div class="group-card">
+          <div>
+            <div class="group-card-top">
+              <div class="group-badge">GOV</div>
+              <span class="group-code-pill">GOVADV</span>
+            </div>
+            <h3 class="group-title">GOVADV</h3>
+            <div class="group-category">Government Relations & Regulatory Policy</div>
+            <p class="group-desc">
+              Advokasi kebijakan publik, kepatuhan regulasi lintas kementerian, fasilitasi kemitraan strategis pemerintah dan swasta (PPP), serta diplomasi bisnis.
+            </p>
+          </div>
+          <div class="group-footer">
+            <span style="color: var(--color-slate-600); display: flex; align-items: center; gap: 6px;">
+              <span style="color: var(--color-red); font-size: 1rem;">&#10003;</span> Public Policy & Relations
+            </span>
+            <span style="color: var(--color-red); font-size: 0.9rem;">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Kartu 4: Enchanteé -->
+        <div class="group-card">
+          <div>
+            <div class="group-card-top">
+              <div class="group-badge">ENC</div>
+              <span class="group-code-pill">Enchanteé</span>
+            </div>
+            <h3 class="group-title">Enchanteé</h3>
+            <div class="group-category">High-Level Protocol & Experiential Events</div>
+            <p class="group-desc">
+              Manajemen konferensi bilateral tingkat kepala negara, jamuan kenegaraan (diplomatic gala), summits strategis korporat, dan protokol perhelatan eksklusif.
+            </p>
+          </div>
+          <div class="group-footer">
+            <span style="color: var(--color-slate-600); display: flex; align-items: center; gap: 6px;">
+              <span style="color: var(--color-red); font-size: 1rem;">&#10003;</span> VVIP Events & Protocol
+            </span>
+            <span style="color: var(--color-red); font-size: 0.9rem;">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Kartu 5: DNA STUDIO -->
+        <div class="group-card">
+          <div>
+            <div class="group-card-top">
+              <div class="group-badge">DNA</div>
+              <span class="group-code-pill">DNA STUDIO</span>
+            </div>
+            <h3 class="group-title">DNA STUDIO</h3>
+            <div class="group-category">Digital Media Production & Creative Broadcast</div>
+            <p class="group-desc">
+              Fasilitas broadcast multimedia 4K turnkey, produksi video korporat sinematik, siaran langsung interaktif, dan amplifikasi konten kampanye visual modern.
+            </p>
+          </div>
+          <div class="group-footer">
+            <span style="color: var(--color-slate-600); display: flex; align-items: center; gap: 6px;">
+              <span style="color: var(--color-red); font-size: 1rem;">&#10003;</span> Studio 4K & Broadcast
+            </span>
+            <span style="color: var(--color-red); font-size: 0.9rem;">&rarr;</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Services / Keunggulan Section -->
+  <section id="services" class="services-section">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">Layanan Unggulan</span>
+        <h2 class="section-title">Solusi Komprehensif Berorientasi Hasil</h2>
+        <div class="accent-bar center"></div>
+        <p style="color: var(--color-slate-600); font-size: 1rem;">
+          Pendekatan terintegrasi yang dirancang untuk menjawab kebutuhan unik korporasi dalam setiap tahapan perkembangan usaha.
+        </p>
+      </div>
+
+      <!-- 4 Kartu Layanan -->
+      <div class="services-grid">
+        
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="17 6 23 6 23 12"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Konsultasi Strategi Bisnis</h3>
+            <p class="service-desc">
+              Perencanaan jangka panjang, restrukturisasi korporasi, analisis kelayakan pasar, dan optimalisasi portofolio usaha.
+            </p>
+          </div>
+          <ul class="service-features">
+            <li><span>✓</span> Strategic Roadmapping</li>
+            <li><span>✓</span> M&A Advisory</li>
+            <li><span>✓</span> Market Feasibility Study</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Manajemen Proyek & Operasional</h3>
+            <p class="service-desc">
+              Tata kelola dan pengawasan eksekusi proyek skala besar untuk menjamin efisiensi anggaran, waktu, dan mitigasi risiko.
+            </p>
+          </div>
+          <ul class="service-features">
+            <li><span>✓</span> PMO Governance</li>
+            <li><span>✓</span> Efisiensi Operasional</li>
+            <li><span>✓</span> Mitigasi Risiko Proyek</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Kemitraan & Hubungan Strategis</h3>
+            <p class="service-desc">
+              Menjembatani aliansi strategis antarentitas swasta, BUMN, dan regulator demi kelancaran inisiatif bisnis lintas kawasan.
+            </p>
+          </div>
+          <ul class="service-features">
+            <li><span>✓</span> Government Relations</li>
+            <li><span>✓</span> Joint Venture Support</li>
+            <li><span>✓</span> Aliansi Regional Asia</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div>
+            <div class="service-icon-wrap">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                <line x1="9" y1="22" x2="9" y2="22"/>
+                <line x1="15" y1="22" x2="15" y2="22"/>
+                <line x1="9" y1="18" x2="9" y2="18"/>
+                <line x1="15" y1="18" x2="15" y2="18"/>
+                <line x1="9" y1="14" x2="9" y2="14"/>
+                <line x1="15" y1="14" x2="15" y2="14"/>
+              </svg>
+            </div>
+            <h3 class="service-title">Transformasi Digital & Riset Pasar</h3>
+            <p class="service-desc">
+              Pemanfaatan data empiris mengenai dinamika pasar regional dan integrasi teknologi untuk keunggulan daya saing.
+            </p>
+          </div>
+          <ul class="service-features">
+            <li><span>✓</span> Market Intelligence</li>
+            <li><span>✓</span> Digital Roadmapping</li>
+            <li><span>✓</span> Kepatuhan Standar ESG</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Portfolio / Client Section -->
+  <section id="portfolio" class="portfolio-section">
+    <div class="container">
+      
+      <div class="section-header">
+        <span class="section-eyebrow">Rekam Jejak & Portofolio</span>
+        <h2 class="section-title">Dipercaya oleh Pemimpin Industri</h2>
+        <div class="accent-bar center"></div>
+        <p style="color: var(--color-slate-600); font-size: 1rem;">
+          Beragam proyek strategis dan kemitraan bernilai tinggi yang telah kami wujudkan bersama mitra korporat terdepan.
+        </p>
+      </div>
+
+      <!-- Grid Kartu Proyek -->
+      <div class="portfolio-grid">
+        
+        <div class="portfolio-card">
+          <div>
+            <span class="portfolio-sector">Energi & Sumber Daya Alam</span>
+            <h3 class="portfolio-title">Nusantara Energy Resources</h3>
+            <p class="portfolio-desc">
+              Optimalisasi rantai pasok dan penyelarasan portofolio transisi energi bersih di kawasan Asia Tenggara.
+            </p>
+          </div>
+          <div class="portfolio-status">
+            <span>Status: Selesai</span>
+            <span class="view-link">Detail Kasus &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div>
+            <span class="portfolio-sector">Logistik & Maritim Regional</span>
+            <h3 class="portfolio-title">Pacific Maritime Logistics Hub</h3>
+            <p class="portfolio-desc">
+              Perancangan sistem logistik terintegrasi antar-pelabuhan utama untuk efisiensi kargo lintas batas.
+            </p>
+          </div>
+          <div class="portfolio-status">
+            <span>Status: Selesai</span>
+            <span class="view-link">Detail Kasus &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div>
+            <span class="portfolio-sector">Jasa Keuangan & Perbankan</span>
+            <h3 class="portfolio-title">Artha Raya Transaksi M&A</h3>
+            <p class="portfolio-desc">
+              Uji kelayakan komprehensif serta penasihat merger institusi perbankan investasi skala regional.
+            </p>
+          </div>
+          <div class="portfolio-status">
+            <span>Status: Selesai</span>
+            <span class="view-link">Detail Kasus &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div>
+            <span class="portfolio-sector">Telekomunikasi & Jaringan</span>
+            <h3 class="portfolio-title">Mitra Telematika Asia</h3>
+            <p class="portfolio-desc">
+              Tata kelola ekspansi jaringan transmisi serat optik interkoneksi kawasan industri Indonesia timur.
+            </p>
+          </div>
+          <div class="portfolio-status">
+            <span>Status: Selesai</span>
+            <span class="view-link">Detail Kasus &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div>
+            <span class="portfolio-sector">Manufaktur & Ekspor Impor</span>
+            <h3 class="portfolio-title">Mega Manufaktur Presisi</h3>
+            <p class="portfolio-desc">
+              Transformasi efisiensi lini manufaktur otomotif berstandar ISO dan sertifikasi pasar ekspor.
+            </p>
+          </div>
+          <div class="portfolio-status">
+            <span>Status: Selesai</span>
+            <span class="view-link">Detail Kasus &rarr;</span>
+          </div>
+        </div>
+
+        <div class="portfolio-card">
+          <div>
+            <span class="portfolio-sector">Agribisnis & Keberlanjutan</span>
+            <h3 class="portfolio-title">Borneo Sustainable Agro</h3>
+            <p class="portfolio-desc">
+              Penyelarasan operasional perkebunan dengan sertifikasi ramah lingkungan dan kepatuhan standar ESG global.
+            </p>
+          </div>
+          <div class="portfolio-status">
+            <span>Status: Selesai</span>
+            <span class="view-link">Detail Kasus &rarr;</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Client Logo Grid -->
+      <div class="client-ticker-box">
+        <div class="client-ticker-heading">Mitra Korporat & Afiliasi Sektor Strategis</div>
+        <div class="client-logos">
+          <div class="client-logo-item">PetroAsia Nusantara</div>
+          <div class="client-logo-item">Pacific Line Maritime</div>
+          <div class="client-logo-item">Bank Artha Mandiri</div>
+          <div class="client-logo-item">TeleNexus Indo</div>
+          <div class="client-logo-item">Mega Prime Industrial</div>
+          <div class="client-logo-item">Borneo Agro Lestari</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. Contact Section — LAYOUT KHUSUS -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      
+      <!-- Judul section "Hubungi Kami" berwarna putih dengan aksen garis merah -->
+      <div style="max-width: 680px; margin-bottom: 48px;">
+        <span class="section-eyebrow">Kontak & Konsultasi</span>
+        <h2 class="section-title">Hubungi Kami</h2>
+        <div class="accent-bar"></div>
+        <p style="color: #CBD5E1; font-size: 1rem; line-height: 1.6;">
+          Konsultasikan kebutuhan ekspansi dan strategi perusahaan Anda bersama tim ahli kami. Kami siap membantu merumuskan solusi yang terukur dan berorientasi hasil.
+        </p>
+      </div>
+
+      <!-- Layout grid 2 kolom (di mobile otomatis 1 kolom / stack ke bawah) -->
+      <div class="contact-grid">
+        
+        <!-- KOLOM KIRI (Info + Form): stack vertikal di layar kecil: form dulu, baru map di bawahnya -->
+        <div class="contact-left-col">
+          
+          <!-- Info kontak: alamat, email, nomor telepon, jam operasional — ikon merah, teks putih -->
+          <div class="contact-quick-info">
+            
+            <div class="contact-info-card-item">
+              <div class="contact-icon-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Alamat Kantor</h4>
+                <p>Apartemen Sudirman Park, Jl. K.H. Mas Mansyur No.kav.35, RT.12/RW.11<br>Karet Tengsin, Kec. Tanah Abang, Kota Jakarta Pusat 10220</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card-item">
+              <div class="contact-icon-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Email Resmi</h4>
+                <p>info@tricatha-asia.com<br>corporate@tricatha-asia.com</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card-item">
+              <div class="contact-icon-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Nomor Telepon</h4>
+                <p>+62 21 2995 8800<br>+62 21 2995 8801</p>
+              </div>
+            </div>
+
+            <div class="contact-info-card-item">
+              <div class="contact-icon-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Jam Operasional</h4>
+                <p>Senin – Jumat: 08.30 – 17.30<br>Sabtu & Minggu: Tutup</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Card/box form diberi background putih dengan sedikit shadow agar kontras dari background navy -->
+          <div class="contact-form-card">
+            <h3 class="form-title">Kirim Pesan Pertanyaan</h3>
+            <p class="form-desc">Lengkapi formulir berikut, tim kami akan merespons dalam 1x24 jam kerja.</p>
+
+            <div class="form-success-msg" id="formSuccess">
+              ✓ Terima kasih! Pesan Anda telah berhasil dikirimkan. Tim kami akan segera menghubungi Anda.
+            </div>
+
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="nama">Nama Lengkap *</label>
+                <input type="text" id="nama" class="form-input" placeholder="Masukkan nama lengkap Anda" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Alamat Email *</label>
+                <input type="email" id="email" class="form-input" placeholder="nama@perusahaan.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="pesan">Pesan atau Kebutuhan Konsultasi *</label>
+                <textarea id="pesan" class="form-textarea" rows="4" placeholder="Jelaskan kebutuhan konsultasi bisnis atau proyek Anda..." required></textarea>
+              </div>
+
+              <!-- Tombol submit merah dengan teks putih -->
+              <button type="submit" class="btn-submit">
+                Kirim Pesan Sekarang &rarr;
+              </button>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- KOLOM KANAN (Map): Embed Google Maps, border radius, shadow, border merah, tinggi sejajar/rata -->
+        <div class="contact-right-col">
+          <div class="contact-map-card">
+            
+            <div class="contact-map-header">
+              <span>
+                📍 Lokasi: Apartemen Sudirman Park, Jakarta Pusat
+              </span>
+              <a href="https://maps.google.com/?q=Apartemen+Sudirman+Park+Jakarta" target="_blank" rel="noopener noreferrer">
+                Buka di Google Maps &rarr;
+              </a>
+            </div>
+
+            <div class="contact-map-body">
+              <iframe
+                title="Peta Lokasi Kantor Tricatha Sempiternal Asia"
+                src="https://maps.google.com/maps?q=Apartemen+Sudirman+Park%2C+Jl.+K.H.+Mas+Mansyur+No.kav.35%2C+Jakarta+Pusat&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+
+            <div class="contact-map-footer">
+              <span>Apartemen Sudirman Park, Jl. K.H. Mas Mansyur No.kav.35, Jakarta Pusat</span>
+              <span style="color: var(--color-red); font-weight: bold;">Sudirman Park</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. Footer -->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Kolom 1 -->
+        <div class="footer-col">
+          <div class="logo-link" style="margin-bottom: 16px;">
+            <div class="logo-badge" style="width: 32px; height: 32px; font-size: 16px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <span class="logo-title" style="font-size: 1rem;">Tricatha Sempiternal Asia</span>
+          </div>
+          <p style="margin-bottom: 16px;">
+            Mitra strategis terdepan dalam konsultasi manajemen korporat, eksekusi proyek skala besar, dan penguatan tata kelola di kawasan Asia.
+          </p>
+          <p style="font-size: 0.8rem; color: #64748B;">
+            Apartemen Sudirman Park, Jl. K.H. Mas Mansyur No.kav.35, RT.12/RW.11, Karet Tengsin, Tanah Abang, Jakarta Pusat 10220
+          </p>
+        </div>
+
+        <!-- Kolom 2: Navigasi -->
+        <div class="footer-col">
+          <h4>Navigasi</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#business-group">Business Group</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 3: Layanan -->
+        <div class="footer-col">
+          <h4>Layanan</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Konsultasi Bisnis</a></li>
+            <li><a href="#services">Manajemen Proyek</a></li>
+            <li><a href="#services">Kemitraan Strategis</a></li>
+            <li><a href="#services">Transformasi Digital</a></li>
+          </ul>
+        </div>
+
+        <!-- Kolom 4: Kontak Cepat -->
+        <div class="footer-col">
+          <h4>Kontak</h4>
+          <p style="margin-bottom: 8px;">Telepon: +62 21 2995 8800</p>
+          <p style="margin-bottom: 16px;">Email: info@tricatha-asia.com</p>
+          <a href="#contact" style="color: var(--color-red-soft); font-weight: 600; font-size: 0.85rem;">
+            Kirim Permintaan Konsultasi &rarr;
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Copyright Bar -->
+      <div class="footer-bottom">
+        <p>&copy; 2026 Tricatha Sempiternal Asia. Seluruh hak cipta dilindungi undang-undang.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Kebijakan Privasi</a>
+          <a href="#">Syarat & Ketentuan</a>
+          <button class="scroll-top-btn" id="scrollTopBtn" title="Kembali ke atas">
+            &#9650;
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // 1. Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    if (mobileToggle && navMenu) {
+      mobileToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+      });
+
+      // Close menu on nav item click
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+        });
+      });
+    }
+
+    // 2. Contact Form Submission
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (formSuccess) {
+          formSuccess.style.display = 'block';
+          contactForm.reset();
+          setTimeout(() => {
+            formSuccess.style.display = 'none';
+          }, 5000);
+        }
+      });
+    }
+
+    // 3. Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
