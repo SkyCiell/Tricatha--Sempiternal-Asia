@@ -1,0 +1,141 @@
+import React, { useEffect } from "react";
+import { X, MapPin, ArrowRight } from "lucide-react";
+
+export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
+  useEffect(() => {
+    if (!project) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [project, onClose]);
+
+  if (!project) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-[#050F22]/90 backdrop-blur-md overflow-y-auto"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-case-title"
+    >
+      <div className="relative w-full max-w-4xl bg-[#0A1F44] text-[#F1F5F9] rounded border border-white/15 shadow-2xl overflow-hidden my-auto">
+        
+        {/* Header Bar */}
+        <div className="flex items-center justify-between px-6 py-4 bg-[#071731] border-b border-white/10">
+          <div className="flex items-center gap-3 text-xs font-sans">
+            <span className="px-2.5 py-1 bg-[#C8102E] text-white font-semibold rounded text-[10px] uppercase tracking-wider">
+              {project.category}
+            </span>
+            <span className="text-slate-300 font-mono">{project.year}</span>
+          </div>
+
+          <button
+            onClick={onClose}
+            className="w-11 h-11 rounded flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            aria-label="Close modal"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Modal Body */}
+        <div className="max-h-[78vh] overflow-y-auto p-6 sm:p-8 space-y-6">
+          
+          {/* Main Title & Location */}
+          <div className="space-y-2">
+            <h2 id="modal-case-title" className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-white">
+              {project.name}
+            </h2>
+            {project.location && (
+              <div className="flex items-center gap-2 text-xs font-medium text-slate-300">
+                <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
+                <span>{project.location}</span>
+              </div>
+            )}
+          </div>
+
+          {/* Large Image Frame */}
+          <div className="editorial-image-frame rounded aspect-[16/9] bg-[#071731] overflow-hidden border border-white/10">
+            <img
+              src={project.image}
+              alt={project.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Project Summary Impact */}
+          <div className="p-4 bg-[#071731] rounded border border-white/10">
+            <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+              Verified Operational Impact
+            </div>
+            <div className="text-base sm:text-lg font-heading font-semibold text-[#FFFFFF]">
+              {project.impact}
+            </div>
+          </div>
+
+          {/* Overview & Execution Scope */}
+          <div className="space-y-5 text-sm text-slate-300 leading-relaxed font-sans">
+            <div>
+              <h3 className="font-heading text-base font-semibold text-white mb-2">
+                Executive Overview
+              </h3>
+              <p className="text-slate-300">{project.overview || project.shortDesc}</p>
+            </div>
+
+            {project.role && (
+              <div className="pt-2 border-t border-white/10">
+                <h3 className="font-heading text-base font-semibold text-white mb-2">
+                  TSA Delivery Scope &amp; Role
+                </h3>
+                <p className="text-slate-300">{project.role}</p>
+              </div>
+            )}
+          </div>
+
+          {/* Image Gallery */}
+          {project.gallery && project.gallery.length > 1 && (
+            <div className="space-y-3 pt-4 border-t border-white/10">
+              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                Event Documentation Records
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                {project.gallery.map((imgUrl, i) => (
+                  <div key={i} className="aspect-[4/3] rounded overflow-hidden bg-[#071731] border border-white/10">
+                    <img src={imgUrl} alt={`${project.name} record ${i + 1}`} className="w-full h-full object-cover" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Action Footer */}
+          <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-xs text-slate-400 font-sans">
+              Organized by PT Tricatha Sempiternal Asia · Central Jakarta
+            </div>
+
+            <button
+              onClick={() => {
+                onClose();
+                if (onWorkTogether) onWorkTogether();
+              }}
+              className="btn-editorial-red w-full sm:w-auto"
+            >
+              <span>Consult on Similar Event</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  );
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { strategicEngagementProcess } from "../data/tsaData";
-import { ArrowUpRight, CheckCircle2, ShieldAlert } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 export default function StrategicEngagement({ scrollToSection }) {
   const [activeStep, setActiveStep] = useState(0);
@@ -26,7 +26,7 @@ export default function StrategicEngagement({ scrollToSection }) {
           </div>
 
           <p className="max-w-md font-mono text-xs text-[#CBD5E1] leading-relaxed">
-            Every sovereign advisory, diplomatic summit, and public affairs mandate follows our protocol-cleared lifecycle—ensuring multi-stakeholder consensus and zero margin for error.
+            Every sovereign advisory, diplomatic summit, and public affairs mandate follows our protocol-cleared lifecycle, ensuring multi-stakeholder consensus and zero margin for error.
           </p>
         </div>
 

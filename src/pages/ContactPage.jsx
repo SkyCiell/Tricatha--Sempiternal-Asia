@@ -3,8 +3,8 @@ import Contact from "../components/Contact";
 
 export default function ContactPage() {
   return (
-    <div className="pt-20 bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans selection:bg-[#C8102E] selection:text-white">
-      {/* 1. Page Header - Deep Navy #0A1F44 Editorial Banner */}
+    <div className="pt-20 bg-[#071731] min-h-screen text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
+      {/* 1. Page Header - Deep Navy Editorial Banner */}
       <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
           <div className="max-w-3xl space-y-4">
@@ -27,18 +27,18 @@ export default function ContactPage() {
       {/* 2. Main Contact Form & Location Section */}
       <Contact />
 
-      {/* 3. Emergency Summit Hotline Bar - Light Neutral #F5F6F8 */}
-      <section className="py-8 bg-[#F5F6F8] border-t border-slate-200/80 font-mono text-xs">
+      {/* 3. Emergency Summit Hotline Bar */}
+      <section className="py-8 bg-[#050F22] border-t border-white/10 font-mono text-xs">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-[#C8102E]" />
-            <span className="text-slate-600">
+            <span className="text-slate-400">
               URGENT MINISTERIAL &amp; BILATERAL SUMMIT DISPATCH:
             </span>
-            <span className="text-[#0A1F44] font-semibold tracking-wider">+62 21 2358 4500 (EXT. 101)</span>
+            <span className="text-white font-semibold tracking-wider">+62 21 2358 4500 (EXT. 101)</span>
           </div>
 
-          <div className="text-slate-500 text-[11px]">
+          <div className="text-slate-400 text-[11px]">
             OPERATIONAL CLEARANCE: 24/7 FOR ACTIVE PLENARY DEPLOYMENTS
           </div>
         </div>

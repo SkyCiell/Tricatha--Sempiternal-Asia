@@ -24,7 +24,7 @@ export default function FutureSociety() {
         >
           <h2 className="font-heading text-4xl sm:text-6xl md:text-7xl font-extrabold text-[#F4F6F2] tracking-tighter uppercase leading-[0.92]">
             THE FUTURE IS <br />
-            <span className="text-[#155EEF]">BUILT TOGETHER.</span>
+            <span className="text-[#155EEF]">BUILD TOGETHER.</span>
           </h2>
         </motion.div>
 

@@ -26,7 +26,7 @@ export default function FAQPage({ navigateTo }) {
       items: [
         {
           q: "Does TSA supply turnkey audiovisual equipment or work with venue suppliers?",
-          a: "TSA provides end-to-end proprietary equipment—including 4K cinema broadcast switchers, Dante encrypted digital audio, spatial LED walls, and multi-camera jibs—guaranteeing zero reliance on unverified third parties."
+          a: "TSA provides end-to-end proprietary equipment including 4K cinema broadcast switchers, Dante encrypted digital audio, spatial LED walls, and multi-camera jibs, guaranteeing zero reliance on unverified third parties."
         },
         {
           q: "Can DNA Studio broadcast directly into sovereign government telepresence networks?",
@@ -52,8 +52,8 @@ export default function FAQPage({ navigateTo }) {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
 
   return (
-    <div className="pt-20 bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans selection:bg-[#C8102E] selection:text-white">
-      {/* 1. Hero Banner - Deep Navy #0A1F44 Editorial Banner */}
+    <div className="pt-20 bg-[#071731] min-h-screen text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
+      {/* 1. Hero Banner - Deep Navy Editorial Banner */}
       <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
 
@@ -85,21 +85,21 @@ export default function FAQPage({ navigateTo }) {
       </section>
 
       {/* 2. Primary Executive FAQ Component */}
-      <FAQSection scrollToSection={() => handleInquiry()} />
+      <FAQSection />
 
-      {/* 3. Deep-Dive Category Accordions - Light Neutral #F5F6F8 */}
-      <section className="py-20 sm:py-28 bg-[#F5F6F8] border-b border-slate-200/80">
+      {/* 3. Deep-Dive Category Accordions */}
+      <section className="py-20 sm:py-28 bg-[#0A1F44] border-b border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          <div className="pb-8 border-b border-slate-200 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="pb-8 border-b border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
               <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
                 SPECIALIZED DIRECTORY
               </span>
-              <h2 className="font-heading text-2xl sm:text-3xl font-medium tracking-tight text-[#0A1F44]">
+              <h2 className="font-heading text-2xl sm:text-3xl font-medium tracking-tight text-white">
                 Categorized Operational Details
               </h2>
             </div>
-            <p className="text-xs sm:text-sm text-slate-500 font-mono">
+            <p className="text-xs sm:text-sm text-slate-400 font-mono">
               Explore specific parameters by practice area below.
             </p>
           </div>
@@ -113,27 +113,26 @@ export default function FAQPage({ navigateTo }) {
                   <button
                     key={idx}
                     onClick={() => setActiveCategoryIndex(idx)}
-                    className={`w-full text-left p-4 sm:p-5 rounded-lg border font-mono text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center justify-between ${
+                    className={`w-full text-left p-4 sm:p-5 rounded border font-mono text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center justify-between ${
                       isSelected
-                        ? "bg-[#0A1F44] border-[#0A1F44] text-white shadow-md font-semibold"
-                        : "bg-[#FFFFFF] border-slate-200/80 text-slate-600 hover:text-[#0A1F44] hover:border-slate-300 shadow-2xs"
+                        ? "bg-[#C8102E] border-[#C8102E] text-white shadow-md font-semibold"
+                        : "bg-[#071731] border-white/10 text-slate-300 hover:text-white hover:border-white/30"
                     }`}
                   >
                     <span>{topic.category}</span>
-                    <span className="text-[10px] opacity-75">0{idx + 1}</span>
                   </button>
                 );
               })}
             </div>
 
             {/* Questions for Selected Category (8 cols) */}
-            <div className="lg:col-span-8 bg-[#FFFFFF] border border-slate-200/80 rounded-lg p-8 sm:p-10 shadow-xs space-y-6">
+            <div className="lg:col-span-8 bg-[#071731] border border-white/10 rounded p-8 sm:p-10 shadow-lg space-y-6">
               {additionalTopics[activeCategoryIndex].items.map((item, qIdx) => (
-                <div key={qIdx} className="space-y-2 pb-6 last:pb-0 border-b last:border-b-0 border-slate-100">
-                  <h3 className="font-heading text-base sm:text-lg font-medium text-[#0A1F44] leading-snug">
+                <div key={qIdx} className="space-y-2 pb-6 last:pb-0 border-b last:border-b-0 border-white/10">
+                  <h3 className="font-heading text-base sm:text-lg font-medium text-white leading-snug">
                     {item.q}
                   </h3>
-                  <p className="text-sm text-slate-600 font-normal leading-relaxed">
+                  <p className="text-sm text-slate-300 font-normal leading-relaxed">
                     {item.a}
                   </p>
                 </div>
@@ -144,21 +143,21 @@ export default function FAQPage({ navigateTo }) {
       </section>
 
       {/* 4. Closing strip */}
-      <section className="py-20 bg-[#FFFFFF]">
+      <section className="py-20 bg-[#050F22]">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 text-center space-y-4">
           <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
             THE CITY TOWER, JAKARTA
           </span>
-          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-[#0A1F44] tracking-tight">
+          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
             Have an Unlisted Protocol Requirement?
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
             Our protocol officers and technical planners provide confidential feasibility audits for upcoming assemblies.
           </p>
           <div className="pt-2">
             <button
               onClick={handleInquiry}
-              className="btn-editorial-navy inline-flex items-center gap-2"
+              className="btn-editorial-red inline-flex items-center gap-2"
             >
               <span>Speak with Protocol Directorate</span>
               <ArrowUpRight className="w-4 h-4" />

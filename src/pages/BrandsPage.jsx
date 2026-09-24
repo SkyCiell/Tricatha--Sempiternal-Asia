@@ -5,7 +5,6 @@ import plenaryPhoto from "../assets/DSC08824.JPG";
 import aseanPhoto from "../assets/20231130_131733_311.jpg";
 
 export default function BrandsPage({ navigateTo }) {
-
   const handleInquiry = () => {
     if (navigateTo) navigateTo("/contact");
   };
@@ -18,9 +17,9 @@ export default function BrandsPage({ navigateTo }) {
   };
 
   return (
-    <div className="pt-20 bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans selection:bg-[#C8102E] selection:text-white">
+    <div className="pt-20 bg-[#071731] min-h-screen text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
       
-      {/* 1. Page Header - Deep Navy #0A1F44 Editorial Banner */}
+      {/* 1. Page Header - Deep Navy Editorial Banner */}
       <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
           
@@ -52,16 +51,16 @@ export default function BrandsPage({ navigateTo }) {
           {/* Quick Navigator Pill Strip */}
           <div className="pt-10 flex flex-wrap gap-2 border-t border-white/10 mt-10 text-xs font-mono">
             {[
-              { id: "unit-tsa", label: "01 / Tricatha Sempiternal Asia" },
-              { id: "unit-gwi", label: "02 / Gema Waskita Interaktifa" },
-              { id: "unit-govadv", label: "03 / GOVADV Policy" },
-              { id: "unit-enchante", label: "04 / Enchante Experiential" },
-              { id: "unit-dna", label: "05 / DNA STUDIO" }
+              { id: "unit-tsa", label: "Tricatha Sempiternal Asia" },
+              { id: "unit-gwi", label: "Gema Waskita Interaktifa" },
+              { id: "unit-govadv", label: "GOVADV Policy" },
+              { id: "unit-enchante", label: "Enchante Experiential" },
+              { id: "unit-dna", label: "DNA STUDIO" }
             ].map((nav) => (
               <button
                 key={nav.id}
                 onClick={() => scrollToUnit(nav.id)}
-                className="px-3.5 py-1.5 rounded bg-white/10 hover:bg-[#C8102E] text-white border border-white/15 transition-colors cursor-pointer"
+                className="px-3.5 py-1.5 rounded bg-[#071731] hover:bg-[#C8102E] text-white border border-white/15 transition-colors cursor-pointer"
               >
                 {nav.label}
               </button>
@@ -72,9 +71,9 @@ export default function BrandsPage({ navigateTo }) {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. UNIT 01: TRICATHA SEMPITERNAL ASIA (Sovereign Advisory & Corporate Management) */}
+      {/* 2. UNIT 01: TRICATHA SEMPITERNAL ASIA */}
       {/* ========================================================================= */}
-      <section id="unit-tsa" className="py-20 sm:py-28 bg-[#FFFFFF] border-b border-slate-100">
+      <section id="unit-tsa" className="py-20 sm:py-28 bg-[#071731] border-b border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -82,21 +81,21 @@ export default function BrandsPage({ navigateTo }) {
             <div className="lg:col-span-7 space-y-6">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  UNIT 01 · PARENT HOLDING &amp; COUNSEL
+                  PARENT HOLDING &amp; COUNSEL
                 </span>
-                <span className="w-8 h-px bg-slate-200" />
-                <span className="font-mono text-xs text-slate-500">EST. JAKARTA</span>
+                <span className="w-8 h-px bg-white/20" />
+                <span className="font-mono text-xs text-slate-400">EST. JAKARTA</span>
               </div>
 
-              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-[#0A1F44] tracking-tight leading-tight">
+              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">
                 Tricatha Sempiternal Asia
               </h2>
 
-              <div className="p-4 bg-[#F5F6F8] rounded-md border-l-3 border-[#0A1F44] text-sm text-[#0A1F44] font-medium leading-relaxed">
+              <div className="p-4 bg-[#0A1F44] rounded border-l-4 border-[#C8102E] text-sm text-white font-medium leading-relaxed">
                 Strategic Advisory, Cross-Border Mandates &amp; Sovereign Roadmaps
               </div>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 Tricatha Sempiternal Asia operates as the executive leadership practice, providing confidential counsel to corporate chairpersons, sovereign wealth funds, and ministerial secretariats navigating complex investment covenants and institutional reorganizations across the Southeast Asian corridor.
               </p>
 
@@ -107,36 +106,36 @@ export default function BrandsPage({ navigateTo }) {
                   "Institutional Governance Blueprints",
                   "Regulatory Strategy & Risk Roadmaps"
                 ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700">
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
                     <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
                     <span>{s}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-500 border-t border-slate-100">
+              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
                 <div>
                   <span className="text-slate-400 block text-[10px]">VERIFIED SCALE</span>
-                  <span className="text-[#0A1F44] font-semibold text-sm">18+ Sovereign Mandates</span>
+                  <span className="text-white font-semibold text-sm">18+ Sovereign Mandates</span>
                 </div>
-                <div className="w-px h-8 bg-slate-200" />
+                <div className="w-px h-8 bg-white/10" />
                 <div>
                   <span className="text-slate-400 block text-[10px]">ACCORD VALUE</span>
-                  <span className="text-[#C8102E] font-semibold text-sm">$450M+ Bilateral</span>
+                  <span className="text-[#FFFFFF] font-semibold text-sm">$450M+ Bilateral</span>
                 </div>
               </div>
             </div>
 
             {/* Right Visual (5 cols) */}
             <div className="lg:col-span-5">
-              <div className="editorial-image-frame rounded-lg aspect-[4/5] shadow-md bg-slate-900">
+              <div className="editorial-image-frame rounded aspect-[4/5] shadow-md bg-[#050F22] overflow-hidden border border-white/15">
                 <img
                   src={aseanPhoto}
                   alt="Tricatha Sempiternal Asia Sovereign Plenary"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44]/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#0A1F44]/90 backdrop-blur-xs rounded border border-white/10 text-white font-mono text-xs">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050F22]/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#071731]/95 backdrop-blur-xs rounded border border-white/15 text-white font-mono text-xs">
                   <div className="text-[#C8102E] font-semibold text-[10px] uppercase">
                     HEADQUARTERS STANDARD
                   </div>
@@ -155,22 +154,22 @@ export default function BrandsPage({ navigateTo }) {
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. UNIT 02: GEMA WASKITA INTERAKTIFA (GWI) (Light Neutral #F5F6F8 Rhythm)  */}
+      {/* 3. UNIT 02: GEMA WASKITA INTERAKTIFA (GWI) */}
       {/* ========================================================================= */}
-      <section id="unit-gwi" className="py-20 sm:py-28 bg-[#F5F6F8] border-b border-slate-200/80">
+      <section id="unit-gwi" className="py-20 sm:py-28 bg-[#0A1F44] border-b border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Visual (5 cols) */}
             <div className="lg:col-span-5 order-2 lg:order-1">
-              <div className="editorial-image-frame rounded-lg aspect-[4/5] shadow-md bg-slate-900">
+              <div className="editorial-image-frame rounded aspect-[4/5] shadow-md bg-[#050F22] overflow-hidden border border-white/15">
                 <img
                   src={gwiPhoto}
                   alt="Gema Waskita Interaktifa Public Cultural Assembly"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44]/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#0A1F44]/90 backdrop-blur-xs rounded border border-white/10 text-white font-mono text-xs">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050F22]/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#071731]/95 backdrop-blur-xs rounded border border-white/15 text-white font-mono text-xs">
                   <div className="text-[#C8102E] font-semibold text-[10px] uppercase">
                     CIVIC SCALE ACTIVATION
                   </div>
@@ -188,21 +187,21 @@ export default function BrandsPage({ navigateTo }) {
             <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  UNIT 02 · COMMUNICATIONS &amp; ACTIVATION
+                  COMMUNICATIONS &amp; ACTIVATION
                 </span>
-                <span className="w-8 h-px bg-slate-300" />
-                <span className="font-mono text-xs text-slate-500">PUBLIC SECTOR ENGAGEMENT</span>
+                <span className="w-8 h-px bg-white/20" />
+                <span className="font-mono text-xs text-slate-400">PUBLIC SECTOR ENGAGEMENT</span>
               </div>
 
-              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-[#0A1F44] tracking-tight leading-tight">
+              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">
                 Gema Waskita Interaktifa (GWI)
               </h2>
 
-              <div className="p-4 bg-[#FFFFFF] rounded-md border-l-3 border-[#C8102E] text-sm text-[#0A1F44] font-medium leading-relaxed shadow-xs">
+              <div className="p-4 bg-[#071731] rounded border-l-4 border-[#C8102E] text-sm text-white font-medium leading-relaxed">
                 Integrated Public Affairs, Strategic Communications &amp; Civic Festivals
               </div>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 GWI operates at the frontier of public sector communications, civic sentiment architecture, and high-capacity cultural festivals. Combining immersive digital projection mapping with crisis narrative defense, GWI mobilizes audiences across nationwide campaigns.
               </p>
 
@@ -213,22 +212,22 @@ export default function BrandsPage({ navigateTo }) {
                   "High-Capacity Cultural Scenography",
                   "National Digital Narrative Amplification"
                 ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700">
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
                     <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
                     <span>{s}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-500 border-t border-slate-200">
+              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
                 <div>
                   <span className="text-slate-400 block text-[10px]">CROWD SCALE</span>
-                  <span className="text-[#0A1F44] font-semibold text-sm">45,000+ In-Person</span>
+                  <span className="text-white font-semibold text-sm">45,000+ In-Person</span>
                 </div>
-                <div className="w-px h-8 bg-slate-300" />
+                <div className="w-px h-8 bg-white/10" />
                 <div>
                   <span className="text-slate-400 block text-[10px]">BROADCAST REACH</span>
-                  <span className="text-[#C8102E] font-semibold text-sm">1.2M Digital Viewers</span>
+                  <span className="text-[#FFFFFF] font-semibold text-sm">1.2M Digital Viewers</span>
                 </div>
               </div>
             </div>
@@ -238,34 +237,34 @@ export default function BrandsPage({ navigateTo }) {
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. UNIT 03: GOVADV POLICY INTELLIGENCE (Crisp White #FFFFFF)             */}
+      {/* 4. UNIT 03: GOVADV POLICY INTELLIGENCE */}
       {/* ========================================================================= */}
-      <section id="unit-govadv" className="py-20 sm:py-28 bg-[#FFFFFF] border-b border-slate-100">
+      <section id="unit-govadv" className="py-20 sm:py-28 bg-[#071731] border-b border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-6 space-y-6">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  UNIT 03 · GOVERNMENT RELATIONS
+                  GOVERNMENT RELATIONS
                 </span>
-                <span className="w-8 h-px bg-slate-200" />
-                <span className="font-mono text-xs text-slate-500">REGULATORY INTELLIGENCE</span>
+                <span className="w-8 h-px bg-white/20" />
+                <span className="font-mono text-xs text-slate-400">REGULATORY INTELLIGENCE</span>
               </div>
 
-              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-[#0A1F44] tracking-tight leading-tight">
+              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">
                 GOVADV Policy Intelligence
               </h2>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 GOVADV bridges private enterprise and state regulatory authorities. Operating under strict protocol alignment, our advisors assist domestic and multinational institutions in navigating cross-ministry compliance, public-private partnership (PPP) frameworks, and state regulatory horizons.
               </p>
 
-              <div className="p-6 bg-[#F5F6F8] rounded-lg border border-slate-200/80 space-y-3">
-                <span className="font-mono text-xs text-[#0A1F44] font-semibold uppercase tracking-wider block">
+              <div className="p-6 bg-[#0A1F44] rounded border border-white/10 space-y-3">
+                <span className="font-mono text-xs text-slate-300 font-semibold uppercase tracking-wider block">
                   Core Practice Focus Areas
                 </span>
-                <ul className="space-y-2 text-xs text-slate-600 font-sans">
+                <ul className="space-y-2 text-xs text-slate-300 font-sans">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E]" />
                     <span>Cross-Ministry Liaison &amp; Regulatory Audits</span>
@@ -287,7 +286,7 @@ export default function BrandsPage({ navigateTo }) {
             </div>
 
             {/* Right Structured Matrix (6 cols) */}
-            <div className="lg:col-span-6 bg-[#0A1F44] text-white rounded-lg p-8 sm:p-10 shadow-lg space-y-6">
+            <div className="lg:col-span-6 bg-[#0A1F44] text-white rounded p-8 sm:p-10 border border-white/10 space-y-6">
               <div className="border-b border-white/10 pb-4 flex items-center justify-between">
                 <div>
                   <span className="font-mono text-xs text-[#C8102E] uppercase tracking-wider block">
@@ -303,13 +302,13 @@ export default function BrandsPage({ navigateTo }) {
               </div>
 
               <div className="grid grid-cols-2 gap-4 font-mono text-xs">
-                <div className="p-4 bg-white/5 rounded border border-white/10">
+                <div className="p-4 bg-[#071731] rounded border border-white/10">
                   <span className="text-slate-400 block text-[10px]">MINISTRIES PARTNERED</span>
                   <span className="text-white text-xl font-semibold mt-1 block">14 Ministries</span>
                 </div>
-                <div className="p-4 bg-white/5 rounded border border-white/10">
+                <div className="p-4 bg-[#071731] rounded border border-white/10">
                   <span className="text-slate-400 block text-[10px]">APPROVAL LATENCY</span>
-                  <span className="text-[#C8102E] text-xl font-semibold mt-1 block">-68% Delay</span>
+                  <span className="text-[#FFFFFF] text-xl font-semibold mt-1 block">-68% Delay</span>
                 </div>
               </div>
 
@@ -319,7 +318,7 @@ export default function BrandsPage({ navigateTo }) {
 
               <button
                 onClick={handleInquiry}
-                className="w-full py-3 bg-[#C8102E] hover:bg-[#A50D25] text-white text-xs font-semibold uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                className="btn-editorial-red w-full"
               >
                 <span>Request Regulatory Briefing</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -331,9 +330,9 @@ export default function BrandsPage({ navigateTo }) {
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. UNIT 04: ENCHANTE EXPERIENTIAL (Light Neutral #F5F6F8 Rhythm)         */}
+      {/* 5. UNIT 04: ENCHANTE EXPERIENTIAL */}
       {/* ========================================================================= */}
-      <section id="unit-enchante" className="py-20 sm:py-28 bg-[#F5F6F8] border-b border-slate-200/80">
+      <section id="unit-enchante" className="py-20 sm:py-28 bg-[#0A1F44] border-b border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -341,17 +340,17 @@ export default function BrandsPage({ navigateTo }) {
             <div className="lg:col-span-7 space-y-6">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  UNIT 04 · HAUTE PROTOCOL &amp; SPATIAL SCENOGRAPHY
+                  HAUTE PROTOCOL &amp; SPATIAL SCENOGRAPHY
                 </span>
-                <span className="w-8 h-px bg-slate-300" />
-                <span className="font-mono text-xs text-slate-500">HEAD-OF-STATE DIPLOMACY</span>
+                <span className="w-8 h-px bg-white/20" />
+                <span className="font-mono text-xs text-slate-400">HEAD-OF-STATE DIPLOMACY</span>
               </div>
 
-              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-[#0A1F44] tracking-tight leading-tight">
+              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">
                 Enchante Experiential
               </h2>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 Enchante executes bilateral head-of-state diplomatic banquets, ambassadorial galas, and exclusive corporate assemblies. With rigorous command of international precedence hierarchies, motorcade marshaling, and haute scenography, Enchante transforms formal gatherings into unforgettable institutional milestones.
               </p>
 
@@ -362,36 +361,36 @@ export default function BrandsPage({ navigateTo }) {
                   "Experiential Spatial Scenography",
                   "VVIP Seating Etiquette & Protocol"
                 ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700">
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
                     <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
                     <span>{s}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-500 border-t border-slate-200">
+              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
                 <div>
                   <span className="text-slate-400 block text-[10px]">HEAD-OF-STATE DINNERS</span>
-                  <span className="text-[#0A1F44] font-semibold text-sm">12 State Banquets</span>
+                  <span className="text-white font-semibold text-sm">12 State Banquets</span>
                 </div>
-                <div className="w-px h-8 bg-slate-300" />
+                <div className="w-px h-8 bg-white/10" />
                 <div>
                   <span className="text-slate-400 block text-[10px]">PRECEDENCE COMPLIANCE</span>
-                  <span className="text-[#C8102E] font-semibold text-sm">100% Protocol Zero Error</span>
+                  <span className="text-[#FFFFFF] font-semibold text-sm">100% Protocol Zero Error</span>
                 </div>
               </div>
             </div>
 
             {/* Right Visual (5 cols) */}
             <div className="lg:col-span-5">
-              <div className="editorial-image-frame rounded-lg aspect-[4/5] shadow-md bg-slate-900">
+              <div className="editorial-image-frame rounded aspect-[4/5] shadow-md bg-[#050F22] overflow-hidden border border-white/15">
                 <img
                   src={plenaryPhoto}
                   alt="Enchante Diplomatic Plenary Scenography"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44]/80 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#0A1F44]/90 backdrop-blur-xs rounded border border-white/10 text-white font-mono text-xs">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050F22]/90 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#071731]/95 backdrop-blur-xs rounded border border-white/15 text-white font-mono text-xs">
                   <div className="text-[#C8102E] font-semibold text-[10px] uppercase">
                     PLENARY SCENOGRAPHY
                   </div>
@@ -410,9 +409,9 @@ export default function BrandsPage({ navigateTo }) {
       </section>
 
       {/* ========================================================================= */}
-      {/* 6. UNIT 05: DNA STUDIO BROADCAST (Crisp White #FFFFFF)                    */}
+      {/* 6. UNIT 05: DNA STUDIO BROADCAST */}
       {/* ========================================================================= */}
-      <section id="unit-dna" className="py-20 sm:py-28 bg-[#FFFFFF]">
+      <section id="unit-dna" className="py-20 sm:py-28 bg-[#071731] border-b border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -420,17 +419,17 @@ export default function BrandsPage({ navigateTo }) {
             <div className="lg:col-span-6 space-y-6">
               <div className="flex items-center gap-3">
                 <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  UNIT 05 · CREATIVE BROADCAST &amp; MEDIA
+                  CREATIVE BROADCAST &amp; MEDIA
                 </span>
-                <span className="w-8 h-px bg-slate-200" />
-                <span className="font-mono text-xs text-slate-500">4K CINEMA FACILITY</span>
+                <span className="w-8 h-px bg-white/20" />
+                <span className="font-mono text-xs text-slate-400">4K CINEMA FACILITY</span>
               </div>
 
-              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-[#0A1F44] tracking-tight leading-tight">
+              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight leading-tight">
                 DNA STUDIO Broadcast
               </h2>
 
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 Headquartered at The City Tower in Jakarta, DNA STUDIO is TSA's dedicated 4K multi-camera broadcast facility. Producing executive leader dialogues, high-production corporate podcasts, and syndicated plenary live feeds, DNA STUDIO elevates corporate and sovereign storytelling to broadcast television fidelity.
               </p>
 
@@ -441,28 +440,28 @@ export default function BrandsPage({ navigateTo }) {
                   "Simultaneous Interpretation Audio Routing",
                   "Syndicated International Broadcast Distribution"
                 ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700">
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
                     <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
                     <span>{s}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-500 border-t border-slate-100">
+              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
                 <div>
                   <span className="text-slate-400 block text-[10px]">DIGITAL REACH</span>
-                  <span className="text-[#0A1F44] font-semibold text-sm">2.4M+ Syndicated Views</span>
+                  <span className="text-white font-semibold text-sm">2.4M+ Syndicated Views</span>
                 </div>
-                <div className="w-px h-8 bg-slate-200" />
+                <div className="w-px h-8 bg-white/10" />
                 <div>
                   <span className="text-slate-400 block text-[10px]">STUDIO HARDWARE</span>
-                  <span className="text-[#C8102E] font-semibold text-sm">4K Cinema Cinema Rig</span>
+                  <span className="text-[#FFFFFF] font-semibold text-sm">4K Cinema Cinema Rig</span>
                 </div>
               </div>
             </div>
 
             {/* Right Visual (6 cols) */}
-            <div className="lg:col-span-6 bg-[#0A1F44] text-white rounded-lg p-8 sm:p-10 shadow-lg space-y-6">
+            <div className="lg:col-span-6 bg-[#0A1F44] text-white rounded p-8 sm:p-10 border border-white/10 space-y-6">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div>
                   <span className="font-mono text-xs text-[#C8102E] uppercase tracking-wider block">
@@ -482,19 +481,19 @@ export default function BrandsPage({ navigateTo }) {
               </p>
 
               <div className="grid grid-cols-2 gap-4 font-mono text-xs">
-                <div className="p-4 bg-white/5 rounded border border-white/10">
+                <div className="p-4 bg-[#071731] rounded border border-white/10">
                   <span className="text-slate-400 block text-[10px]">VIDEO FIDELITY</span>
                   <span className="text-white text-base font-semibold mt-1 block">4K Cinema Pro</span>
                 </div>
-                <div className="p-4 bg-white/5 rounded border border-white/10">
+                <div className="p-4 bg-[#071731] rounded border border-white/10">
                   <span className="text-slate-400 block text-[10px]">DISTRIBUTION</span>
-                  <span className="text-[#C8102E] text-base font-semibold mt-1 block">Global Syndication</span>
+                  <span className="text-[#FFFFFF] text-base font-semibold mt-1 block">Global Syndication</span>
                 </div>
               </div>
 
               <button
                 onClick={handleInquiry}
-                className="w-full py-3 bg-[#C8102E] hover:bg-[#A50D25] text-white text-xs font-semibold uppercase tracking-wider rounded transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                className="btn-editorial-red w-full"
               >
                 <span>Book DNA Studio Session</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -506,23 +505,23 @@ export default function BrandsPage({ navigateTo }) {
       </section>
 
       {/* ========================================================================= */}
-      {/* 7. GROUP MANDATE INQUIRY                                                  */}
+      {/* 7. GROUP MANDATE INQUIRY */}
       {/* ========================================================================= */}
-      <section className="py-20 bg-[#F5F6F8] border-t border-slate-200/80">
+      <section className="py-20 bg-[#050F22] border-t border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 text-center space-y-4">
           <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
             INTEGRATED PRACTICE MANDATES
           </span>
-          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-[#0A1F44] tracking-tight">
+          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
             Engage the Full TSA Value Chain
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
             Organizations can engage individual specialized units or commission turnkey integrated mandates across advisory, protocol, and multimedia broadcast.
           </p>
           <div className="pt-2">
             <button
               onClick={handleInquiry}
-              className="btn-editorial-navy inline-flex items-center gap-2"
+              className="btn-editorial-red inline-flex items-center gap-2"
             >
               <span>Initiate Group Consultation</span>
               <ArrowUpRight className="w-4 h-4" />

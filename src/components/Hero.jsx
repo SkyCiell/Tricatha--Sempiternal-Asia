@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import heroVideo from "../assets/0805.mp4";
 import heroPoster from "../assets/DSC08824.JPG";
 

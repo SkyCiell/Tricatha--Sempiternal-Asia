@@ -27,9 +27,9 @@ export default function PortfolioPage({ navigateTo }) {
   const secondaryProjects = filteredProjects.slice(1);
 
   return (
-    <div className="pt-20 bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans selection:bg-[#C8102E] selection:text-white">
+    <div className="pt-20 bg-[#071731] min-h-screen text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
       
-      {/* 1. Page Header - Deep Navy #0A1F44 Editorial Banner */}
+      {/* 1. Page Header - Deep Navy Editorial Banner */}
       <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
           
@@ -61,8 +61,8 @@ export default function PortfolioPage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 2. Category Filter Bar (Sticky, Clean, Restrained) */}
-      <section className="sticky top-16 sm:top-20 z-30 bg-[#FFFFFF] border-b border-slate-200/80 py-3.5">
+      {/* 2. Category Filter Bar (Sticky, Clean, Restrained Deep Navy) */}
+      <section className="sticky top-16 sm:top-20 z-30 bg-[#071731]/95 backdrop-blur-md border-b border-white/10 py-3.5">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
           <div className="overflow-x-auto scrollbar-none pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 flex-grow">
             <div className="flex items-center gap-2 whitespace-nowrap font-mono text-xs">
@@ -74,8 +74,8 @@ export default function PortfolioPage({ navigateTo }) {
                     onClick={() => setActiveCategory(cat)}
                     className={`px-3.5 py-1.5 rounded transition-all cursor-pointer border ${
                       isActive
-                        ? "bg-[#C8102E] text-white border-[#A50D25] font-semibold shadow-xs"
-                        : "bg-[#FFFFFF] text-[#0A1F44] border-slate-200 hover:border-[#0A1F44]"
+                        ? "bg-[#C8102E] text-white border-[#C8102E] font-semibold shadow-xs"
+                        : "bg-[#0A1F44] text-slate-300 border-white/10 hover:border-white/30"
                     }`}
                   >
                     <span>{cat}</span>
@@ -92,23 +92,23 @@ export default function PortfolioPage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 3. Image-Led Editorial Showcase (Asymmetric & Art-Directed) */}
-      <section className="py-16 sm:py-24 bg-[#FFFFFF] border-b border-slate-100">
+      {/* 3. Image-Led Editorial Showcase */}
+      <section className="py-16 sm:py-24 bg-[#071731] border-b border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 space-y-16 sm:space-y-24">
           
-          {/* Lead Hero Project (Wide Asymmetric Editorial Composition) */}
+          {/* Lead Hero Project */}
           {leadProject && (
             <div
               onClick={() => setSelectedProject(leadProject)}
-              className="group bg-[#F5F6F8] rounded-xl border border-slate-200/80 overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-0"
+              className="group bg-[#0A1F44] rounded border border-white/10 overflow-hidden shadow-lg hover:border-white/25 transition-all cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-0"
             >
-              <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto min-h-[320px] sm:min-h-[420px] overflow-hidden bg-slate-900">
+              <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto min-h-[320px] sm:min-h-[420px] overflow-hidden bg-[#050F22]">
                 <img
                   src={leadProject.image}
                   alt={leadProject.name}
-                  className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44]/80 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44] via-transparent to-transparent pointer-events-none" />
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 bg-[#C8102E] text-white font-mono text-[10px] font-semibold uppercase tracking-wider rounded">
                     FLAGSHIP MANDATE
@@ -122,29 +122,29 @@ export default function PortfolioPage({ navigateTo }) {
                     <span className="text-[#C8102E] font-medium uppercase tracking-wider">
                       {leadProject.category}
                     </span>
-                    <span className="text-slate-400">{leadProject.year}</span>
+                    <span className="text-slate-400 font-mono">{leadProject.year}</span>
                   </div>
 
-                  <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-[#0A1F44] tracking-tight group-hover:text-[#C8102E] transition-colors leading-tight">
+                  <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-white tracking-tight group-hover:text-white transition-colors leading-tight">
                     {leadProject.name}
                   </h2>
 
-                  <div className="text-xs font-mono text-slate-500 uppercase tracking-wider">
+                  <div className="text-xs font-mono text-slate-400 uppercase tracking-wider">
                     Client: {leadProject.client}
                   </div>
 
-                  <p className="font-sans text-sm text-slate-600 leading-relaxed font-normal">
+                  <p className="font-sans text-sm text-slate-300 leading-relaxed font-normal">
                     {leadProject.shortDesc}
                   </p>
                 </div>
 
-                <div className="space-y-4 pt-4 border-t border-slate-200">
-                  <div className="p-3.5 bg-white rounded border border-slate-200/70 font-mono text-xs flex items-center justify-between">
+                <div className="space-y-4 pt-4 border-t border-white/10">
+                  <div className="p-3.5 bg-[#071731] rounded border border-white/10 font-mono text-xs flex items-center justify-between">
                     <span className="text-slate-400 uppercase text-[10px]">VERIFIED IMPACT:</span>
-                    <span className="text-[#C8102E] font-semibold">{leadProject.impact}</span>
+                    <span className="text-[#FFFFFF] font-semibold">{leadProject.impact}</span>
                   </div>
 
-                  <button className="btn-editorial-navy w-full flex items-center justify-center gap-2">
+                  <button className="btn-editorial-red w-full flex items-center justify-center gap-2">
                     <Eye className="w-4 h-4" />
                     <span>Examine Complete Case Dossier</span>
                   </button>
@@ -153,26 +153,26 @@ export default function PortfolioPage({ navigateTo }) {
             </div>
           )}
 
-          {/* Secondary Case Studies Grid (Asymmetric 2-Column Editorial Spread) */}
+          {/* Secondary Case Studies Grid */}
           {secondaryProjects.length > 0 && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               {secondaryProjects.map((project) => (
                 <div
                   key={project.id}
                   onClick={() => setSelectedProject(project)}
-                  className="group bg-[#FFFFFF] rounded-lg border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
+                  className="group bg-[#0A1F44] rounded border border-white/10 overflow-hidden shadow-xs hover:border-white/25 transition-all cursor-pointer flex flex-col justify-between"
                 >
                   <div>
-                    <div className="editorial-image-frame aspect-[16/10] overflow-hidden bg-slate-900">
+                    <div className="editorial-image-frame aspect-[16/10] overflow-hidden bg-[#050F22]">
                       <img
                         src={project.image}
                         alt={project.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44]/75 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44] via-transparent to-transparent pointer-events-none" />
                       
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 bg-[#0A1F44]/90 backdrop-blur-xs font-mono text-[10px] text-white rounded border border-white/10">
+                        <span className="px-2.5 py-1 bg-[#071731]/90 backdrop-blur-xs font-mono text-[10px] text-white rounded border border-white/10">
                           {project.category}
                         </span>
                       </div>
@@ -185,20 +185,20 @@ export default function PortfolioPage({ navigateTo }) {
                       <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
                         {project.client}
                       </div>
-                      <h3 className="font-heading font-semibold text-xl text-[#0A1F44] group-hover:text-[#C8102E] transition-colors leading-snug">
+                      <h3 className="font-heading font-semibold text-xl text-white group-hover:text-white transition-colors leading-snug">
                         {project.name}
                       </h3>
-                      <p className="font-sans text-xs sm:text-sm text-slate-600 leading-relaxed font-normal line-clamp-3">
+                      <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-3">
                         {project.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="p-6 sm:p-8 pt-0 flex items-center justify-between text-xs font-mono border-t border-slate-100 mt-4 pt-4">
-                    <span className="text-[#C8102E] font-medium">{project.impact}</span>
-                    <span className="text-[#0A1F44] font-medium inline-flex items-center gap-1 group-hover:text-[#C8102E] transition-colors">
+                  <div className="p-6 sm:p-8 pt-0 flex items-center justify-between text-xs font-mono border-t border-white/10 mt-4 pt-4">
+                    <span className="text-[#FFFFFF] font-medium">{project.impact}</span>
+                    <span className="text-slate-300 font-medium inline-flex items-center gap-1 group-hover:text-white transition-colors">
                       <span>View Dossier</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
                     </span>
                   </div>
                 </div>
@@ -210,21 +210,21 @@ export default function PortfolioPage({ navigateTo }) {
       </section>
 
       {/* 4. Bottom Mandate Invitation */}
-      <section className="py-20 bg-[#F5F6F8]">
+      <section className="py-20 bg-[#050F22]">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 text-center space-y-4">
           <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
             CENTRAL JAKARTA LEDGER
           </span>
-          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-[#0A1F44] tracking-tight">
+          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
             Commission a Turnkey Case Mandate
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
             Our directors evaluate spatial engineering, protocol requirements, and digital infrastructure for prospective state and enterprise summits.
           </p>
           <div className="pt-2">
             <button
               onClick={handleInquiry}
-              className="btn-editorial-navy inline-flex items-center gap-2"
+              className="btn-editorial-red inline-flex items-center gap-2"
             >
               <span>Request Detailed Case Dossiers</span>
               <ArrowUpRight className="w-4 h-4" />

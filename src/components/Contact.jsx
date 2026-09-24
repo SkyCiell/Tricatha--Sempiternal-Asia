@@ -68,18 +68,18 @@ export default function Contact({ preselectedService }) {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 bg-[#FFFFFF] text-[#0A1F44] border-b border-slate-100">
+    <section id="contact" className="py-20 sm:py-28 bg-[#071731] text-[#F1F5F9] border-b border-white/10">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
         
         {/* Header Bar */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-slate-100 gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-white/10 gap-6">
           <div>
-            <h2 className="font-heading text-2xl sm:text-4xl lg:text-[42px] font-medium tracking-tight text-[#0A1F44] leading-tight">
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-[42px] font-medium tracking-tight text-white leading-tight">
               Start an Executive Consultation
             </h2>
           </div>
 
-          <p className="max-w-md text-sm text-slate-600 font-normal leading-relaxed">
+          <p className="max-w-md text-sm text-slate-300 font-normal leading-relaxed">
             All inquiries are received under standard non-disclosure protocol and reviewed directly by TSA's executive directors at The City Tower in Jakarta.
           </p>
         </div>
@@ -90,75 +90,75 @@ export default function Contact({ preselectedService }) {
           {/* Left Column (5 cols): Coordinates & Confidentiality */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-3">
-              <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#0A1F44]">
+              <h3 className="font-heading text-xl sm:text-2xl font-medium text-white">
                 Confidential Mandate Intake
               </h3>
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                 Connect with our directors to discuss high-level sovereign advisory, government liaison, plenary summit management, or corporate communications mandates.
               </p>
             </div>
 
             {/* Coordinates Matrix */}
-            <div className="space-y-5 pt-4 border-t border-slate-100 font-sans text-xs">
+            <div className="space-y-5 pt-4 border-t border-white/10 font-sans text-xs">
               <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded-md bg-[#F5F6F8] border border-slate-200 text-[#C8102E] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">HEADQUARTERS</div>
-                  <div className="font-medium text-[#0A1F44] mt-0.5">The City Tower, 12th Floor Unit 1N</div>
-                  <div className="text-slate-500 text-[11px]">Jl. MH. Thamrin No. 81, Jakarta Pusat 10310</div>
+                  <div className="font-medium text-white mt-0.5">The City Tower, 12th Floor Unit 1N</div>
+                  <div className="text-slate-400 text-[11px]">Jl. MH. Thamrin No. 81, Jakarta Pusat 10310</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded-md bg-[#F5F6F8] border border-slate-200 text-[#C8102E] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">EXECUTIVE EMAIL</div>
-                  <a href={`mailto:${companyInfo.email}`} className="font-medium text-[#0A1F44] hover:text-[#C8102E] transition-colors mt-0.5 block">
+                  <a href={`mailto:${companyInfo.email}`} className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
                     {companyInfo.email}
                   </a>
-                  <div className="text-slate-500 text-[11px]">Direct protocol dispatch desk</div>
+                  <div className="text-slate-400 text-[11px]">Direct protocol dispatch desk</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded-md bg-[#F5F6F8] border border-slate-200 text-[#C8102E] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">OPERATING HOURS</div>
-                  <div className="font-medium text-[#0A1F44] mt-0.5">{companyInfo.hours}</div>
-                  <div className="text-slate-500 text-[11px]">Jakarta Western Indonesia Time (WIB)</div>
+                  <div className="font-medium text-white mt-0.5">{companyInfo.hours}</div>
+                  <div className="text-slate-400 text-[11px]">Jakarta Western Indonesia Time (WIB)</div>
                 </div>
               </div>
             </div>
 
             {/* Protocol Badge */}
-            <div className="p-5 bg-[#F5F6F8] border border-slate-200/80 rounded-lg flex items-center gap-3.5">
+            <div className="p-5 bg-[#0A1F44] border border-white/10 rounded flex items-center gap-3.5">
               <ShieldCheck className="w-5 h-5 text-[#C8102E] shrink-0" />
               <div className="text-xs">
-                <span className="font-medium text-[#0A1F44] block">Strict Non-Disclosure Protocol</span>
-                <span className="text-slate-500 text-[11px]">All submissions receive guaranteed institutional non-disclosure protection.</span>
+                <span className="font-medium text-white block">Strict Non-Disclosure Protocol</span>
+                <span className="text-slate-400 text-[11px]">All submissions receive guaranteed institutional non-disclosure protection.</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column (7 cols): Clean White Card with Form */}
-          <div className="lg:col-span-7 bg-[#FFFFFF] border border-slate-200/80 p-8 sm:p-10 rounded-lg shadow-sm">
+          {/* Right Column (7 cols): Card with Form */}
+          <div className="lg:col-span-7 bg-[#0A1F44] border border-white/15 p-8 sm:p-10 rounded shadow-xl">
             
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">
-                <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-6 h-6" />
+                <div className="w-14 h-14 bg-[#071731] border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
+                  <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h3 className="font-heading text-xl sm:text-2xl font-medium text-[#0A1F44]">
+                <h3 className="font-heading text-xl sm:text-2xl font-medium text-white">
                   Mandate Brief Transmitted
                 </h3>
-                <p className="text-slate-600 text-sm max-w-md mx-auto leading-relaxed">
-                  Thank you, {formData.firstName} {formData.lastName}. Your brief on behalf of <span className="font-medium text-[#0A1F44]">{formData.company}</span> has been securely transmitted to TSA's executive directors at The City Tower Jakarta.
+                <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
+                  Thank you, {formData.firstName} {formData.lastName}. Your brief on behalf of <span className="font-medium text-white">{formData.company}</span> has been securely transmitted to TSA's executive directors at The City Tower Jakarta.
                 </p>
                 <div className="pt-2">
                   <button
@@ -166,7 +166,7 @@ export default function Contact({ preselectedService }) {
                       setIsSubmitted(false);
                       setFormData({ firstName: "", lastName: "", company: "", email: "", phone: "", category: "Strategic Advisory", message: "" });
                     }}
-                    className="btn-editorial px-6 py-2.5 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial cursor-pointer"
+                    className="btn-editorial-red"
                   >
                     Send Another Transmission
                   </button>
@@ -175,7 +175,7 @@ export default function Contact({ preselectedService }) {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 
-                <div className="font-mono text-xs text-[#C8102E] font-medium uppercase tracking-widest pb-3 border-b border-slate-100 flex items-center justify-between">
+                <div className="font-mono text-xs text-[#C8102E] font-medium uppercase tracking-widest pb-3 border-b border-white/10 flex items-center justify-between">
                   <span>CONFIDENTIAL INTAKE FORM</span>
                   <span className="text-slate-400 font-normal">ALL FIELDS CONFIDENTIAL</span>
                 </div>
@@ -183,7 +183,7 @@ export default function Contact({ preselectedService }) {
                 {/* Name Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-500 font-medium mb-1 tracking-wider">
+                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
                       FIRST NAME *
                     </label>
                     <input
@@ -192,13 +192,13 @@ export default function Contact({ preselectedService }) {
                       value={formData.firstName}
                       onChange={handleChange}
                       placeholder="e.g. Alexander"
-                      className="w-full bg-[#F5F6F8] border border-slate-200 rounded-md px-3.5 py-2.5 text-[#0A1F44] text-sm placeholder:text-slate-400 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
                     />
                     {errors.firstName && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.firstName}</span>}
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-500 font-medium mb-1 tracking-wider">
+                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
                       LAST NAME *
                     </label>
                     <input
@@ -207,7 +207,7 @@ export default function Contact({ preselectedService }) {
                       value={formData.lastName}
                       onChange={handleChange}
                       placeholder="e.g. Wijaya"
-                      className="w-full bg-[#F5F6F8] border border-slate-200 rounded-md px-3.5 py-2.5 text-[#0A1F44] text-sm placeholder:text-slate-400 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
                     />
                     {errors.lastName && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.lastName}</span>}
                   </div>
@@ -216,7 +216,7 @@ export default function Contact({ preselectedService }) {
                 {/* Organization & Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-500 font-medium mb-1 tracking-wider">
+                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
                       ORGANIZATION / MINISTRY *
                     </label>
                     <input
@@ -225,13 +225,13 @@ export default function Contact({ preselectedService }) {
                       value={formData.company}
                       onChange={handleChange}
                       placeholder="e.g. Ministry of Trade / Enterprise"
-                      className="w-full bg-[#F5F6F8] border border-slate-200 rounded-md px-3.5 py-2.5 text-[#0A1F44] text-sm placeholder:text-slate-400 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
                     />
                     {errors.company && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.company}</span>}
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-500 font-medium mb-1 tracking-wider">
+                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
                       OFFICIAL EMAIL *
                     </label>
                     <input
@@ -240,7 +240,7 @@ export default function Contact({ preselectedService }) {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="alexander@domain.go.id"
-                      className="w-full bg-[#F5F6F8] border border-slate-200 rounded-md px-3.5 py-2.5 text-[#0A1F44] text-sm placeholder:text-slate-400 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
                     />
                     {errors.email && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.email}</span>}
                   </div>
@@ -249,7 +249,7 @@ export default function Contact({ preselectedService }) {
                 {/* Phone & Practice Category */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-500 font-medium mb-1 tracking-wider">
+                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
                       CONTACT TELEPHONE
                     </label>
                     <input
@@ -258,22 +258,22 @@ export default function Contact({ preselectedService }) {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+62 812 XXXX XXXX"
-                      className="w-full bg-[#F5F6F8] border border-slate-200 rounded-md px-3.5 py-2.5 text-[#0A1F44] text-sm placeholder:text-slate-400 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-500 font-medium mb-1 tracking-wider">
+                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
                       PRACTICE ENGAGEMENT
                     </label>
                     <select
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className="w-full bg-[#F5F6F8] border border-slate-200 rounded-md px-3.5 py-2.5 text-[#0A1F44] text-sm focus:outline-none focus:border-[#C8102E] transition-colors cursor-pointer"
+                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#C8102E] transition-colors cursor-pointer"
                     >
                       {practiceOptions.map((opt) => (
-                        <option key={opt} value={opt} className="bg-white text-[#0A1F44]">
+                        <option key={opt} value={opt} className="bg-[#071731] text-white">
                           {opt}
                         </option>
                       ))}
@@ -283,7 +283,7 @@ export default function Contact({ preselectedService }) {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-[11px] font-mono uppercase text-slate-500 font-medium mb-1 tracking-wider">
+                  <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
                     MANDATE BRIEF OR INQUIRY SCOPE *
                   </label>
                   <textarea
@@ -292,7 +292,7 @@ export default function Contact({ preselectedService }) {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Provide a concise description of your upcoming plenary assembly, timeline, stakeholder profile, or advisory requirements."
-                    className="w-full bg-[#F5F6F8] border border-slate-200 rounded-md px-3.5 py-2.5 text-[#0A1F44] text-sm placeholder:text-slate-400 focus:outline-none focus:border-[#C8102E] transition-colors resize-y"
+                    className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors resize-y"
                   />
                   {errors.message && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.message}</span>}
                 </div>

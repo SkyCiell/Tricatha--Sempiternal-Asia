@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import WorkTogetherModal from "./components/WorkTogetherModal";
 
 // Dedicated Pages for Each Route
 import HomePage from "./pages/HomePage";
@@ -12,11 +13,11 @@ import EventManagementPage from "./pages/EventManagementPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import EventsPage from "./pages/EventsPage";
 import EventDetailPage from "./pages/EventDetailPage";
-import ArticlesPage from "./pages/ArticlesPage";
 import CareersPage from "./pages/CareersPage";
 import InternshipPage from "./pages/InternshipPage";
 import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
+import NewsPage from "./pages/NewsPage";
 
 
 const VALID_ROUTES = [
@@ -30,6 +31,7 @@ const VALID_ROUTES = [
   "/portfolio",
   "/events",
   "/articles",
+  "/news",
   "/careers",
   "/internship",
   "/faq",
@@ -63,6 +65,7 @@ function getInitialRoute() {
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(getInitialRoute);
+  const [isWorkModalOpen, setIsWorkModalOpen] = useState(false);
 
   // Initialize Lenis smooth scroll and route synchronization on mount
   useEffect(() => {
@@ -136,7 +139,13 @@ export default function App() {
     switch (currentPath) {
       case "/":
       case "/home":
-        return <HomePage key="home" navigateTo={navigateTo} />;
+        return (
+          <HomePage
+            key="home"
+            navigateTo={navigateTo}
+            onOpenWorkModal={() => setIsWorkModalOpen(true)}
+          />
+        );
       case "/about":
         return <AboutPage key="about" navigateTo={navigateTo} />;
       case "/business-group":
@@ -148,7 +157,8 @@ export default function App() {
       case "/portfolio":
         return <PortfolioPage key="portfolio" navigateTo={navigateTo} />;
       case "/articles":
-        return <ArticlesPage key="articles" navigateTo={navigateTo} />;
+      case "/news":
+        return <NewsPage key="news" navigateTo={navigateTo} />;
       case "/careers":
         return <CareersPage key="careers" navigateTo={navigateTo} />;
       case "/internship":
@@ -160,14 +170,24 @@ export default function App() {
       case "/events":
         return <EventsPage key="events" navigateTo={navigateTo} />;
       default:
-        return <HomePage key="home" navigateTo={navigateTo} />;
+        return (
+          <HomePage
+            key="home"
+            navigateTo={navigateTo}
+            onOpenWorkModal={() => setIsWorkModalOpen(true)}
+          />
+        );
     }
   };
 
   return (
-    <div className="bg-[#FFFFFF] min-h-screen flex flex-col selection:bg-[#C8102E] selection:text-white relative">
+    <div className="bg-[#071731] text-[#F1F5F9] min-h-screen flex flex-col selection:bg-[#C8102E] selection:text-white relative">
       {/* 1. Universal Consistent Navbar across all pages */}
-      <Navbar currentPath={currentPath} navigateTo={navigateTo} />
+      <Navbar
+        currentPath={currentPath}
+        navigateTo={navigateTo}
+        onOpenWorkModal={() => setIsWorkModalOpen(true)}
+      />
 
       {/* 2. Route-Based Page Container with Smooth Fade Transitions */}
       <main className="flex-grow">
@@ -186,6 +206,12 @@ export default function App() {
 
       {/* 3. Universal Consistent Footer across all pages */}
       <Footer navigateTo={navigateTo} />
+
+      {/* 4. Consultation & Mandate Inquiry Modal */}
+      <WorkTogetherModal
+        isOpen={isWorkModalOpen}
+        onClose={() => setIsWorkModalOpen(false)}
+      />
     </div>
   );
 }

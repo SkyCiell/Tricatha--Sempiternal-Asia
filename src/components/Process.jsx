@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { processSteps } from "../data/tsaData";
-import { Search, Compass, Palette, Play, BarChart3, ArrowRight } from "lucide-react";
+import { Search, Compass, Palette, Play, BarChart3 } from "lucide-react";
 
 const stepIcons = [Search, Compass, Palette, Play, BarChart3];
 

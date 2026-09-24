@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ArrowUpRight,
   MapPin,
@@ -22,6 +22,16 @@ export default function InternshipPage({ _navigateTo }) {
     portfolioUrl: "",
     statement: ""
   });
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape" && applicationModalOpen) {
+        setApplicationModalOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [applicationModalOpen]);
 
   const handleApplyClick = (roleTitle) => {
     if (roleTitle) {
@@ -128,7 +138,7 @@ export default function InternshipPage({ _navigateTo }) {
   ];
 
   return (
-    <div className="bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans pt-20 selection:bg-[#C8102E] selection:text-white">
+    <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 selection:bg-[#C8102E] selection:text-white">
       
       {/* 1. HERO SECTION */}
       <section className="bg-[#0A1F44] text-white py-20 sm:py-28 border-b border-white/10 relative overflow-hidden">
@@ -157,12 +167,12 @@ export default function InternshipPage({ _navigateTo }) {
                   <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
                   <span>The City Tower, Jakarta</span>
                 </div>
-                <span className="text-slate-600 hidden sm:inline">•</span>
+                <span className="text-slate-500 hidden sm:inline">•</span>
                 <div className="flex items-center gap-2">
                   <Clock className="w-3.5 h-3.5 text-[#C8102E]" />
-                  <span>3 - 6 Months Intake</span>
+                  <span>3 to 6 Months Intake</span>
                 </div>
-                <span className="text-slate-600 hidden sm:inline">•</span>
+                <span className="text-slate-500 hidden sm:inline">•</span>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E]" />
                   <span>Direct Partner Mentorship</span>
@@ -190,7 +200,7 @@ export default function InternshipPage({ _navigateTo }) {
 
             {/* Right Visual Image Column (5 cols) */}
             <div className="lg:col-span-5 relative">
-              <div className="editorial-image-frame rounded-lg border border-white/15 shadow-xl aspect-[4/3] sm:aspect-[16/11] bg-slate-900">
+              <div className="editorial-image-frame rounded border border-white/15 shadow-xl aspect-[4/3] sm:aspect-[16/11] bg-[#050F22] overflow-hidden">
                 <img
                   src={heroPhoto}
                   alt="TSA Executive Plenary Team"
@@ -202,7 +212,7 @@ export default function InternshipPage({ _navigateTo }) {
                   <span className="font-mono text-[#C8102E] uppercase tracking-wider block text-[10px] font-semibold">
                     Jakarta Headquarters · Plenary Room
                   </span>
-                  <span className="text-slate-200 font-sans text-xs mt-0.5 block font-normal leading-relaxed">
+                  <span className="text-slate-300 font-sans text-xs mt-0.5 block font-normal leading-relaxed">
                     Real-world immersion in executive summits and multilateral forums.
                   </span>
                 </div>
@@ -216,42 +226,41 @@ export default function InternshipPage({ _navigateTo }) {
       {/* 2. INTERNSHIP OPPORTUNITIES */}
       <section id="opportunities" className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-slate-200">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-6 border-b border-white/10">
           <div className="max-w-2xl space-y-3">
             <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
               FELLOWSHIP STREAMS
             </span>
-            <h2 className="text-2xl sm:text-4xl font-semibold text-[#0A1F44] tracking-tight font-heading">
+            <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight font-heading">
               Opportunities &amp; Practice Areas
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
               We open fellowship positions across five core operational disciplines. Each role is designed around active contribution, technical autonomy, and direct collaboration with senior practice leads.
             </p>
           </div>
 
-          <div className="text-xs font-mono text-slate-500 shrink-0">
+          <div className="text-xs font-mono text-slate-400 shrink-0">
             <span>5 Active Opportunities Available</span>
           </div>
         </div>
 
         {/* Editorial Rows */}
-        <div className="divide-y divide-slate-200">
-          {opportunities.map((opp, idx) => (
+        <div className="divide-y divide-white/10">
+          {opportunities.map((opp) => (
             <div
               key={opp.id}
-              className="py-12 group hover:bg-[#F5F6F8]/60 -mx-4 px-4 sm:-mx-8 sm:px-8 rounded-lg transition-colors"
+              className="py-12 group hover:bg-[#0A1F44]/50 -mx-4 px-4 sm:-mx-8 sm:px-8 rounded transition-colors"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
                 
                 {/* Left 4 Cols: Number, Role Title & Meta */}
                 <div className="lg:col-span-4 space-y-3">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs text-[#C8102E] font-bold">0{idx + 1} / 05</span>
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 bg-white border border-slate-200 px-2.5 py-0.5 rounded">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-300 bg-[#0A1F44] border border-white/10 px-2.5 py-0.5 rounded">
                       {opp.badge}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-[#0A1F44] group-hover:text-[#C8102E] transition-colors duration-200 font-heading leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-white transition-colors duration-200 font-heading leading-snug">
                     {opp.title}
                   </h3>
                   
@@ -260,7 +269,7 @@ export default function InternshipPage({ _navigateTo }) {
                     {opp.skills.map((skill, i) => (
                       <span
                         key={i}
-                        className="text-[10px] font-mono text-slate-600 bg-white border border-slate-200 px-2 py-0.5 rounded"
+                        className="text-[10px] font-mono text-slate-300 bg-[#0A1F44] border border-white/10 px-2 py-0.5 rounded"
                       >
                         {skill}
                       </span>
@@ -270,7 +279,7 @@ export default function InternshipPage({ _navigateTo }) {
 
                 {/* Center 6 Cols: Narrative Overview & Responsibilities */}
                 <div className="lg:col-span-6 space-y-4">
-                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
                     {opp.overview}
                   </p>
 
@@ -279,7 +288,7 @@ export default function InternshipPage({ _navigateTo }) {
                       Key Contribution Areas:
                     </span>
                     {opp.responsibilities.map((r, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700 leading-relaxed">
+                      <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300 leading-relaxed">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E] shrink-0 mt-0.5" />
                         <span>{r}</span>
                       </div>
@@ -291,7 +300,7 @@ export default function InternshipPage({ _navigateTo }) {
                 <div className="lg:col-span-2 flex lg:justify-end items-center pt-2 lg:pt-0">
                   <button
                     onClick={() => handleApplyClick(opp.title)}
-                    className="btn-editorial-navy text-xs px-4 py-2.5"
+                    className="btn-editorial-red text-xs px-4 py-2.5"
                   >
                     <span>Apply Role</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -347,7 +356,7 @@ export default function InternshipPage({ _navigateTo }) {
       </section>
 
       {/* 4. CLOSING APPLICATION INVITATION */}
-      <section className="bg-[#F5F6F8] py-20 sm:py-28">
+      <section className="bg-[#050F22] py-20 sm:py-28 border-t border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           <div className="max-w-2xl mx-auto text-center space-y-6">
             
@@ -356,11 +365,11 @@ export default function InternshipPage({ _navigateTo }) {
               <span>Rolling Intake · Central Jakarta</span>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-semibold text-[#0A1F44] font-heading tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-semibold text-white font-heading tracking-tight">
               Ready to Shape High-Stakes Engagements?
             </h2>
 
-            <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
               Applications are reviewed on a rolling basis. Please submit your academic background, area of interest, and relevant portfolio materials.
             </p>
 
@@ -381,16 +390,18 @@ export default function InternshipPage({ _navigateTo }) {
       {/* 5. APPLICATION MODAL */}
       {applicationModalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0A1F44]/80 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050F22]/90 backdrop-blur-md"
           onClick={() => setApplicationModalOpen(false)}
+          role="dialog"
+          aria-modal="true"
         >
           <div
-            className="relative max-w-xl w-full bg-[#FFFFFF] rounded-lg shadow-2xl border border-slate-200 p-6 sm:p-8 overflow-y-auto max-h-[90vh]"
+            className="relative max-w-xl w-full bg-[#0A1F44] text-[#F1F5F9] rounded shadow-2xl border border-white/15 p-6 sm:p-8 overflow-y-auto max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setApplicationModalOpen(false)}
-              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-[#0A1F44] transition-colors cursor-pointer"
+              className="absolute top-4 right-4 w-9 h-9 rounded flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -398,18 +409,18 @@ export default function InternshipPage({ _navigateTo }) {
 
             {submitted ? (
               <div className="py-8 text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-green-50 border border-green-200 text-green-600 flex items-center justify-center mx-auto">
+                <div className="w-12 h-12 rounded-full bg-[#071731] border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-semibold text-[#0A1F44] font-heading">
+                <h3 className="text-xl font-semibold text-white font-heading">
                   Application Received
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 max-w-sm mx-auto leading-relaxed">
                   Thank you for your interest in joining Tricatha Sempiternal Asia. Our Talent Secretariat will review your dossier and contact shortlisted candidates.
                 </p>
                 <button
                   onClick={() => setApplicationModalOpen(false)}
-                  className="btn-editorial-navy mt-2 text-xs"
+                  className="btn-editorial-red mt-2 text-xs"
                 >
                   Close Confirmation
                 </button>
@@ -420,14 +431,14 @@ export default function InternshipPage({ _navigateTo }) {
                   <span className="font-mono text-[11px] text-[#C8102E] uppercase tracking-wider block font-semibold">
                     FELLOWSHIP APPLICATION DOSSIER
                   </span>
-                  <h3 className="text-xl font-semibold text-[#0A1F44] font-heading mt-0.5">
+                  <h3 className="text-xl font-semibold text-white font-heading mt-0.5">
                     {formData.role}
                   </h3>
                 </div>
 
                 <div className="space-y-3 pt-2 text-xs">
                   <div>
-                    <label className="font-medium text-[#0A1F44] block mb-1">
+                    <label className="font-medium text-slate-300 block mb-1">
                       Full Legal Name *
                     </label>
                     <input
@@ -436,12 +447,12 @@ export default function InternshipPage({ _navigateTo }) {
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="e.g. Raden Arya Pratama"
-                      className="w-full px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#C8102E]"
+                      className="w-full px-3.5 py-2.5 rounded bg-[#071731] border border-white/20 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E]"
                     />
                   </div>
 
                   <div>
-                    <label className="font-medium text-[#0A1F44] block mb-1">
+                    <label className="font-medium text-slate-300 block mb-1">
                       Official Email Address *
                     </label>
                     <input
@@ -450,13 +461,13 @@ export default function InternshipPage({ _navigateTo }) {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="e.g. arya.pratama@university.ac.id"
-                      className="w-full px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#C8102E]"
+                      className="w-full px-3.5 py-2.5 rounded bg-[#071731] border border-white/20 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E]"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="font-medium text-[#0A1F44] block mb-1">
+                      <label className="font-medium text-slate-300 block mb-1">
                         University / Institution *
                       </label>
                       <input
@@ -465,11 +476,11 @@ export default function InternshipPage({ _navigateTo }) {
                         value={formData.university}
                         onChange={(e) => setFormData({ ...formData, university: e.target.value })}
                         placeholder="e.g. Universitas Indonesia"
-                        className="w-full px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#C8102E]"
+                        className="w-full px-3.5 py-2.5 rounded bg-[#071731] border border-white/20 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E]"
                       />
                     </div>
                     <div>
-                      <label className="font-medium text-[#0A1F44] block mb-1">
+                      <label className="font-medium text-slate-300 block mb-1">
                         Major / Field of Study *
                       </label>
                       <input
@@ -478,30 +489,30 @@ export default function InternshipPage({ _navigateTo }) {
                         value={formData.major}
                         onChange={(e) => setFormData({ ...formData, major: e.target.value })}
                         placeholder="e.g. Computer Science / Communications"
-                        className="w-full px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#C8102E]"
+                        className="w-full px-3.5 py-2.5 rounded bg-[#071731] border border-white/20 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E]"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="font-medium text-[#0A1F44] block mb-1">
+                    <label className="font-medium text-slate-300 block mb-1">
                       Practice Stream *
                     </label>
                     <select
                       value={formData.role}
                       onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#C8102E] bg-white"
+                      className="w-full px-3.5 py-2.5 rounded bg-[#071731] border border-white/20 text-white focus:outline-none focus:border-[#C8102E]"
                     >
-                      <option>IT / Software Development</option>
-                      <option>Event Management &amp; Protocol</option>
-                      <option>Marketing &amp; Communication</option>
-                      <option>Creative / Design</option>
-                      <option>Business Development</option>
+                      <option className="bg-[#071731] text-white">IT / Software Development</option>
+                      <option className="bg-[#071731] text-white">Event Management &amp; Protocol</option>
+                      <option className="bg-[#071731] text-white">Marketing &amp; Communication</option>
+                      <option className="bg-[#071731] text-white">Creative / Design</option>
+                      <option className="bg-[#071731] text-white">Business Development</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="font-medium text-[#0A1F44] block mb-1">
+                    <label className="font-medium text-slate-300 block mb-1">
                       Portfolio / GitHub / LinkedIn URL
                     </label>
                     <input
@@ -509,12 +520,12 @@ export default function InternshipPage({ _navigateTo }) {
                       value={formData.portfolioUrl}
                       onChange={(e) => setFormData({ ...formData, portfolioUrl: e.target.value })}
                       placeholder="https://"
-                      className="w-full px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#C8102E]"
+                      className="w-full px-3.5 py-2.5 rounded bg-[#071731] border border-white/20 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E]"
                     />
                   </div>
 
                   <div>
-                    <label className="font-medium text-[#0A1F44] block mb-1">
+                    <label className="font-medium text-slate-300 block mb-1">
                       Statement of Motivation (Short)
                     </label>
                     <textarea
@@ -522,7 +533,7 @@ export default function InternshipPage({ _navigateTo }) {
                       value={formData.statement}
                       onChange={(e) => setFormData({ ...formData, statement: e.target.value })}
                       placeholder="Share what interests you about high-stakes corporate and sovereign engagements..."
-                      className="w-full px-3.5 py-2.5 rounded border border-slate-200 focus:outline-none focus:border-[#C8102E]"
+                      className="w-full px-3.5 py-2.5 rounded bg-[#071731] border border-white/20 text-white placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E]"
                     />
                   </div>
                 </div>
@@ -531,7 +542,7 @@ export default function InternshipPage({ _navigateTo }) {
                   <button
                     type="button"
                     onClick={() => setApplicationModalOpen(false)}
-                    className="px-4 py-2 text-xs font-semibold text-slate-500 hover:text-[#0A1F44] cursor-pointer"
+                    className="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white cursor-pointer"
                   >
                     Cancel
                   </button>

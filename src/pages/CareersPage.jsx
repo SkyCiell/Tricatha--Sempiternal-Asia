@@ -67,21 +67,12 @@ export default function CareersPage({ navigateTo }) {
   ];
 
   return (
-    <div className="pt-20 bg-[#FFFFFF] min-h-screen text-[#0A1F44] font-sans selection:bg-[#C8102E] selection:text-white">
+    <div className="pt-20 bg-[#071731] min-h-screen text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
       {/* 1. Hero Banner - Deep Navy #0A1F44 */}
       <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
-        {/* Subtle dot matrix */}
-        <div
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(white 1px, transparent 1px)",
-            backgroundSize: "28px 28px"
-          }}
-        />
-
         <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 relative z-10">
           <div className="flex items-center gap-2.5 text-xs font-mono text-[#C8102E] font-medium uppercase tracking-widest mb-4">
-            <span className="w-2 h-0.5 bg-[#C8102E]" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
             <span>Join the Mandate · The City Tower Jakarta</span>
           </div>
 
@@ -89,7 +80,7 @@ export default function CareersPage({ navigateTo }) {
             <div className="max-w-3xl space-y-4">
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[54px] font-medium tracking-tight text-white leading-[1.14]">
                 Careers &amp; <br />
-                <span className="text-white/85 font-normal">Sovereign Practice Opportunities.</span>
+                <span className="text-slate-300 font-normal">Sovereign Practice Opportunities.</span>
               </h1>
               <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl">
                 Tricatha Sempiternal Asia invites seasoned strategists, protocol officers, spatial scenographers, and broadcast engineers to operate at the highest echelons of regional diplomacy and enterprise governance.
@@ -98,7 +89,7 @@ export default function CareersPage({ navigateTo }) {
 
             <button
               onClick={handleInquiry}
-              className="btn-editorial px-7 py-3.5 bg-[#C8102E] hover:bg-[#A50D25] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial flex items-center justify-center gap-2 cursor-pointer shadow-sm hover:shadow-md shrink-0 self-start lg:self-auto"
+              className="btn-editorial-red shrink-0 self-start lg:self-auto"
             >
               <span>Submit Confidential Dossier</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -110,20 +101,20 @@ export default function CareersPage({ navigateTo }) {
       {/* 2. Executive Leadership Grid */}
       <Leadership />
 
-      {/* 3. Open Career Mandates - Light Neutral #F5F6F8 */}
-      <section className="py-20 sm:py-28 bg-[#F5F6F8] border-b border-slate-200/60">
+      {/* 3. Open Career Mandates */}
+      <section className="py-20 sm:py-28 bg-[#071731] border-b border-white/10">
         <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8">
-          <div className="pb-8 border-b border-slate-200/80 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="pb-8 border-b border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#C8102E] font-medium uppercase">
-                <span className="w-2 h-0.5 bg-[#C8102E]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
                 <span>Active Directives</span>
               </div>
-              <h2 className="font-heading text-2xl sm:text-4xl font-medium tracking-tight text-[#0A1F44]">
+              <h2 className="font-heading text-2xl sm:text-4xl font-medium tracking-tight text-white">
                 Current Strategic Openings
               </h2>
             </div>
-            <p className="text-sm text-slate-600 max-w-sm">
+            <p className="text-sm text-slate-400 max-w-sm">
               All appointments require background validation and binding non-disclosure covenants.
             </p>
           </div>
@@ -132,11 +123,11 @@ export default function CareersPage({ navigateTo }) {
             {jobOpenings.map((job) => (
               <div
                 key={job.id}
-                className="bg-[#FFFFFF] border border-slate-200/80 rounded-lg p-7 sm:p-8 space-y-5 shadow-xs hover:border-[#C8102E]/50 transition-editorial flex flex-col justify-between"
+                className="bg-[#0A1F44] border border-white/10 rounded p-7 sm:p-8 space-y-5 shadow-sm hover:border-white/25 transition-all flex flex-col justify-between"
               >
                 <div className="space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-[10px] font-mono text-[#C8102E] uppercase tracking-wider bg-[#F5F6F8] border border-slate-200 px-2.5 py-0.5 rounded-sm">
+                    <span className="text-[10px] font-mono text-[#C8102E] uppercase tracking-wider bg-[#071731] border border-white/10 px-2.5 py-0.5 rounded">
                       {job.type}
                     </span>
                     <span className="text-[11px] font-mono text-slate-400">
@@ -144,15 +135,15 @@ export default function CareersPage({ navigateTo }) {
                     </span>
                   </div>
 
-                  <h3 className="font-heading text-xl font-medium text-[#0A1F44] tracking-tight leading-snug">
+                  <h3 className="font-heading text-xl font-medium text-white tracking-tight leading-snug">
                     {job.title}
                   </h3>
 
-                  <div className="text-xs font-mono text-slate-500">
+                  <div className="text-xs font-mono text-slate-300">
                     {job.division}
                   </div>
 
-                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
                     {job.desc}
                   </p>
 
@@ -161,7 +152,7 @@ export default function CareersPage({ navigateTo }) {
                       KEY COMPETENCIES:
                     </span>
                     {job.requirements.map((req, rIdx) => (
-                      <div key={rIdx} className="flex items-start gap-2 text-xs text-slate-600">
+                      <div key={rIdx} className="flex items-start gap-2 text-xs text-slate-300">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E] shrink-0 mt-0.5" />
                         <span>{req}</span>
                       </div>
@@ -169,7 +160,7 @@ export default function CareersPage({ navigateTo }) {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
                     <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
                     <span>{job.clearance}</span>
@@ -177,7 +168,7 @@ export default function CareersPage({ navigateTo }) {
 
                   <button
                     onClick={handleInquiry}
-                    className="btn-editorial px-4 py-2 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial flex items-center gap-1.5 cursor-pointer shadow-xs hover:shadow-md"
+                    className="btn-editorial-red"
                   >
                     <span>Apply Mandate</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -189,16 +180,16 @@ export default function CareersPage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 4. Fellowship Callout - Pure White #FFFFFF */}
-      <section className="py-20 bg-[#FFFFFF]">
+      {/* 4. Fellowship Callout */}
+      <section className="py-20 bg-[#050F22]">
         <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 text-center space-y-4">
           <span className="font-mono text-xs text-[#C8102E] font-medium uppercase tracking-widest block">
             STUDENTS &amp; RECENT GRADUATES
           </span>
-          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-[#0A1F44] tracking-tight">
+          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
             Looking for Fellowship &amp; Internship Opportunities?
           </h2>
-          <p className="text-sm sm:text-base text-slate-600 max-w-xl mx-auto font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
             Our 2026 intake is currently open across software, event protocol, spatial design, and commercial advisory.
           </p>
           <div className="pt-2">
@@ -206,7 +197,7 @@ export default function CareersPage({ navigateTo }) {
               onClick={() => {
                 if (navigateTo) navigateTo("/internship");
               }}
-              className="btn-editorial px-7 py-3.5 bg-[#0A1F44] hover:bg-[#C8102E] text-white text-xs font-semibold uppercase tracking-wider rounded-md transition-editorial inline-flex items-center gap-2 cursor-pointer shadow-sm hover:shadow-md"
+              className="btn-editorial-red inline-flex items-center gap-2"
             >
               <span>Explore Internship Program</span>
               <ArrowUpRight className="w-4 h-4" />
