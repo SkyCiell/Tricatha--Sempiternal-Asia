@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { coreCapabilities } from "../data/tsaData";
 
@@ -12,7 +13,13 @@ export default function WhatWeDoIntro({ navigateTo }) {
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10"
+        >
           <div className="space-y-3 max-w-3xl">
             <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
               OPERATIONAL DISCIPLINES & PRACTICE AREAS
@@ -27,13 +34,19 @@ export default function WhatWeDoIntro({ navigateTo }) {
           <p className="font-sans text-sm sm:text-base text-slate-300 max-w-lg leading-relaxed">
             From strategic master planning and spatial scenography to sovereign protocol clearance and live 4K telecast, TSA unifies all facets of high-stakes event execution.
           </p>
-        </div>
+        </motion.div>
 
         {/* Editorial Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pt-12 items-start">
           
           {/* Left Column: Interactive Capability Index (7 cols) */}
-          <div className="lg:col-span-7 divide-y divide-white/10 border-y border-white/10">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 divide-y divide-white/10 border-y border-white/10"
+          >
             {coreCapabilities.map((item, index) => {
               const isSelected = item.id === activeId;
               const num = String(index + 1).padStart(2, "0");
@@ -95,10 +108,16 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 </div>
               );
             })}
-          </div>
+          </motion.div>
 
           {/* Right Column: Sticky Supporting Preview & Specifications (5 cols) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 lg:sticky lg:top-24 space-y-6"
+          >
             <div className="editorial-image-frame rounded aspect-[16/11] bg-[#050F22] shadow-xl relative overflow-hidden">
               <img
                 src={activeCapability.image}
@@ -142,7 +161,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 

@@ -1,58 +1,53 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useInView } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { useInView, animate } from "framer-motion";
 
 /**
- * Animated number counter with prefix/suffix formatting triggered on scroll
+ * AnimatedCounter counts up smoothly from `from` to `to`
+ * when the element scrolls into view for the first time.
  */
 export default function AnimatedCounter({
-  target,
-  prefix = "",
-  suffix = "",
-  duration = 1.8,
+  to,
+  from = 0,
+  duration = 2,
+  delay = 0,
+  formatter,
   className = ""
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
-  const [currentValue, setCurrentValue] = useState(0);
-
-  // Parse numeric target from string (e.g. 18, 450, 45000, 100)
-  const numericTarget = typeof target === "number" ? target : parseFloat(String(target).replace(/[^0-9.]/g, "")) || 0;
+  const [count, setCount] = useState(from);
 
   useEffect(() => {
     if (!isInView) return;
 
-    let startTime = null;
-    let animationFrame;
+    // Parse target and start numbers safely
+    const target = typeof to === "number" ? to : parseFloat(String(to).replace(/[^0-9.-]+/g, "")) || 0;
+    const start = typeof from === "number" ? from : parseFloat(String(from).replace(/[^0-9.-]+/g, "")) || 0;
 
-    const animate = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+    let timeoutId;
+    let controls;
 
-      // Ease out expo curve for smooth cinematic counter feel
-      const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      const val = Math.round(numericTarget * easeOut);
+    timeoutId = setTimeout(() => {
+      controls = animate(start, target, {
+        duration,
+        ease: [0.16, 1, 0.3, 1], // easeOutExpo: lively launch, buttery deceleration
+        onUpdate: (latest) => {
+          setCount(Math.round(latest));
+        }
+      });
+    }, delay * 1000);
 
-      setCurrentValue(val);
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
-      }
+    return () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      if (controls) controls.stop();
     };
+  }, [isInView, to, from, duration, delay]);
 
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, numericTarget, duration]);
-
-  // Format with commas if target >= 1000
-  const formattedNumber = numericTarget >= 1000
-    ? currentValue.toLocaleString()
-    : currentValue;
+  const formattedOutput = formatter ? formatter(count) : count.toLocaleString();
 
   return (
-    <span ref={ref} className={`tabular-nums inline-block ${className}`}>
-      {prefix}
-      {formattedNumber}
-      {suffix}
+    <span ref={ref} className={className}>
+      {formattedOutput}
     </span>
   );
 }

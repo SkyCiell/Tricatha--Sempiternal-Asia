@@ -4,6 +4,7 @@ import Lenis from "lenis";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WorkTogetherModal from "./components/WorkTogetherModal";
+import SplashScreen from "./components/SplashScreen";
 
 // Dedicated Pages for Each Route
 import HomePage from "./pages/HomePage";
@@ -66,9 +67,36 @@ function getInitialRoute() {
 export default function App() {
   const [currentPath, setCurrentPath] = useState(getInitialRoute);
   const [isWorkModalOpen, setIsWorkModalOpen] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
+
+  // Manage body scroll and Lenis while splash screen curtain is active
+  useEffect(() => {
+    if (showSplash) {
+      document.body.style.overflow = "hidden";
+      if (window.__lenis) {
+        window.__lenis.stop();
+        window.__lenis.scrollTo(0, { immediate: true });
+      }
+      window.scrollTo(0, 0);
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [showSplash]);
 
   // Initialize Lenis smooth scroll and route synchronization on mount
   useEffect(() => {
+    // Disable browser automatic scroll restoration and force top scroll
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
     const initialRoute = getInitialRoute();
     if (window.location.pathname !== initialRoute) {
       window.history.replaceState(null, "", initialRoute);
@@ -83,6 +111,9 @@ export default function App() {
       wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
     });
+
+    lenis.scrollTo(0, { immediate: true });
+    window.scrollTo(0, 0);
 
     let animationFrameId;
     function raf(time) {
@@ -109,6 +140,7 @@ export default function App() {
       lenis.destroy();
       window.__lenis = null;
       window.removeEventListener("popstate", handlePopState);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
 
@@ -182,6 +214,22 @@ export default function App() {
 
   return (
     <div className="bg-[#071731] text-[#F1F5F9] min-h-screen flex flex-col selection:bg-[#C8102E] selection:text-white relative">
+      {/* Fullscreen Overlay Curtain Splash Screen */}
+      <AnimatePresence
+        onExitComplete={() => {
+          document.body.style.overflow = "";
+          if (window.__lenis) {
+            window.__lenis.scrollTo(0, { immediate: true });
+            window.__lenis.start();
+          }
+          window.scrollTo(0, 0);
+        }}
+      >
+        {showSplash && (
+          <SplashScreen onFinish={() => setShowSplash(false)} />
+        )}
+      </AnimatePresence>
+
       {/* 1. Universal Consistent Navbar across all pages */}
       <Navbar
         currentPath={currentPath}

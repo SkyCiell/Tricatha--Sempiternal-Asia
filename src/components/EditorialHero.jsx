@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ShieldCheck, MapPin, Calendar, CheckCircle2 } from "lucide-react";
 import aseanHeroPhoto from "../assets/20231130_131733_311.jpg";
+import AnimatedCounter from "./AnimatedCounter";
 
 const CORE_MANDATES = [
   {
@@ -117,20 +118,25 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
             </div>
 
             {/* Operational Metrics Sub-Bar */}
-            <div className="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
               <div className="p-3 bg-[#0A1F44]/50 border border-white/10 rounded">
                 <div className="text-slate-400 text-[10px] uppercase tracking-wider">TRACK RECORD</div>
-                <div className="text-lg font-bold text-white mt-1">8+ Years</div>
+                <div className="text-lg font-bold text-white mt-1 tabular-nums">
+                  <AnimatedCounter to={8} duration={1.6} delay={0.2} />+ Years
+                </div>
                 <div className="text-[11px] text-slate-400 mt-0.5">Continuous Operation</div>
               </div>
               <div className="p-3 bg-[#0A1F44]/50 border border-white/10 rounded">
                 <div className="text-slate-400 text-[10px] uppercase tracking-wider">DELIVERY</div>
-                <div className="text-lg font-bold text-white mt-1">120+ Events</div>
+                <div className="text-lg font-bold text-white mt-1 tabular-nums">
+                  <AnimatedCounter to={120} duration={1.8} delay={0.3} />+ Events
+                </div>
                 <div className="text-[11px] text-slate-400 mt-0.5">Tier-1 Conventions</div>
               </div>
               <div className="p-3 bg-[#0A1F44]/50 border border-white/10 rounded">
                 <div className="text-slate-400 text-[10px] uppercase tracking-wider">DELEGATES</div>
-                <div className="text-lg font-bold text-[#FFFFFF] mt-1">85,000+</div>
+                <div className="text-lg font-bold text-[#FFFFFF] mt-1 tabular-nums">
+                  <AnimatedCounter to={85000} duration={2} delay={0.4} />+
+                </div>
                 <div className="text-[11px] text-slate-400 mt-0.5">Verified Participants</div>
               </div>
               <div className="p-3 bg-[#0A1F44]/50 border border-white/10 rounded">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { featuredProjects } from "../data/tsaData";
 import CaseStudyModal from "./CaseStudyModal";
@@ -14,7 +15,13 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10"
+        >
           <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
               VERIFIED MANDATE ARCHIVE & FIELD CASE STUDIES
@@ -29,11 +36,17 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
           <p className="font-sans text-sm sm:text-base text-slate-300 max-w-md leading-relaxed">
             Multi-hall trade exhibitions, sovereign ministerial plenaries, and audited corporate assemblies delivered across Southeast Asia.
           </p>
-        </div>
+        </motion.div>
 
         {/* 1. Lead Flagship Case Showcase */}
         {leadProject && (
-          <div className="pt-12">
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="pt-12"
+          >
             <div
               onClick={() => setSelectedProject(leadProject)}
               className="group bg-[#0A1F44] rounded border border-white/12 overflow-hidden hover:border-white/25 transition-colors cursor-pointer grid grid-cols-1 lg:grid-cols-12 gap-0"
@@ -99,14 +112,27 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* 2. Secondary Curated Case Records (2x2 Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.1 } }
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-10"
+        >
           {secondaryProjects.map((project) => (
-            <div
+            <motion.div
               key={project.id}
+              variants={{
+                hidden: { opacity: 0, y: 18 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
               onClick={() => setSelectedProject(project)}
               className="group bg-[#0A1F44] rounded border border-white/10 overflow-hidden hover:border-white/20 transition-all cursor-pointer flex flex-col justify-between"
             >
@@ -154,12 +180,18 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
                   <span className="text-slate-400">{project.year}</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Action Button to Full Events Archive */}
-        <div className="pt-12 flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="pt-12 flex justify-center"
+        >
           <button
             onClick={() => (navigateTo ? navigateTo("/events") : null)}
             className="btn-editorial-outline text-white border-white/20 hover:bg-white/10 hover:border-white transition-colors cursor-pointer"
@@ -167,7 +199,7 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
             <span>Explore Complete Events &amp; Plenary Archive</span>
             <ArrowRight className="w-4 h-4 text-[#C8102E]" />
           </button>
-        </div>
+        </motion.div>
 
       </div>
 
