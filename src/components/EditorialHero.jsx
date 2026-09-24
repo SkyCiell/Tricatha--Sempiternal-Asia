@@ -118,6 +118,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
             </div>
 
             {/* Operational Metrics Sub-Bar */}
+            <div className="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
               <div className="p-3 bg-[#0A1F44]/50 border border-white/10 rounded">
                 <div className="text-slate-400 text-[10px] uppercase tracking-wider">TRACK RECORD</div>
                 <div className="text-lg font-bold text-white mt-1 tabular-nums">
