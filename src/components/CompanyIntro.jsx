@@ -2,6 +2,7 @@ import React from "react";
 import { companyInfo, institutionalReviews } from "../data/tsaData";
 import aboutPhoto from "../assets/DSC08824.JPG";
 import { Star, ShieldCheck, Building2, Globe2 } from "lucide-react";
+import AnimatedCounter from "./AnimatedCounter";
 
 export default function CompanyIntro() {
   return (
@@ -95,8 +96,8 @@ export default function CompanyIntro() {
           <div className="pt-6 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-white/10">
             {companyInfo.statsSummary.map((stat, idx) => (
               <div key={stat.id} className={`${idx !== 0 ? "pt-6 md:pt-0 md:pl-8" : ""} space-y-2`}>
-                <div className="font-heading text-4xl sm:text-5xl font-medium tracking-tight text-white flex items-baseline">
-                  <span>{stat.value}</span>
+                <div className="font-heading text-4xl sm:text-5xl font-medium tracking-tight text-white flex items-baseline tabular-nums">
+                  <AnimatedCounter to={stat.value} duration={1.8} delay={0.1 + idx * 0.1} />
                   <span className="text-[#C8102E] font-mono text-3xl sm:text-4xl ml-1">{stat.suffix}</span>
                 </div>
                 <div className="font-mono text-xs uppercase tracking-wider text-slate-200 font-medium">

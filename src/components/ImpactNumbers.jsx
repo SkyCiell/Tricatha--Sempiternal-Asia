@@ -1,5 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { companyInfo } from "../data/tsaData";
+import AnimatedCounter from "./AnimatedCounter";
 
 export default function ImpactNumbers() {
   return (
@@ -7,7 +9,13 @@ export default function ImpactNumbers() {
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
         
         {/* Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10"
+        >
           <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
               VERIFIED OPERATIONAL REACH
@@ -19,21 +27,38 @@ export default function ImpactNumbers() {
           <p className="font-sans text-sm text-slate-300 max-w-md leading-relaxed">
             Every metric reflects actual event milestones delivered across Indonesia's primary convention hubs and international ministerial forums.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Metrics Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08 } }
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12"
+        >
           {companyInfo.statsSummary.map((stat, index) => (
-            <div
+            <motion.div
               key={stat.id}
+              variants={{
+                hidden: { opacity: 0, y: 16 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
               className="p-8 bg-[#0E2552] border border-white/10 rounded space-y-4 hover:border-white/20 transition-colors"
             >
               {/* Visually Dominant Metric */}
               <div className="flex items-baseline gap-1">
-                <span className={`font-heading text-5xl sm:text-6xl font-bold tracking-tight ${
+                <span className={`font-heading text-5xl sm:text-6xl font-bold tracking-tight tabular-nums ${
                   index === 0 ? "text-[#C8102E]" : "text-white"
                 }`}>
-                  {stat.value}
+                  <AnimatedCounter
+                    to={stat.value}
+                    duration={1.8}
+                    delay={0.15 + index * 0.12}
+                  />
                 </span>
                 <span className="font-heading text-3xl sm:text-4xl font-semibold text-[#C8102E]">
                   {stat.suffix}
@@ -48,12 +73,18 @@ export default function ImpactNumbers() {
                   {stat.desc}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Provenance Venues Strip */}
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-slate-400">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-slate-400"
+        >
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
             <span className="text-slate-200 font-semibold uppercase">ACCREDITED FIELD VENUES:</span>
@@ -61,7 +92,7 @@ export default function ImpactNumbers() {
           <div className="text-slate-300">
             Jakarta Convention Center (JCC) · ICE BSD City · JIExpo Kemayoran · The Ritz-Carlton · Fairmont Jakarta
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

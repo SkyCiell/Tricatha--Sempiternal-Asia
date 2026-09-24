@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import plenaryPhoto from "../assets/DSC08824.JPG";
 
 const INSTITUTIONAL_PILLARS = [
@@ -30,7 +31,13 @@ export default function WhyTSASection() {
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
         
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-12 border-b border-white/10">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-12 border-b border-white/10"
+        >
           <div className="lg:col-span-8 space-y-3">
             <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
               INSTITUTIONAL CREDIBILITY & OPERATIONAL RIGOR
@@ -44,13 +51,19 @@ export default function WhyTSASection() {
               We bridge sovereign protocol standards with enterprise commercial execution, delivering events that protect reputations and advance strategic agendas.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Editorial Asymmetric Spread */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pt-12 items-stretch">
           
           {/* Left Column: Visual Operational Anchor (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 flex flex-col justify-between space-y-6"
+          >
             <div className="editorial-image-frame rounded aspect-[4/3] lg:aspect-[4/5] bg-[#050F22] shadow-xl relative">
               <img
                 src={plenaryPhoto}
@@ -80,13 +93,26 @@ export default function WhyTSASection() {
                 Operating from The City Tower in Central Jakarta, TSA executes under strict non-disclosure covenants, protocol etiquette precedence, and international HSSE standards.
               </p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: 4 Substantive Institutional Pillars (7 cols) */}
-          <div className="lg:col-span-7 divide-y divide-white/10 border-y border-white/10 flex flex-col justify-between">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.1 } }
+            }}
+            className="lg:col-span-7 divide-y divide-white/10 border-y border-white/10 flex flex-col justify-between"
+          >
             {INSTITUTIONAL_PILLARS.map((pillar) => (
-              <div
+              <motion.div
                 key={pillar.title}
+                variants={{
+                  hidden: { opacity: 0, y: 14 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+                }}
                 className="py-8 space-y-3 group hover:bg-[#0A1F44]/40 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded transition-colors"
               >
                 <div className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider">
@@ -100,9 +126,9 @@ export default function WhyTSASection() {
                 <p className="font-sans text-sm text-slate-300 leading-relaxed max-w-2xl">
                   {pillar.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
         </div>
 
