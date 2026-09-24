@@ -50,7 +50,10 @@ export default function EventsPage({ navigateTo }) {
             </div>
 
             <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-[1.08]">
-              Events &amp; Plenary Assemblies
+              Field Documentation &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                Plenary Assemblies.
+              </span>
             </h1>
             
             <p className="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">

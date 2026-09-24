@@ -18,7 +18,10 @@ export default function WhatWeDoIntro({ navigateTo }) {
               OPERATIONAL DISCIPLINES & PRACTICE AREAS
             </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-              Integrated Capabilities &amp; Event Delivery
+              Integrated Capabilities &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                Operational Event Delivery.
+              </span>
             </h2>
           </div>
           <p className="font-sans text-sm sm:text-base text-slate-300 max-w-lg leading-relaxed">
@@ -31,8 +34,9 @@ export default function WhatWeDoIntro({ navigateTo }) {
           
           {/* Left Column: Interactive Capability Index (7 cols) */}
           <div className="lg:col-span-7 divide-y divide-white/10 border-y border-white/10">
-            {coreCapabilities.map((item) => {
+            {coreCapabilities.map((item, index) => {
               const isSelected = item.id === activeId;
+              const num = String(index + 1).padStart(2, "0");
               return (
                 <div
                   key={item.id}
@@ -46,6 +50,10 @@ export default function WhatWeDoIntro({ navigateTo }) {
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
+                        <span className="font-mono text-xs font-bold text-[#C8102E]">
+                          {num}
+                        </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
                         <span className="font-mono text-[11px] font-semibold text-[#C8102E] uppercase tracking-wider">
                           {item.category}
                         </span>

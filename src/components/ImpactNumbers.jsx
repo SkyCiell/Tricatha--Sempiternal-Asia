@@ -13,7 +13,10 @@ export default function ImpactNumbers() {
               VERIFIED OPERATIONAL REACH
             </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
-              Operational Scale &amp; Proven Impact
+              Operational Scale &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                Field Provenance.
+              </span>
             </h2>
           </div>
           <p className="font-sans text-sm text-slate-300 max-w-md leading-relaxed">

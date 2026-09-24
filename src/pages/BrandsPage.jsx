@@ -32,10 +32,12 @@ export default function BrandsPage({ navigateTo }) {
 
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
                 TSA Business Group &amp; <br />
-                <span className="text-slate-300 font-normal">Specialized Practice Entities.</span>
+                <span className="font-editorial italic font-normal text-slate-200">
+                  Specialized Practice Entities.
+                </span>
               </h1>
               <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl pt-1">
-                Four specialized operating entities—<strong>ENCHANTE</strong>, <strong>DNA STUDIO</strong>, <strong>GWI</strong>, and <strong>GOADV</strong>—operating under the unified governance of parent holding <strong>PT Tricatha Sempiternal Asia</strong> at The City Tower in Central Jakarta. Together, they form an uninterrupted value chain spanning sovereign counsel, public affairs, experiential protocol, and multimedia broadcast.
+                Four specialized operating entities (<strong>ENCHANTE</strong>, <strong>DNA STUDIO</strong>, <strong>GWI</strong>, and <strong>GOADV</strong>) operating under the unified governance of parent holding <strong>PT Tricatha Sempiternal Asia</strong> at The City Tower in Central Jakarta. Together, they form an uninterrupted value chain spanning sovereign counsel, public affairs, experiential protocol, and multimedia broadcast.
               </p>
             </div>
 
@@ -566,7 +568,7 @@ export default function BrandsPage({ navigateTo }) {
             Engage the Full TSA Business Group Ecosystem
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
-            Organizations can commission individual entities—ENCHANTE, DNA STUDIO, GWI, or GOADV—or deploy a turnkey integrated mandate across strategic counsel, protocol, communications, and broadcasting.
+            Organizations can commission individual entities (ENCHANTE, DNA STUDIO, GWI, or GOADV) or deploy a turnkey integrated mandate across strategic counsel, protocol, communications, and broadcasting.
           </p>
           <div className="pt-2">
             <button

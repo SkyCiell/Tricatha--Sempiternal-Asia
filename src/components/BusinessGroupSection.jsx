@@ -1,6 +1,9 @@
-import React from "react";
-import { ArrowUpRight, ArrowRight, ShieldCheck, Video, Megaphone, Scale } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUpRight, ArrowRight, ShieldCheck, Video, Megaphone, Scale, CheckCircle2, ChevronRight } from "lucide-react";
 import { businessGroupData } from "../data/tsaData";
+import gwiPhoto from "../assets/9c3a2a75-3f45-48d6-b86b-43955e71d699 (1).jpg";
+import plenaryPhoto from "../assets/DSC08824.JPG";
+import aseanPhoto from "../assets/20231130_131733_311.jpg";
 
 const iconMap = {
   ENCHANTE: ShieldCheck,
@@ -9,11 +12,43 @@ const iconMap = {
   GOADV: Scale
 };
 
+const visualMap = {
+  ENCHANTE: {
+    photo: plenaryPhoto,
+    caption: "Ambassadorial Gala & Diplomatic Dinners",
+    venue: "The Ritz-Carlton Jakarta · Ballroom",
+    stats: "12+ Head-of-State Banquets Orchestrated"
+  },
+  "DNA STUDIO": {
+    photo: aseanPhoto,
+    caption: "4K Broadcast Suite & Telecast Command",
+    venue: "The City Tower 12th Fl · Central Jakarta",
+    stats: "2.4M+ Syndicated Broadcast Viewers"
+  },
+  GWI: {
+    photo: gwiPhoto,
+    caption: "Civic Scale Assembly & Cultural Activation",
+    venue: "National Monument (Monas) Enclosure",
+    stats: "45,000+ In-Person Attendees"
+  },
+  GOADV: {
+    photo: plenaryPhoto,
+    caption: "Cross-Ministry Regulatory Intelligence",
+    venue: "Ministry of Communication & Digital Affairs",
+    stats: "14 National Ministries Partnered"
+  }
+};
+
 export default function BusinessGroupSection({ navigateTo }) {
+  const [activeUnitId, setActiveUnitId] = useState("enchante");
+
+  const activeUnit = businessGroupData.find((u) => u.id === activeUnitId) || businessGroupData[0];
+  const activeVisual = visualMap[activeUnit.code] || visualMap.ENCHANTE;
+  const ActiveIcon = iconMap[activeUnit.code] || ShieldCheck;
+
   const handleNav = (anchorId) => {
     if (navigateTo) {
       navigateTo("/business-group");
-      // Optional smooth scroll after page transition
       setTimeout(() => {
         const el = document.getElementById(anchorId);
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -27,8 +62,9 @@ export default function BusinessGroupSection({ navigateTo }) {
 
   return (
     <section className="py-20 sm:py-28 bg-[#071731] border-b border-white/10 relative overflow-hidden">
-      {/* Subtle background ambient line */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C8102E]/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient background glow */}
+      <div className="absolute top-1/3 -right-24 w-96 h-96 bg-[#C8102E]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#0E2552]/30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
         
@@ -37,114 +73,194 @@ export default function BusinessGroupSection({ navigateTo }) {
           <div className="space-y-4 max-w-3xl">
             <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] tracking-wider uppercase font-semibold">
               <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-              <span>TSA BUSINESS GROUP &amp; SUBSIDIARIES</span>
+              <span>TSA BUSINESS GROUP &amp; OPERATING SUBSIDIARIES</span>
             </div>
 
-            <h2 className="font-heading text-2xl sm:text-4xl lg:text-[42px] font-semibold text-white tracking-tight leading-tight">
+            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.1]">
               Four Specialized Entities. <br />
-              <span className="text-slate-300 font-normal">One Integrated Strategic Ecosystem.</span>
+              <span className="font-editorial italic font-normal text-slate-200">
+                One Integrated Strategic Ecosystem.
+              </span>
             </h2>
 
             <p className="font-sans text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-              Operating under the unified executive governance of PT Tricatha Sempiternal Asia at The City Tower in Central Jakarta, our business group delivers seamless multi-sector capability spanning haute protocol, cinema-grade broadcasting, civic public affairs, and state regulatory intelligence.
+              Operating under the unified executive governance of PT Tricatha Sempiternal Asia at The City Tower in Central Jakarta, our business group spans haute diplomatic protocol, 4K cinema broadcasting, civic public affairs, and state regulatory intelligence.
             </p>
           </div>
 
           <button
             onClick={handleFullGroup}
-            className="btn-editorial-red shrink-0 self-start lg:self-auto cursor-pointer"
+            className="btn-editorial-red shrink-0 self-start lg:self-auto cursor-pointer flex items-center gap-2"
           >
-            <span>Explore Business Group</span>
+            <span>Explore All Entities</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* 4 Cards Grid - ENCHANTE, DNA STUDIO, GWI, GOADV */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Interactive Practice Selector Strip (Tabs) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
           {businessGroupData.map((unit) => {
+            const isSelected = unit.id === activeUnitId;
             const Icon = iconMap[unit.code] || ShieldCheck;
             return (
-              <div
+              <button
                 key={unit.id}
-                className="bg-[#0A1F44] border border-white/10 rounded p-6 sm:p-7 flex flex-col justify-between hover:border-white/30 transition-all duration-200 group"
+                onClick={() => setActiveUnitId(unit.id)}
+                className={`p-4 sm:p-5 text-left rounded border transition-all duration-200 cursor-pointer flex items-center justify-between ${
+                  isSelected
+                    ? "bg-[#0E2552] border-[#C8102E] text-white shadow-lg"
+                    : "bg-[#0A1F44] border-white/10 text-slate-300 hover:border-white/25 hover:text-white"
+                }`}
               >
-                <div className="space-y-4">
-                  {/* Top Bar with Icon & Code Badge */}
-                  <div className="flex items-center justify-between">
-                    <span className="px-2.5 py-1 bg-[#071731] border border-white/15 text-[#C8102E] font-mono text-xs font-bold rounded tracking-wider">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className={`text-[10px] font-mono font-bold tracking-wider px-2 py-0.5 rounded ${
+                      isSelected ? "bg-[#C8102E] text-white" : "bg-[#071731] text-[#C8102E]"
+                    }`}>
                       {unit.code}
                     </span>
-                    <div className="w-9 h-9 rounded bg-[#071731] border border-white/10 flex items-center justify-center text-slate-300 group-hover:text-white group-hover:border-[#C8102E]/50 transition-colors">
-                      <Icon className="w-4 h-4" />
-                    </div>
                   </div>
-
-                  {/* Title & Tagline */}
-                  <div>
-                    <h3 className="font-heading text-xl font-bold text-white tracking-tight group-hover:text-slate-100 transition-colors">
-                      {unit.name}
-                    </h3>
-                    <p className="font-mono text-xs text-slate-400 mt-1">
-                      {unit.tagline}
-                    </p>
+                  <div className="font-heading font-bold text-sm sm:text-base text-white">
+                    {unit.name}
                   </div>
-
-                  {/* Description */}
-                  <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                    {unit.description}
-                  </p>
-
-                  {/* Focus Areas List */}
-                  <div className="pt-2 border-t border-white/10 space-y-1.5 font-sans text-xs text-slate-300">
-                    {unit.focusAreas.slice(0, 3).map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E] shrink-0 mt-1.5" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
+                  <div className="text-[11px] font-mono text-slate-400 truncate max-w-[170px]">
+                    {unit.badge}
                   </div>
                 </div>
 
-                {/* Bottom Metrics & Deep Link */}
-                <div className="pt-6 mt-6 border-t border-white/10 space-y-4">
-                  <div className="grid grid-cols-2 gap-2 font-mono text-xs">
-                    {unit.metrics.map((m, idx) => (
-                      <div key={idx} className="p-2.5 bg-[#071731] rounded border border-white/10">
-                        <span className="text-slate-400 block text-[9px] uppercase tracking-wider">
-                          {m.label}
-                        </span>
-                        <span className="text-white font-semibold text-xs sm:text-sm mt-0.5 block">
-                          {m.value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => handleNav(unit.anchorId)}
-                    className="w-full py-2 px-3 rounded bg-white/5 hover:bg-[#C8102E] text-white border border-white/15 hover:border-[#C8102E] text-xs font-mono font-medium transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-                  >
-                    <span>View {unit.code} Practice</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                <div className={`w-8 h-8 rounded flex items-center justify-center shrink-0 transition-colors ${
+                  isSelected ? "bg-[#C8102E] text-white" : "bg-[#071731] text-slate-400"
+                }`}>
+                  <Icon className="w-4 h-4" />
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
 
-        {/* Integrated Ecosystem Footnote */}
-        <div className="mt-12 p-6 bg-[#0A1F44] rounded border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono text-xs text-slate-300">
+        {/* Interactive Practice Dossier Showcase (Active Entity) */}
+        <div className="bg-[#0A1F44] border border-white/15 rounded p-6 sm:p-10 lg:p-12 shadow-2xl relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            
+            {/* Left Content Column (7 cols) */}
+            <div className="lg:col-span-7 space-y-6">
+              
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="px-3 py-1 bg-[#071731] border border-white/15 text-[#C8102E] font-mono text-xs font-bold rounded tracking-wider">
+                  SUBSIDIARY ENTITY · {activeUnit.code}
+                </span>
+                <span className="text-white/20">/</span>
+                <span className="font-mono text-xs text-slate-400">THE CITY TOWER JAKARTA</span>
+              </div>
+
+              <div>
+                <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+                  {activeUnit.name}
+                </h3>
+                <p className="font-editorial italic text-base sm:text-lg text-slate-200 mt-1">
+                  {activeUnit.fullName}
+                </p>
+              </div>
+
+              <div className="p-4 bg-[#071731] rounded border-l-4 border-[#C8102E] text-sm text-slate-200 leading-relaxed">
+                {activeUnit.description}
+              </div>
+
+              {/* Core Practice Focus Areas */}
+              <div className="space-y-2 pt-2">
+                <span className="font-mono text-xs text-slate-400 uppercase tracking-wider block">
+                  CORE PRACTICE DISCIPLINES:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-200">
+                  {activeUnit.focusAreas.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Verified Metrics Row */}
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-6 font-mono text-xs">
+                {activeUnit.metrics.map((m, idx) => (
+                  <div key={idx} className="p-3 bg-[#071731] rounded border border-white/10 min-w-[140px]">
+                    <span className="text-slate-400 block text-[10px] uppercase tracking-wider">
+                      {m.label}
+                    </span>
+                    <span className="text-white text-base sm:text-lg font-bold mt-0.5 block">
+                      {m.value}
+                    </span>
+                  </div>
+                ))}
+
+                <button
+                  onClick={() => handleNav(activeUnit.anchorId)}
+                  className="btn-editorial-red text-xs py-2.5 px-5 ml-auto cursor-pointer flex items-center gap-1.5"
+                >
+                  <span>Commission {activeUnit.code}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+
+            </div>
+
+            {/* Right Visual Column (5 cols) */}
+            <div className="lg:col-span-5">
+              <div className="relative rounded p-1.5 bg-[#071731] border border-white/15 shadow-xl">
+                {/* Crosshairs */}
+                <span className="absolute -top-1 -left-1 text-white/40 font-mono text-[9px]">+</span>
+                <span className="absolute -top-1 -right-1 text-white/40 font-mono text-[9px]">+</span>
+                <span className="absolute -bottom-1 -left-1 text-white/40 font-mono text-[9px]">+</span>
+                <span className="absolute -bottom-1 -right-1 text-white/40 font-mono text-[9px]">+</span>
+
+                <div className="editorial-image-frame rounded aspect-[4/3] sm:aspect-[4/3] lg:aspect-[5/4] bg-[#050F22] overflow-hidden relative">
+                  <img
+                    src={activeVisual.photo}
+                    alt={`${activeUnit.name} Field Provenance`}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050F22] via-transparent to-transparent opacity-85 pointer-events-none" />
+
+                  <div className="absolute bottom-4 left-4 right-4 p-4 bg-[#071731]/95 backdrop-blur-xs rounded border border-white/15 text-white text-xs space-y-1">
+                    <div className="flex items-center justify-between font-mono text-[10px] text-[#C8102E] font-semibold uppercase">
+                      <span>PRACTICE BENCHMARK</span>
+                      <span className="text-slate-400">{activeVisual.venue}</span>
+                    </div>
+                    <div className="font-heading font-bold text-sm text-white">
+                      {activeVisual.caption}
+                    </div>
+                    <div className="text-[11px] text-slate-300 font-mono">
+                      {activeVisual.stats}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Integrated Holding Governance Footnote */}
+        <div className="mt-10 p-5 bg-[#0A1F44] rounded border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono text-xs text-slate-300">
           <div className="flex items-center gap-3">
-            <span className="px-2 py-0.5 bg-[#C8102E] text-white font-bold rounded text-[10px]">
+            <span className="px-2.5 py-0.5 bg-[#C8102E] text-white font-bold rounded text-[10px] tracking-wider uppercase">
               HOLDING
             </span>
-            <span>PT TRICATHA SEMPITERNAL ASIA · Executive Holding &amp; Sovereign Advisory</span>
+            <span className="text-white font-semibold">
+              PT TRICATHA SEMPITERNAL ASIA
+            </span>
+            <span className="text-white/20 hidden sm:inline">|</span>
+            <span className="text-slate-400 hidden sm:inline">Executive Holding &amp; Sovereign Strategic Advisory</span>
           </div>
 
-          <div className="text-slate-400 flex items-center gap-2">
-            <span>Corporate Secretariat: The City Tower, 12th Floor, Jakarta</span>
-          </div>
+          <button
+            onClick={handleFullGroup}
+            className="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+          >
+            <span>Review Full Group Charter</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#C8102E]" />
+          </button>
         </div>
 
       </div>

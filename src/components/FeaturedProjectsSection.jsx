@@ -20,7 +20,10 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
               VERIFIED MANDATE ARCHIVE & FIELD CASE STUDIES
             </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
-              Selected Case Records
+              Selected Event Records &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                Field Case Archives.
+              </span>
             </h2>
           </div>
           <p className="font-sans text-sm sm:text-base text-slate-300 max-w-md leading-relaxed">

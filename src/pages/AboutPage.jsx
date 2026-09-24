@@ -82,8 +82,10 @@ export default function AboutPage({ navigateTo }) {
               </div>
               
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
-                About <br />
-                <span className="text-slate-300 font-normal">Tricatha Sempiternal Asia.</span>
+                Institutional Charter &amp; <br />
+                <span className="font-editorial italic font-normal text-slate-200">
+                  Tricatha Sempiternal Asia.
+                </span>
               </h1>
               <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl pt-1">
                 Headquartered at The City Tower in Central Jakarta, PT Tricatha Sempiternal Asia unites high-level event organization, sovereign protocol, business conferences, trade exhibitions, and multimedia broadcast into an integrated operational practice.
