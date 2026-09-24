@@ -31,34 +31,39 @@ export default function AboutPage({ navigateTo }) {
 
   const businessUnits = [
     {
-      code: "TSA",
-      name: "Tricatha Sempiternal Asia",
-      category: "Strategic Advisory & Corporate Management",
-      desc: "Executive counsel for chairpersons, sovereign wealth funds, and ministerial secretariats on investment covenants and governance."
+      code: "ENCHANTE",
+      name: "ENCHANTE",
+      category: "Haute Protocol & Spatial Scenography",
+      desc: "Bilateral head-of-state banquets, ambassadorial galas, luxury brand unveilings, and precision diplomatic precedence seating.",
+      anchorId: "unit-enchante"
+    },
+    {
+      code: "DNA STUDIO",
+      name: "DNA STUDIO",
+      category: "Creative Broadcast & 4K Cinema Production Suite",
+      desc: "Dedicated 4K multi-camera cinema facility at The City Tower producing leader dialogues, corporate podcasts, and syndicated live feeds.",
+      anchorId: "unit-dna"
     },
     {
       code: "GWI",
-      name: "Gema Waskita Interaktifa",
-      category: "Communications & Public Engagement",
-      desc: "Integrated public affairs, crisis communications, and large-scale civic cultural assemblies reaching millions of viewers."
+      name: "GWI (Gema Waskita Interaktifa)",
+      category: "Public Affairs & Civic Activations",
+      desc: "Integrated public affairs, crisis communications, and large-scale civic cultural assemblies reaching millions of live and digital viewers.",
+      anchorId: "unit-gwi"
     },
     {
-      code: "GOV",
-      name: "GOVADV Policy Intelligence",
-      category: "Government Relations & Regulatory Policy",
-      desc: "Cross-ministry liaison, regulatory compliance audits, and public-private partnership (PPP) frameworks."
+      code: "GOADV",
+      name: "GOADV",
+      category: "Government Relations & Policy Intelligence",
+      desc: "Cross-ministry liaison, regulatory compliance audits, and public-private partnership (PPP) frameworks.",
+      anchorId: "unit-govadv"
     },
     {
-      code: "ENC",
-      name: "Enchante Experiential",
-      category: "Haute Protocol & Spatial Scenography",
-      desc: "Bilateral head-of-state banquets, ambassadorial galas, and precision diplomatic precedence seating."
-    },
-    {
-      code: "DNA",
-      name: "DNA STUDIO Broadcast",
-      category: "Creative Broadcast & Multimedia Suites",
-      desc: "Dedicated 4K multi-camera cinema facility at The City Tower producing leader dialogues and syndicated live feeds."
+      code: "TSA HOLDING",
+      name: "Tricatha Sempiternal Asia",
+      category: "Strategic Advisory & Holding Governance",
+      desc: "Executive counsel for corporate chairpersons, sovereign wealth funds, and ministerial secretariats on investment covenants and governance.",
+      anchorId: "unit-tsa"
     }
   ];
 
@@ -165,10 +170,10 @@ export default function AboutPage({ navigateTo }) {
             </div>
 
             <button
-              onClick={() => (navigateTo ? navigateTo("/contact") : null)}
-              className="text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors"
+              onClick={() => (navigateTo ? navigateTo("/business-group") : null)}
+              className="text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
             >
-              <span>Consult Group Directorate</span>
+              <span>Explore Full Business Group</span>
               <ArrowRight className="w-4 h-4 text-[#C8102E]" />
             </button>
           </div>
@@ -177,7 +182,7 @@ export default function AboutPage({ navigateTo }) {
             {businessUnits.map((unit) => (
               <div
                 key={unit.code}
-                className="p-6 sm:p-7 bg-[#071731] border border-white/10 rounded space-y-3 hover:border-white/25 transition-colors flex flex-col justify-between"
+                className="p-6 sm:p-7 bg-[#071731] border border-white/10 rounded space-y-4 hover:border-white/25 transition-colors flex flex-col justify-between"
               >
                 <div className="space-y-2">
                   <span className="px-2.5 py-0.5 bg-[#0A1F44] border border-white/15 text-[#C8102E] font-mono text-xs font-semibold rounded inline-block">
@@ -193,6 +198,14 @@ export default function AboutPage({ navigateTo }) {
                     {unit.desc}
                   </p>
                 </div>
+
+                <button
+                  onClick={() => (navigateTo ? navigateTo("/business-group") : null)}
+                  className="pt-3 border-t border-white/10 text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1 text-left cursor-pointer"
+                >
+                  <span>Practice Overview</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                </button>
               </div>
             ))}
           </div>

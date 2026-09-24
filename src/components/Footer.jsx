@@ -42,6 +42,7 @@ export default function Footer({ navigateTo }) {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About TSA", path: "/about" },
+    { name: "Business Group", path: "/business-group" },
     { name: "Events & Plenaries", path: "/events" },
     { name: "Fellowship & Internship", path: "/internship" },
     { name: "News & Dispatches", path: "/news" },
@@ -85,6 +86,29 @@ export default function Footer({ navigateTo }) {
             <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
               PT Tricatha Sempiternal Asia is a premier event organizer and business event company in Jakarta. We deliver corporate events, exhibitions, conferences, government-related events, business networking, and strategic programs across Southeast Asia.
             </p>
+
+            {/* Business Group Entities Strip */}
+            <div className="pt-3 border-t border-white/10 space-y-2">
+              <span className="text-[10px] font-mono text-[#C8102E] tracking-wider uppercase font-semibold block">
+                TSA Business Group Entities:
+              </span>
+              <div className="flex flex-wrap gap-1.5 font-mono text-xs">
+                {[
+                  { name: "ENCHANTE", anchor: "unit-enchante" },
+                  { name: "DNA STUDIO", anchor: "unit-dna" },
+                  { name: "GWI", anchor: "unit-gwi" },
+                  { name: "GOADV", anchor: "unit-govadv" }
+                ].map((item) => (
+                  <button
+                    key={item.name}
+                    onClick={() => handleNav("/business-group")}
+                    className="px-2.5 py-1 rounded bg-[#071731] hover:bg-[#C8102E] text-white border border-white/15 text-[11px] transition-colors cursor-pointer"
+                  >
+                    {item.name}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             <div className="flex items-center gap-3 pt-2">
               <a

@@ -2,6 +2,7 @@ import React from "react";
 import EditorialHero from "../components/EditorialHero";
 import WhatWeDoIntro from "../components/WhatWeDoIntro";
 import WhyTSASection from "../components/WhyTSASection";
+import BusinessGroupSection from "../components/BusinessGroupSection";
 import ImpactNumbers from "../components/ImpactNumbers";
 import FeaturedProjectsSection from "../components/FeaturedProjectsSection";
 import EditorialCTA from "../components/EditorialCTA";
@@ -22,7 +23,10 @@ export default function HomePage({ navigateTo, onOpenWorkModal }) {
       {/* 3. Key Positioning & Institutional Rigor */}
       <WhyTSASection navigateTo={navigateTo} />
 
-      {/* 4. Operational Scale & Verified Venue Provenance */}
+      {/* 4. TSA Business Group: ENCHANTE, DNA STUDIO, GWI, GOADV */}
+      <BusinessGroupSection navigateTo={navigateTo} />
+
+      {/* 5. Operational Scale & Verified Venue Provenance */}
       <ImpactNumbers />
 
       {/* 5. Selected Events & Highlighted Case Records */}

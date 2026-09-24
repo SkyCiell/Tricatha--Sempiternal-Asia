@@ -6,6 +6,7 @@ import logoTSA from "../assets/LogoTSAA.jpeg";
 const NAV_LINKS = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
+  { name: "Business Group", path: "/business-group" },
   { name: "Events", path: "/events" },
   { name: "Internship", path: "/internship" },
   { name: "News", path: "/news" },

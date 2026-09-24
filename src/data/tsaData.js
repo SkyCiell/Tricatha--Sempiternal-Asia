@@ -505,3 +505,87 @@ export const leadershipTeam = [
   }
 ];
 
+// TSA Business Group - 4 Operational Entities under PT Tricatha Sempiternal Asia
+export const businessGroupData = [
+  {
+    id: "enchante",
+    code: "ENCHANTE",
+    name: "ENCHANTE",
+    fullName: "Enchante Experiential & Haute Protocol",
+    tagline: "Haute Protocol, Diplomatic Banquets & Spatial Scenography",
+    badge: "Haute Protocol",
+    description: "Specialized in bilateral head-of-state diplomatic banquets, ambassadorial galas, luxury brand unveilings, and precision ceremonial precedence. Enchante transforms formal gatherings into unforgettable institutional milestones.",
+    focusAreas: [
+      "Bilateral Head-of-State Conferences",
+      "Diplomatic Gala & State Banquets",
+      "Haute Spatial Scenography & Architecture",
+      "VVIP Seating Etiquette & Motorcade Marshaling"
+    ],
+    metrics: [
+      { label: "State Banquets", value: "12+" },
+      { label: "Precedence Compliance", value: "100%" }
+    ],
+    anchorId: "unit-enchante"
+  },
+  {
+    id: "dna-studio",
+    code: "DNA STUDIO",
+    name: "DNA STUDIO",
+    fullName: "DNA STUDIO Creative Broadcast & Cinema",
+    tagline: "Creative Broadcast & 4K Cinema Production Suite",
+    badge: "Cinema & Broadcast",
+    description: "Headquartered at The City Tower in Central Jakarta, DNA STUDIO is TSA's dedicated 4K multi-camera broadcast facility. Producing executive leader dialogues, high-production corporate podcasts, and syndicated plenary live feeds.",
+    focusAreas: [
+      "Turnkey 4K Cinema Multi-Cam Live Feeds",
+      "Executive Thought Leadership Podcasts",
+      "Simultaneous Interpretation Audio Routing",
+      "Syndicated International Broadcast Distribution"
+    ],
+    metrics: [
+      { label: "Syndicated Views", value: "2.4M+" },
+      { label: "Studio Hardware", value: "4K Cinema Rig" }
+    ],
+    anchorId: "unit-dna"
+  },
+  {
+    id: "gwi",
+    code: "GWI",
+    name: "GWI",
+    fullName: "Gema Waskita Interaktifa",
+    tagline: "Public Affairs, Strategic Communications & Civic Activation",
+    badge: "Public Affairs & Civic Scale",
+    description: "Operating at the frontier of public sector communications, civic sentiment architecture, and high-capacity cultural festivals. Combining digital projection mapping with crisis narrative defense across nationwide campaigns.",
+    focusAreas: [
+      "Strategic Public Affairs Orchestration",
+      "Corporate Crisis & Reputation Defense",
+      "High-Capacity Cultural Scenography",
+      "National Digital Narrative Amplification"
+    ],
+    metrics: [
+      { label: "In-Person Scale", value: "45,000+" },
+      { label: "Digital Reach", value: "1.2M Viewers" }
+    ],
+    anchorId: "unit-gwi"
+  },
+  {
+    id: "goadv",
+    code: "GOADV",
+    name: "GOADV",
+    fullName: "GOADV Policy Intelligence & Regulatory Advisory",
+    tagline: "Government Relations, Policy Intelligence & Regulatory Compliance",
+    badge: "Government Relations",
+    description: "Bridges private enterprise and state regulatory authorities. Operating under strict protocol alignment, GOADV assists domestic and multinational institutions in navigating cross-ministry compliance and public-private partnerships (PPP).",
+    focusAreas: [
+      "Cross-Ministry Liaison & Regulatory Audits",
+      "Public-Private Sector Alliance Building",
+      "Digital Governance & Data Residency Frameworks",
+      "Bilateral Business Diplomacy Accords"
+    ],
+    metrics: [
+      { label: "Partnered Ministries", value: "14+" },
+      { label: "Approval Latency", value: "-68% Delay" }
+    ],
+    anchorId: "unit-govadv"
+  }
+];
+
