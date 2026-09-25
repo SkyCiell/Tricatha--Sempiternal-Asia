@@ -141,10 +141,7 @@ export default function ServiceModal({ service, onClose, onSelectContact }) {
           </div>
 
           {/* Footer */}
-          <div className="p-3.5 sm:p-4 border-t border-white/15 bg-[#071A33] flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="text-[11px] font-mono text-slate-400">
-              PT TRICATHA SEMPITERNAL ASIA · THE CITY TOWER
-            </div>
+          <div className="p-3.5 sm:p-4 border-t border-white/15 bg-[#071A33] flex items-center justify-end">
             <button
               onClick={() => {
                 onClose();
