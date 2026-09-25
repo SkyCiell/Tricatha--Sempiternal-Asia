@@ -50,6 +50,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 <div
                   key={item.id}
                   onClick={() => setActiveId(item.id)}
+                  onMouseEnter={() => setActiveId(item.id)}
                   className={`group py-5 px-5 -mx-4 sm:-mx-5 transition-all duration-150 cursor-pointer rounded border-l-2 ${
                     isSelected
                       ? "bg-[#0E2552] border-[#C8102E] text-white"
@@ -84,28 +85,26 @@ export default function WhatWeDoIntro({ navigateTo }) {
             })}
           </motion.div>
 
-          {/* Right Column: Complete Practice Dossier & Specifications (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 lg:sticky lg:top-24 space-y-5"
-          >
-            {/* Primary Practice Blueprint Card */}
-            <div className="bg-[#0E2552] border border-white/15 rounded p-6 sm:p-7 shadow-2xl space-y-5">
-              
+          {/* Right Column: Complete Practice Dossier & Specifications (5 cols - Sticky Follow) */}
+          <div className="lg:col-span-5 lg:sticky lg:top-24 self-start space-y-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="bg-[#0E2552] border border-white/15 rounded p-5 sm:p-6 shadow-2xl space-y-4"
+            >
               {/* Visual Preview Frame */}
               <div className="editorial-image-frame rounded aspect-[16/10] bg-[#050F22] overflow-hidden relative shadow-lg">
                 <img
                   src={activeCapability.image}
                   alt={activeCapability.title}
                   key={activeCapability.id}
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-102"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-102"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent opacity-90 pointer-events-none" />
 
-                <div className="absolute bottom-3.5 left-4 right-4 text-white">
+                <div className="absolute bottom-3 left-4 right-4 text-white">
                   <div className="font-heading font-bold text-base sm:text-lg leading-snug">
                     {activeCapability.title}
                   </div>
@@ -116,8 +115,8 @@ export default function WhatWeDoIntro({ navigateTo }) {
               </div>
 
               {/* Scope & Description */}
-              <div className="space-y-1.5">
-                <div className="font-heading text-sm font-bold text-white">
+              <div className="space-y-1">
+                <div className="font-heading text-xs font-bold text-slate-300 uppercase tracking-wider">
                   Practice Scope &amp; Mandate
                 </div>
                 <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed">
@@ -126,34 +125,22 @@ export default function WhatWeDoIntro({ navigateTo }) {
               </div>
 
               {/* Key Deliverables & Verified Outputs */}
-              <div className="space-y-3 pt-3 border-t border-white/10">
-                <div className="font-mono text-xs font-semibold text-[#C8102E] tracking-wider uppercase">
+              <div className="space-y-2 pt-2.5 border-t border-white/10">
+                <div className="text-[11px] font-semibold text-[#C8102E] tracking-wider uppercase">
                   Verified Deliverables &amp; Outputs
                 </div>
-                <div className="space-y-2 text-xs text-slate-200">
+                <div className="space-y-1.5 text-xs text-slate-200">
                   {activeCapability.deliverables.map((deliv) => (
-                    <div key={deliv} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
+                    <div key={deliv} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E] shrink-0 mt-0.5" />
                       <span className="font-sans leading-snug">{deliv}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Structured Operational Standards */}
-              <div className="grid grid-cols-2 gap-2.5 pt-3 border-t border-white/10 font-mono text-xs">
-                <div className="p-2.5 bg-[#071731] rounded border border-white/10">
-                  <span className="text-slate-400 block text-[10px] uppercase">Governance Tier</span>
-                  <span className="text-white font-semibold mt-0.5 block">Protocol Cleared</span>
-                </div>
-                <div className="p-2.5 bg-[#071731] rounded border border-white/10">
-                  <span className="text-slate-400 block text-[10px] uppercase">Production Lead</span>
-                  <span className="text-white font-semibold mt-0.5 block">Central Jakarta HQ</span>
-                </div>
-              </div>
-
-              {/* Direct Action Button */}
-              <div className="pt-2">
+              {/* Direct Action Button & Trust Assurance */}
+              <div className="pt-2 border-t border-white/10 space-y-2.5">
                 <button
                   onClick={() => (navigateTo ? navigateTo("/contact") : null)}
                   className="w-full btn-editorial-red text-xs py-3 px-5 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
@@ -161,21 +148,13 @@ export default function WhatWeDoIntro({ navigateTo }) {
                   <span>Commission This Discipline</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
+                <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#C8102E]" />
+                  <span>Protocol Cleared · HSSE Certified · Strict NDA</span>
+                </div>
               </div>
-
-            </div>
-
-            {/* Secondary Operational Assurance Card */}
-            <div className="p-5 bg-[#071731] border border-white/10 rounded space-y-2 text-xs font-mono text-slate-300">
-              <div className="flex items-center gap-2 text-white font-semibold">
-                <ShieldCheck className="w-4 h-4 text-[#C8102E]" />
-                <span>Operational Assurance Covenant</span>
-              </div>
-              <p className="font-sans text-xs text-slate-300 leading-relaxed font-normal">
-                Every event mandate executed by TSA operates under strict bilateral non-disclosure agreements, certified HSSE protocols, and zero-latency technical command.
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
         </div>
 
