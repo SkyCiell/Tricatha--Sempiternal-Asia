@@ -17,9 +17,6 @@ export default function FAQSection() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-white/10 gap-6">
           <div className="space-y-3 max-w-2xl">
-            <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
-              ENGAGEMENT PARAMETERS & PROTOCOLS
-            </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
               Frequently Asked Questions
             </h2>

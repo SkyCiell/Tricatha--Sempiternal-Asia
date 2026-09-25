@@ -16,9 +16,6 @@ export default function ServicesDirectory({ onOpenWorkModal }) {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
           <div className="space-y-3 max-w-2xl">
-            <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
-              INSTITUTIONAL PRACTICE STRUCTURE
-            </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
               Practice Areas &amp; Capabilities
             </h2>
@@ -36,13 +33,6 @@ export default function ServicesDirectory({ onOpenWorkModal }) {
               className="p-7 bg-[#0E2552] rounded border border-white/10 flex flex-col justify-between space-y-6 hover:border-white/20 transition-colors"
             >
               <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-white/10 pb-3">
-                  <span className="font-mono text-[10px] font-semibold text-[#C8102E] tracking-wider uppercase">
-                    PRACTICE DISCIPLINE
-                  </span>
-                  <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                </div>
-
                 <h3 className="font-heading text-xl font-bold text-white">
                   {cat.categoryTitle}
                 </h3>

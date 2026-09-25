@@ -39,9 +39,6 @@ export default function WhyTSASection() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pb-12 border-b border-white/10"
         >
           <div className="lg:col-span-8 space-y-3">
-            <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
-              INSTITUTIONAL CREDIBILITY & OPERATIONAL RIGOR
-            </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
               Why Sovereign &amp; Corporate Entities <br />
               <span className="font-editorial italic font-normal text-slate-200">
@@ -76,10 +73,6 @@ export default function WhyTSASection() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/30 to-transparent opacity-90 pointer-events-none" />
               
               <div className="absolute bottom-5 left-5 right-5 p-5 bg-[#0A1F44]/95 border border-white/15 rounded text-white space-y-2">
-                <div className="flex items-center justify-between border-b border-white/10 pb-1.5 font-mono text-[10px]">
-                  <span className="text-[#C8102E] font-semibold uppercase">PLENARY BENCHMARK</span>
-                  <span className="text-slate-400">THE RITZ-CARLTON JAKARTA</span>
-                </div>
                 <div className="font-heading font-bold text-sm sm:text-base">
                   National Digital Governance Conclave
                 </div>
@@ -90,8 +83,7 @@ export default function WhyTSASection() {
             </div>
 
             {/* Headquarters Governance Note */}
-            <div className="p-5 bg-[#0A1F44] rounded border border-white/10 space-y-2 text-xs font-mono">
-              <div className="text-slate-400 uppercase text-[10px]">HEADQUARTERS &amp; GOVERNANCE</div>
+            <div className="p-5 bg-[#0A1F44] rounded border border-white/10 space-y-2 text-xs">
               <p className="text-slate-200 font-sans leading-relaxed">
                 Operating from The City Tower in Central Jakarta, TSA executes under strict non-disclosure covenants, protocol etiquette precedence, and international HSSE standards.
               </p>
@@ -109,8 +101,7 @@ export default function WhyTSASection() {
             }}
             className="lg:col-span-7 divide-y divide-white/10 border-y border-white/10 flex flex-col justify-between"
           >
-            {INSTITUTIONAL_PILLARS.map((pillar, index) => {
-              const num = String(index + 1).padStart(2, "0");
+            {INSTITUTIONAL_PILLARS.map((pillar) => {
               return (
                 <motion.div
                   key={pillar.title}
@@ -120,16 +111,6 @@ export default function WhyTSASection() {
                   }}
                   className="py-8 space-y-3 group hover:bg-[#0A1F44]/40 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-xs font-bold text-[#C8102E]">
-                      {num}
-                    </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-                    <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider">
-                      {pillar.mandate}
-                    </span>
-                  </div>
-
                   <h3 className="font-heading text-xl sm:text-2xl font-bold text-white tracking-tight">
                     {pillar.title}
                   </h3>

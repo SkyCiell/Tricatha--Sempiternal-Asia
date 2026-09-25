@@ -24,13 +24,26 @@ export default function InternshipPage({ _navigateTo }) {
   });
 
   useEffect(() => {
+    if (!applicationModalOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    if (window.__lenis) {
+      window.__lenis.stop();
+    }
+
     const handleKeyDown = (e) => {
-      if (e.key === "Escape" && applicationModalOpen) {
+      if (e.key === "Escape") {
         setApplicationModalOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      if (window.__lenis) {
+        window.__lenis.start();
+      }
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [applicationModalOpen]);
 
   const handleApplyClick = (roleTitle) => {
@@ -390,13 +403,15 @@ export default function InternshipPage({ _navigateTo }) {
       {/* 5. APPLICATION MODAL */}
       {applicationModalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050F22]/90 backdrop-blur-md"
+          data-lenis-prevent
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050F22]/90 backdrop-blur-md overscroll-contain"
           onClick={() => setApplicationModalOpen(false)}
           role="dialog"
           aria-modal="true"
         >
           <div
-            className="relative max-w-xl w-full bg-[#0A1F44] text-[#F1F5F9] rounded shadow-2xl border border-white/15 p-6 sm:p-8 overflow-y-auto max-h-[90vh]"
+            data-lenis-prevent
+            className="relative max-w-xl w-full bg-[#0A1F44] text-[#F1F5F9] rounded shadow-2xl border border-white/15 p-6 sm:p-8 overflow-y-auto max-h-[90vh] overscroll-contain"
             onClick={(e) => e.stopPropagation()}
           >
             <button

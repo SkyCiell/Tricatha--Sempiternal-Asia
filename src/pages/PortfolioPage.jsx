@@ -35,11 +35,6 @@ export default function PortfolioPage({ navigateTo }) {
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>MANDATE ARCHIVE &amp; CASE STUDIES</span>
-              </div>
-
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
                 Portfolio &amp; <br />
                 <span className="text-slate-300 font-normal">Verified Case Records.</span>
@@ -146,7 +141,7 @@ export default function PortfolioPage({ navigateTo }) {
 
                   <button className="btn-editorial-red w-full flex items-center justify-center gap-2">
                     <Eye className="w-4 h-4" />
-                    <span>Examine Complete Case Dossier</span>
+                    <span>View Project Details</span>
                   </button>
                 </div>
               </div>
@@ -197,7 +192,7 @@ export default function PortfolioPage({ navigateTo }) {
                   <div className="p-6 sm:p-8 pt-0 flex items-center justify-between text-xs font-mono border-t border-white/10 mt-4 pt-4">
                     <span className="text-[#FFFFFF] font-medium">{project.impact}</span>
                     <span className="text-slate-300 font-medium inline-flex items-center gap-1 group-hover:text-white transition-colors">
-                      <span>View Dossier</span>
+                      <span>View Project Details</span>
                       <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
                     </span>
                   </div>
@@ -212,21 +207,18 @@ export default function PortfolioPage({ navigateTo }) {
       {/* 4. Bottom Mandate Invitation */}
       <section className="py-20 bg-[#050F22]">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 text-center space-y-4">
-          <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
-            CENTRAL JAKARTA LEDGER
-          </span>
           <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
-            Commission a Turnkey Case Mandate
+            Commission a Turnkey Project
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
-            Our directors evaluate spatial engineering, protocol requirements, and digital infrastructure for prospective state and enterprise summits.
+            Our team evaluates spatial engineering, protocol requirements, and digital infrastructure for prospective state and enterprise summits.
           </p>
           <div className="pt-2">
             <button
               onClick={handleInquiry}
               className="btn-editorial-red inline-flex items-center gap-2"
             >
-              <span>Request Detailed Case Dossiers</span>
+              <span>Discuss Your Project</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>

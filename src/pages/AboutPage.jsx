@@ -76,11 +76,6 @@ export default function AboutPage({ navigateTo }) {
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] tracking-wider uppercase font-semibold">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>INSTITUTIONAL CHARTER &amp; COMPANY PROFILE</span>
-              </div>
-              
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
                 Institutional Charter &amp; <br />
                 <span className="font-editorial italic font-normal text-slate-200">
@@ -111,9 +106,6 @@ export default function AboutPage({ navigateTo }) {
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           
           <div className="max-w-2xl mb-14 space-y-3">
-            <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
-              OPERATIONAL PRINCIPLES
-            </span>
             <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
               Foundational Values of the Practice
             </h2>
@@ -160,9 +152,6 @@ export default function AboutPage({ navigateTo }) {
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 pb-6 border-b border-white/10">
             <div className="space-y-3 max-w-2xl">
-              <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
-                BUSINESS GROUP ECOSYSTEM
-              </span>
               <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
                 Specialized Practice Units
               </h2>
@@ -187,9 +176,6 @@ export default function AboutPage({ navigateTo }) {
                 className="p-6 sm:p-7 bg-[#071731] border border-white/10 rounded space-y-4 hover:border-white/25 transition-colors flex flex-col justify-between"
               >
                 <div className="space-y-2">
-                  <span className="px-2.5 py-0.5 bg-[#0A1F44] border border-white/15 text-[#C8102E] font-mono text-xs font-semibold rounded inline-block">
-                    {unit.code}
-                  </span>
                   <h3 className="font-heading text-lg font-medium text-white">
                     {unit.name}
                   </h3>
@@ -221,9 +207,6 @@ export default function AboutPage({ navigateTo }) {
       {/* 6. Closing Consultation Strip */}
       <section className="py-20 bg-[#050F22] border-t border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 text-center space-y-4">
-          <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
-            THE CITY TOWER · CENTRAL JAKARTA
-          </span>
           <h2 className="font-heading text-2xl sm:text-3xl font-medium text-white tracking-tight">
             Consult with Our Executive Practice Directors
           </h2>

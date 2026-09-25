@@ -13,13 +13,22 @@ export default function EventDetailPage({ slug, navigateTo }) {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   useEffect(() => {
+    if (!selectedPhoto) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    if (window.__lenis) window.__lenis.stop();
+
     const handleKeyDown = (e) => {
-      if (e.key === "Escape" && selectedPhoto) {
+      if (e.key === "Escape") {
         setSelectedPhoto(null);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      if (window.__lenis) window.__lenis.start();
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [selectedPhoto]);
 
   // Retrieve event by slug or fallback to the first event
@@ -201,18 +210,12 @@ export default function EventDetailPage({ slug, navigateTo }) {
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-10 sm:pt-14">
         <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-white/10 pb-4">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
-              <span className="text-xs font-mono tracking-widest text-[#C8102E] font-medium uppercase">
-                Field Documentation
-              </span>
-            </div>
             <h2 className="text-xl sm:text-2xl font-medium font-heading text-white tracking-tight">
-              Photographic Records
+              Event Gallery
             </h2>
           </div>
           <span className="text-xs font-mono text-slate-400">
-            {galleryImages.length} High-Resolution Photographic Records
+            {galleryImages.length} High-Resolution Photos
           </span>
         </div>
 
@@ -250,12 +253,8 @@ export default function EventDetailPage({ slug, navigateTo }) {
             {/* Left Column: Narrative Summary */}
             <div className="lg:col-span-8 space-y-6">
               <div>
-                <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#C8102E] font-medium uppercase mb-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
-                  <span>Case Overview</span>
-                </div>
                 <h3 className="text-xl sm:text-2xl font-medium font-heading text-white tracking-tight mb-4">
-                  Executive Brief &amp; Strategic Context
+                  Overview &amp; Context
                 </h3>
                 <p className="text-base text-slate-300 leading-relaxed font-normal">
                   {event.description}

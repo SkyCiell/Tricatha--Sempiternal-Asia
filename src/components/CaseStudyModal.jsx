@@ -4,20 +4,35 @@ import { X, MapPin, ArrowRight } from "lucide-react";
 export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
   useEffect(() => {
     if (!project) return;
+
+    // Prevent background scrolling and freeze Lenis
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    if (window.__lenis) {
+      window.__lenis.stop();
+    }
+
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      if (window.__lenis) {
+        window.__lenis.start();
+      }
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [project, onClose]);
 
   if (!project) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 bg-[#050F22]/90 backdrop-blur-md overflow-y-auto"
+      data-lenis-prevent
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[#050F22]/90 backdrop-blur-md overscroll-contain"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -25,10 +40,14 @@ export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
       aria-modal="true"
       aria-labelledby="modal-case-title"
     >
-      <div className="relative w-full max-w-4xl bg-[#0A1F44] text-[#F1F5F9] rounded border border-white/15 shadow-2xl overflow-hidden my-auto">
+      <div 
+        data-lenis-prevent
+        className="relative w-full max-w-4xl bg-[#0A1F44] text-[#F1F5F9] rounded border border-white/15 shadow-2xl overflow-hidden my-auto flex flex-col max-h-[90vh] overscroll-contain"
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-[#071731] border-b border-white/10">
+        <div className="shrink-0 flex items-center justify-between px-6 py-4 bg-[#071731] border-b border-white/10">
           <div className="flex items-center gap-3 text-xs font-sans">
             <span className="px-2.5 py-1 bg-[#C8102E] text-white font-semibold rounded text-[10px] uppercase tracking-wider">
               {project.category}
@@ -46,7 +65,10 @@ export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
         </div>
 
         {/* Modal Body */}
-        <div className="max-h-[78vh] overflow-y-auto p-6 sm:p-8 space-y-6">
+        <div 
+          data-lenis-prevent
+          className="flex-1 overflow-y-auto overscroll-contain p-6 sm:p-8 space-y-6"
+        >
           
           {/* Main Title & Location */}
           <div className="space-y-2">

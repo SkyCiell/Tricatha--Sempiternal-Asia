@@ -15,13 +15,25 @@ export default function WorkTogetherModal({ isOpen, onClose }) {
 
   useEffect(() => {
     if (!isOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    if (window.__lenis) {
+      window.__lenis.stop();
+    }
+
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      if (window.__lenis) {
+        window.__lenis.start();
+      }
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -33,7 +45,8 @@ export default function WorkTogetherModal({ isOpen, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#050F22]/90 backdrop-blur-md overflow-y-auto"
+      data-lenis-prevent
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#050F22]/90 backdrop-blur-md overscroll-contain"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -41,10 +54,14 @@ export default function WorkTogetherModal({ isOpen, onClose }) {
       aria-modal="true"
       aria-labelledby="modal-work-title"
     >
-      <div className="relative w-full max-w-2xl bg-[#0A1F44] text-[#F1F5F9] rounded border border-white/15 shadow-2xl overflow-hidden my-auto">
+      <div 
+        data-lenis-prevent
+        className="relative w-full max-w-2xl bg-[#0A1F44] text-[#F1F5F9] rounded border border-white/15 shadow-2xl overflow-hidden my-auto flex flex-col max-h-[90vh] overscroll-contain"
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-5 bg-[#071731] border-b border-white/10">
+        <div className="shrink-0 flex items-center justify-between px-6 py-5 bg-[#071731] border-b border-white/10">
           <div>
             <span className="text-[11px] font-semibold text-[#C8102E] uppercase tracking-wider block">
               Direct Engagement Mandate
@@ -64,7 +81,7 @@ export default function WorkTogetherModal({ isOpen, onClose }) {
         </div>
 
         {/* Modal Content */}
-        <div className="p-6 sm:p-8 space-y-6 max-h-[80vh] overflow-y-auto">
+        <div data-lenis-prevent className="p-6 sm:p-8 space-y-6 flex-1 overflow-y-auto overscroll-contain">
           {submitted ? (
             <div className="py-10 text-center space-y-4">
               <div className="w-14 h-14 rounded bg-[#071731] border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">

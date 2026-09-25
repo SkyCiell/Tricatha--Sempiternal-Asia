@@ -44,7 +44,6 @@ export default function BusinessGroupSection({ navigateTo }) {
 
   const activeUnit = businessGroupData.find((u) => u.id === activeUnitId) || businessGroupData[0];
   const activeVisual = visualMap[activeUnit.code] || visualMap.ENCHANTE;
-  const ActiveIcon = iconMap[activeUnit.code] || ShieldCheck;
 
   const handleNav = (anchorId) => {
     if (navigateTo) {
@@ -71,11 +70,6 @@ export default function BusinessGroupSection({ navigateTo }) {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14 pb-8 border-b border-white/10">
           <div className="space-y-4 max-w-3xl">
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] tracking-wider uppercase font-semibold">
-              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-              <span>TSA BUSINESS GROUP &amp; OPERATING SUBSIDIARIES</span>
-            </div>
-
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.1]">
               Four Specialized Entities. <br />
               <span className="font-editorial italic font-normal text-slate-200">
@@ -113,13 +107,6 @@ export default function BusinessGroupSection({ navigateTo }) {
                 }`}
               >
                 <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className={`text-[10px] font-mono font-bold tracking-wider px-2 py-0.5 rounded ${
-                      isSelected ? "bg-[#C8102E] text-white" : "bg-[#071731] text-[#C8102E]"
-                    }`}>
-                      {unit.code}
-                    </span>
-                  </div>
                   <div className="font-heading font-bold text-sm sm:text-base text-white">
                     {unit.name}
                   </div>
@@ -145,14 +132,6 @@ export default function BusinessGroupSection({ navigateTo }) {
             {/* Left Content Column (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
               
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="px-3 py-1 bg-[#071731] border border-white/15 text-[#C8102E] font-mono text-xs font-bold rounded tracking-wider">
-                  SUBSIDIARY ENTITY · {activeUnit.code}
-                </span>
-                <span className="text-white/20">/</span>
-                <span className="font-mono text-xs text-slate-400">THE CITY TOWER JAKARTA</span>
-              </div>
-
               <div>
                 <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
                   {activeUnit.name}
@@ -168,9 +147,6 @@ export default function BusinessGroupSection({ navigateTo }) {
 
               {/* Core Practice Focus Areas */}
               <div className="space-y-2 pt-2">
-                <span className="font-mono text-xs text-slate-400 uppercase tracking-wider block">
-                  CORE PRACTICE DISCIPLINES:
-                </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-200">
                   {activeUnit.focusAreas.map((item, idx) => (
                     <div key={idx} className="flex items-start gap-2">
@@ -223,9 +199,8 @@ export default function BusinessGroupSection({ navigateTo }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#050F22] via-transparent to-transparent opacity-85 pointer-events-none" />
 
                   <div className="absolute bottom-4 left-4 right-4 p-4 bg-[#071731]/95 backdrop-blur-xs rounded border border-white/15 text-white text-xs space-y-1">
-                    <div className="flex items-center justify-between font-mono text-[10px] text-[#C8102E] font-semibold uppercase">
-                      <span>PRACTICE BENCHMARK</span>
-                      <span className="text-slate-400">{activeVisual.venue}</span>
+                    <div className="font-mono text-[10px] text-slate-400">
+                      <span>{activeVisual.venue}</span>
                     </div>
                     <div className="font-heading font-bold text-sm text-white">
                       {activeVisual.caption}

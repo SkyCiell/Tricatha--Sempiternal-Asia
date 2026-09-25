@@ -71,11 +71,6 @@ export default function CareersPage({ navigateTo }) {
       {/* 1. Hero Banner - Deep Navy #0A1F44 */}
       <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
         <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 relative z-10">
-          <div className="flex items-center gap-2.5 text-xs font-mono text-[#C8102E] font-medium uppercase tracking-widest mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
-            <span>Join the Mandate · The City Tower Jakarta</span>
-          </div>
-
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl space-y-4">
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[54px] font-medium tracking-tight text-white leading-[1.14]">
@@ -106,10 +101,6 @@ export default function CareersPage({ navigateTo }) {
         <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8">
           <div className="pb-8 border-b border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#C8102E] font-medium uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
-                <span>Active Directives</span>
-              </div>
               <h2 className="font-heading text-2xl sm:text-4xl font-medium tracking-tight text-white">
                 Current Strategic Openings
               </h2>
@@ -183,9 +174,6 @@ export default function CareersPage({ navigateTo }) {
       {/* 4. Fellowship Callout */}
       <section className="py-20 bg-[#050F22]">
         <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 text-center space-y-4">
-          <span className="font-mono text-xs text-[#C8102E] font-medium uppercase tracking-widest block">
-            STUDENTS &amp; RECENT GRADUATES
-          </span>
           <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
             Looking for Fellowship &amp; Internship Opportunities?
           </h2>

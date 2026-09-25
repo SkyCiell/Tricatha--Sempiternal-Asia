@@ -33,13 +33,6 @@ export default function EditorialCTA({ onStartConversation, onExploreWork }) {
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
         <div className="max-w-4xl space-y-8">
           
-          <div className="flex items-center gap-3 text-xs font-mono text-slate-300 tracking-wider uppercase">
-            <span className="w-2 h-2 bg-[#C8102E] shrink-0" />
-            <span className="font-semibold text-white">CENTRAL JAKARTA HEADQUARTERS</span>
-            <span className="text-white/20">/</span>
-            <span className="text-slate-400">THE CITY TOWER · 12TH FLOOR</span>
-          </div>
-
           <div className="space-y-4">
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-bold tracking-tight text-white leading-[1.08]">
               Initiate an Executive Mandate or Event Consultation

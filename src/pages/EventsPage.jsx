@@ -44,35 +44,30 @@ export default function EventsPage({ navigateTo }) {
           
           {/* Left Title & Statement (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
-            <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
-              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-              <span>FIELD DOCUMENTATION ARCHIVE</span>
-            </div>
-
             <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-[1.08]">
-              Field Documentation &amp; <br />
+              Events &amp; <br />
               <span className="font-editorial italic font-normal text-slate-200">
-                Plenary Assemblies.
+                Productions Portfolio.
               </span>
             </h1>
             
             <p className="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
-              A curated photographic record of sovereign conferences, ministerial assemblies, nationwide trade expos, and high-level corporate retreats orchestrated with protocol rigor across Southeast Asia.
+              A curated visual record of conferences, exhibitions, corporate assemblies, and immersive productions orchestrated across Southeast Asia.
             </p>
           </div>
 
           {/* Right Editorial Telemetry (4 cols) */}
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col justify-between items-start lg:items-end gap-5">
             <div className="space-y-1 text-left lg:text-right font-mono text-xs text-slate-400">
-              <div>16 Curated Works in Active Directory</div>
-              <div className="text-white font-semibold">Corridor: Jakarta / ASEAN Plenaries</div>
+              <div>16 Curated Works in Archive</div>
+              <div className="text-white font-semibold">Jakarta &amp; Across Southeast Asia</div>
             </div>
 
             <button
               onClick={handleInquiry}
               className="btn-editorial-red"
             >
-              <span>Inquire Plenary Mandate</span>
+              <span>Inquire Event Production</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>

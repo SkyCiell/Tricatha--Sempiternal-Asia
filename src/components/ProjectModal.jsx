@@ -5,11 +5,23 @@ import { X, CheckCircle2 } from "lucide-react";
 export default function ProjectModal({ project, onClose }) {
   useEffect(() => {
     if (!project) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    if (window.__lenis) {
+      window.__lenis.stop();
+    }
+
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onClose();
     };
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      if (window.__lenis) {
+        window.__lenis.start();
+      }
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [project, onClose]);
 
   if (!project) return null;
@@ -17,7 +29,8 @@ export default function ProjectModal({ project, onClose }) {
   return (
     <AnimatePresence>
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"
+        data-lenis-prevent
+        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 overscroll-contain"
         role="dialog"
         aria-modal="true"
       >
@@ -33,11 +46,12 @@ export default function ProjectModal({ project, onClose }) {
 
         {/* Modal Container */}
         <motion.div
+          data-lenis-prevent
           initial={{ opacity: 0, scale: 0.98, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.98, y: 12 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="relative w-full max-w-3xl sm:max-w-4xl bg-[#0A1F44] text-[#F1F5F9] border border-white/15 shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col rounded"
+          className="relative w-full max-w-3xl sm:max-w-4xl bg-[#0A1F44] text-[#F1F5F9] border border-white/15 shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col rounded overscroll-contain"
         >
           {/* Header Image */}
           <div className="relative h-52 sm:h-72 w-full overflow-hidden shrink-0 bg-[#050F22]">
@@ -58,7 +72,7 @@ export default function ProjectModal({ project, onClose }) {
 
             <div className="absolute bottom-5 left-6 right-6">
               <span className="px-3 py-1 bg-[#C8102E] text-white font-mono text-[10px] uppercase tracking-wider font-semibold rounded">
-                CASE STUDY DOSSIER
+                EVENT CASE STUDY
               </span>
               <h2 className="font-heading text-xl sm:text-3xl font-semibold text-white tracking-tight mt-2 leading-tight">
                 {project.name}
@@ -67,7 +81,7 @@ export default function ProjectModal({ project, onClose }) {
           </div>
 
           {/* Body Content */}
-          <div className="p-6 sm:p-8 space-y-6 overflow-y-auto flex-1 font-sans">
+          <div data-lenis-prevent className="p-6 sm:p-8 space-y-6 overflow-y-auto overscroll-contain flex-1 font-sans">
             {/* Metadata Strip */}
             <div className="p-4 bg-[#071731] rounded border border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-4 font-mono text-xs">
               <div>

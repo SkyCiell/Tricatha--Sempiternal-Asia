@@ -9,9 +9,6 @@ export default function TestimonialsSection() {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
           <div className="space-y-3 max-w-2xl">
-            <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
-              STAKEHOLDER GOVERNANCE RECORDS
-            </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
               Executive Feedback &amp; Review
             </h2>
@@ -29,9 +26,6 @@ export default function TestimonialsSection() {
               className="p-8 bg-[#0E2552] rounded border border-white/10 flex flex-col justify-between space-y-6 hover:border-white/20 transition-colors"
             >
               <div className="space-y-4">
-                <div className="font-mono text-[10px] text-[#C8102E] uppercase tracking-wider font-semibold">
-                  MANDATE: {t.context}
-                </div>
                 
                 <p className="font-sans text-sm sm:text-base text-slate-200 leading-relaxed italic">
                   "{t.quote}"

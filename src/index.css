@@ -37,6 +37,7 @@ html {
 }
 
 body {
+  zoom: 1.1;
   background-color: #071731;
   color: #F1F5F9;
   overflow-x: hidden;
@@ -231,8 +232,8 @@ body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -240,10 +241,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0E2552;
-  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #C8102E;
+}
+
+/* Modal Scroll Isolation */
+[data-lenis-prevent] {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }

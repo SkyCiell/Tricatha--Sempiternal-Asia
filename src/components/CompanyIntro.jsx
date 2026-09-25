@@ -38,10 +38,6 @@ export default function CompanyIntro() {
           {/* Right Column (7 cols): Narrative & Tenets */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>EXECUTIVE PROFILE</span>
-              </div>
               <h2 className="font-heading text-2xl sm:text-4xl lg:text-[40px] font-medium leading-[1.15] tracking-tight text-white">
                 "{companyInfo.introHeadline}"
               </h2>
@@ -88,12 +84,7 @@ export default function CompanyIntro() {
 
         {/* 2. Stats Counter Bar in Deep Navy #0A1F44 */}
         <div className="mt-16 sm:mt-20 bg-[#0A1F44] rounded p-8 sm:p-10 border border-white/10">
-          <div className="text-xs font-mono text-[#C8102E] font-medium uppercase tracking-widest pb-4 border-b border-white/10 flex items-center justify-between">
-            <span>VERIFIED INSTITUTIONAL SCALE</span>
-            <span className="text-slate-400 hidden sm:inline">CENTRAL JAKARTA LEDGER</span>
-          </div>
-
-          <div className="pt-6 grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-white/10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-10 divide-y md:divide-y-0 md:divide-x divide-white/10">
             {companyInfo.statsSummary.map((stat, idx) => (
               <div key={stat.id} className={`${idx !== 0 ? "pt-6 md:pt-0 md:pl-8" : ""} space-y-2`}>
                 <div className="font-heading text-4xl sm:text-5xl font-medium tracking-tight text-white flex items-baseline tabular-nums">

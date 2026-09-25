@@ -9,9 +9,6 @@ export default function EditorialInsights({ onSelectArticle }) {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10">
           <div className="space-y-3 max-w-2xl">
-            <span className="font-mono text-xs font-semibold text-[#C8102E] uppercase tracking-wider block">
-              ANALYSIS & EXECUTIVE BRIEFS
-            </span>
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
               Strategic Insights &amp; Market Dynamics
             </h2>
@@ -37,21 +34,9 @@ export default function EditorialInsights({ onSelectArticle }) {
                     alt={article.title}
                     className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                   />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 bg-[#071731]/95 text-white font-mono text-[10px] font-semibold rounded uppercase tracking-wider">
-                      {article.category}
-                    </span>
-                  </div>
                 </div>
 
                 <div className="p-6 sm:p-7 space-y-3">
-                  {/* Metadata */}
-                  <div className="flex items-center gap-3 font-mono text-xs text-slate-400">
-                    <span>{article.date}</span>
-                    <span>/</span>
-                    <span>{article.readTime}</span>
-                  </div>
-
                   {/* Title */}
                   <h3 className="font-heading text-lg sm:text-xl font-bold text-white group-hover:text-slate-100 transition-colors leading-snug">
                     {article.title}

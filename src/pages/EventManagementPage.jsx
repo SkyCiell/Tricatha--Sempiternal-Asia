@@ -43,11 +43,6 @@ export default function EventManagementPage({ navigateTo }) {
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>INTEGRATED EVENT CAPABILITIES</span>
-              </div>
-
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
                 Services &amp; <br />
                 <span className="text-slate-300 font-normal">Accredited Capabilities.</span>
@@ -167,9 +162,6 @@ export default function EventManagementPage({ navigateTo }) {
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           
           <div className="max-w-3xl mb-12 space-y-4">
-            <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
-              OPERATIONAL FIDELITY
-            </span>
             <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
               Execution Methodology &amp; Quality Governance
             </h2>

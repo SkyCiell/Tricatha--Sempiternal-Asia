@@ -71,11 +71,6 @@ export default function NewsPage({ navigateTo }) {
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>EXECUTIVE DISPATCHES &amp; FIELD BULLETINS</span>
-              </div>
-
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
                 News &amp; <br />
                 <span className="text-slate-300 font-normal">Operational Updates.</span>

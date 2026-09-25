@@ -25,3 +25,5 @@ dist-ssr
 *.mp4
 *.mov
 *.avi
+!public/hero-bg.mp4
+!public/hero-bg-720p.mp4

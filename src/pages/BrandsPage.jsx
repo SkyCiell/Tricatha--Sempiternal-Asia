@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, CheckCircle2, FileText, Video, Sparkles, Building2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, FileText, Video } from "lucide-react";
 import gwiPhoto from "../assets/9c3a2a75-3f45-48d6-b86b-43955e71d699 (1).jpg";
 import plenaryPhoto from "../assets/DSC08824.JPG";
 import aseanPhoto from "../assets/20231130_131733_311.jpg";
@@ -25,11 +25,6 @@ export default function BrandsPage({ navigateTo }) {
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl space-y-4">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>UNIFIED GROUP GOVERNANCE</span>
-              </div>
-
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
                 TSA Business Group &amp; <br />
                 <span className="font-editorial italic font-normal text-slate-200">
@@ -232,10 +227,7 @@ export default function BrandsPage({ navigateTo }) {
             <div className="lg:col-span-6 bg-[#071731] text-white rounded p-8 sm:p-10 border border-white/10 space-y-6">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div>
-                  <span className="font-mono text-xs text-[#C8102E] uppercase tracking-wider block">
-                    BROADCAST SUITE AT THE CITY TOWER
-                  </span>
-                  <h3 className="font-heading text-xl font-medium text-white mt-1">
+                  <h3 className="font-heading text-xl font-medium text-white">
                     Leader Dialogue Production
                   </h3>
                 </div>
@@ -428,10 +420,7 @@ export default function BrandsPage({ navigateTo }) {
             <div className="lg:col-span-6 bg-[#071731] text-white rounded p-8 sm:p-10 border border-white/10 space-y-6">
               <div className="border-b border-white/10 pb-4 flex items-center justify-between">
                 <div>
-                  <span className="font-mono text-xs text-[#C8102E] uppercase tracking-wider block">
-                    OPERATIONAL BENCHMARK
-                  </span>
-                  <h3 className="font-heading text-xl font-medium text-white mt-1">
+                  <h3 className="font-heading text-xl font-medium text-white">
                     Regulatory Liaison Performance
                   </h3>
                 </div>
