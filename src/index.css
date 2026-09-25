@@ -30,7 +30,7 @@
 }
 
 html {
-  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: #071731;
   color: #F1F5F9;
   overflow-x: hidden;
@@ -38,6 +38,7 @@ html {
 
 body {
   zoom: 1.1;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: #071731;
   color: #F1F5F9;
   overflow-x: hidden;
@@ -47,9 +48,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography Hierarchy */
+/* Typography Hierarchy - Unified to Plus Jakarta Sans */
 .font-editorial {
-  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: -0.015em;
 }
 
@@ -59,11 +60,13 @@ body {
 }
 
 .font-sans {
-  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  letter-spacing: 0.03em;
 }
 
 /* Corporate Dark Navy Surfaces */
