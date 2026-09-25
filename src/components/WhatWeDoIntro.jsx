@@ -86,16 +86,16 @@ export default function WhatWeDoIntro({ navigateTo }) {
           </motion.div>
 
           {/* Right Column: Complete Practice Dossier & Specifications (5 cols - Sticky Follow) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24 self-start space-y-4">
+          <div className="lg:col-span-5 lg:sticky lg:top-20 self-start space-y-3">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="bg-[#0E2552] border border-white/15 rounded p-5 sm:p-6 shadow-2xl space-y-4"
+              className="bg-[#0E2552] border border-white/15 rounded p-4 sm:p-5 shadow-2xl space-y-3"
             >
               {/* Visual Preview Frame */}
-              <div className="editorial-image-frame rounded aspect-[16/10] bg-[#050F22] overflow-hidden relative shadow-lg">
+              <div className="editorial-image-frame rounded aspect-[16/9] max-h-[170px] sm:max-h-[185px] bg-[#050F22] overflow-hidden relative shadow-lg">
                 <img
                   src={activeCapability.image}
                   alt={activeCapability.title}
@@ -104,11 +104,11 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent opacity-90 pointer-events-none" />
 
-                <div className="absolute bottom-3 left-4 right-4 text-white">
-                  <div className="font-heading font-bold text-base sm:text-lg leading-snug">
+                <div className="absolute bottom-2.5 left-3.5 right-3.5 text-white">
+                  <div className="font-heading font-bold text-sm sm:text-base leading-snug">
                     {activeCapability.title}
                   </div>
-                  <div className="text-xs font-sans text-slate-300 mt-0.5">
+                  <div className="text-[11px] font-sans text-slate-300 mt-0.5">
                     Single-Source Turnkey Event Architecture
                   </div>
                 </div>
@@ -116,39 +116,39 @@ export default function WhatWeDoIntro({ navigateTo }) {
 
               {/* Scope & Description */}
               <div className="space-y-1">
-                <div className="font-heading text-xs font-bold text-slate-300 uppercase tracking-wider">
+                <div className="font-heading text-[10px] font-bold text-slate-300 uppercase tracking-wider">
                   Practice Scope &amp; Mandate
                 </div>
-                <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="font-sans text-xs sm:text-[13px] text-slate-300 leading-relaxed line-clamp-2">
                   {activeCapability.shortDesc}
                 </p>
               </div>
 
               {/* Key Deliverables & Verified Outputs */}
-              <div className="space-y-2 pt-2.5 border-t border-white/10">
-                <div className="text-[11px] font-semibold text-[#C8102E] tracking-wider uppercase">
+              <div className="space-y-1.5 pt-2 border-t border-white/10">
+                <div className="text-[10px] font-semibold text-[#C8102E] tracking-wider uppercase">
                   Verified Deliverables &amp; Outputs
                 </div>
-                <div className="space-y-1.5 text-xs text-slate-200">
+                <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 text-xs text-slate-200">
                   {activeCapability.deliverables.map((deliv) => (
-                    <div key={deliv} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E] shrink-0 mt-0.5" />
-                      <span className="font-sans leading-snug">{deliv}</span>
+                    <div key={deliv} className="flex items-center gap-1.5 min-w-0">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E] shrink-0" />
+                      <span className="font-sans text-[11px] leading-snug truncate" title={deliv}>{deliv}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Direct Action Button & Trust Assurance */}
-              <div className="pt-2 border-t border-white/10 space-y-2.5">
+              <div className="pt-2 border-t border-white/10 space-y-2">
                 <button
                   onClick={() => (navigateTo ? navigateTo("/contact") : null)}
-                  className="w-full btn-editorial-red text-xs py-3 px-5 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
+                  className="w-full btn-editorial-red text-xs py-2.5 px-4 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
                 >
                   <span>Commission This Discipline</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
-                <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400">
+                <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-400">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#C8102E]" />
                   <span>Protocol Cleared · HSSE Certified · Strict NDA</span>
                 </div>
