@@ -32,7 +32,7 @@ export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
   return (
     <div
       data-lenis-prevent
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[#050F22]/90 backdrop-blur-md overscroll-contain"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-[#050F22]/50 backdrop-blur-[5px] overscroll-contain"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
