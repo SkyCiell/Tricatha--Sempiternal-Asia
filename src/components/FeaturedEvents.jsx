@@ -101,7 +101,6 @@ export default function FeaturedEvents({ scrollToSection }) {
               return (
                 <div
                   key={event.id}
-                  onMouseEnter={() => setActiveEventIndex(idx)}
                   onClick={() => setActiveEventIndex(idx)}
                   className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
                     isActive

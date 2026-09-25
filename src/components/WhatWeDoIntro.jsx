@@ -11,7 +11,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
   return (
     <section id="services" className="py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-        
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -35,7 +35,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
 
         {/* Editorial Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pt-12 items-start">
-          
+
           {/* Left Column: Interactive Capability Index (7 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -50,18 +50,15 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 <div
                   key={item.id}
                   onClick={() => setActiveId(item.id)}
-                  onMouseEnter={() => setActiveId(item.id)}
-                  className={`group py-5 px-5 -mx-4 sm:-mx-5 transition-all duration-150 cursor-pointer rounded border-l-2 ${
-                    isSelected
+                  className={`group py-5 px-5 -mx-4 sm:-mx-5 transition-all duration-150 cursor-pointer rounded border-l-2 ${isSelected
                       ? "bg-[#0E2552] border-[#C8102E] text-white"
                       : "border-transparent hover:bg-white/5 text-slate-300"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div className="space-y-1.5 pr-2">
-                      <h3 className={`font-heading text-xl sm:text-2xl font-bold tracking-tight transition-colors ${
-                        isSelected ? "text-white" : "text-slate-100 group-hover:text-white"
-                      }`}>
+                      <h3 className={`font-heading text-xl sm:text-2xl font-bold tracking-tight transition-colors ${isSelected ? "text-white" : "text-slate-100 group-hover:text-white"
+                        }`}>
                         {item.title}
                       </h3>
 
@@ -71,11 +68,10 @@ export default function WhatWeDoIntro({ navigateTo }) {
                     </div>
 
                     <div className="shrink-0">
-                      <span className={`px-2.5 py-1 rounded text-xs font-mono font-medium transition-colors ${
-                        isSelected
+                      <span className={`px-2.5 py-1 rounded text-xs font-mono font-medium transition-colors ${isSelected
                           ? "bg-[#C8102E] text-white"
                           : "bg-white/10 text-slate-400 group-hover:bg-white/20 group-hover:text-white"
-                      }`}>
+                        }`}>
                         {isSelected ? "Active View" : "Select"}
                       </span>
                     </div>
@@ -85,17 +81,12 @@ export default function WhatWeDoIntro({ navigateTo }) {
             })}
           </motion.div>
 
-          {/* Right Column: Complete Practice Dossier & Specifications (5 cols - Sticky Follow) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-20 self-start space-y-3">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="bg-[#0E2552] border border-white/15 rounded p-4 sm:p-5 shadow-2xl space-y-3"
-            >
+          {/* Right Column: Complete Practice Dossier & Specifications (5 cols - Pure Sticky) */}
+          <div className="lg:col-span-5 lg:sticky lg:top-20 self-start">
+            <div className="bg-[#0E2552] border border-white/15 rounded-lg p-4 sm:p-5 shadow-2xl space-y-3">
+
               {/* Visual Preview Frame */}
-              <div className="editorial-image-frame rounded aspect-[16/9] max-h-[170px] sm:max-h-[185px] bg-[#050F22] overflow-hidden relative shadow-lg">
+              <div className="editorial-image-frame rounded aspect-[16/9] max-h-[165px] sm:max-h-[175px] bg-[#050F22] overflow-hidden relative shadow-md">
                 <img
                   src={activeCapability.image}
                   alt={activeCapability.title}
@@ -104,8 +95,8 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent opacity-90 pointer-events-none" />
 
-                <div className="absolute bottom-2.5 left-3.5 right-3.5 text-white">
-                  <div className="font-heading font-bold text-sm sm:text-base leading-snug">
+                <div className="absolute bottom-2 left-3 right-3 text-white">
+                  <div className="font-heading font-bold text-sm sm:text-base leading-snug drop-shadow">
                     {activeCapability.title}
                   </div>
                   <div className="text-[11px] font-sans text-slate-300 mt-0.5">
@@ -116,7 +107,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
 
               {/* Scope & Description */}
               <div className="space-y-1">
-                <div className="font-heading text-[10px] font-bold text-slate-300 uppercase tracking-wider">
+                <div className="font-heading text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                   Practice Scope &amp; Mandate
                 </div>
                 <p className="font-sans text-xs sm:text-[13px] text-slate-300 leading-relaxed line-clamp-2">
@@ -124,7 +115,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 </p>
               </div>
 
-              {/* Key Deliverables & Verified Outputs */}
+              {/* Key Deliverables & Verified Outputs (Compact 2-Column Grid) */}
               <div className="space-y-1.5 pt-2 border-t border-white/10">
                 <div className="text-[10px] font-semibold text-[#C8102E] tracking-wider uppercase">
                   Verified Deliverables &amp; Outputs
@@ -143,17 +134,18 @@ export default function WhatWeDoIntro({ navigateTo }) {
               <div className="pt-2 border-t border-white/10 space-y-2">
                 <button
                   onClick={() => (navigateTo ? navigateTo("/contact") : null)}
-                  className="w-full btn-editorial-red text-xs py-2.5 px-4 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
+                  className="w-full btn-editorial-red text-xs py-2.5 px-4 cursor-pointer flex items-center justify-center gap-2 shadow-lg hover:brightness-110 transition-all"
                 >
                   <span>Commission This Discipline</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
                 <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-400">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#C8102E]" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#C8102E] shrink-0" />
                   <span>Protocol Cleared · HSSE Certified · Strict NDA</span>
                 </div>
               </div>
-            </motion.div>
+
+            </div>
           </div>
 
         </div>
