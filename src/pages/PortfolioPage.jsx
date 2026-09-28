@@ -27,26 +27,31 @@ export default function PortfolioPage({ navigateTo }) {
   const secondaryProjects = filteredProjects.slice(1);
 
   return (
-    <div className="pt-20 bg-[#071731] min-h-screen text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
+    <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
       
-      {/* 1. Page Header - Deep Navy Editorial Banner */}
-      <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
+      {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
           
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-            <div className="max-w-3xl space-y-4">
-              <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
-                Portfolio &amp; <br />
-                <span className="text-slate-300 font-normal">Verified Case Records.</span>
-              </h1>
-              <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl pt-1">
-                Explore documentation of diplomatic summits, inter-agency digital platforms, experiential cultural assemblies, and executive broadcast media executed across Southeast Asia.
-              </p>
-            </div>
+          {/* Left Title & Statement (8 cols) */}
+          <div className="lg:col-span-8 space-y-4">
+            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-[1.08]">
+              Portfolio &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                Verified Case Records.
+              </span>
+            </h1>
 
+            <p className="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
+              Explore documentation of diplomatic summits, inter-agency digital platforms, experiential cultural assemblies, and executive broadcast media executed across Southeast Asia.
+            </p>
+          </div>
+
+          {/* Right Action (4 cols) */}
+          <div className="lg:col-span-4 flex items-start lg:items-end justify-start lg:justify-end">
             <button
               onClick={handleInquiry}
-              className="btn-editorial-red shrink-0 self-start lg:self-auto"
+              className="btn-editorial-red"
             >
               <span>Commission Similar Mandate</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -204,23 +209,31 @@ export default function PortfolioPage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 4. Bottom Mandate Invitation */}
-      <section className="py-20 bg-[#050F22]">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8 text-center space-y-4">
-          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
-            Commission a Turnkey Project
-          </h2>
-          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
-            Our team evaluates spatial engineering, protocol requirements, and digital infrastructure for prospective state and enterprise summits.
-          </p>
-          <div className="pt-2">
-            <button
-              onClick={handleInquiry}
-              className="btn-editorial-red inline-flex items-center gap-2"
-            >
-              <span>Discuss Your Project</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
+      {/* 4. Bottom Mandate Invitation Panel */}
+      <section className="py-20 sm:py-28 bg-[#050F22] border-t border-white/10">
+        <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
+          <div className="bg-[#0A1F44] border border-white/10 p-8 sm:p-14 rounded flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="space-y-3 max-w-2xl">
+              <div className="flex items-center gap-2 font-mono text-xs text-[#C8102E]">
+                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+                <span>EXECUTIVE SECRETARIAT · JAKARTA</span>
+              </div>
+              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
+                Commission a Turnkey Mandate.
+              </h2>
+              <p className="font-sans text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+                Our protocol directors and spatial engineering teams evaluate feasibility, regulatory compliance, and broadcast infrastructure for prospective state and enterprise summits.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
+              <button
+                onClick={handleInquiry}
+                className="btn-editorial-red flex items-center justify-center gap-2"
+              >
+                <span>Initiate Mandate Inquiry</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>

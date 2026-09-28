@@ -19,7 +19,7 @@ import InternshipPage from "./pages/InternshipPage";
 import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
-
+import EnchantePage from "./pages/EnchantePage";
 
 const VALID_ROUTES = [
   "/",
@@ -27,6 +27,8 @@ const VALID_ROUTES = [
   "/about",
   "/business-group",
   "/brands",
+  "/enchante",
+  "/enchante-protocol",
   "/services",
   "/event-management",
   "/portfolio",
@@ -183,6 +185,9 @@ export default function App() {
       case "/business-group":
       case "/brands":
         return <BrandsPage key="business-group" navigateTo={navigateTo} />;
+      case "/enchante":
+      case "/enchante-protocol":
+        return <EnchantePage key="enchante" navigateTo={navigateTo} />;
       case "/services":
       case "/event-management":
         return <EventManagementPage key="services" navigateTo={navigateTo} />;

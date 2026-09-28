@@ -94,14 +94,14 @@ export default function Footer({ navigateTo }) {
               </span>
               <div className="flex flex-wrap gap-1.5 font-mono text-xs">
                 {[
-                  { name: "ENCHANTE", anchor: "unit-enchante" },
-                  { name: "DNA STUDIO", anchor: "unit-dna" },
-                  { name: "GWI", anchor: "unit-gwi" },
-                  { name: "GOADV", anchor: "unit-govadv" }
+                  { name: "ENCHANTÉE", path: "/enchante" },
+                  { name: "DNA STUDIO", path: "/business-group" },
+                  { name: "GWI", path: "/business-group" },
+                  { name: "GOADV", path: "/business-group" }
                 ].map((item) => (
                   <button
                     key={item.name}
-                    onClick={() => handleNav("/business-group")}
+                    onClick={() => handleNav(item.path)}
                     className="px-2.5 py-1 rounded bg-[#071731] hover:bg-[#C8102E] text-white border border-white/15 text-[11px] transition-colors cursor-pointer"
                   >
                     {item.name}

@@ -95,7 +95,7 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
               TRICATHA SEMPITERNAL ASIA
             </span>
             <span className="font-mono text-[10px] text-slate-400 tracking-wider uppercase font-medium mt-0.5">
-              THE CITY TOWER · CENTRAL JAKARTA
+              JAKARTA, INDONESIA
             </span>
           </div>
         </button>

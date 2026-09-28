@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import plenaryPhoto from "../assets/DSC08824.JPG";
+const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 
 const INSTITUTIONAL_PILLARS = [
   {
@@ -101,7 +101,8 @@ export default function WhyTSASection() {
             }}
             className="lg:col-span-7 divide-y divide-white/10 border-y border-white/10 flex flex-col justify-between"
           >
-            {INSTITUTIONAL_PILLARS.map((pillar) => {
+            {INSTITUTIONAL_PILLARS.map((pillar, idx) => {
+              const formattedNum = `0${idx + 1}`;
               return (
                 <motion.div
                   key={pillar.title}
@@ -109,13 +110,22 @@ export default function WhyTSASection() {
                     hidden: { opacity: 0, y: 14 },
                     visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
                   }}
-                  className="py-8 space-y-3 group hover:bg-[#0A1F44]/40 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded transition-colors"
+                  className="py-6 sm:py-7 space-y-2.5 group hover:bg-[#0A1F44]/40 -mx-4 px-4 sm:-mx-6 sm:px-6 rounded transition-colors"
                 >
-                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs font-semibold text-slate-400">
+                      {formattedNum}
+                    </span>
+                    <span className="text-[10px] font-mono tracking-wider uppercase text-[#C8102E] font-semibold">
+                      {pillar.mandate}
+                    </span>
+                  </div>
+
+                  <h3 className="font-heading text-lg sm:text-2xl font-semibold text-white tracking-tight">
                     {pillar.title}
                   </h3>
 
-                  <p className="font-sans text-sm text-slate-300 leading-relaxed max-w-2xl">
+                  <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl font-normal">
                     {pillar.desc}
                   </p>
                 </motion.div>

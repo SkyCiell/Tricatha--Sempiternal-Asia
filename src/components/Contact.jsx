@@ -68,24 +68,11 @@ export default function Contact({ preselectedService }) {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-28 bg-[#071731] text-[#F1F5F9] border-b border-white/10">
+    <section id="contact" className="py-12 sm:py-16 bg-[#071731] text-[#F1F5F9] border-b border-white/10">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
         
-        {/* Header Bar */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-white/10 gap-6">
-          <div>
-            <h2 className="font-heading text-2xl sm:text-4xl lg:text-[42px] font-medium tracking-tight text-white leading-tight">
-              Start an Executive Consultation
-            </h2>
-          </div>
-
-          <p className="max-w-md text-sm text-slate-300 font-normal leading-relaxed">
-            All inquiries are received under standard non-disclosure protocol and reviewed directly by TSA's executive directors at The City Tower in Jakarta.
-          </p>
-        </div>
-
         {/* Split Layout */}
-        <div className="pt-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           
           {/* Left Column (5 cols): Coordinates & Confidentiality */}
           <div className="lg:col-span-5 space-y-8">

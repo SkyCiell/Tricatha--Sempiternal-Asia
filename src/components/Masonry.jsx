@@ -66,10 +66,11 @@ export default function Masonry({
   _colorShiftOnHover = false,
   onItemClick
 }) {
-  // Refined responsive columns: 5 on 2xl (>=1536px), 4 on xl (>=1200px), 3 on md/lg (>=840px), 2 on sm (>=520px), 1 on mobile
+  // Refined responsive columns: 4 on desktop (>=1024px), 2 on tablet (>=640px), 1 on mobile
+  // 16 archive items divide evenly into 4 columns (4 items each) or 2 columns (8 items each)
   const columns = useMedia(
-    ["(min-width:1536px)", "(min-width:1200px)", "(min-width:840px)", "(min-width:520px)"],
-    [5, 4, 3, 2],
+    ["(min-width:1024px)", "(min-width:640px)"],
+    [4, 2],
     1
   );
 
@@ -114,9 +115,13 @@ export default function Masonry({
   const { grid, totalHeight } = useMemo(() => {
     if (!width || items.length === 0) return { grid: [], totalHeight: 0 };
 
-    const colHeights = new Array(columns).fill(0);
-    const columnWidth = width / columns;
+    const effectiveCols = Math.max(1, Math.min(columns, items.length));
+    const columnWidth = width / effectiveCols;
+    const colHeights = new Array(effectiveCols).fill(0);
+    const colItems = Array.from({ length: effectiveCols }, () => []);
 
+    // Pass 1: Standard React Bits placement
+    // Preserves the existing upper structure, image positioning, and organic staggered composition
     const computedGrid = items.map((child) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = columnWidth * col;
@@ -124,11 +129,24 @@ export default function Masonry({
       const y = colHeights[col];
 
       colHeights[col] += height;
-
-      return { ...child, x, y, w: columnWidth, h: height };
+      const itemObj = { ...child, x, y, w: columnWidth, h: height, col };
+      colItems[col].push(itemObj);
+      return itemObj;
     });
 
     const maxH = Math.max(0, ...colHeights);
+
+    // Pass 2: Clean bottom boundary alignment
+    // Fix only the lower section so the gallery ends in a clean, visually balanced horizontal edge
+    // Each column's bottom-most item naturally extends to meet the unified bottom line maxH
+    for (let c = 0; c < effectiveCols; c++) {
+      const itemsInCol = colItems[c];
+      if (itemsInCol.length > 0) {
+        const lastItem = itemsInCol[itemsInCol.length - 1];
+        lastItem.h = maxH - lastItem.y;
+      }
+    }
+
     return { grid: computedGrid, totalHeight: maxH };
   }, [columns, items, width]);
 
@@ -280,7 +298,10 @@ export default function Masonry({
     <div
       ref={containerRef}
       className="masonry-list relative w-full"
-      style={{ minHeight: totalHeight > 0 ? `${totalHeight}px` : "500px" }}
+      style={{
+        height: totalHeight > 0 ? `${totalHeight}px` : undefined,
+        minHeight: totalHeight > 0 ? `${totalHeight}px` : "500px"
+      }}
     >
       {grid.map((item) => (
         <div

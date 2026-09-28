@@ -1,6 +1,6 @@
 import React from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
-import plenaryPhoto from "../assets/DSC08824.JPG";
+const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 
 export default function EditorialCTA({ onStartConversation, onExploreWork }) {
   const handleScrollToProjects = () => {
@@ -34,12 +34,20 @@ export default function EditorialCTA({ onStartConversation, onExploreWork }) {
         <div className="max-w-4xl space-y-8">
           
           <div className="space-y-4">
-            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-bold tracking-tight text-white leading-[1.08]">
-              Initiate an Executive Mandate or Event Consultation
+            <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
+              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+              <span>EXECUTIVE INQUIRY</span>
+            </div>
+
+            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[52px] font-semibold tracking-tight text-white leading-[1.08]">
+              Initiate an Executive Mandate &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                Sovereign Event Assembly.
+              </span>
             </h2>
 
             <p className="font-sans text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
-              Whether orchestrating a monumental commercial trade exposition, sovereign diplomatic plenary, or high-stakes corporate assembly, our directors coordinate directly with your leadership team.
+              Whether orchestrating a monumental commercial trade exposition, sovereign diplomatic plenary, or high-stakes corporate assembly, our directors coordinate directly with your leadership team with zero margin for error.
             </p>
           </div>
 

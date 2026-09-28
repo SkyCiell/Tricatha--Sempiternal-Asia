@@ -1,6 +1,7 @@
-import aseanDiplomacyImage from "../assets/20231130_131733_311.jpg";
-import gwiImage from "../assets/9c3a2a75-3f45-48d6-b86b-43955e71d699 (1).jpg";
-import govAdvImage from "../assets/DSC08824.JPG";
+// High-grade dummy corporate event photography URLs
+const aseanDiplomacyImage = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
+const gwiImage = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop";
+const govAdvImage = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 
 export const EVENT_CATEGORIES = [
   "All Events",

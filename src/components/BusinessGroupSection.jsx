@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ArrowUpRight, ArrowRight, ShieldCheck, Video, Megaphone, Scale, CheckCircle2, ChevronRight } from "lucide-react";
 import { businessGroupData } from "../data/tsaData";
-import gwiPhoto from "../assets/9c3a2a75-3f45-48d6-b86b-43955e71d699 (1).jpg";
-import plenaryPhoto from "../assets/DSC08824.JPG";
-import aseanPhoto from "../assets/20231130_131733_311.jpg";
+const gwiPhoto = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop";
+const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
+const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
 
 const iconMap = {
   ENCHANTE: ShieldCheck,
@@ -133,50 +133,84 @@ export default function BusinessGroupSection({ navigateTo }) {
             <div className="lg:col-span-7 space-y-6">
               
               <div>
-                <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                  {activeUnit.name}
+                <h3 className="font-heading text-3xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-tight">
+                  {activeUnit.code === "ENCHANTE" ? (
+                    <>
+                      ENCHANTÉE <br />
+                      <span className="font-editorial italic font-normal text-slate-200 text-xl sm:text-2xl">
+                        Haute Protocol &amp; Ceremonial Scenography.
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      {activeUnit.name} <br />
+                      <span className="font-editorial italic font-normal text-slate-200 text-xl sm:text-2xl">
+                        {activeUnit.fullName}
+                      </span>
+                    </>
+                  )}
                 </h3>
-                <p className="font-editorial italic text-base sm:text-lg text-slate-200 mt-1">
-                  {activeUnit.fullName}
-                </p>
               </div>
 
-              <div className="p-4 bg-[#071731] rounded border-l-4 border-[#C8102E] text-sm text-slate-200 leading-relaxed">
-                {activeUnit.description}
+              <div className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+                {activeUnit.code === "ENCHANTE"
+                  ? "Where sovereign etiquette meets architectural poise. Orchestrated under ministerial decorum for bilateral ministerials, ambassadorial galas, and head-of-state banquets across Southeast Asia."
+                  : activeUnit.description}
               </div>
 
-              {/* Core Practice Focus Areas */}
-              <div className="space-y-2 pt-2">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-slate-200">
+              {/* Core Practice Focus Areas as an Editorial Ledger (NO CARDS) */}
+              <div className="space-y-2 pt-2 border-t border-white/10">
+                <div className="divide-y divide-white/8 font-sans">
                   {activeUnit.focusAreas.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
-                      <span>{item}</span>
+                    <div key={idx} className="py-2.5 flex items-baseline justify-between gap-3 text-xs text-slate-200 group hover:bg-white/[0.015] transition-colors">
+                      <div className="flex items-baseline gap-2.5">
+                        <span className="font-mono text-xs font-bold text-[#C8102E]">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                        <span className="font-sans text-xs sm:text-sm text-slate-200 font-normal">
+                          {item}
+                        </span>
+                      </div>
+                      <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider hidden sm:inline">
+                        PRACTICE DISCIPLINE
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Verified Metrics Row */}
-              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-6 font-mono text-xs">
+              {/* Verified Metrics Row & Direct Actions */}
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4 sm:gap-6 font-mono text-xs">
                 {activeUnit.metrics.map((m, idx) => (
-                  <div key={idx} className="p-3 bg-[#071731] rounded border border-white/10 min-w-[140px]">
+                  <div key={idx} className="space-y-0.5">
                     <span className="text-slate-400 block text-[10px] uppercase tracking-wider">
                       {m.label}
                     </span>
-                    <span className="text-white text-base sm:text-lg font-bold mt-0.5 block">
+                    <span className="text-white text-lg sm:text-xl font-bold block font-heading">
                       {m.value}
                     </span>
                   </div>
                 ))}
 
-                <button
-                  onClick={() => handleNav(activeUnit.anchorId)}
-                  className="btn-editorial-red text-xs py-2.5 px-5 ml-auto cursor-pointer flex items-center gap-1.5"
-                >
-                  <span>Commission {activeUnit.code}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                <div className="flex items-center gap-3 ml-auto">
+                  {activeUnit.code === "ENCHANTE" && (
+                    <button
+                      onClick={() => (navigateTo ? navigateTo("/enchante") : null)}
+                      className="btn-editorial-navy text-xs py-2 px-3.5 cursor-pointer flex items-center gap-1.5"
+                    >
+                      <span>Explore Enchantée</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                    </button>
+                  )}
+
+                  <button
+                    onClick={() => handleNav(activeUnit.anchorId)}
+                    className="btn-editorial-red text-xs py-2 px-4 cursor-pointer flex items-center gap-1.5"
+                  >
+                    <span>Commission Mandate</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
 
             </div>
@@ -216,24 +250,13 @@ export default function BusinessGroupSection({ navigateTo }) {
           </div>
         </div>
 
-        {/* Integrated Holding Governance Footnote */}
-        <div className="mt-10 p-5 bg-[#0A1F44] rounded border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-4 font-mono text-xs text-slate-300">
-          <div className="flex items-center gap-3">
-            <span className="px-2.5 py-0.5 bg-[#C8102E] text-white font-bold rounded text-[10px] tracking-wider uppercase">
-              HOLDING
-            </span>
-            <span className="text-white font-semibold">
-              PT TRICATHA SEMPITERNAL ASIA
-            </span>
-            <span className="text-white/20 hidden sm:inline">|</span>
-            <span className="text-slate-400 hidden sm:inline">Executive Holding &amp; Sovereign Strategic Advisory</span>
-          </div>
-
+        {/* Group Charter Link */}
+        <div className="mt-10 pt-6 border-t border-white/10 flex justify-end">
           <button
             onClick={handleFullGroup}
-            className="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
+            className="text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
           >
-            <span>Review Full Group Charter</span>
+            <span>Explore Full Business Group Charter</span>
             <ChevronRight className="w-3.5 h-3.5 text-[#C8102E]" />
           </button>
         </div>

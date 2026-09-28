@@ -1,19 +1,9 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import heroVideo from "../assets/0805.mp4";
-import heroPoster from "../assets/DSC08824.JPG";
+const heroPoster = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 
 export default function Hero({ scrollToSection }) {
-  const tickerItems = [
-    "SOVEREIGN ADVISORY",
-    "18 DIPLOMATIC MISSIONS",
-    "12 BILATERAL ACCORDS",
-    "GOVTECH COMMAND",
-    "DNA STUDIO BROADCAST",
-    "HEAD-OF-STATE PROTOCOL",
-    "THE CITY TOWER JAKARTA"
-  ];
-
   return (
     <section
       id="home"
@@ -79,25 +69,6 @@ export default function Hero({ scrollToSection }) {
         </div>
       </div>
 
-      {/* 4. Bottom Footer Elements: Live Marquee Ticker */}
-      <div className="relative z-10 w-full">
-
-        {/* Live Strategic Marquee Ticker */}
-        <div className="border-t border-white/10 bg-[#0B1F3A]/70 backdrop-blur-sm py-3 overflow-hidden flex items-center text-xs font-mono text-[#CBD5E1] whitespace-nowrap select-none">
-          <div className="px-4 sm:px-8 font-bold text-[#C62828] uppercase tracking-widest shrink-0 flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-[#C62828]" />
-            <span>CORE FOCUS</span>
-          </div>
-          <div className="flex items-center gap-12 text-white font-bold text-xs uppercase tracking-widest animate-marquee">
-            {tickerItems.concat(tickerItems).map((item, idx) => (
-              <div key={idx} className="flex items-center gap-4">
-                <span>{item}</span>
-                <span className="w-1.5 h-1.5 bg-[#C62828]" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </section>
   );
 }

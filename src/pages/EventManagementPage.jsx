@@ -45,7 +45,9 @@ export default function EventManagementPage({ navigateTo }) {
             <div className="max-w-3xl space-y-4">
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
                 Services &amp; <br />
-                <span className="text-slate-300 font-normal">Accredited Capabilities.</span>
+                <span className="font-editorial italic font-normal text-slate-200">
+                  Accredited Capabilities.
+                </span>
               </h1>
               <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl pt-1">
                 From high-stakes sovereign advisory and ministerial liaisons to turnkey plenary stagecraft and commercial trade expositions, TSA delivers an unbroken chain of operational execution.

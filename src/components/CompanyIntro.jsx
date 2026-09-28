@@ -1,6 +1,6 @@
 import React from "react";
 import { companyInfo, institutionalReviews } from "../data/tsaData";
-import aboutPhoto from "../assets/DSC08824.JPG";
+const aboutPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 import { Star, ShieldCheck, Building2, Globe2 } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
 

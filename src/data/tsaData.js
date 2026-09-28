@@ -1,6 +1,7 @@
-import gwiImage from "../assets/9c3a2a75-3f45-48d6-b86b-43955e71d699 (1).jpg";
-import aseanDiplomacyImage from "../assets/20231130_131733_311.jpg";
-import govAdvImage from "../assets/DSC08824.JPG";
+// High-grade dummy corporate event photography URLs
+const gwiImage = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop";
+const aseanDiplomacyImage = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
+const govAdvImage = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 
 export const companyInfo = {
   name: "TRICATHA SEMPITERNAL ASIA",
@@ -96,45 +97,6 @@ export const coreCapabilities = [
       "Corporate Milestone & Anniversary Productions"
     ],
     image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    id: "business-networking",
-    title: "Business Networking",
-    category: "High-Value Connections",
-    shortDesc: "Curated closed-door roundtables, investor roadshows, VIP cocktail receptions, and bilateral commercial salons that produce actionable deal flow.",
-    deliverables: [
-      "Closed-Door Executive Breakfasts & Dinners",
-      "Investor Roadshow Orchestration & Deal Salons",
-      "Private Networking Lounges & Matchmaking Software",
-      "Cross-Border Trade Delegation Hospitality"
-    ],
-    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1200&auto=format&fit=crop"
-  },
-  {
-    id: "strategic-programs",
-    title: "Strategic Programs",
-    category: "Impact & Multi-Stakeholder Alliances",
-    shortDesc: "Comprehensive roadmaps and multi-city series aligning corporate sponsors, industry associations, and public institutions around long-term economic initiatives.",
-    deliverables: [
-      "Multi-City Roadshows & Stakeholder Alignment Tours",
-      "Public-Private Sector Alliance Frameworks",
-      "Consortium Building & Strategic Working Groups",
-      "Measurable Impact Analytics & Post-Event Reporting"
-    ],
-    image: gwiImage
-  },
-  {
-    id: "creative-event-production",
-    title: "Creative & Event Production",
-    category: "Spatial Scenography & Audiovisual",
-    shortDesc: "World-class stage architecture, immersive LED displays, kinetic lighting, sound engineering, and multi-camera broadcast cinema from concept to live telecast.",
-    deliverables: [
-      "Spatial Stage Scenography & 3D Spatial Pre-Visualization",
-      "4K Cinema Multi-Camera Live Broadcast & DNA Studio Feeds",
-      "Custom Kinetic Lighting, Laser & Audio Engineering",
-      "Immersive Motion Graphics & Opening Holographic Reveals"
-    ],
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop"
   }
 ];
 

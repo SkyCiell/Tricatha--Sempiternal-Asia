@@ -1,572 +1,499 @@
-import React from "react";
-import { ArrowUpRight, CheckCircle2, FileText, Video } from "lucide-react";
-import gwiPhoto from "../assets/9c3a2a75-3f45-48d6-b86b-43955e71d699 (1).jpg";
-import plenaryPhoto from "../assets/DSC08824.JPG";
-import aseanPhoto from "../assets/20231130_131733_311.jpg";
+import React, { useState } from "react";
+import { ArrowUpRight, ArrowRight, ShieldCheck, Video, Megaphone, Scale, CheckCircle2, Building2 } from "lucide-react";
+const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
+const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
+const gwiPhoto = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop";
 
 export default function BrandsPage({ navigateTo }) {
+  const [activeUnit, setActiveUnit] = useState("enchante");
+
   const handleInquiry = () => {
     if (navigateTo) navigateTo("/contact");
   };
 
-  const scrollToUnit = (id) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+  const entities = [
+    {
+      id: "enchante",
+      code: "01",
+      name: "ENCHANTE",
+      title: "Haute Protocol & Spatial Scenography",
+      tagline: "Head-of-State Banquets, Ambassadorial Galas & VVIP Protocol",
+      mandate:
+        "ENCHANTE specializes in high-precedence ceremonial dining, bilateral diplomatic receptions, and sovereign protocol etiquette. Operating under ministerial standards, ENCHANTE manages sovereign seating hierarchies, encrypted interpretation systems, and bilateral signing accouterments with flawless poise.",
+      metrics: [
+        { label: "Banquets Orchestrated", value: "14+" },
+        { label: "Diplomatic Missions Hosted", value: "32 Envoys" },
+        { label: "Standard of Decorum", value: "Head of State" }
+      ],
+      deliverables: [
+        "Sovereign Precedence Etiquette & Seating Protocol",
+        "Haute Banquet Table Scenography & Floral Engineering",
+        "Bilateral Accord Signing Ceremonial Command",
+        "Encrypted Multi-Lingual Simultaneous Interpretation"
+      ],
+      photo: aseanPhoto,
+      photoCaption: "Diplomatic Corps Ambassadorial Gala Dinner · Grand Hyatt Jakarta",
+      venues: "The Ritz-Carlton Jakarta · Fairmont Jakarta · Park Hyatt · Hotel Mulia",
+      featuredEvent: {
+        name: "Annual Diplomatic Corps & Ambassadorial Gala",
+        slug: "diplomatic-corps-ambassadorial-gala-dinner-2024"
+      }
+    },
+    {
+      id: "dna-studio",
+      code: "02",
+      name: "DNA STUDIO",
+      title: "4K Broadcast Scenography & Telepresence",
+      tagline: "Cinema-Grade Broadcast Suite & Leader Dialogue Soundstage",
+      mandate:
+        "Headquartered at The City Tower 12th Floor in Central Jakarta, DNA STUDIO is TSA's dedicated media engineering soundstage. We engineer 4K multi-camera telecasts, virtual AGM voting systems, live satellite feeds, and thought leadership forums viewed by millions across the region.",
+      metrics: [
+        { label: "Syndicated Viewers", value: "2.4M+" },
+        { label: "Multi-Cam Broadcast Suite", value: "4K Cinema" },
+        { label: "Studio Location", value: "The City Tower 12F" }
+      ],
+      deliverables: [
+        "4K Multi-Camera Live Broadcast Switching & Telepresence",
+        "Audited Hybrid AGM Electronic Proxy Voting Architecture",
+        "Leader Dialogue Broadcast Curation & Digital Distribution",
+        "Kinetic Soundstage Lighting & Acoustic Scenography"
+      ],
+      photo: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop",
+      photoCaption: "DNA Studio Leader Dialogue: Geopolitical Horizons · Broadcast Suite",
+      venues: "The City Tower 12th Fl · Soehanna Hall SCBD · Live Satellite Up-Links",
+      featuredEvent: {
+        name: "DNA Studio Leader Dialogue: Geopolitical Horizons 2026",
+        slug: "dna-studio-leader-dialogue-geopolitical-horizons-2026"
+      }
+    },
+    {
+      id: "gwi",
+      code: "03",
+      name: "GWI",
+      title: "Gema Waskita Interaktifa · Civic Scale Assemblies",
+      tagline: "Public Affairs, Cultural Heritage Festivals & Mass Crowd Engineering",
+      mandate:
+        "GWI executes monumental public engagement assemblies, civic cultural festivals, and interactive spatial projection mapping. Uniting civic ministries with over 45,000 attendees, GWI balances immense crowd flow telemetry with deeply inspiring experiential scenography.",
+      metrics: [
+        { label: "Peak In-Person Attendees", value: "45,000+" },
+        { label: "Civic Ministries United", value: "6 Ministries" },
+        { label: "Spatial Mapping Scale", value: "Monumental GBK" }
+      ],
+      deliverables: [
+        "Mass Crowd Ingress/Egress Telemetry & HSSE Command",
+        "Monumental Digital Projection Mapping & Spatial Sound",
+        "Eco-Pavilion Architecture & Civic Assembly Staging",
+        "Multi-Stakeholder Public Sector Coordination"
+      ],
+      photo: gwiPhoto,
+      photoCaption: "GWI Public Cultural Heritage Festival · Gelora Bung Karno Arena",
+      venues: "Gelora Bung Karno (GBK) Arena · Taman Ismail Marzuki · Monas Enclosure",
+      featuredEvent: {
+        name: "GWI Public Cultural Heritage Festival 2025",
+        slug: "gema-waskita-interaktifa-cultural-festival-2025"
+      }
+    },
+    {
+      id: "goadv",
+      code: "04",
+      name: "GOADV",
+      title: "Government Relations & Regulatory Intelligence",
+      tagline: "Inter-Ministerial Conclaves, State Summits & Policy Symposia",
+      mandate:
+        "GOADV bridges sovereign policy priorities with enterprise technology execution. We orchestrate inter-ministerial summits, national digital governance conclaves, and state-owned enterprise leadership retreats requiring strict protocol clearance and zero-downtime execution.",
+      metrics: [
+        { label: "Participating Ministries", value: "14 Ministries" },
+        { label: "Executive Delegates", value: "1,200 Plenary" },
+        { label: "Operational Integrity", value: "Zero Margin Error" }
+      ],
+      deliverables: [
+        "Cross-Ministry Secretarial Liaison & Policy Alignment",
+        "Sovereign GovTech Plenary Scenography & Staging",
+        "Inter-Agency Multi-Stakeholder Consensus Forums",
+        "State-Owned Enterprise Leadership Retreat Facilitation"
+      ],
+      photo: plenaryPhoto,
+      photoCaption: "National GovTech Conclave · The Ritz-Carlton Mega Kuningan",
+      venues: "Jakarta Convention Center (JCC) · ICE BSD City · The Ritz-Carlton",
+      featuredEvent: {
+        name: "National Digital Governance & GovTech Conclave",
+        slug: "national-digital-governance-govtech-conclave-2024"
+      }
     }
-  };
+  ];
+
+  const currentEntity = entities.find((e) => e.id === activeUnit) || entities[0];
 
   return (
-    <div className="pt-20 bg-[#071731] min-h-screen text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
+    <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
       
-      {/* 1. Page Header - Deep Navy Editorial Banner */}
-      <section className="relative py-20 sm:py-28 bg-[#0A1F44] text-white border-b border-white/10 overflow-hidden">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
+      {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
           
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
-            <div className="max-w-3xl space-y-4">
-              <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold tracking-tight text-white leading-[1.08]">
-                TSA Business Group &amp; <br />
-                <span className="font-editorial italic font-normal text-slate-200">
-                  Specialized Practice Entities.
-                </span>
-              </h1>
-              <p className="text-base sm:text-lg text-slate-300 font-normal leading-relaxed max-w-2xl pt-1">
-                Four specialized operating entities (<strong>ENCHANTE</strong>, <strong>DNA STUDIO</strong>, <strong>GWI</strong>, and <strong>GOADV</strong>) operating under the unified governance of parent holding <strong>PT Tricatha Sempiternal Asia</strong> at The City Tower in Central Jakarta. Together, they form an uninterrupted value chain spanning sovereign counsel, public affairs, experiential protocol, and multimedia broadcast.
-              </p>
+          <div className="lg:col-span-8 space-y-4">
+            <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
+              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+              <span>Executive Group Architecture · The City Tower, Jakarta</span>
+            </div>
+
+            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-[1.08]">
+              The Business Ecosystem &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                Specialized Group Entities.
+              </span>
+            </h1>
+
+            <p className="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
+              Operating under parent holding <strong>PT Tricatha Sempiternal Asia</strong>, our four operating divisions form an uninterrupted value chain spanning sovereign protocol, 4K broadcast telepresence, mass civic activations, and state regulatory intelligence.
+            </p>
+          </div>
+
+          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col justify-between items-start lg:items-end gap-5">
+            <div className="space-y-1 text-left lg:text-right font-mono text-xs text-slate-400">
+              <div>HOLDING GOVERNANCE: PT TSA</div>
+              <div className="text-white font-semibold">4 SPECIALIZED OPERATING PRACTICES</div>
             </div>
 
             <button
               onClick={handleInquiry}
-              className="btn-editorial-red shrink-0 self-start lg:self-auto cursor-pointer"
+              className="btn-editorial-red"
             >
               <span>Inquire Group Mandate</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Quick Navigator Pill Strip */}
-          <div className="pt-10 flex flex-wrap items-center gap-2 border-t border-white/10 mt-10 text-xs font-mono">
-            <span className="text-slate-400 mr-2 uppercase text-[11px] font-semibold">Jump to Practice:</span>
-            {[
-              { id: "unit-enchante", label: "ENCHANTE" },
-              { id: "unit-dna", label: "DNA STUDIO" },
-              { id: "unit-gwi", label: "GWI" },
-              { id: "unit-govadv", label: "GOADV" },
-              { id: "unit-tsa", label: "TRICATHA SEMPITERNAL ASIA (HOLDING)" }
-            ].map((nav) => (
-              <button
-                key={nav.id}
-                onClick={() => scrollToUnit(nav.id)}
-                className="px-3.5 py-1.5 rounded bg-[#071731] hover:bg-[#C8102E] text-white border border-white/15 transition-colors cursor-pointer"
-              >
-                {nav.label}
-              </button>
-            ))}
-          </div>
-
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 2. UNIT 01: ENCHANTE (Haute Protocol & Spatial Scenography) */}
-      {/* ========================================================================= */}
-      <section id="unit-enchante" className="py-20 sm:py-28 bg-[#071731] border-b border-white/10 scroll-mt-20">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  HAUTE PROTOCOL &amp; SPATIAL SCENOGRAPHY
-                </span>
-                <span className="w-8 h-px bg-white/20" />
-                <span className="font-mono text-xs text-slate-400">BUSINESS GROUP PRACTICE</span>
-              </div>
+      {/* 2. ECOSYSTEM ARCHITECTURE & SYNERGY MAP */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-12 sm:py-16 border-b border-white/10">
+        
+        {/* Holding Anchor Bar */}
+        <div className="p-6 sm:p-8 bg-[#0A1F44] border border-white/15 rounded text-white flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+          <div className="space-y-2 max-w-2xl">
+            <div className="flex items-center gap-2 text-xs font-mono text-[#C8102E] font-semibold tracking-wider uppercase">
+              <Building2 className="w-4 h-4" />
+              <span>PARENT HOLDING GOVERNANCE</span>
+            </div>
+            <h2 className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white">
+              PT TRICATHA SEMPITERNAL ASIA (HOLDING)
+            </h2>
+            <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+              Strategic direction, fiduciary oversight, and unified executive command from The City Tower 12th Floor, Central Jakarta. All group practices operate under single-source accountability.
+            </p>
+          </div>
 
-              <div>
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                  ENCHANTE
-                </h2>
-                <p className="font-mono text-xs sm:text-sm text-slate-400 mt-1">
-                  Enchante Experiential, Diplomatic Banquets &amp; State Precedence
-                </p>
-              </div>
+          <div className="font-mono text-xs text-slate-400 space-y-1 md:text-right shrink-0">
+            <div>CORPORATE REGISTRATION: JAKARTA</div>
+            <div className="text-white font-semibold">CENTRAL BUSINESS DISTRICT</div>
+          </div>
+        </div>
 
-              <div className="p-4 bg-[#0A1F44] rounded border-l-4 border-[#C8102E] text-sm text-white font-medium leading-relaxed">
-                Head-of-State Diplomatic Protocols, Ambassadorial Galas &amp; Immersive Scenography
-              </div>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                ENCHANTE executes bilateral head-of-state diplomatic banquets, ambassadorial galas, and exclusive corporate assemblies. With rigorous command of international precedence hierarchies, motorcade marshaling, and haute scenography, ENCHANTE transforms formal gatherings into unforgettable institutional milestones.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                {[
-                  "Bilateral Head-of-State Conferences",
-                  "Diplomatic Gala & State Banquets",
-                  "Experiential Spatial Scenography",
-                  "VVIP Seating Etiquette & Protocol"
-                ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
-                    <span>{s}</span>
+        {/* 4 Interactive Entity Selectors */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {entities.map((unit) => {
+            const isSelected = unit.id === activeUnit;
+            return (
+              <button
+                key={unit.id}
+                onClick={() => setActiveUnit(unit.id)}
+                className={`p-5 sm:p-6 rounded border transition-all text-left cursor-pointer flex flex-col justify-between ${
+                  isSelected
+                    ? "bg-[#0E2552] border-[#C8102E] shadow-xl ring-1 ring-[#C8102E]"
+                    : "bg-[#0A1F44] border-white/10 hover:border-white/30"
+                }`}
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-xs font-bold text-[#C8102E]">
+                      {unit.code}
+                    </span>
+                    <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded ${
+                      isSelected ? "bg-[#C8102E] text-white" : "bg-[#071731] text-slate-400"
+                    }`}>
+                      {isSelected ? "Active Focus" : "Practice Unit"}
+                    </span>
                   </div>
-                ))}
-              </div>
 
-              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
-                <div>
-                  <span className="text-slate-400 block text-[10px]">HEAD-OF-STATE BANQUETS</span>
-                  <span className="text-white font-semibold text-sm">12+ State Banquets</span>
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-white tracking-tight">
+                    {unit.name}
+                  </h3>
+
+                  <p className="text-xs text-slate-300 font-sans line-clamp-2 leading-relaxed">
+                    {unit.title}
+                  </p>
                 </div>
-                <div className="w-px h-8 bg-white/10" />
-                <div>
-                  <span className="text-slate-400 block text-[10px]">PRECEDENCE COMPLIANCE</span>
-                  <span className="text-[#FFFFFF] font-semibold text-sm">100% Zero-Error Protocol</span>
+
+                <div className="pt-4 border-t border-white/10 mt-4 flex items-center justify-between text-xs font-mono text-slate-400">
+                  <span>View Dossier</span>
+                  <ArrowRight className={`w-3.5 h-3.5 transition-transform ${isSelected ? "text-[#C8102E] translate-x-1" : ""}`} />
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+      </section>
+
+      {/* 3. IN-DEPTH PRACTICE DOSSIER (Editorial Feature on Active Unit) */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-16 sm:py-24 border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column: Visual & Proof Anchor (5 cols) */}
+          <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
+            <div className="editorial-image-frame rounded aspect-[4/3] lg:aspect-[4/5] bg-[#050F22] border border-white/15 overflow-hidden shadow-2xl relative">
+              <img
+                src={currentEntity.photo}
+                alt={currentEntity.name}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent opacity-90 pointer-events-none" />
+
+              <div className="absolute bottom-5 left-5 right-5 p-5 bg-[#0A1F44]/95 backdrop-blur-md border border-white/15 rounded text-white space-y-2">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-[#C8102E] font-semibold">
+                  VERIFIED VENUE EXECUTION
+                </div>
+                <div className="font-heading font-semibold text-sm sm:text-base text-white">
+                  {currentEntity.photoCaption}
+                </div>
+                <div className="text-xs text-slate-300 font-sans">
+                  {currentEntity.venues}
                 </div>
               </div>
+            </div>
 
-              <div className="pt-2">
+            {/* Linked Real Event in Archive */}
+            {currentEntity.featuredEvent && (
+              <div className="p-5 bg-[#0A1F44] border border-white/10 rounded flex items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="text-[10px] font-mono text-slate-400 uppercase">
+                    ARCHIVED WORK BENCHMARK:
+                  </div>
+                  <div className="font-heading font-medium text-white text-xs sm:text-sm">
+                    {currentEntity.featuredEvent.name}
+                  </div>
+                </div>
+
                 <button
-                  onClick={handleInquiry}
-                  className="btn-editorial-red inline-flex items-center gap-2 cursor-pointer"
+                  onClick={() => (navigateTo ? navigateTo(`/events/${currentEntity.featuredEvent.slug}`) : null)}
+                  className="px-3 py-1.5 rounded bg-[#C8102E] hover:bg-[#A50D25] text-white text-xs font-mono font-medium flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
                 >
-                  <span>Inquire ENCHANTE Mandate</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <span>Inspect Event</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </div>
-
-            {/* Right Visual (5 cols) */}
-            <div className="lg:col-span-5">
-              <div className="editorial-image-frame rounded aspect-[4/5] shadow-md bg-[#050F22] overflow-hidden border border-white/15 relative">
-                <img
-                  src={plenaryPhoto}
-                  alt="ENCHANTE Diplomatic Plenary Scenography"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050F22]/90 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#071731]/95 backdrop-blur-xs rounded border border-white/15 text-white font-mono text-xs">
-                  <div className="text-[#C8102E] font-semibold text-[10px] uppercase">
-                    ENCHANTE BENCHMARK
-                  </div>
-                  <div className="font-sans font-medium text-sm mt-0.5">
-                    Ambassadorial Gala &amp; Diplomatic Dinners
-                  </div>
-                  <div className="text-slate-300 text-[11px] font-sans">
-                    Precision lighting, acoustic baffles, and state precedence seating
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
           </div>
 
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 3. UNIT 02: DNA STUDIO (Creative Broadcast & 4K Cinema Suite) */}
-      {/* ========================================================================= */}
-      <section id="unit-dna" className="py-20 sm:py-28 bg-[#0A1F44] border-b border-white/10 scroll-mt-20">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content (6 cols) */}
-            <div className="lg:col-span-6 space-y-6">
+          {/* Right Column: Mandate Scope, Metrics & Deliverables (7 cols) */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  CREATIVE BROADCAST &amp; MEDIA
+                <span className="font-mono text-sm font-bold text-[#C8102E]">
+                  {currentEntity.code}
                 </span>
-                <span className="w-8 h-px bg-white/20" />
-                <span className="font-mono text-xs text-slate-400">4K CINEMA FACILITY</span>
+                <span className="text-xs font-mono tracking-widest uppercase text-slate-400 font-semibold">
+                  {currentEntity.title}
+                </span>
               </div>
 
-              <div>
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                  DNA STUDIO
-                </h2>
-                <p className="font-mono text-xs sm:text-sm text-slate-400 mt-1">
-                  DNA STUDIO Creative Broadcast, Multimedia Suites &amp; Virtual Feeds
-                </p>
-              </div>
+              <h2 className="font-heading text-3xl sm:text-5xl lg:text-[52px] font-semibold text-white tracking-tight leading-[1.06]">
+                {currentEntity.name === "ENCHANTE" ? (
+                  <>
+                    ENCHANTÉE <br />
+                    <span className="font-editorial italic font-normal text-slate-200 text-2xl sm:text-4xl">
+                      Haute Protocol &amp; Ceremonial Scenography.
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    {currentEntity.name} <br />
+                    <span className="font-editorial italic font-normal text-slate-200 text-2xl sm:text-4xl">
+                      {currentEntity.title}
+                    </span>
+                  </>
+                )}
+              </h2>
 
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                Headquartered at The City Tower in Jakarta, DNA STUDIO is TSA's dedicated 4K multi-camera broadcast facility. Producing executive leader dialogues, high-production corporate podcasts, and syndicated plenary live feeds, DNA STUDIO elevates corporate and sovereign storytelling to broadcast television fidelity.
+              <p className="font-sans text-sm sm:text-base text-slate-200 font-normal leading-relaxed pt-1">
+                {currentEntity.tagline}
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                {[
-                  "Turnkey 4K Cinema Multi-Cam Live Feeds",
-                  "Executive Thought Leadership Podcasts",
-                  "Simultaneous Interpretation Audio Routing",
-                  "Syndicated International Broadcast Distribution"
-                ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
-                    <span>{s}</span>
+              <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal pt-1">
+                {currentEntity.mandate}
+              </p>
+            </div>
+
+            {/* Editorial Typographic Metrics (Integrated, NOT boxed cards) */}
+            <div className="pt-4 border-t border-white/10 grid grid-cols-3 gap-6 font-mono">
+              {currentEntity.metrics.map((m, idx) => (
+                <div key={idx} className="space-y-1">
+                  <div className="text-2xl sm:text-3xl font-bold text-white font-heading tracking-tight">
+                    {m.value}
+                  </div>
+                  <div className="text-[11px] text-slate-400 uppercase tracking-wider font-sans">
+                    {m.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Editorial Disciplines Ledger (NO CARDS) */}
+            <div className="space-y-3 pt-6 border-t border-white/10">
+              <div className="text-xs font-mono uppercase tracking-widest text-[#C8102E] font-semibold">
+                OPERATIONAL DELIVERABLES &amp; TURNKEY OUTPUT:
+              </div>
+
+              <div className="divide-y divide-white/10 font-sans">
+                {currentEntity.deliverables.map((deliv, idx) => (
+                  <div
+                    key={idx}
+                    className="py-3 sm:py-3.5 flex items-baseline justify-between gap-4 group hover:bg-white/[0.015] transition-colors"
+                  >
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-mono text-xs font-bold text-[#C8102E]">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-xs sm:text-sm text-slate-200 font-normal leading-snug">
+                        {deliv}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider shrink-0 hidden sm:inline">
+                      STANDARDIZED
+                    </span>
                   </div>
                 ))}
               </div>
-
-              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
-                <div>
-                  <span className="text-slate-400 block text-[10px]">DIGITAL REACH</span>
-                  <span className="text-white font-semibold text-sm">2.4M+ Syndicated Views</span>
-                </div>
-                <div className="w-px h-8 bg-white/10" />
-                <div>
-                  <span className="text-slate-400 block text-[10px]">STUDIO HARDWARE</span>
-                  <span className="text-[#FFFFFF] font-semibold text-sm">4K Cinema Cinema Rig</span>
-                </div>
-              </div>
             </div>
 
-            {/* Right Card (6 cols) */}
-            <div className="lg:col-span-6 bg-[#071731] text-white rounded p-8 sm:p-10 border border-white/10 space-y-6">
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <div>
-                  <h3 className="font-heading text-xl font-medium text-white">
-                    Leader Dialogue Production
-                  </h3>
-                </div>
-                <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-[#C8102E]">
-                  <Video className="w-4 h-4" />
-                </div>
-              </div>
-
-              <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
-                Featuring acoustic isolation, Blackmagic 4K studio cameras, broadcast-grade Sennheiser audio routing, and direct high-speed fibre up-links to regional media syndicates.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 font-mono text-xs">
-                <div className="p-4 bg-[#0A1F44] rounded border border-white/10">
-                  <span className="text-slate-400 block text-[10px]">VIDEO FIDELITY</span>
-                  <span className="text-white text-base font-semibold mt-1 block">4K Cinema Pro</span>
-                </div>
-                <div className="p-4 bg-[#0A1F44] rounded border border-white/10">
-                  <span className="text-slate-400 block text-[10px]">DISTRIBUTION</span>
-                  <span className="text-[#FFFFFF] text-base font-semibold mt-1 block">Global Syndication</span>
-                </div>
-              </div>
-
+            {/* Inquire CTA & Dedicated Showcase Link */}
+            <div className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-4">
               <button
                 onClick={handleInquiry}
-                className="btn-editorial-red w-full cursor-pointer"
+                className="btn-editorial-red"
               >
-                <span>Book DNA STUDIO Session</span>
+                <span>Engage {currentEntity.name} Practice</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
-            </div>
-          </div>
 
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 4. UNIT 03: GWI (Gema Waskita Interaktifa - Public Affairs) */}
-      {/* ========================================================================= */}
-      <section id="unit-gwi" className="py-20 sm:py-28 bg-[#071731] border-b border-white/10 scroll-mt-20">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Visual (5 cols) */}
-            <div className="lg:col-span-5 order-2 lg:order-1">
-              <div className="editorial-image-frame rounded aspect-[4/5] shadow-md bg-[#050F22] overflow-hidden border border-white/15 relative">
-                <img
-                  src={gwiPhoto}
-                  alt="GWI Public Cultural Assembly"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050F22]/90 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#071731]/95 backdrop-blur-xs rounded border border-white/15 text-white font-mono text-xs">
-                  <div className="text-[#C8102E] font-semibold text-[10px] uppercase">
-                    GWI CIVIC SCALE ACTIVATION
-                  </div>
-                  <div className="font-sans font-medium text-sm mt-0.5">
-                    Gema Waskita Cultural Assembly
-                  </div>
-                  <div className="text-slate-300 text-[11px] font-sans">
-                    45,000+ Live Attendees · 1.2M Concurrent Viewers
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content (7 cols) */}
-            <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  COMMUNICATIONS &amp; ACTIVATION
-                </span>
-                <span className="w-8 h-px bg-white/20" />
-                <span className="font-mono text-xs text-slate-400">PUBLIC SECTOR ENGAGEMENT</span>
-              </div>
-
-              <div>
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                  GWI
-                </h2>
-                <p className="font-mono text-xs sm:text-sm text-slate-400 mt-1">
-                  Gema Waskita Interaktifa · Public Affairs, Campaigns &amp; Civic Festivals
-                </p>
-              </div>
-
-              <div className="p-4 bg-[#0A1F44] rounded border-l-4 border-[#C8102E] text-sm text-white font-medium leading-relaxed">
-                Integrated Public Affairs, Strategic Communications &amp; Civic Scale Festivals
-              </div>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                GWI operates at the frontier of public sector communications, civic sentiment architecture, and high-capacity cultural festivals. Combining immersive digital projection mapping with crisis narrative defense, GWI mobilizes audiences across nationwide campaigns.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                {[
-                  "Strategic Public Affairs Orchestration",
-                  "Corporate Crisis & Reputation Defense",
-                  "High-Capacity Cultural Scenography",
-                  "National Digital Narrative Amplification"
-                ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
-                    <span>{s}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
-                <div>
-                  <span className="text-slate-400 block text-[10px]">CROWD SCALE</span>
-                  <span className="text-white font-semibold text-sm">45,000+ In-Person</span>
-                </div>
-                <div className="w-px h-8 bg-white/10" />
-                <div>
-                  <span className="text-slate-400 block text-[10px]">BROADCAST REACH</span>
-                  <span className="text-[#FFFFFF] font-semibold text-sm">1.2M Digital Viewers</span>
-                </div>
-              </div>
-
-              <div className="pt-2">
+              {currentEntity.id === "enchante" && (
                 <button
-                  onClick={handleInquiry}
-                  className="btn-editorial-red inline-flex items-center gap-2 cursor-pointer"
+                  onClick={() => (navigateTo ? navigateTo("/enchante") : null)}
+                  className="btn-editorial-navy flex items-center gap-2 text-xs"
                 >
-                  <span>Inquire GWI Mandate</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <span>Explore Enchantée Monograph</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#C8102E]" />
                 </button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 5. UNIT 04: GOADV (Government Relations & Regulatory Advisory) */}
-      {/* ========================================================================= */}
-      <section id="unit-govadv" className="py-20 sm:py-28 bg-[#0A1F44] border-b border-white/10 scroll-mt-20">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-6 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  GOVERNMENT RELATIONS
-                </span>
-                <span className="w-8 h-px bg-white/20" />
-                <span className="font-mono text-xs text-slate-400">REGULATORY INTELLIGENCE</span>
-              </div>
-
-              <div>
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                  GOADV
-                </h2>
-                <p className="font-mono text-xs sm:text-sm text-slate-400 mt-1">
-                  GOADV Policy Intelligence &amp; Strategic Regulatory Advisory
-                </p>
-              </div>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                GOADV bridges private enterprise and state regulatory authorities. Operating under strict protocol alignment, our advisors assist domestic and multinational institutions in navigating cross-ministry compliance, public-private partnership (PPP) frameworks, and state regulatory horizons.
-              </p>
-
-              <div className="p-6 bg-[#071731] rounded border border-white/10 space-y-3">
-                <span className="font-mono text-xs text-slate-300 font-semibold uppercase tracking-wider block">
-                  Core Practice Focus Areas
-                </span>
-                <ul className="space-y-2 text-xs text-slate-300 font-sans">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E]" />
-                    <span>Cross-Ministry Liaison &amp; Regulatory Audits</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E]" />
-                    <span>Public-Private Sector Alliance Building</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E]" />
-                    <span>Digital Governance &amp; Data Residency Frameworks</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E]" />
-                    <span>Bilateral Business Diplomacy Accords</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Right Structured Matrix (6 cols) */}
-            <div className="lg:col-span-6 bg-[#071731] text-white rounded p-8 sm:p-10 border border-white/10 space-y-6">
-              <div className="border-b border-white/10 pb-4 flex items-center justify-between">
-                <div>
-                  <h3 className="font-heading text-xl font-medium text-white">
-                    Regulatory Liaison Performance
-                  </h3>
-                </div>
-                <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-[#C8102E]">
-                  <FileText className="w-4 h-4" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 font-mono text-xs">
-                <div className="p-4 bg-[#0A1F44] rounded border border-white/10">
-                  <span className="text-slate-400 block text-[10px]">MINISTRIES PARTNERED</span>
-                  <span className="text-white text-xl font-semibold mt-1 block">14 Ministries</span>
-                </div>
-                <div className="p-4 bg-[#0A1F44] rounded border border-white/10">
-                  <span className="text-slate-400 block text-[10px]">APPROVAL LATENCY</span>
-                  <span className="text-[#FFFFFF] text-xl font-semibold mt-1 block">-68% Delay</span>
-                </div>
-              </div>
-
-              <p className="font-sans text-xs text-slate-300 leading-relaxed">
-                GOADV maintains trusted liaison channels with key state ministries including Communication &amp; Digital Affairs, State-Owned Enterprises, Maritime Affairs &amp; Investment, and Culture.
-              </p>
+              )}
 
               <button
-                onClick={handleInquiry}
-                className="btn-editorial-red w-full cursor-pointer"
+                onClick={() => (navigateTo ? navigateTo("/events") : null)}
+                className="btn-editorial-outline text-xs"
               >
-                <span>Request GOADV Regulatory Briefing</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <span>Explore Full Events Portfolio</span>
               </button>
             </div>
+
           </div>
 
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 6. UNIT 05: PARENT HOLDING - TRICATHA SEMPITERNAL ASIA */}
-      {/* ========================================================================= */}
-      <section id="unit-tsa" className="py-20 sm:py-28 bg-[#071731] border-b border-white/10 scroll-mt-20">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold text-[#C8102E] tracking-wider uppercase">
-                  PARENT HOLDING &amp; SOVEREIGN COUNSEL
-                </span>
-                <span className="w-8 h-px bg-white/20" />
-                <span className="font-mono text-xs text-slate-400">EST. JAKARTA</span>
-              </div>
-
-              <div>
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                  Tricatha Sempiternal Asia
-                </h2>
-                <p className="font-mono text-xs sm:text-sm text-slate-400 mt-1">
-                  Executive Holding, Cross-Border Mandates &amp; Sovereign Roadmaps
-                </p>
-              </div>
-
-              <div className="p-4 bg-[#0A1F44] rounded border-l-4 border-[#C8102E] text-sm text-white font-medium leading-relaxed">
-                Strategic Advisory, Cross-Border Joint Ventures &amp; Sovereign Governance
-              </div>
-
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                Tricatha Sempiternal Asia operates as the parent holding and executive leadership practice, providing confidential counsel to corporate chairpersons, sovereign wealth funds, and ministerial secretariats navigating complex investment covenants and institutional reorganizations across the Southeast Asian corridor.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                {[
-                  "Executive Positioning & Sovereign Briefings",
-                  "Cross-Border Joint Venture Structuring",
-                  "Institutional Governance Blueprints",
-                  "Regulatory Strategy & Risk Roadmaps"
-                ].map((s, i) => (
-                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
-                    <CheckCircle2 className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
-                    <span>{s}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-4 flex items-center gap-6 font-mono text-xs text-slate-400 border-t border-white/10">
-                <div>
-                  <span className="text-slate-400 block text-[10px]">VERIFIED SCALE</span>
-                  <span className="text-white font-semibold text-sm">18+ Sovereign Mandates</span>
-                </div>
-                <div className="w-px h-8 bg-white/10" />
-                <div>
-                  <span className="text-slate-400 block text-[10px]">ACCORD VALUE</span>
-                  <span className="text-[#FFFFFF] font-semibold text-sm">$450M+ Bilateral</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Visual (5 cols) */}
-            <div className="lg:col-span-5">
-              <div className="editorial-image-frame rounded aspect-[4/5] shadow-md bg-[#050F22] overflow-hidden border border-white/15 relative">
-                <img
-                  src={aseanPhoto}
-                  alt="Tricatha Sempiternal Asia Sovereign Plenary"
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050F22]/90 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-5 left-5 right-5 p-4 bg-[#071731]/95 backdrop-blur-xs rounded border border-white/15 text-white font-mono text-xs">
-                  <div className="text-[#C8102E] font-semibold text-[10px] uppercase">
-                    HEADQUARTERS STANDARD
-                  </div>
-                  <div className="font-sans font-medium text-sm mt-0.5">
-                    The City Tower, 12th Floor, Jakarta
-                  </div>
-                  <div className="text-slate-300 text-[11px] font-sans">
-                    Ministerial clearance &amp; bilateral non-disclosure covenants
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* 4. MARKETS & PROTOCOL FOOTPRINT MATRIX */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-16 sm:py-20 border-b border-white/10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/10">
+          <div className="space-y-3 max-w-2xl">
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#C8102E]">
+              Markets &amp; Sectoral Presence
+            </span>
+            <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
+              Cross-Sector Operational Coverage
+            </h2>
           </div>
-
-        </div>
-      </section>
-
-      {/* ========================================================================= */}
-      {/* 7. GROUP MANDATE INQUIRY */}
-      {/* ========================================================================= */}
-      <section className="py-20 bg-[#050F22] border-t border-white/10">
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-8 text-center space-y-4">
-          <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
-            INTEGRATED PRACTICE MANDATES
-          </span>
-          <h2 className="font-heading text-2xl sm:text-4xl font-medium text-white tracking-tight">
-            Engage the Full TSA Business Group Ecosystem
-          </h2>
-          <p className="text-sm sm:text-base text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
-            Organizations can commission individual entities (ENCHANTE, DNA STUDIO, GWI, or GOADV) or deploy a turnkey integrated mandate across strategic counsel, protocol, communications, and broadcasting.
+          <p className="text-xs sm:text-sm text-slate-300 max-w-md font-normal leading-relaxed">
+            Delivering sovereign protocol, commercial MICE exhibitions, and corporate shareholder summits across Southeast Asia.
           </p>
-          <div className="pt-2">
-            <button
-              onClick={handleInquiry}
-              className="btn-editorial-red inline-flex items-center gap-2 cursor-pointer"
-            >
-              <span>Initiate Group Consultation</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-10 font-sans text-xs">
+          <div className="p-6 bg-[#0A1F44] border border-white/10 rounded space-y-3">
+            <div className="font-mono text-[11px] font-bold text-[#C8102E] uppercase">
+              SECTOR 01
+            </div>
+            <div className="font-heading text-base font-semibold text-white">
+              Sovereign &amp; Diplomatic
+            </div>
+            <p className="text-slate-300 leading-relaxed">
+              Bilateral ministerial plenaries, head-of-state diplomatic banquets, and sovereign treaty signing ceremonies.
+            </p>
+          </div>
+
+          <div className="p-6 bg-[#0A1F44] border border-white/10 rounded space-y-3">
+            <div className="font-mono text-[11px] font-bold text-[#C8102E] uppercase">
+              SECTOR 02
+            </div>
+            <div className="font-heading text-base font-semibold text-white">
+              State-Owned Enterprises (BUMN)
+            </div>
+            <p className="text-slate-300 leading-relaxed">
+              Holding leadership assemblies, ESG investor symposiums, and national corporate governance conclaves.
+            </p>
+          </div>
+
+          <div className="p-6 bg-[#0A1F44] border border-white/10 rounded space-y-3">
+            <div className="font-mono text-[11px] font-bold text-[#C8102E] uppercase">
+              SECTOR 03
+            </div>
+            <div className="font-heading text-base font-semibold text-white">
+              Trade &amp; Commercial MICE
+            </div>
+            <p className="text-slate-300 leading-relaxed">
+              Multi-hall energy transition expos, maritime congresses, clean tech showcases, and B2B buyer-seller matchmaking.
+            </p>
+          </div>
+
+          <div className="p-6 bg-[#0A1F44] border border-white/10 rounded space-y-3">
+            <div className="font-mono text-[11px] font-bold text-[#C8102E] uppercase">
+              SECTOR 04
+            </div>
+            <div className="font-heading text-base font-semibold text-white">
+              Civic &amp; Media Broadcast
+            </div>
+            <p className="text-slate-300 leading-relaxed">
+              Mass public cultural heritage assemblies, 4K television syndication, and interactive thought leadership broadcasts.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CLOSING INQUIRY PANEL (Matching Events Benchmark) */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 mt-16">
+        <div className="bg-[#0A1F44] text-white rounded p-10 sm:p-14 border border-white/10">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+            <div className="max-w-2xl space-y-3">
+              <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
+                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+                <span>The City Tower, Jakarta · Executive Directorate</span>
+              </div>
+              <h2 className="text-2xl sm:text-4xl font-semibold text-white tracking-tight font-heading leading-tight">
+                Engage the TSA Business Group.
+              </h2>
+              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+                Coordinate with our executive directorate at The City Tower in Central Jakarta to align one or multiple group practices with your organization's strategic mandates.
+              </p>
+            </div>
+
+            <div className="shrink-0">
+              <button
+                onClick={handleInquiry}
+                className="btn-editorial-red"
+              >
+                <span>Initiate Group Consultation</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </section>

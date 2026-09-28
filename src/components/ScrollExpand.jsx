@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import plenaryPhoto from "../assets/DSC08824.JPG";
+const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 
 export default function ScrollExpand({
   image = plenaryPhoto,

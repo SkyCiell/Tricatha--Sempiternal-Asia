@@ -8,13 +8,16 @@ export default function Leadership() {
 
   return (
     <section id="leadership" className="py-20 sm:py-28 bg-[#0A1F44] text-white relative border-b border-white/10">
-      <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8">
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6 pb-8 border-b border-white/10">
           <div>
-            <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-medium font-heading text-white tracking-tight leading-tight">
-              Governed by Multidisciplinary Practice Leaders
+            <h2 className="text-2xl sm:text-4xl lg:text-[42px] font-semibold font-heading text-white tracking-tight leading-tight">
+              Governed by Multidisciplinary <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                Practice Leaders.
+              </span>
             </h2>
           </div>
           <div className="max-w-md text-slate-300 text-sm font-normal leading-relaxed">
