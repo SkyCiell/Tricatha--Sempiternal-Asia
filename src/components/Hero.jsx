@@ -43,7 +43,7 @@ export default function Hero({ scrollToSection }) {
 
           {/* Authoritative Subtitle */}
           <p className="text-base sm:text-lg md:text-xl text-[#CBD5E1] max-w-2xl font-normal leading-relaxed">
-            PT Tricatha Sempiternal Asia (TSA) bridges sovereign policy, diplomatic protocol, and high-stakes corporate engagement across Indonesia and Southeast Asia. Headquartered at The City Tower in Jakarta.
+            PT Tricatha Sempiternal Asia (TSA) bridges sovereign policy, diplomatic protocol, and high-stakes corporate engagement across Indonesia and Southeast Asia. Headquartered at Sudirman Park in Jakarta.
           </p>
 
           {/* Dual Pill Action CTAs (Matching Reference Website Interaction) */}

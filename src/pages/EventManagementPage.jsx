@@ -100,7 +100,7 @@ export default function EventManagementPage({ navigateTo }) {
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 font-mono">
-              8 Core Operational Disciplines · Delivered from The City Tower Jakarta
+              Core Operational Disciplines · Delivered from The City Tower Jakarta
             </p>
           </div>
 

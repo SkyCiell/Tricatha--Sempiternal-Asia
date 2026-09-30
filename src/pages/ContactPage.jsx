@@ -4,11 +4,11 @@ import Contact from "../components/Contact";
 export default function ContactPage() {
   return (
     <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
-      
+
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
-          
+
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
               <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />

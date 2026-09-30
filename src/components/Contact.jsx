@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { companyInfo } from "../data/tsaData";
-import { CheckCircle2, MapPin, Mail, Clock, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { CheckCircle2, MapPin, Mail, Clock, ShieldCheck, ArrowUpRight, Phone } from "lucide-react";
 
 export default function Contact({ preselectedService }) {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ export default function Contact({ preselectedService }) {
     company: "",
     email: "",
     phone: "",
-    category: "Strategic Advisory",
+    category: "Corporate Events & AGMs",
     message: ""
   });
 
@@ -27,12 +27,12 @@ export default function Contact({ preselectedService }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const practiceOptions = [
-    "Strategic Advisory",
-    "Government & Public Affairs",
-    "Corporate Events & Summits",
-    "Stakeholder Engagement",
-    "Market & Business Development",
-    "Strategic Communications & DNA Studio"
+    "Corporate Events & AGMs",
+    "Trade Exhibitions & MICE",
+    "Government & Sovereign Plenaries",
+    "Broadcast & Media Production (DNA Studio)",
+    "Protocol & Executive Programs (Enchanté)",
+    "Comprehensive Event Advisory"
   ];
 
   const handleChange = (e) => {
@@ -70,10 +70,10 @@ export default function Contact({ preselectedService }) {
   return (
     <section id="contact" className="py-12 sm:py-16 bg-[#071731] text-[#F1F5F9] border-b border-white/10">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-        
+
         {/* Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          
+
           {/* Left Column (5 cols): Coordinates & Confidentiality */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-3">
@@ -93,8 +93,10 @@ export default function Contact({ preselectedService }) {
                 </div>
                 <div>
                   <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">HEADQUARTERS</div>
-                  <div className="font-medium text-white mt-0.5">The City Tower, 12th Floor Unit 1N</div>
-                  <div className="text-slate-400 text-[11px]">Jl. MH. Thamrin No. 81, Jakarta Pusat 10310</div>
+                  <div className="font-medium text-white mt-0.5">Sudirman Park Apartment</div>
+                  <div className="text-slate-400 text-[11px] leading-relaxed">
+                    Jl. KH. Mas Mansyur Kav. 35, Karet Tengsin, Tanah Abang, Jakarta Pusat, DKI Jakarta, Indonesia
+                  </div>
                 </div>
               </div>
 
@@ -108,6 +110,19 @@ export default function Contact({ preselectedService }) {
                     {companyInfo.email}
                   </a>
                   <div className="text-slate-400 text-[11px]">Direct protocol dispatch desk</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">TELEPHONE DESK</div>
+                  <a href={`tel:${companyInfo.phone.replace(/\s+/g, '')}`} className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
+                    {companyInfo.phone}
+                  </a>
+                  <div className="text-slate-400 text-[11px]">Headquarters Secretariat</div>
                 </div>
               </div>
 
@@ -135,7 +150,7 @@ export default function Contact({ preselectedService }) {
 
           {/* Right Column (7 cols): Card with Form */}
           <div className="lg:col-span-7 bg-[#0A1F44] border border-white/15 p-8 sm:p-10 rounded shadow-xl">
-            
+
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">
                 <div className="w-14 h-14 bg-[#071731] border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
@@ -145,7 +160,7 @@ export default function Contact({ preselectedService }) {
                   Mandate Brief Transmitted
                 </h3>
                 <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
-                  Thank you, {formData.firstName} {formData.lastName}. Your brief on behalf of <span className="font-medium text-white">{formData.company}</span> has been securely transmitted to TSA's executive directors at The City Tower Jakarta.
+                  Thank you, {formData.firstName} {formData.lastName}. Your brief on behalf of <span className="font-medium text-white">{formData.company}</span> has been securely transmitted to TSA's executive directors at Sudirman Park Jakarta.
                 </p>
                 <div className="pt-2">
                   <button
@@ -161,7 +176,7 @@ export default function Contact({ preselectedService }) {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                
+
                 <div className="font-mono text-xs text-[#C8102E] font-medium uppercase tracking-widest pb-3 border-b border-white/10 flex items-center justify-between">
                   <span>CONFIDENTIAL INTAKE FORM</span>
                   <span className="text-slate-400 font-normal">ALL FIELDS CONFIDENTIAL</span>
@@ -287,7 +302,7 @@ export default function Contact({ preselectedService }) {
                 {/* Submit Action */}
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="text-[11px] font-mono text-slate-400 text-center sm:text-left">
-                    Direct dispatch to The City Tower, Jakarta
+                    Direct dispatch to Sudirman Park, Jakarta
                   </div>
 
                   <button

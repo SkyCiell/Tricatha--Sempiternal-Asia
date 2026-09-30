@@ -20,6 +20,7 @@ import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
 import EnchantePage from "./pages/EnchantePage";
+import ActivitiesPage from "./pages/ActivitiesPage";
 
 const VALID_ROUTES = [
   "/",
@@ -32,7 +33,9 @@ const VALID_ROUTES = [
   "/services",
   "/event-management",
   "/portfolio",
+  "/event",
   "/events",
+  "/activities",
   "/articles",
   "/news",
   "/careers",
@@ -204,6 +207,9 @@ export default function App() {
         return <ContactPage key="contact" navigateTo={navigateTo} />;
       case "/faq":
         return <FAQPage key="faq" navigateTo={navigateTo} />;
+      case "/activities":
+        return <ActivitiesPage key="activities" navigateTo={navigateTo} />;
+      case "/event":
       case "/events":
         return <EventsPage key="events" navigateTo={navigateTo} />;
       default:

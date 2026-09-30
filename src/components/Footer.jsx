@@ -41,11 +41,9 @@ export default function Footer({ navigateTo }) {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "About TSA", path: "/about" },
     { name: "Business Group", path: "/business-group" },
-    { name: "Events & Plenaries", path: "/events" },
-    { name: "Fellowship & Internship", path: "/internship" },
-    { name: "News & Dispatches", path: "/news" },
+    { name: "Event & Expos", path: "/events" },
+    { name: "Activities & Initiatives", path: "/activities" },
     { name: "Contact Secretariat", path: "/contact" }
   ];
 
@@ -78,7 +76,7 @@ export default function Footer({ navigateTo }) {
                   TRICATHA SEMPITERNAL ASIA
                 </span>
                 <span className="font-sans text-[10px] text-slate-400 tracking-wider uppercase mt-1 block">
-                  THE CITY TOWER · JAKARTA
+                  SUDIRMAN PARK · JAKARTA
                 </span>
               </div>
             </div>
@@ -189,9 +187,9 @@ export default function Footer({ navigateTo }) {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
                 <div>
-                  The City Tower, 12th Floor Unit 1N<br />
-                  Jl. MH. Thamrin No. 81<br />
-                  Jakarta Pusat 10310, Indonesia
+                  Sudirman Park Apartment<br />
+                  Jl. KH. Mas Mansyur Kav. 35, Karet Tengsin, Tanah Abang<br />
+                  Jakarta Pusat, DKI Jakarta, Indonesia
                 </div>
               </div>
 

@@ -1,45 +1,67 @@
 import React from "react";
 import EditorialHero from "../components/EditorialHero";
 import WhatWeDoIntro from "../components/WhatWeDoIntro";
-import WhyTSASection from "../components/WhyTSASection";
 import BusinessGroupSection from "../components/BusinessGroupSection";
+import EventSection from "../components/EventSection";
+import ActivitiesSection from "../components/ActivitiesSection";
+import Contact from "../components/Contact";
 import ImpactNumbers from "../components/ImpactNumbers";
-import FeaturedProjectsSection from "../components/FeaturedProjectsSection";
-import EditorialCTA from "../components/EditorialCTA";
 
 export default function HomePage({ navigateTo, onOpenWorkModal }) {
   return (
     <div className="bg-[#071731] text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
-      
-      {/* 1. Strong Company Introduction & Business/Event Positioning */}
+
+      {/* 1. HOME: Editorial Hero Section (Deep Navy Background, Large Composition, Authoritative Messaging) */}
       <EditorialHero
-        onExploreWork={() => (navigateTo ? navigateTo("/events") : null)}
-        onLetsTalk={() => (navigateTo ? navigateTo("/contact") : null)}
+        onExploreWork={() => {
+          const el = document.getElementById("event");
+          if (el) {
+            if (window.__lenis) {
+              window.__lenis.scrollTo(el, { offset: -70 });
+            } else {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+          } else if (navigateTo) {
+            navigateTo("/events");
+          }
+        }}
+        onLetsTalk={() => {
+          const el = document.getElementById("contact");
+          if (el) {
+            if (window.__lenis) {
+              window.__lenis.scrollTo(el, { offset: -70 });
+            } else {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+          } else if (navigateTo) {
+            navigateTo("/contact");
+          }
+        }}
       />
 
-      {/* 2. What TSA Does: Core Operational Disciplines */}
+      {/* 2. Operational Disciplines & Institutional Credentials Transition Strip */}
       <WhatWeDoIntro navigateTo={navigateTo} />
 
-      {/* 3. Key Positioning & Institutional Rigor */}
-      <WhyTSASection navigateTo={navigateTo} />
-
-      {/* 4. TSA Business Group: ENCHANTE, DNA STUDIO, GWI, GOADV */}
+      {/* 3. BUSINESS GROUP: Structured Layout with Multiple Content Blocks (Blue and White Color System) */}
       <BusinessGroupSection navigateTo={navigateTo} />
 
-      {/* 5. Operational Scale & Verified Venue Provenance */}
+      {/* 4. Operational Scale & Measured Attendance Telemetry */}
       <ImpactNumbers />
 
-      {/* 5. Selected Events & Highlighted Case Records */}
-      <FeaturedProjectsSection
+      {/* 5. EVENT: Event-Focused Asymmetric Section with Upcoming & Featured Highlights (Deep Navy & Strong Red Accent) */}
+      <EventSection
         navigateTo={navigateTo}
         onOpenWorkModal={onOpenWorkModal}
       />
 
-      {/* 6. Concise Corporate Call to Action Directing to Key Pages */}
-      <EditorialCTA
-        onStartConversation={() => (navigateTo ? navigateTo("/contact") : null)}
-        onExploreWork={() => (navigateTo ? navigateTo("/events") : null)}
+      {/* 6. ACTIVITIES: Distinct Warm Off-White Editorial Magazine Layout for Programs, Collaborations & Initiatives */}
+      <ActivitiesSection
+        navigateTo={navigateTo}
+        onOpenWorkModal={onOpenWorkModal}
       />
+
+      {/* 7. CONTACT: Strong Closing Section (Deep Navy Color Treatment, Coordinates & Mandate Intake) */}
+      <Contact />
 
     </div>
   );

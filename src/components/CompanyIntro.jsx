@@ -29,7 +29,7 @@ export default function CompanyIntro() {
                   <span>HEADQUARTERS CLEARANCE</span>
                 </div>
                 <p className="text-[11px] text-slate-300 font-sans leading-snug">
-                  The City Tower, 12th Floor, Thamrin Corridor, Central Jakarta.
+                  Sudirman Park Apartment, Jl. KH. Mas Mansyur Kav. 35, Jakarta Pusat.
                 </p>
               </div>
             </div>
@@ -56,8 +56,8 @@ export default function CompanyIntro() {
                   <Building2 className="w-4 h-4 text-[#C8102E]" />
                   <span>HEADQUARTERS</span>
                 </div>
-                <div className="text-xs font-medium text-white">The City Tower, Jakarta</div>
-                <div className="text-[11px] text-slate-400 font-mono">Thamrin Corridor</div>
+                <div className="text-xs font-medium text-white">Sudirman Park, Jakarta</div>
+                <div className="text-[11px] text-slate-400 font-mono">Jl. KH. Mas Mansyur Kav. 35</div>
               </div>
 
               <div className="p-4 bg-[#0A1F44] border border-white/10 rounded space-y-1">

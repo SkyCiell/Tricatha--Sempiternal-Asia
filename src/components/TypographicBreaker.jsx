@@ -20,7 +20,7 @@ export default function TypographicBreaker({ word, theme = "navy", subtitle }) {
   return (
     <div className={`py-20 border-y transition-colors duration-500 overflow-hidden ${themeStyles[theme] || themeStyles.navy}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        
+
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}

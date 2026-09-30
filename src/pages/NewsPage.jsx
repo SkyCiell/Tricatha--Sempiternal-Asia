@@ -68,11 +68,11 @@ export default function NewsPage({ navigateTo }) {
 
   return (
     <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
-      
+
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
-          
+
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
               <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
@@ -124,16 +124,14 @@ export default function NewsPage({ navigateTo }) {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-3.5 py-1.5 rounded transition-all cursor-pointer border flex items-center gap-2 ${
-                      isActive
+                    className={`px-3.5 py-1.5 rounded transition-all cursor-pointer border flex items-center gap-2 ${isActive
                         ? "bg-[#C8102E] text-white border-[#C8102E] font-semibold shadow-xs"
                         : "bg-[#0A1F44] text-slate-300 border-white/10 hover:border-white/30"
-                    }`}
+                      }`}
                   >
                     <span>{cat}</span>
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded ${
-                      isActive ? "bg-white/25 text-white" : "text-slate-400 bg-[#071731]"
-                    }`}>
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded ${isActive ? "bg-white/25 text-white" : "text-slate-400 bg-[#071731]"
+                      }`}>
                       {count}
                     </span>
                   </button>

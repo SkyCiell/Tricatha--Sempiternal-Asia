@@ -68,10 +68,10 @@ export default function EnchantePage({ navigateTo }) {
 
   return (
     <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
-      
+
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
-        
+
         {/* Navigation Breadcrumb */}
         <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-8">
           <button
@@ -91,7 +91,7 @@ export default function EnchantePage({ navigateTo }) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
-          
+
           {/* Left Title & Statement (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#C8102E] font-semibold uppercase">
@@ -174,7 +174,7 @@ export default function EnchantePage({ navigateTo }) {
       {/* 3. MANIFESTO OF DECORUM (Text as Visual Composition) */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28 border-b border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-baseline">
-          
+
           {/* Left Anchor (4 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -221,7 +221,7 @@ export default function EnchantePage({ navigateTo }) {
 
       {/* 4. THE FOUR DISCIPLINES (Editorial Numbered Ledger - NO CARDS) */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28 border-b border-white/10">
-        
+
         {/* Section Intro */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/10">
           <div className="space-y-2">
@@ -284,7 +284,7 @@ export default function EnchantePage({ navigateTo }) {
       {/* 5. DISPLAY METRICS & VENUE PROVENANCE (Generous Whitespace Composition) */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28 border-b border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          
+
           {/* Display Numbers (6 cols) */}
           <div className="lg:col-span-6 space-y-12">
             <div className="space-y-3">
@@ -356,7 +356,7 @@ export default function EnchantePage({ navigateTo }) {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-transparent to-transparent opacity-80 pointer-events-none" />
-              
+
               <div className="absolute bottom-4 left-4 right-4 p-4 bg-[#0A1F44]/95 backdrop-blur-xs rounded border border-white/10 text-white font-mono text-xs flex items-center justify-between">
                 <span>DIPLOMATIC PLENARY RECEPTION</span>
                 <span className="text-[#C8102E] font-semibold">JAKARTA</span>
@@ -399,7 +399,7 @@ export default function EnchantePage({ navigateTo }) {
                 For ambassadorial banquets, bilateral treaty signings, or high-precedence diplomatic gatherings, contact the Jakarta Executive Secretariat for confidential feasibility and protocol evaluation.
               </p>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
               <button
                 onClick={handleInquiry}

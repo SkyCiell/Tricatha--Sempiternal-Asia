@@ -16,7 +16,7 @@ const INSTITUTIONAL_PILLARS = [
   {
     title: "Southeast Asian Cross-Border Capability",
     mandate: "ASEAN Corridor Operations",
-    desc: "Headquartered at The City Tower in Central Jakarta, TSA regularly supports international trade expositions, bilateral investment roadshows, and overseas ministerial delegations requiring bilingual event command."
+    desc: "Headquartered at Sudirman Park in Central Jakarta, TSA regularly supports international trade expositions, bilateral investment roadshows, and overseas ministerial delegations requiring bilingual event command."
   },
   {
     title: "DNA Studio Broadcast & Hybrid Telemetry",
@@ -85,7 +85,7 @@ export default function WhyTSASection() {
             {/* Headquarters Governance Note */}
             <div className="p-5 bg-[#0A1F44] rounded border border-white/10 space-y-2 text-xs">
               <p className="text-slate-200 font-sans leading-relaxed">
-                Operating from The City Tower in Central Jakarta, TSA executes under strict non-disclosure covenants, protocol etiquette precedence, and international HSSE standards.
+                Operating from Sudirman Park in Central Jakarta, TSA executes under strict non-disclosure covenants, protocol etiquette precedence, and international HSSE standards.
               </p>
             </div>
           </motion.div>

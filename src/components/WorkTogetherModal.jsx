@@ -219,7 +219,7 @@ export default function WorkTogetherModal({ isOpen, onClose }) {
 
               <div className="pt-3 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div className="text-[11px] text-slate-400 font-sans">
-                  The City Tower · Jl. MH. Thamrin No. 81, Jakarta Pusat
+                  Sudirman Park Apartment · Jl. KH. Mas Mansyur Kav. 35, Jakarta Pusat
                 </div>
 
                 <button

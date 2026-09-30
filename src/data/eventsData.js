@@ -349,10 +349,10 @@ export const EVENTS_DATA = [
     title: "DNA Studio Leader Dialogue: Geopolitical Horizons 2026",
     client: "DNA Studio Broadcast Network",
     category: "Talk Show",
-    venue: "DNA Studio Broadcast Suite, The City Tower Jakarta",
+    venue: "DNA Studio Broadcast Suite, Sudirman Park Apartment, Jakarta",
     year: "2025",
     date: "January 2025",
-    location: "DNA Studio Broadcast Suite, The City Tower Jakarta",
+    location: "Sudirman Park Apartment, Jl. KH. Mas Mansyur Kav. 35, Jakarta Pusat",
     attendees: "Studio Live Audience & 2.4M Stream Viewers",
     img: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop",
     height: 760,
@@ -391,10 +391,44 @@ export const EVENTS_DATA = [
   }
 ];
 
+export const AI_GLOBAL_EXPO_EVENT = {
+  id: "evt-00",
+  slug: "ai-global-expo-2026",
+  title: "AI Global EXPO 2026",
+  client: "Global Frontier Technology Consortium & National AI Council",
+  category: "MICE",
+  venue: "Indonesia Convention Exhibition (ICE BSD City), Hall 1-3",
+  year: "2026",
+  date: "Q1 2026",
+  location: "ICE BSD City, Greater Jakarta",
+  attendees: "24,000+ Trade Delegates",
+  img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1600&auto=format&fit=crop",
+  height: 820,
+  scope: "Exhibition Floor Architecture, Keynote Plenary, VVIP Protocol, 180+ Enterprise Pavilions",
+  description:
+    "Southeast Asia's benchmark artificial intelligence exhibition convening global frontier tech leaders, enterprise software giants, national policymakers, and venture capital syndicates across multi-hall exhibition complexes.",
+  gallery: [
+    "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1200&auto=format&fit=crop"
+  ],
+  stats: [
+    { label: "Enterprise Pavilions", value: "180+", subtext: "3 Multi-Hall Complexes" },
+    { label: "Ministerial Keynotes", value: "35", subtext: "Sovereign Protocol Cleared" },
+    { label: "Trade Delegates", value: "24,000+", subtext: "International Delegations" },
+    { label: "Execution Mandate", value: "Turnkey", subtext: "ICE BSD City Halls 1-3" }
+  ]
+};
+
 export function getEventBySlug(slug) {
   if (!slug) return null;
   const normalized = slug.toLowerCase().trim().replace(/\/+$/, "");
+  if (normalized === "ai-global-expo-2026" || normalized === "evt-00") {
+    return AI_GLOBAL_EXPO_EVENT;
+  }
   return EVENTS_DATA.find(
     (e) => e.slug.toLowerCase() === normalized || e.id.toLowerCase() === normalized
   ) || null;
 }
+

@@ -18,7 +18,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
           // If browser policy delays autoplay without gesture, play on first touch/scroll
           const handleFirstGesture = () => {
             if (videoRef.current) {
-              videoRef.current.play().catch(() => {});
+              videoRef.current.play().catch(() => { });
             }
             window.removeEventListener("scroll", handleFirstGesture);
             window.removeEventListener("touchstart", handleFirstGesture);
@@ -52,7 +52,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
   };
 
   return (
-    <section className="relative min-h-[90vh] sm:min-h-[94vh] flex flex-col justify-between bg-[#071731] text-white pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-white/10 overflow-hidden">
+    <section id="home" className="relative min-h-[90vh] sm:min-h-[94vh] flex flex-col justify-between bg-[#071731] text-white pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-white/10 overflow-hidden">
       {/* 1. Atmospheric Sovereign Event Background Video Layer */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
         <video
@@ -97,7 +97,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
                 &amp; Monumental Expos.
               </span>
             </h1>
-            
+
             {/* Authoritative Subtitle */}
             <p className="font-sans text-base sm:text-lg lg:text-xl text-slate-200 font-normal leading-relaxed max-w-2xl sm:max-w-3xl drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]">
               PT Tricatha Sempiternal Asia delivers end-to-end event strategy, international trade expositions, ministerial conferences, and high-stakes corporate assemblies across Indonesia and the Southeast Asian corridor.
@@ -106,7 +106,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
             {/* Direct Action Triggers */}
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <button
-                onClick={onExploreWork ? onExploreWork : () => handleScrollTo("#projects")}
+                onClick={onExploreWork ? onExploreWork : () => handleScrollTo("#event")}
                 className="btn-editorial-red text-xs sm:text-sm py-3.5 px-7 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
               >
                 <span>Explore Events Archive</span>

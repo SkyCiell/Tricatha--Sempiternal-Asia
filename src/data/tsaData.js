@@ -11,7 +11,7 @@ export const companyInfo = {
   heroSubtitle: "PT Tricatha Sempiternal Asia is a premier event organizer and business event company in Jakarta. We deliver end-to-end event strategy, monumental trade exhibitions, government plenaries, and high-stakes corporate experiences across Southeast Asia.",
   introHeadline: "WE TURN IDEAS INTO EXPERIENCES.",
   introDescription: "Operating at the intersection of business strategy, sovereign protocol, and creative production, TSA executes corporate events, international exhibitions, ministerial conferences, and high-level business networking with uncompromising precision.",
-  address: "The City Tower, 12th Floor Unit 1N, Jl. MH. Thamrin No. 81, Jakarta Pusat 10310, Indonesia",
+  address: "Sudirman Park Apartment, Jl. KH. Mas Mansyur Kav. 35, Karet Tengsin, Tanah Abang, Jakarta Pusat, DKI Jakarta, Indonesia",
   email: "info@tsa-group.com",
   phone: "+62 21 2358 4500",
   hours: "Monday – Friday: 08:30 – 17:30 WIB",
@@ -24,7 +24,7 @@ export const companyInfo = {
   ],
 
   operationalStats: [
-    { label: "Headquarters", value: "The City Tower, Jakarta", detail: "Central business & diplomatic district" },
+    { label: "Headquarters", value: "Sudirman Park, Jakarta", detail: "Central business district" },
     { label: "Geographic Scope", value: "Southeast Asia", detail: "Indonesia, ASEAN corridor & regional missions" },
     { label: "Operational Precision", value: "Protocol Cleared", detail: "Government-facing & head-of-state standard" },
     { label: "Practice Structure", value: "Integrated Event Company", detail: "Strategy, Production, MICE, Summits & Broadcast" }
@@ -409,7 +409,7 @@ export const faqItems = [
   {
     id: "faq-international",
     question: "Can TSA support international events?",
-    answer: "Yes. Headquartered at The City Tower in Central Jakarta, TSA regularly supports international conferences, bilateral economic forums, and overseas trade delegations across Southeast Asia. We provide multilingual teams, simultaneous interpretation systems, and cross-border logistics."
+    answer: "Yes. Headquartered at Sudirman Park in Central Jakarta, TSA regularly supports international conferences, bilateral economic forums, and overseas trade delegations across Southeast Asia. We provide multilingual teams, simultaneous interpretation systems, and cross-border logistics."
   },
   {
     id: "faq-start-project",
@@ -496,7 +496,7 @@ export const businessGroupData = [
     fullName: "DNA STUDIO Creative Broadcast & Cinema",
     tagline: "Creative Broadcast & 4K Cinema Production Suite",
     badge: "Cinema & Broadcast",
-    description: "Headquartered at The City Tower in Central Jakarta, DNA STUDIO is TSA's dedicated 4K multi-camera broadcast facility. Producing executive leader dialogues, high-production corporate podcasts, and syndicated plenary live feeds.",
+    description: "Headquartered at Sudirman Park in Central Jakarta, DNA STUDIO is TSA's dedicated 4K multi-camera broadcast facility. Producing executive leader dialogues, high-production corporate podcasts, and syndicated plenary live feeds.",
     focusAreas: [
       "Turnkey 4K Cinema Multi-Cam Live Feeds",
       "Executive Thought Leadership Podcasts",
@@ -550,4 +550,105 @@ export const businessGroupData = [
     anchorId: "unit-govadv"
   }
 ];
+
+// TSA Corporate Activities, Programs, Collaborations & Initiatives
+export const activitiesData = [
+  {
+    id: "act-team-building",
+    title: "Executive Immersion & Strategic Team Building",
+    subtitle: "BP TAPERA & Enterprise Leadership Assemblies",
+    category: "Team Building & Synergy",
+    badge: "Enterprise Synergy",
+    partnerOrClient: "BP TAPERA & Enterprise Secretariats",
+    location: "Ciwidey, Bandung & Royal Tulip Bogor",
+    year: "2024 – 2025",
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop",
+    shortDesc: "High-impact experiential team-building programs combining strategic leadership drills, institutional risk navigation, and collaborative synergy challenges.",
+    description: "Organized for corporate officers and institutional personnel across premier retreat grounds in West Java. Programs merge rigorous leadership scenario modeling with outdoor group dynamics designed to reinforce organizational resilience and cross-division alignment.",
+    metrics: [
+      { label: "Officers Trained", value: "300+" },
+      { label: "Completion Rate", value: "100%" },
+      { label: "Synergy Index", value: "+42%" }
+    ],
+    highlights: [
+      "Strategic Leadership Scenario Modeling",
+      "Outdoor Cross-Division Synergy Drills",
+      "Executive Facilitation & Risk Workshops",
+      "Turnkey Hospitality & Mountain Venue Logistics"
+    ]
+  },
+  {
+    id: "act-civic-heritage",
+    title: "Civic & Cultural Public Heritage Activations",
+    subtitle: "GWI Cultural Scale Programs",
+    category: "Civic Programs",
+    badge: "Civic Scale",
+    partnerOrClient: "Ministry of Culture & Civic Heritage Foundation",
+    location: "Gelora Bung Karno & Taman Ismail Marzuki, Jakarta",
+    year: "2024 – 2025",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
+    shortDesc: "Massive public cultural engagement celebrations bringing national heritage alive through monumental spatial scenography and interactive projection mapping.",
+    description: "Conducted under Gema Waskita Interaktifa (GWI), these high-capacity initiatives convene public patrons, cultural custodians, and municipal stakeholders to celebrate Indonesian heritage through immersive digital art installations and civic participation.",
+    metrics: [
+      { label: "Public Attendance", value: "45,000+" },
+      { label: "Broadcast Reach", value: "1.2M+" },
+      { label: "Municipal Accords", value: "8" }
+    ],
+    highlights: [
+      "Large-Scale Architectural Projection Mapping",
+      "Interactive Crowd Telemetry & Flow Management",
+      "Civic Heritage Preservation Showcases",
+      "Nationwide Digital Media Broadcasting"
+    ]
+  },
+  {
+    id: "act-academic-fellowship",
+    title: "University Talent & Apprenticeship Fellowship",
+    subtitle: "TSA NextGen Event Architecture Program",
+    category: "Talent Development",
+    badge: "Academic Alliance",
+    partnerOrClient: "Premier Indonesian & ASEAN Universities",
+    location: "Sudirman Park & Field Event Sites, Jakarta",
+    year: "Ongoing Multi-Cohort",
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop",
+    shortDesc: "A rigorous professional apprenticeship immersing selected university scholars into live sovereign protocol, 4K broadcast operations, and MICE logistics.",
+    description: "TSA collaborates with top-tier universities to mentor the next generation of event architects. Fellows participate in live plenary simulations, venue command center monitoring, and international buyer liaison under direct supervision from TSA directors.",
+    metrics: [
+      { label: "Scholars Mentored", value: "120+" },
+      { label: "University Partners", value: "12+" },
+      { label: "Career Placement", value: "88%" }
+    ],
+    highlights: [
+      "Hands-on Sovereign Protocol Accreditation",
+      "4K Broadcast Suite Apprenticeship at DNA Studio",
+      "Exhibition Floor Logistics & Telemetry Training",
+      "Direct Mentorship by Managing Directors"
+    ]
+  },
+  {
+    id: "act-thought-dialogues",
+    title: "Cross-Border Thought Leadership Roundtables",
+    subtitle: "DNA Studio Geopolitical & Policy Forums",
+    category: "Strategic Initiatives",
+    badge: "Policy Intelligence",
+    partnerOrClient: "Diplomatic Envoys, Trade Chambers & Energy Councils",
+    location: "DNA Studio, Sudirman Park",
+    year: "2024 – 2026",
+    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200&auto=format&fit=crop",
+    shortDesc: "Closed-door and syndicated dialogue series examining ASEAN economic integration, clean tech investment, and sovereign digital governance.",
+    description: "TSA convenes policy directors, former ambassadors, and industry chairpersons for moderated dialogue sessions at our 4K broadcast suite. Insights are synthesized into executive briefs and syndicated to regional business networks.",
+    metrics: [
+      { label: "Syndicated Views", value: "2.4M+" },
+      { label: "Diplomatic Envoys", value: "28+" },
+      { label: "Policy Briefs", value: "16" }
+    ],
+    highlights: [
+      "Broadcast-Grade 4K Multi-Camera Production",
+      "Closed-Door Chatham House Rule Deliberations",
+      "Executive Policy Whitepaper Synthesis",
+      "International Digital Broadcast Syndication"
+    ]
+  }
+];
+
 

@@ -151,11 +151,11 @@ export default function InternshipPage({ _navigateTo }) {
 
   return (
     <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
-      
+
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
-          
+
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
               <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
@@ -190,7 +190,7 @@ export default function InternshipPage({ _navigateTo }) {
       {/* 2. PROGRAM ESSENCE & VISUAL STORYTELLING (Split Editorial) */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-16 sm:py-24 border-b border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Visual Frame (5 cols) */}
           <div className="lg:col-span-5 relative">
             <div className="editorial-image-frame rounded aspect-[4/5] bg-[#050F22] border border-white/15 overflow-hidden shadow-2xl relative">
@@ -430,7 +430,7 @@ export default function InternshipPage({ _navigateTo }) {
       {applicationModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#071731]/85 backdrop-blur-md">
           <div className="relative w-full max-w-2xl bg-[#0A1F44] border border-white/20 rounded p-6 sm:p-10 shadow-2xl text-white max-h-[90vh] overflow-y-auto">
-            
+
             <button
               onClick={() => setApplicationModalOpen(false)}
               className="absolute top-5 right-5 p-2 rounded-full bg-white/5 hover:bg-[#C8102E] text-white transition-colors cursor-pointer"

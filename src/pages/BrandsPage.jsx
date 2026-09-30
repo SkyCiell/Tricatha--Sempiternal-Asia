@@ -14,7 +14,7 @@ export default function BrandsPage({ navigateTo }) {
   const entities = [
     {
       id: "enchante",
-      code: "01",
+      domain: "VVIP Protocol",
       name: "ENCHANTE",
       title: "Haute Protocol & Spatial Scenography",
       tagline: "Head-of-State Banquets, Ambassadorial Galas & VVIP Protocol",
@@ -41,7 +41,7 @@ export default function BrandsPage({ navigateTo }) {
     },
     {
       id: "dna-studio",
-      code: "02",
+      domain: "Broadcast Media",
       name: "DNA STUDIO",
       title: "4K Broadcast Scenography & Telepresence",
       tagline: "Cinema-Grade Broadcast Suite & Leader Dialogue Soundstage",
@@ -68,7 +68,7 @@ export default function BrandsPage({ navigateTo }) {
     },
     {
       id: "gwi",
-      code: "03",
+      domain: "Civic Scale",
       name: "GWI",
       title: "Gema Waskita Interaktifa · Civic Scale Assemblies",
       tagline: "Public Affairs, Cultural Heritage Festivals & Mass Crowd Engineering",
@@ -95,7 +95,7 @@ export default function BrandsPage({ navigateTo }) {
     },
     {
       id: "goadv",
-      code: "04",
+      domain: "Public Affairs",
       name: "GOADV",
       title: "Government Relations & Regulatory Intelligence",
       tagline: "Inter-Ministerial Conclaves, State Summits & Policy Symposia",
@@ -126,11 +126,11 @@ export default function BrandsPage({ navigateTo }) {
 
   return (
     <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
-      
+
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
-          
+
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
               <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
@@ -169,7 +169,7 @@ export default function BrandsPage({ navigateTo }) {
 
       {/* 2. ECOSYSTEM ARCHITECTURE & SYNERGY MAP */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-12 sm:py-16 border-b border-white/10">
-        
+
         {/* Holding Anchor Bar */}
         <div className="p-6 sm:p-8 bg-[#0A1F44] border border-white/15 rounded text-white flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           <div className="space-y-2 max-w-2xl">
@@ -199,20 +199,18 @@ export default function BrandsPage({ navigateTo }) {
               <button
                 key={unit.id}
                 onClick={() => setActiveUnit(unit.id)}
-                className={`p-5 sm:p-6 rounded border transition-all text-left cursor-pointer flex flex-col justify-between ${
-                  isSelected
+                className={`p-5 sm:p-6 rounded border transition-all text-left cursor-pointer flex flex-col justify-between ${isSelected
                     ? "bg-[#0E2552] border-[#C8102E] shadow-xl ring-1 ring-[#C8102E]"
                     : "bg-[#0A1F44] border-white/10 hover:border-white/30"
-                }`}
+                  }`}
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="font-mono text-xs font-bold text-[#C8102E]">
-                      {unit.code}
+                    <span className="font-mono text-[11px] font-semibold tracking-wider text-[#C8102E] uppercase">
+                      {unit.domain}
                     </span>
-                    <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded ${
-                      isSelected ? "bg-[#C8102E] text-white" : "bg-[#071731] text-slate-400"
-                    }`}>
+                    <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded ${isSelected ? "bg-[#C8102E] text-white" : "bg-[#071731] text-slate-400"
+                      }`}>
                       {isSelected ? "Active Focus" : "Practice Unit"}
                     </span>
                   </div>
@@ -240,7 +238,7 @@ export default function BrandsPage({ navigateTo }) {
       {/* 3. IN-DEPTH PRACTICE DOSSIER (Editorial Feature on Active Unit) */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-16 sm:py-24 border-b border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
+
           {/* Left Column: Visual & Proof Anchor (5 cols) */}
           <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
             <div className="editorial-image-frame rounded aspect-[4/3] lg:aspect-[4/5] bg-[#050F22] border border-white/15 overflow-hidden shadow-2xl relative">

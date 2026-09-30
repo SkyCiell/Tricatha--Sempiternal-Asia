@@ -11,7 +11,7 @@ export default function AboutPage({ navigateTo }) {
 
   const operationalTenets = [
     {
-      num: "01",
+      id: "integrity",
       title: "Integritas Penuh · Uncompromising Integrity",
       tagline: "Sovereign Discretion & Bilateral Covenants",
       desc: "Operating at the nexus of government policy and corporate capital requires absolute ethical fidelity. Every mandate undertaken by TSA is governed by binding non-disclosure covenants, protocol etiquette precedence, and institutional discretion.",
@@ -22,7 +22,7 @@ export default function AboutPage({ navigateTo }) {
       ]
     },
     {
-      num: "02",
+      id: "precision",
       title: "Presisi Solusi · Operational Precision",
       tagline: "Single-Second Run-Down & Spatial Engineering",
       desc: "In ministerial assemblies and televised shareholder summits, there is zero tolerance for technical failure. We engineer every square meter of venue space, redundant electrical backup, and run-of-show cue with empirical rigor.",
@@ -33,7 +33,7 @@ export default function AboutPage({ navigateTo }) {
       ]
     },
     {
-      num: "03",
+      id: "network",
       title: "Jaringan Asia · Pan-Asian Network",
       tagline: "Direct Institutional Access Across ASEAN",
       desc: "From our executive headquarters at The City Tower in Central Jakarta, TSA maintains accredited relationships with regional convention bureaus, diplomatic missions, and premier convention complexes across Southeast Asia.",
@@ -70,11 +70,11 @@ export default function AboutPage({ navigateTo }) {
 
   return (
     <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
-      
+
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
-          
+
           <div className="lg:col-span-8 space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
               <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
@@ -109,7 +109,7 @@ export default function AboutPage({ navigateTo }) {
       {/* 2. CORPORATE IDENTITY & STRATEGIC SPLIT */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-16 sm:py-20 border-b border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column (5 cols): Authentic Plenary Visual Anchor */}
           <div className="lg:col-span-5 relative">
             <div className="editorial-image-frame rounded aspect-[4/5] bg-[#050F22] border border-white/15 overflow-hidden shadow-2xl relative">
@@ -180,7 +180,7 @@ export default function AboutPage({ navigateTo }) {
       {/* 3. THREE CORE OPERATIONAL TENETS (Editorial 2-Column Spread, NOT generic cards) */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-16 sm:py-24 border-b border-white/10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
+
           {/* Left Lead Intro (5 cols) */}
           <div className="lg:col-span-5 space-y-4 lg:sticky lg:top-28">
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
@@ -203,12 +203,10 @@ export default function AboutPage({ navigateTo }) {
           {/* Right Tenet Entries (7 cols) */}
           <div className="lg:col-span-7 divide-y divide-white/10 border-t border-b border-white/10">
             {operationalTenets.map((tenet) => (
-              <div key={tenet.num} className="py-8 sm:py-10 space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-sm font-bold text-[#C8102E]">
-                    {tenet.num}
-                  </span>
-                  <span className="text-[11px] font-mono tracking-wider uppercase text-slate-400">
+              <div key={tenet.id} className="py-8 sm:py-10 space-y-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
+                  <span className="text-xs font-mono tracking-wider uppercase text-slate-400 font-semibold">
                     {tenet.tagline}
                   </span>
                 </div>

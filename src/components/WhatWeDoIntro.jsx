@@ -64,7 +64,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
           {/* Left Column: Full-Height Integrated Visual Area (5 cols) */}
           <div className="lg:col-span-5 h-full flex flex-col min-h-0">
             <div className="editorial-image-frame rounded-lg w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-full relative overflow-hidden bg-[#050F22] border border-white/15 shadow-xl flex flex-col justify-between">
-              
+
               {/* Full-Cover Background Image with natural aspect-ratio preservation */}
               <AnimatePresence mode="wait">
                 <motion.img
@@ -144,19 +144,17 @@ export default function WhatWeDoIntro({ navigateTo }) {
                   key={item.id}
                   onClick={() => setSelectedIndex(index)}
                   onMouseEnter={() => setSelectedIndex(index)}
-                  className={`flex-1 flex flex-col justify-center px-4 sm:px-6 py-2.5 sm:py-3 lg:py-2 transition-all duration-200 cursor-pointer group ${
-                    isSelected
-                      ? "bg-white/[0.035] pl-5 sm:pl-7 border-l-2 border-l-[#C8102E]"
-                      : "hover:bg-white/[0.015] border-l-2 border-l-transparent"
-                  }`}
+                  className={`flex-1 flex flex-col justify-center px-4 sm:px-6 py-2.5 sm:py-3 lg:py-2 transition-all duration-200 cursor-pointer group ${isSelected
+                    ? "bg-white/[0.035] pl-5 sm:pl-7 border-l-2 border-l-[#C8102E]"
+                    : "hover:bg-white/[0.015] border-l-2 border-l-transparent"
+                    }`}
                 >
                   <div className="flex items-center justify-between gap-4 w-full">
                     {/* Left: Number & Main Content */}
                     <div className="space-y-1 max-w-xl min-w-0 flex-grow">
                       <div className="flex items-center gap-3">
-                        <span className={`font-mono text-sm sm:text-base font-bold transition-colors w-6 shrink-0 ${
-                          isSelected ? "text-[#C8102E]" : "text-slate-400 group-hover:text-slate-200"
-                        }`}>
+                        <span className={`font-mono text-sm sm:text-base font-bold transition-colors w-6 shrink-0 ${isSelected ? "text-[#C8102E]" : "text-slate-400 group-hover:text-slate-200"
+                          }`}>
                           {formattedIdx}
                         </span>
 
@@ -166,17 +164,15 @@ export default function WhatWeDoIntro({ navigateTo }) {
                       </div>
 
                       <div className="pl-9 sm:pl-9">
-                        <h3 className={`font-heading text-base sm:text-lg lg:text-xl font-semibold tracking-tight transition-all duration-200 leading-snug ${
-                          isSelected
-                            ? "text-white translate-x-1"
-                            : "text-slate-200 group-hover:text-white group-hover:translate-x-1"
-                        }`}>
+                        <h3 className={`font-heading text-base sm:text-lg lg:text-xl font-semibold tracking-tight transition-all duration-200 leading-snug ${isSelected
+                          ? "text-white translate-x-1"
+                          : "text-slate-200 group-hover:text-white group-hover:translate-x-1"
+                          }`}>
                           {item.title}
                         </h3>
 
-                        <p className={`font-sans text-xs sm:text-sm font-normal leading-relaxed pt-0.5 transition-colors line-clamp-1 lg:line-clamp-2 ${
-                          isSelected ? "text-slate-200" : "text-slate-400 group-hover:text-slate-300"
-                        }`}>
+                        <p className={`font-sans text-xs sm:text-sm font-normal leading-relaxed pt-0.5 transition-colors line-clamp-1 lg:line-clamp-2 ${isSelected ? "text-slate-200" : "text-slate-400 group-hover:text-slate-300"
+                          }`}>
                           {item.shortDesc}
                         </p>
                       </div>
@@ -184,14 +180,12 @@ export default function WhatWeDoIntro({ navigateTo }) {
 
                     {/* Right: Restrained Arrow Indicator */}
                     <div className="shrink-0 pl-2">
-                      <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all ${
-                        isSelected
-                          ? "bg-[#C8102E] text-white shadow-xs"
-                          : "bg-white/5 text-slate-400 group-hover:text-white group-hover:bg-white/10"
-                      }`}>
-                        <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          isSelected ? "translate-x-0.5" : "group-hover:translate-x-0.5"
-                        }`} />
+                      <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all ${isSelected
+                        ? "bg-[#C8102E] text-white shadow-xs"
+                        : "bg-white/5 text-slate-400 group-hover:text-white group-hover:bg-white/10"
+                        }`}>
+                        <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-200 ${isSelected ? "translate-x-0.5" : "group-hover:translate-x-0.5"
+                          }`} />
                       </div>
                     </div>
                   </div>

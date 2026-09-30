@@ -7,7 +7,7 @@ export default function ImpactNumbers() {
   return (
     <section className="py-20 sm:py-24 bg-[#0A1F44] text-white border-b border-white/10 relative overflow-hidden">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-        
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -51,9 +51,8 @@ export default function ImpactNumbers() {
             >
               {/* Visually Dominant Metric */}
               <div className="flex items-baseline gap-1">
-                <span className={`font-heading text-5xl sm:text-6xl font-bold tracking-tight tabular-nums ${
-                  index === 0 ? "text-[#C8102E]" : "text-white"
-                }`}>
+                <span className={`font-heading text-5xl sm:text-6xl font-bold tracking-tight tabular-nums ${index === 0 ? "text-[#C8102E]" : "text-white"
+                  }`}>
                   <AnimatedCounter
                     to={stat.value}
                     duration={1.8}

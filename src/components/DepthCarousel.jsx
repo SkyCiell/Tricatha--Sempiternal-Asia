@@ -47,15 +47,15 @@ export default function DepthCarousel({
     windowWidth < 640
       ? Math.min(310, windowWidth - 48)
       : windowWidth < 1024
-      ? 350
-      : cardWidth;
+        ? 350
+        : cardWidth;
 
   const responsiveHeight =
     windowWidth < 640
       ? 420
       : windowWidth < 1024
-      ? 460
-      : cardHeight;
+        ? 460
+        : cardHeight;
 
   const responsiveSpread =
     windowWidth < 640 ? 40 : windowWidth < 1024 ? 75 : spread;
@@ -232,11 +232,10 @@ export default function DepthCarousel({
               <button
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  idx === activeIndex
+                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex
                     ? "w-9 bg-[#42D3A5]"
                     : "w-2.5 bg-white/20 hover:bg-white/40"
-                }`}
+                  }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}
