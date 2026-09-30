@@ -30,7 +30,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
   return (
     <section
       id="services"
-      className="bg-[#071731] text-white border-b border-white/10 relative overflow-hidden py-12 sm:py-16 lg:py-5 lg:h-[calc(100vh-4.5rem)] lg:min-h-[580px] lg:max-h-[calc(100vh-4.5rem)] flex flex-col justify-between scroll-mt-[72px]"
+      className="bg-[#071731] text-white border-b border-white/10 relative overflow-hidden py-12 sm:py-16 lg:py-5 lg:h-[calc(100vh-4.5rem)] lg:min-h-[580px] lg:max-h-[900px] flex flex-col justify-between scroll-mt-[72px]"
     >
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8 w-full h-full flex flex-col justify-between">
 

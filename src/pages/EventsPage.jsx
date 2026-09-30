@@ -54,8 +54,8 @@ export default function EventsPage({ navigateTo }) {
 
           {/* Left Title & Explanation (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
-            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-[1.08]">
-              Events &amp; <br />
+            <h1 className="font-heading text-2xl sm:text-4xl lg:text-[56px] font-semibold text-white tracking-tight leading-[1.08]">
+              Events &{" "}
               <span className="font-editorial italic font-normal text-slate-200">
                 Production Archive.
               </span>
@@ -75,7 +75,7 @@ export default function EventsPage({ navigateTo }) {
 
             <button
               onClick={handleInquiry}
-              className="btn-editorial-red cursor-pointer flex items-center gap-2 shadow-sm text-xs py-3 px-6"
+              className="btn-editorial-red cursor-pointer flex items-center justify-center gap-2 shadow-sm text-xs py-3 px-6 w-full sm:w-auto"
             >
               <span>Inquire Event Production</span>
               <ArrowUpRight className="w-4 h-4" />
@@ -211,7 +211,7 @@ export default function EventsPage({ navigateTo }) {
       </section>
 
       {/* 3. INTEGRATED ARCHIVE FILTER BAR (Clean, sticky, integrated) */}
-      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-3 sticky top-16 sm:top-20 z-30 bg-[#071731]/95 backdrop-blur-md border-b border-white/10 mb-10">
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-3 sticky top-[76px] sm:top-20 z-30 bg-[#071731]/95 backdrop-blur-md border-b border-white/10 mb-10">
         <div className="flex items-center justify-between gap-4 pb-1">
 
           {/* Horizontal Scrollable Category Track */}

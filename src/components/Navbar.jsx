@@ -381,7 +381,7 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
         {/* Left: TSA Corporate Brand Emblem & Typography */}
         <button
           onClick={handleLogoClick}
-          className="flex items-center gap-3 cursor-pointer group text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] rounded py-1 shrink-0"
+          className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] rounded py-1 shrink-0 max-w-[200px] xs:max-w-none"
           aria-label="PT Tricatha Sempiternal Asia Homepage"
         >
           {/* Logo Badge */}
@@ -394,15 +394,15 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
             <img src={logoTSA} alt="TSA Official Emblem" className="w-full h-full object-cover rounded-[2px]" />
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col min-w-0">
             <span
-              className={`font-heading font-bold text-sm tracking-tight leading-none transition-colors duration-200 ${isLight ? "text-[#10264A]" : "text-white"
+              className={`font-heading font-bold text-[11px] sm:text-sm tracking-tight leading-none transition-colors duration-200 truncate ${isLight ? "text-[#10264A]" : "text-white"
                 }`}
             >
               TRICHATA SEMPITERNAL ASIA
             </span>
             <span
-              className={`font-mono text-[9px] tracking-widest uppercase font-medium mt-1 transition-colors duration-200 ${isLight ? "text-slate-500" : "text-slate-400"
+              className={`font-mono text-[9px] tracking-widest uppercase font-medium mt-1 transition-colors duration-200 hidden sm:block ${isLight ? "text-slate-500" : "text-slate-400"
                 }`}
             >
               CORPORATE EVENT ORGANIZER · JAKARTA

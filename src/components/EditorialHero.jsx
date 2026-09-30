@@ -52,7 +52,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
   };
 
   return (
-    <section id="home" className="relative min-h-[90vh] sm:min-h-[94vh] flex flex-col justify-between bg-[#071731] text-white pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-white/10 overflow-hidden">
+    <section id="home" className="relative min-h-[88vh] sm:min-h-[94vh] flex flex-col justify-between bg-[#071731] text-white pt-24 sm:pt-36 pb-10 sm:pb-16 border-b border-white/10 overflow-hidden">
       {/* 1. Atmospheric Sovereign Event Background Video Layer */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
         <video
@@ -68,7 +68,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
         />
 
         {/* Directional Scrim: keeps text legible while preserving authentic video clarity */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/60 via-55% to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/98 via-[#071731]/75 via-55% to-black/30 sm:from-[#071731]/95 sm:via-[#071731]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-transparent to-black/30" />
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#071731]/80 to-transparent" />
       </div>
@@ -126,14 +126,15 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
       </div>
 
       {/* Audio Toggle Pill */}
-      <div className="absolute bottom-6 right-6 sm:right-8 z-20">
+      <div className="absolute bottom-6 right-4 sm:right-8 z-20">
         <button
           onClick={toggleAudio}
-          className="px-3.5 py-1.5 rounded-full bg-[#0A1F44]/90 hover:bg-[#0E2552] text-white transition-all flex items-center gap-2 border border-white/15 hover:border-white/30 cursor-pointer text-[11px] font-mono shadow-lg backdrop-blur-sm"
+          className="px-3 py-1.5 rounded-full bg-[#0A1F44]/90 hover:bg-[#0E2552] text-white transition-all flex items-center gap-1.5 sm:gap-2 border border-white/15 hover:border-white/30 cursor-pointer text-[11px] font-mono shadow-lg backdrop-blur-sm"
           title={isMuted ? "Unmute Background Audio" : "Mute Background Audio"}
+          aria-label={isMuted ? "Unmute audio" : "Mute audio"}
         >
           {isMuted ? <VolumeX className="w-3.5 h-3.5 text-slate-400" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
-          <span>{isMuted ? "Atmosphere Audio Off" : "Atmosphere Audio On"}</span>
+          <span className="hidden sm:inline">{isMuted ? "Atmosphere Audio Off" : "Atmosphere Audio On"}</span>
         </button>
       </div>
     </section>

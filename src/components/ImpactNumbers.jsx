@@ -17,8 +17,8 @@ export default function ImpactNumbers() {
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/10"
         >
           <div className="space-y-3 max-w-2xl">
-            <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white tracking-tight">
-              Operational Scale &amp; <br />
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+              Operational Scale &{" "}
               <span className="font-editorial italic font-normal text-slate-200">
                 Industry Milestones.
               </span>
@@ -88,7 +88,7 @@ export default function ImpactNumbers() {
             <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
             <span className="text-slate-200 font-semibold uppercase">TRUSTED VENUE PARTNERS:</span>
           </div>
-          <div className="text-slate-300">
+          <div className="text-slate-300 leading-relaxed">
             Jakarta Convention Center (JCC) · ICE BSD City · JIExpo Kemayoran · The Ritz-Carlton · Fairmont Jakarta
           </div>
         </motion.div>

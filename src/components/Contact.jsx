@@ -149,7 +149,7 @@ export default function Contact({ preselectedService }) {
           </div>
 
           {/* Right Column (7 cols): Card with Form */}
-          <div className="lg:col-span-7 bg-[#0A1F44] border border-white/15 p-8 sm:p-10 rounded shadow-xl">
+          <div className="lg:col-span-7 bg-[#0A1F44] border border-white/15 p-5 sm:p-8 lg:p-10 rounded shadow-xl">
 
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">

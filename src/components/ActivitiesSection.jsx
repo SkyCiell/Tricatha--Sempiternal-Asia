@@ -38,8 +38,8 @@ export default function ActivitiesSection({ navigateTo, onOpenWorkModal }) {
         {/* Section Header: Warm Off-White Editorial Magazine Layout */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-[#E5E5DE]">
           <div className="space-y-3 max-w-3xl">
-            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#0F172A] tracking-tight leading-[1.12]">
-              Corporate Activities, <br />
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-[46px] font-bold text-[#0F172A] tracking-tight leading-[1.12]">
+              Corporate Activities &{" "}
               <span className="font-editorial italic font-normal text-[#1E3A8A]">
                 Collaborative Programs &amp; Initiatives.
               </span>
@@ -50,13 +50,13 @@ export default function ActivitiesSection({ navigateTo, onOpenWorkModal }) {
             </p>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-3 shrink-0 w-full sm:w-auto">
             <button
               onClick={handlePartnerInquiry}
-              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded bg-[#0F172A] hover:bg-[#1E293B] text-white font-sans text-xs sm:text-sm font-semibold tracking-wide uppercase transition-colors cursor-pointer shadow-sm"
+              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded bg-[#0F172A] hover:bg-[#1E293B] text-white font-sans text-xs sm:text-sm font-semibold tracking-wide uppercase transition-colors cursor-pointer shadow-sm w-full sm:w-auto"
             >
               <span>Partner With Us</span>
-              <ArrowUpRight className="w-4 h-4 text-white/80" />
+              <ArrowUpRight className="w-4 h-4 text-white/80 shrink-0" />
             </button>
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function ActivitiesSection({ navigateTo, onOpenWorkModal }) {
               </p>
 
               {/* Verified Activity Metrics */}
-              <div className="grid grid-cols-3 gap-3 pt-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
                 {activeActivity.metrics.map((metric, idx) => (
                   <div key={idx} className="bg-[#FAF9F6] p-3 sm:p-4 rounded-lg border border-[#E5E5DE] text-left">
                     <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{metric.label}</div>

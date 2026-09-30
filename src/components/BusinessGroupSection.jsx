@@ -80,11 +80,11 @@ export default function BusinessGroupSection({ navigateTo }) {
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
 
         {/* Section Header: Blue & White Corporate Identity */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 pb-8 border-b border-[#E2E8F0]">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-14 pb-8 border-b border-[#E2E8F0]">
           <div className="space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#1E40AF] font-bold uppercase tracking-wider bg-[#EFF6FF] px-3 py-1 rounded border border-[#DBEAFE]">
-              <span className="w-2 h-2 rounded-full bg-[#1E40AF]" />
-              <span>TSA OPERATING DIVISIONS · DUAL BLUE &amp; WHITE SYSTEM</span>
+            <div className="inline-flex items-center gap-2 font-mono text-[10px] sm:text-xs text-[#1E40AF] font-bold uppercase tracking-wider bg-[#EFF6FF] px-3 py-1 rounded border border-[#DBEAFE]">
+              <span className="w-2 h-2 rounded-full bg-[#1E40AF] shrink-0" />
+              <span className="truncate">TSA OPERATING DIVISIONS</span>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#071731] tracking-tight leading-[1.12]">
@@ -170,7 +170,7 @@ export default function BusinessGroupSection({ navigateTo }) {
               </p>
 
               {/* Verified Metrics Strip */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div className="grid grid-cols-2 gap-3 pt-2">
                 {activeUnit.metrics && activeUnit.metrics.map((metric, idx) => (
                   <div key={idx} className="bg-white p-3.5 rounded-lg border border-[#E2E8F0] shadow-2xs">
                     <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{metric.label}</div>
@@ -201,13 +201,13 @@ export default function BusinessGroupSection({ navigateTo }) {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-4 flex flex-wrap items-center gap-3">
+              <div className="pt-4 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
                 <button
                   onClick={handleConsult}
-                  className="btn-editorial-red text-xs py-3 px-6 cursor-pointer flex items-center gap-2"
+                  className="btn-editorial-red text-xs py-3 px-6 cursor-pointer flex items-center justify-center gap-2"
                 >
                   <span>Inquire Mandate with {activeUnit.name}</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 shrink-0" />
                 </button>
               </div>
 
@@ -257,52 +257,6 @@ export default function BusinessGroupSection({ navigateTo }) {
 
         </div>
 
-        {/* Structured 4-Entity Comparative Matrix Block */}
-        <div className="mt-12 pt-8 border-t border-[#E2E8F0]">
-          <div className="text-xs font-mono font-semibold text-slate-500 uppercase tracking-widest mb-4">
-            COMPREHENSIVE PRACTICE OVERVIEW AT A GLANCE
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {businessGroupData.map((unit) => {
-              const visual = visualMap[unit.code] || visualMap.ENCHANTE;
-              const Icon = iconMap[unit.code] || ShieldCheck;
-              const isSelected = unit.id === activeUnitId;
-
-              return (
-                <div
-                  key={unit.id}
-                  onClick={() => setActiveUnitId(unit.id)}
-                  className={`p-5 rounded-lg border transition-all cursor-pointer bg-white ${isSelected
-                    ? "border-[#1E40AF] ring-2 ring-[#1E40AF]/15 shadow-sm"
-                    : "border-[#E2E8F0] hover:border-[#CBD5E1]"
-                    }`}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="w-8 h-8 rounded bg-[#EFF6FF] text-[#1E40AF] flex items-center justify-center">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
-                      UNIT #{unit.code}
-                    </span>
-                  </div>
-
-                  <h4 className="font-heading font-bold text-base text-[#071731] mb-1">
-                    {unit.name}
-                  </h4>
-                  <p className="text-xs text-slate-600 line-clamp-2 mb-3">
-                    {unit.tagline}
-                  </p>
-
-                  <div className="pt-3 border-t border-[#F1F5F9] flex items-center justify-between text-[11px] font-mono">
-                    <span className="text-slate-500">VENUE:</span>
-                    <span className="text-[#1E40AF] font-semibold truncate max-w-[140px]">{visual.venue.split("·")[0]}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
 
       </div>
     </section>

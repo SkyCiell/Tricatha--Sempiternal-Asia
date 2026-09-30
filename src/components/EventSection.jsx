@@ -62,8 +62,8 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
         {/* 1. Section Header: Strong Editorial Typography Without Badges */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-white/10">
           <div className="space-y-3 max-w-3xl">
-            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.12]">
-              Monumental Trade Expos &amp; <br />
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.12]">
+              Monumental Trade Expos &{" "}
               <span className="font-editorial italic font-normal text-slate-200">
                 High-Stakes Sovereign Plenaries.
               </span>
@@ -206,15 +206,15 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
             </p>
           </div>
 
-          {/* Clean Integrated Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
+          {/* Clean Integrated Filter Tabs — horizontal scroll on mobile */}
+          <div className="flex items-center gap-2 font-mono text-xs overflow-x-auto pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap">
             {EVENT_FILTERS.map((cat) => {
               const isActive = activeCategory === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded font-mono text-xs font-medium uppercase tracking-wider transition-all cursor-pointer border ${
+                  className={`px-3.5 py-1.5 rounded font-mono text-xs font-medium uppercase tracking-wider transition-all cursor-pointer border whitespace-nowrap flex-shrink-0 ${
                     isActive
                       ? "bg-[#C8102E] text-white border-[#C8102E] shadow-xs"
                       : "bg-[#0A1F44] text-slate-300 border-white/10 hover:text-white hover:border-white/30"
@@ -402,16 +402,16 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
         </div>
 
         {/* 5. Bottom Corporate Action Bar */}
-        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs font-mono text-slate-400">
+        <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="text-xs font-mono text-slate-400 leading-relaxed">
             TSA manages strategic partnerships with ICE BSD City, JCC Senayan, JIExpo Kemayoran, and BICC Bali.
           </div>
           <button
             onClick={onOpenWorkModal ? onOpenWorkModal : handleViewArchive}
-            className="btn-editorial-navy text-xs py-2.5 px-5 cursor-pointer flex items-center gap-2"
+            className="btn-editorial-navy text-xs py-2.5 px-5 cursor-pointer flex items-center justify-center gap-2 w-full sm:w-auto"
           >
             <span>Inquire Mandate for Upcoming Event</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </button>
         </div>
 
