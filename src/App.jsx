@@ -6,6 +6,11 @@ import Footer from "./components/Footer";
 import WorkTogetherModal from "./components/WorkTogetherModal";
 import SplashScreen from "./components/SplashScreen";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 // Dedicated Pages for Each Route
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -120,12 +125,12 @@ export default function App() {
     lenis.scrollTo(0, { immediate: true });
     window.scrollTo(0, 0);
 
-    let animationFrameId;
-    function raf(time) {
-      lenis.raf(time);
-      animationFrameId = requestAnimationFrame(raf);
-    }
-    animationFrameId = requestAnimationFrame(raf);
+    lenis.on("scroll", ScrollTrigger.update);
+    const updateGsapTicker = (time) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(updateGsapTicker);
+    gsap.ticker.lagSmoothing(0);
     window.__lenis = lenis;
 
     // Support Browser Back and Forward buttons (Popstate)
@@ -141,13 +146,21 @@ export default function App() {
 
     window.addEventListener("popstate", handlePopState);
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      gsap.ticker.remove(updateGsapTicker);
       lenis.destroy();
       window.__lenis = null;
       window.removeEventListener("popstate", handlePopState);
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
+
+  // Recalculate ScrollTrigger on route change
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 260);
+    return () => clearTimeout(timer);
+  }, [currentPath]);
 
   // Route navigation handler - switches page and updates URL without section scrolling
   const navigateTo = (path) => {

@@ -1,8 +1,7 @@
 import React from "react";
-import { ArrowUpRight, ShieldCheck, Award, Globe, ArrowRight, Building2, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Leadership from "../components/Leadership";
 const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
-const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
 
 export default function AboutPage({ navigateTo }) {
   const handleInquiry = () => {

@@ -78,32 +78,17 @@ export default function Masonry({
   const [imagesReady, setImagesReady] = useState(false);
 
   const getInitialPosition = (item) => {
-    const containerRect = containerRef.current?.getBoundingClientRect();
-    if (!containerRect) return { x: item.x, y: item.y };
-
-    let direction = animateFrom;
-
-    if (animateFrom === "random") {
-      const directions = ["top", "bottom", "left", "right"];
-      direction = directions[Math.floor(Math.random() * directions.length)];
-    }
-
-    switch (direction) {
+    switch (animateFrom) {
       case "top":
-        return { x: item.x, y: -200 };
+        return { x: item.x, y: item.y - 80 };
       case "bottom":
-        return { x: item.x, y: window.innerHeight + 200 };
+        return { x: item.x, y: item.y + 80 };
       case "left":
-        return { x: -200, y: item.y };
+        return { x: item.x - 80, y: item.y };
       case "right":
-        return { x: window.innerWidth + 200, y: item.y };
-      case "center":
-        return {
-          x: (containerRect.width || 0) / 2 - item.w / 2,
-          y: (containerRect.height || 0) / 2 - item.h / 2
-        };
+        return { x: item.x + 80, y: item.y };
       default:
-        return { x: item.x, y: item.y + 100 };
+        return { x: item.x, y: item.y + 80 };
     }
   };
 
@@ -118,10 +103,8 @@ export default function Masonry({
     const effectiveCols = Math.max(1, Math.min(columns, items.length));
     const columnWidth = width / effectiveCols;
     const colHeights = new Array(effectiveCols).fill(0);
-    const colItems = Array.from({ length: effectiveCols }, () => []);
 
-    // Pass 1: Standard React Bits placement
-    // Preserves the existing upper structure, image positioning, and organic staggered composition
+    // React Bits organic masonry layout preserving varied photo heights
     const computedGrid = items.map((child) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
       const x = columnWidth * col;
@@ -129,23 +112,10 @@ export default function Masonry({
       const y = colHeights[col];
 
       colHeights[col] += height;
-      const itemObj = { ...child, x, y, w: columnWidth, h: height, col };
-      colItems[col].push(itemObj);
-      return itemObj;
+      return { ...child, x, y, w: columnWidth, h: height, col };
     });
 
     const maxH = Math.max(0, ...colHeights);
-
-    // Pass 2: Clean bottom boundary alignment
-    // Fix only the lower section so the gallery ends in a clean, visually balanced horizontal edge
-    // Each column's bottom-most item naturally extends to meet the unified bottom line maxH
-    for (let c = 0; c < effectiveCols; c++) {
-      const itemsInCol = colItems[c];
-      if (itemsInCol.length > 0) {
-        const lastItem = itemsInCol[itemsInCol.length - 1];
-        lastItem.h = maxH - lastItem.y;
-      }
-    }
 
     return { grid: computedGrid, totalHeight: maxH };
   }, [columns, items, width]);

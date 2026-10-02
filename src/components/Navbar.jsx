@@ -12,52 +12,12 @@ const NAV_ITEMS = [
   {
     name: "Business Group",
     path: "/business-group",
-    id: "business-group",
-    dropdown: [
-      {
-        name: "Business Overview",
-        description: "Holding architecture & governance",
-        hash: "overview",
-        path: "/business-group#overview"
-      },
-      {
-        name: "Business Areas",
-        description: "Specialized operating practices",
-        hash: "areas",
-        path: "/business-group#areas"
-      },
-      {
-        name: "Partnerships",
-        description: "Institutional & venue network",
-        hash: "partnerships",
-        path: "/business-group#partnerships"
-      }
-    ]
+    id: "business-group"
   },
   {
     name: "Event",
     path: "/event",
-    id: "event",
-    dropdown: [
-      {
-        name: "Upcoming Events",
-        description: "Scheduled trade expos & summits",
-        hash: "upcoming",
-        path: "/event#upcoming"
-      },
-      {
-        name: "Past Events",
-        description: "Delivered case-study archive",
-        hash: "past",
-        path: "/event#past"
-      },
-      {
-        name: "Featured Events",
-        description: "High-stakes sovereign plenaries",
-        hash: "featured",
-        path: "/event#featured"
-      }
-    ]
+    id: "event"
   },
   {
     name: "Activities",
@@ -67,20 +27,12 @@ const NAV_ITEMS = [
       {
         name: "News",
         description: "Official press dispatches & bulletins",
-        hash: "news",
-        path: "/activities#news"
+        path: "/news"
       },
       {
         name: "Internship",
-        description: "Production & protocol traineeship",
-        hash: "internship",
-        path: "/activities#internship"
-      },
-      {
-        name: "Programs / Collaborations",
-        description: "Executive retreats & civic alliances",
-        hash: "programs",
-        path: "/activities#programs"
+        description: "Operational fellowship & traineeship",
+        path: "/internship"
       }
     ]
   },
@@ -265,7 +217,14 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
       return currentPath === "/event" || currentPath === "/events" || currentPath.startsWith("/events/");
     }
     if (item.path === "/activities") {
-      return currentPath === "/activities" || currentPath.startsWith("/activities/");
+      return (
+        currentPath === "/activities" ||
+        currentPath.startsWith("/activities/") ||
+        currentPath === "/news" ||
+        currentPath === "/articles" ||
+        currentPath === "/internship" ||
+        currentPath === "/careers"
+      );
     }
     if (item.path === "/contact") {
       return currentPath === "/contact";

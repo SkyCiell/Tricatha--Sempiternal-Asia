@@ -1,39 +1,59 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { companyInfo } from "../data/tsaData";
-import { CheckCircle2, MapPin, Mail, Clock, ShieldCheck, ArrowUpRight, Phone } from "lucide-react";
+import { CheckCircle2, MapPin, Mail, Clock, ArrowUpRight, Phone, ArrowRight, ExternalLink } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function Contact({ preselectedService }) {
+import broadcastUplink from "../assets/illustrations/broadcast-uplink.jpg";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Contact({ preselectedService, isDedicatedPage = false }) {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     company: "",
     email: "",
-    phone: "",
-    category: "Corporate Events & AGMs",
     message: ""
   });
+
+  const [errors, setErrors] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     if (preselectedService) {
       setFormData((prev) => ({
         ...prev,
-        category: preselectedService,
         message: `Mandate inquiry regarding ${preselectedService}.`
       }));
     }
   }, [preselectedService]);
 
-  const [errors, setErrors] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // GSAP ScrollTrigger parallax on authentic contact photography
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const media = containerRef.current?.querySelector(".contact-parallax-canvas");
+      if (media) {
+        gsap.fromTo(
+          media,
+          { yPercent: -7, scale: 1.05 },
+          {
+            yPercent: 7,
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            }
+          }
+        );
+      }
+    }, containerRef);
 
-  const practiceOptions = [
-    "Corporate Events & AGMs",
-    "Trade Exhibitions & MICE",
-    "Government & Sovereign Plenaries",
-    "Broadcast & Media Production (DNA Studio)",
-    "Protocol & Executive Programs (Enchanté)",
-    "Comprehensive Event Advisory"
-  ];
+    return () => ctx.revert();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,15 +65,14 @@ export default function Contact({ preselectedService }) {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
-    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
-    if (!formData.company.trim()) newErrors.company = "Organization / Ministry is required";
+    if (!formData.name.trim()) newErrors.name = "Full name is required";
+    if (!formData.company.trim()) newErrors.company = "Organization or Ministry required";
     if (!formData.email.trim()) {
-      newErrors.email = "Official email is required";
+      newErrors.email = "Official email required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Valid official email required";
+      newErrors.email = "Valid email required";
     }
-    if (!formData.message.trim()) newErrors.message = "Mandate details or project scope required";
+    if (!formData.message.trim()) newErrors.message = "Brief description of mandate or event required";
     return newErrors;
   };
 
@@ -68,258 +87,292 @@ export default function Contact({ preselectedService }) {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 bg-[#071731] text-[#F1F5F9] border-b border-white/10">
-      <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
+    <section
+      ref={containerRef}
+      id="contact"
+      className={`${
+        isDedicatedPage ? "pt-4 pb-20" : "py-20 sm:py-28"
+      } bg-[#071731] text-[#F1F5F9] border-b border-white/10 relative overflow-hidden`}
+    >
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10 space-y-14 sm:space-y-20">
 
-        {/* Split Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        {/* 1. LARGE TSA HEADING */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-10 border-b border-white/10">
+          <div className="lg:col-span-8 space-y-4">
+            <h2 className="font-heading text-4xl sm:text-6xl lg:text-[76px] font-bold text-white tracking-tight leading-[1.02]">
+              Executive Secretariat &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-300">
+                Operational Coordinates.
+              </span>
+            </h2>
 
-          {/* Left Column (5 cols): Coordinates & Confidentiality */}
-          <div className="lg:col-span-5 space-y-8">
-            <div className="space-y-3">
-              <h3 className="font-heading text-xl sm:text-2xl font-medium text-white">
-                Confidential Mandate Intake
-              </h3>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                Connect with our directors to discuss high-level sovereign advisory, government liaison, plenary summit management, or corporate communications mandates.
-              </p>
+            <p className="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl pt-2">
+              Connect directly with the Executive Directorate at Sudirman Park, Central Jakarta. All strategic consultations and plenary mandates are reviewed under strict institutional confidentiality covenants.
+            </p>
+          </div>
+
+          <div className="lg:col-span-4 space-y-2 text-left lg:text-right font-mono text-xs text-slate-400">
+            <div>DIRECT REVIEW BY PRACTICE DIRECTORS</div>
+            <div className="text-white font-semibold">BILATERAL NDA PROTOCOL MAINTAINED</div>
+            <div>RESPONSE: WITHIN 24 BUSINESS HOURS</div>
+          </div>
+        </div>
+
+        {/* 2. STRONG VISUAL COMPOSITION + SCANNABLE CONTACT DETAILS + STREAMLINED INTAKE */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Column (6 cols): Authentic Photo + Scannable Coordinates + Location Map */}
+          <div className="lg:col-span-6 space-y-8">
+            
+            {/* Authentic Photographic Canvas with Parallax Scrub */}
+            <div className="relative aspect-[16/10] overflow-hidden rounded bg-[#050F22] border border-white/15 shadow-2xl">
+              <img
+                src={broadcastUplink}
+                alt="TSA Command Operations Center"
+                className="contact-parallax-canvas w-full h-full object-cover scale-105 will-change-transform"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/30 to-transparent pointer-events-none" />
+
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-xs text-slate-300">
+                <span>The City Tower &amp; Sudirman Park</span>
+                <span className="text-white font-medium">Headquarters Liaison</span>
+              </div>
             </div>
 
-            {/* Coordinates Matrix */}
-            <div className="space-y-5 pt-4 border-t border-white/10 font-sans text-xs">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+            {/* Easy-To-Scan Contact Information Matrix */}
+            <div className="divide-y divide-white/10 font-sans text-xs pt-2">
+              {/* Address */}
+              <div className="py-4 flex items-start gap-4">
+                <div className="p-2.5 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] shrink-0">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">HEADQUARTERS</div>
-                  <div className="font-medium text-white mt-0.5">Sudirman Park Apartment</div>
-                  <div className="text-slate-400 text-[11px] leading-relaxed">
-                    Jl. KH. Mas Mansyur Kav. 35, Karet Tengsin, Tanah Abang, Jakarta Pusat, DKI Jakarta, Indonesia
+                  <div className="font-mono text-slate-400 text-[11px] uppercase tracking-wider font-semibold">
+                    HEADQUARTERS SECRETARIAT
+                  </div>
+                  <div className="font-semibold text-white text-sm sm:text-base mt-0.5">
+                    Sudirman Park Apartment
+                  </div>
+                  <div className="text-slate-300 text-xs sm:text-sm leading-relaxed pt-0.5">
+                    {companyInfo.address}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+              {/* Email */}
+              <div className="py-4 flex items-start gap-4">
+                <div className="p-2.5 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] shrink-0">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">EXECUTIVE EMAIL</div>
-                  <a href={`mailto:${companyInfo.email}`} className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
+                  <div className="font-mono text-slate-400 text-[11px] uppercase tracking-wider font-semibold">
+                    DIRECT PROTOCOL EMAIL
+                  </div>
+                  <a
+                    href={`mailto:${companyInfo.email}`}
+                    className="font-semibold text-white text-sm sm:text-base hover:text-[#C8102E] transition-colors mt-0.5 block"
+                  >
                     {companyInfo.email}
                   </a>
-                  <div className="text-slate-400 text-[11px]">Direct protocol dispatch desk</div>
+                  <div className="text-slate-400 text-xs pt-0.5">Official secretariat communications desk</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+              {/* Phone */}
+              <div className="py-4 flex items-start gap-4">
+                <div className="p-2.5 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] shrink-0">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">TELEPHONE DESK</div>
-                  <a href={`tel:${companyInfo.phone.replace(/\s+/g, '')}`} className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
+                  <div className="font-mono text-slate-400 text-[11px] uppercase tracking-wider font-semibold">
+                    TELEPHONE DISPATCH LINE
+                  </div>
+                  <a
+                    href={`tel:${companyInfo.phone.replace(/\s+/g, '')}`}
+                    className="font-semibold text-white text-sm sm:text-base hover:text-[#C8102E] transition-colors font-mono mt-0.5 block"
+                  >
                     {companyInfo.phone}
                   </a>
-                  <div className="text-slate-400 text-[11px]">Headquarters Secretariat</div>
+                  <div className="text-slate-400 text-xs pt-0.5">Jakarta Headquarters Reception (Ext. 101)</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+              {/* Operating Hours */}
+              <div className="py-4 flex items-start gap-4">
+                <div className="p-2.5 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">OPERATING HOURS</div>
-                  <div className="font-medium text-white mt-0.5">{companyInfo.hours}</div>
-                  <div className="text-slate-400 text-[11px]">Jakarta Western Indonesia Time (WIB)</div>
+                  <div className="font-mono text-slate-400 text-[11px] uppercase tracking-wider font-semibold">
+                    OPERATIONAL HOURS
+                  </div>
+                  <div className="font-semibold text-white text-sm mt-0.5">
+                    {companyInfo.hours}
+                  </div>
+                  <div className="text-slate-400 text-xs pt-0.5">Western Indonesia Time (WIB) · Emergency lines 24/7 on active deployments</div>
                 </div>
               </div>
             </div>
 
-            {/* Protocol Badge */}
-            <div className="p-5 bg-[#0A1F44] border border-white/10 rounded flex items-center gap-3.5">
-              <ShieldCheck className="w-5 h-5 text-[#C8102E] shrink-0" />
-              <div className="text-xs">
-                <span className="font-medium text-white block">Strict Non-Disclosure Protocol</span>
-                <span className="text-slate-400 text-[11px]">All submissions receive guaranteed institutional non-disclosure protection.</span>
+            {/* Interactive Location Map (Sudirman Park Jakarta) */}
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center justify-between font-mono text-xs text-slate-400">
+                <span className="text-white font-semibold uppercase tracking-wider">
+                  Sudirman Park Headquarters Map
+                </span>
+                <a
+                  href="https://maps.google.com/?q=Sudirman+Park+Apartment,+Jakarta"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#C8102E] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Open in Google Maps</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
+              <div className="relative aspect-[16/9] overflow-hidden rounded bg-[#050F22] border border-white/15">
+                <iframe
+                  title="TSA Headquarters Location at Sudirman Park Jakarta"
+                  src="https://maps.google.com/maps?q=Sudirman+Park+Apartment,+Jl.+KH.+Mas+Mansyur+Kav.+35,+Jakarta&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) brightness(85%) contrast(120%)" }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
             </div>
+
           </div>
 
-          {/* Right Column (7 cols): Card with Form */}
-          <div className="lg:col-span-7 bg-[#0A1F44] border border-white/15 p-5 sm:p-8 lg:p-10 rounded shadow-xl">
-
+          {/* Right Column (6 cols): Streamlined Mandate Brief Intake (NOT a giant generic form) */}
+          <div className="lg:col-span-6 bg-[#0A1F44] border border-white/15 p-8 sm:p-12 rounded shadow-2xl">
             {isSubmitted ? (
-              <div className="py-12 text-center space-y-4">
+              <div className="py-14 text-center space-y-5">
                 <div className="w-14 h-14 bg-[#071731] border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h3 className="font-heading text-xl sm:text-2xl font-medium text-white">
-                  Mandate Brief Transmitted
-                </h3>
-                <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
-                  Thank you, {formData.firstName} {formData.lastName}. Your brief on behalf of <span className="font-medium text-white">{formData.company}</span> has been securely transmitted to TSA's executive directors at Sudirman Park Jakarta.
-                </p>
-                <div className="pt-2">
+                <div className="space-y-2">
+                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                    Mandate Brief Transmitted
+                  </h3>
+                  <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
+                    Thank you, <strong>{formData.name}</strong>. Your mandate brief on behalf of <strong className="text-white">{formData.company}</strong> has been logged into the TSA Executive Directorate registry at Sudirman Park, Jakarta.
+                  </p>
+                </div>
+                <div className="pt-4">
                   <button
                     onClick={() => {
                       setIsSubmitted(false);
-                      setFormData({ firstName: "", lastName: "", company: "", email: "", phone: "", category: "Strategic Advisory", message: "" });
+                      setFormData({
+                        name: "",
+                        company: "",
+                        email: "",
+                        message: ""
+                      });
                     }}
-                    className="btn-editorial-red"
+                    className="btn-editorial-red text-xs py-2.5 px-6 inline-flex items-center gap-2"
                   >
-                    Send Another Transmission
+                    <span>Transmit Another Mandate</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-
-                <div className="font-mono text-xs text-[#C8102E] font-medium uppercase tracking-widest pb-3 border-b border-white/10 flex items-center justify-between">
-                  <span>CONFIDENTIAL INTAKE FORM</span>
-                  <span className="text-slate-400 font-normal">ALL FIELDS CONFIDENTIAL</span>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-1 border-b border-white/10 pb-4">
+                  <h3 className="font-heading text-2xl font-bold text-white tracking-tight">
+                    Direct Mandate Intake
+                  </h3>
+                  <p className="text-xs text-slate-300">
+                    Submit your organization's event inquiry or plenary requirement.
+                  </p>
                 </div>
 
-                {/* Name Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-4 font-sans text-xs">
                   <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
-                      FIRST NAME *
+                    <label className="block font-mono text-[11px] text-slate-300 uppercase mb-1 font-semibold tracking-wider">
+                      Your Full Name *
                     </label>
                     <input
                       type="text"
-                      name="firstName"
-                      value={formData.firstName}
+                      name="name"
+                      value={formData.name}
                       onChange={handleChange}
-                      placeholder="e.g. Alexander"
-                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      placeholder="e.g. Raden Arya Pratama"
+                      className="w-full bg-[#071731] border border-white/15 rounded p-3 text-white text-sm focus:outline-none focus:border-[#C8102E]"
                     />
-                    {errors.firstName && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.firstName}</span>}
+                    {errors.name && <span className="text-xs font-mono text-[#C8102E] block mt-1">{errors.name}</span>}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block font-mono text-[11px] text-slate-300 uppercase mb-1 font-semibold tracking-wider">
+                        Organization / Ministry *
+                      </label>
+                      <input
+                        type="text"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        placeholder="e.g. Ministry / SOE / Corporation"
+                        className="w-full bg-[#071731] border border-white/15 rounded p-3 text-white text-sm focus:outline-none focus:border-[#C8102E]"
+                      />
+                      {errors.company && <span className="text-xs font-mono text-[#C8102E] block mt-1">{errors.company}</span>}
+                    </div>
+
+                    <div>
+                      <label className="block font-mono text-[11px] text-slate-300 uppercase mb-1 font-semibold tracking-wider">
+                        Official Email *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="arya@organization.com"
+                        className="w-full bg-[#071731] border border-white/15 rounded p-3 text-white text-sm focus:outline-none focus:border-[#C8102E]"
+                      />
+                      {errors.email && <span className="text-xs font-mono text-[#C8102E] block mt-1">{errors.email}</span>}
+                    </div>
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
-                      LAST NAME *
+                    <label className="block font-mono text-[11px] text-slate-300 uppercase mb-1 font-semibold tracking-wider">
+                      Mandate Brief / Project Scope *
                     </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
+                    <textarea
+                      rows={4}
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
-                      placeholder="e.g. Wijaya"
-                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      placeholder="Briefly state your event requirements, target date, expected delegation size, or advisory mandate..."
+                      className="w-full bg-[#071731] border border-white/15 rounded p-3 text-white text-sm focus:outline-none focus:border-[#C8102E] resize-none"
                     />
-                    {errors.lastName && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.lastName}</span>}
+                    {errors.message && <span className="text-xs font-mono text-[#C8102E] block mt-1">{errors.message}</span>}
                   </div>
                 </div>
 
-                {/* Organization & Email */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
-                      ORGANIZATION / MINISTRY *
-                    </label>
-                    <input
-                      type="text"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="e.g. Ministry of Trade / Enterprise"
-                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
-                    />
-                    {errors.company && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.company}</span>}
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
-                      OFFICIAL EMAIL *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="alexander@domain.go.id"
-                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
-                    />
-                    {errors.email && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.email}</span>}
-                  </div>
-                </div>
-
-                {/* Phone & Practice Category */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
-                      CONTACT TELEPHONE
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+62 812 XXXX XXXX"
-                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
-                      PRACTICE ENGAGEMENT
-                    </label>
-                    <select
-                      name="category"
-                      value={formData.category}
-                      onChange={handleChange}
-                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-[#C8102E] transition-colors cursor-pointer"
-                    >
-                      {practiceOptions.map((opt) => (
-                        <option key={opt} value={opt} className="bg-[#071731] text-white">
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label className="block text-[11px] font-mono uppercase text-slate-300 font-medium mb-1.5 tracking-wider">
-                    MANDATE BRIEF OR INQUIRY SCOPE *
-                  </label>
-                  <textarea
-                    rows={4}
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Provide a concise description of your upcoming plenary assembly, timeline, stakeholder profile, or advisory requirements."
-                    className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors resize-y"
-                  />
-                  {errors.message && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.message}</span>}
-                </div>
-
-                {/* Submit Action */}
-                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="text-[11px] font-mono text-slate-400 text-center sm:text-left">
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10">
+                  <div className="text-xs font-mono text-slate-400">
                     Direct dispatch to Sudirman Park, Jakarta
                   </div>
 
                   <button
                     type="submit"
-                    className="btn-editorial-red w-full sm:w-auto"
+                    className="btn-editorial-red w-full sm:w-auto text-xs py-3 px-7 inline-flex items-center justify-center gap-2 cursor-pointer shadow-lg"
                   >
                     <span>Transmit Mandate Brief</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-4 h-4" />
                   </button>
                 </div>
-
               </form>
             )}
-
           </div>
 
         </div>
+
       </div>
     </section>
   );

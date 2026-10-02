@@ -1,67 +1,57 @@
 import React from "react";
 import EditorialHero from "../components/EditorialHero";
-import WhatWeDoIntro from "../components/WhatWeDoIntro";
-import BusinessGroupSection from "../components/BusinessGroupSection";
-import EventSection from "../components/EventSection";
-import ActivitiesSection from "../components/ActivitiesSection";
-import Contact from "../components/Contact";
-import ImpactNumbers from "../components/ImpactNumbers";
+import PinnedBusinessGroup from "../components/PinnedBusinessGroup";
+import PinnedEvents from "../components/PinnedEvents";
+import PinnedActivities from "../components/PinnedActivities";
+import PinnedContact from "../components/PinnedContact";
 
-export default function HomePage({ navigateTo, onOpenWorkModal }) {
+export default function HomePage({ navigateTo, onOpenWorkModal: _onOpenWorkModal }) {
   return (
     <div className="bg-[#071731] text-[#F1F5F9] font-sans selection:bg-[#C8102E] selection:text-white">
 
-      {/* 1. HOME: Editorial Hero Section (Deep Navy Background, Large Composition, Authoritative Messaging) */}
+      {/* 01 — FULLSCREEN VIDEO INTRO & PROGRESSIVE IDENTITY REVEAL */}
       <EditorialHero
         onExploreWork={() => {
-          const el = document.getElementById("event");
-          if (el) {
-            if (window.__lenis) {
-              window.__lenis.scrollTo(el, { offset: -70 });
-            } else {
-              el.scrollIntoView({ behavior: "smooth" });
+          if (navigateTo) {
+            navigateTo("/event");
+          } else {
+            const el = document.getElementById("event");
+            if (el) {
+              if (window.__lenis) {
+                window.__lenis.scrollTo(el);
+              } else {
+                el.scrollIntoView({ behavior: "smooth" });
+              }
             }
-          } else if (navigateTo) {
-            navigateTo("/events");
           }
         }}
         onLetsTalk={() => {
-          const el = document.getElementById("contact");
-          if (el) {
-            if (window.__lenis) {
-              window.__lenis.scrollTo(el, { offset: -70 });
-            } else {
-              el.scrollIntoView({ behavior: "smooth" });
-            }
-          } else if (navigateTo) {
+          if (navigateTo) {
             navigateTo("/contact");
+          } else {
+            const el = document.getElementById("contact");
+            if (el) {
+              if (window.__lenis) {
+                window.__lenis.scrollTo(el);
+              } else {
+                el.scrollIntoView({ behavior: "smooth" });
+              }
+            }
           }
         }}
       />
 
-      {/* 2. Operational Disciplines & Institutional Credentials Transition Strip */}
-      <WhatWeDoIntro navigateTo={navigateTo} />
+      {/* 02 — FULLSCREEN BUSINESS STORY (HORIZONTAL TRACK ACROSS 4 SPECIALIZED PRACTICES) */}
+      <PinnedBusinessGroup navigateTo={navigateTo} />
 
-      {/* 3. BUSINESS GROUP: Structured Layout with Multiple Content Blocks (Blue and White Color System) */}
-      <BusinessGroupSection navigateTo={navigateTo} />
+      {/* 03 — FULLSCREEN EVENT STORY (HORIZONTAL IMAGE TRANSITIONS & DELAYED PARALLAX) */}
+      <PinnedEvents navigateTo={navigateTo} />
 
-      {/* 4. Operational Scale & Measured Attendance Telemetry */}
-      <ImpactNumbers />
+      {/* 04 — FULLSCREEN ACTIVITIES / NEWS (MIXED DIRECTIONAL TRANSITION) */}
+      <PinnedActivities navigateTo={navigateTo} />
 
-      {/* 5. EVENT: Event-Focused Asymmetric Section with Upcoming & Featured Highlights (Deep Navy & Strong Red Accent) */}
-      <EventSection
-        navigateTo={navigateTo}
-        onOpenWorkModal={onOpenWorkModal}
-      />
-
-      {/* 6. ACTIVITIES: Distinct Warm Off-White Editorial Magazine Layout for Programs, Collaborations & Initiatives */}
-      <ActivitiesSection
-        navigateTo={navigateTo}
-        onOpenWorkModal={onOpenWorkModal}
-      />
-
-      {/* 7. CONTACT: Strong Closing Section (Deep Navy Color Treatment, Coordinates & Mandate Intake) */}
-      <Contact />
+      {/* 05 — FULLSCREEN CONTACT (SLOW PARALLAX REVEAL & EXECUTIVE SECRETARIAT) */}
+      <PinnedContact navigateTo={navigateTo} />
 
     </div>
   );

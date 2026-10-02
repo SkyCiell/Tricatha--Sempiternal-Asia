@@ -1,12 +1,23 @@
 import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowUpRight, Calendar, Volume2, VolumeX } from "lucide-react";
+import { ArrowUpRight, ArrowDown, Volume2, VolumeX } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function EditorialHero({ onExploreWork, onLetsTalk }) {
+  const sceneRef = useRef(null);
+  const videoWrapperRef = useRef(null);
+  const videoInnerRef = useRef(null);
   const videoRef = useRef(null);
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
+  const actionsRef = useRef(null);
+  const scrollPromptRef = useRef(null);
+
   const [isMuted, setIsMuted] = useState(true);
 
-  // Guarantee immediate autoplay on mount and user interaction fallback
+  // Guarantee immediate autoplay on mount and user gesture fallback
   useEffect(() => {
     const video = videoRef.current;
     if (video) {
@@ -15,10 +26,9 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {
-          // If browser policy delays autoplay without gesture, play on first touch/scroll
           const handleFirstGesture = () => {
             if (videoRef.current) {
-              videoRef.current.play().catch(() => { });
+              videoRef.current.play().catch(() => {});
             }
             window.removeEventListener("scroll", handleFirstGesture);
             window.removeEventListener("touchstart", handleFirstGesture);
@@ -32,7 +42,189 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
     }
   }, []);
 
-  const toggleAudio = () => {
+  // TRUE SINGLE FULL-VIEWPORT COMPOSITION + PINNED SCROLL TRANSFORMATION:
+  // 1. Initial State: The entire hero fits into one 100vh viewport.
+  //    Video occupies the large, commanding central area. Surrounding negative space.
+  //    No separate text section below it; company name and description are hidden.
+  // 2. User Scrolls: The hero is PINNED.
+  // 3. Animation: Video shifts and reframes via parallax (moves right & scales subtly).
+  // 4. "TRICATHA SEMPITERNAL ASIA" begins appearing within the SAME composition.
+  // 5. Company description progressively appears after the company name.
+  // 6. Video, company name, and description move at different parallax speeds.
+  // 7. Video transitions from dominant element into supporting the company identity.
+  // 8. Final state = Video on right + Company name & description on left as one composition.
+  // 9. After animation completes, scroll lock releases and continues naturally into next section.
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      if (!sceneRef.current) return;
+
+      const mm = gsap.matchMedia();
+
+      // DESKTOP PINNED CHOREOGRAPHY (>= 1024px)
+      mm.add("(min-width: 1024px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sceneRef.current,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            start: "top top",
+            end: "+=2200", // Pinned scroll track distance
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          }
+        });
+
+        // Initial State (Scroll Progress = 0): Dominant widescreen video
+        gsap.set(videoWrapperRef.current, {
+          width: "86vw",
+          maxWidth: "1440px",
+          height: "72vh",
+          xPercent: 0,
+          yPercent: 0,
+          scale: 1.0,
+          transformOrigin: "center center"
+        });
+        gsap.set(titleRef.current, {
+          xPercent: -30,
+          opacity: 0
+        });
+        gsap.set(descRef.current, {
+          yPercent: 30,
+          opacity: 0
+        });
+        gsap.set(actionsRef.current, {
+          yPercent: 30,
+          opacity: 0
+        });
+        gsap.set(scrollPromptRef.current, {
+          opacity: 1,
+          y: 0
+        });
+
+        // 1. Initial scroll tick (0 -> 1.5): Scroll prompt fades out
+        tl.to(scrollPromptRef.current, {
+          opacity: 0,
+          y: -12,
+          duration: 1.2,
+          ease: "power2.out"
+        }, 0);
+
+        // 2. Video Parallax & Re-framing: Shifts HORIZONTALLY to the right
+        tl.to(videoWrapperRef.current, {
+          width: "48vw",
+          maxWidth: "760px",
+          height: "64vh",
+          xPercent: 25,
+          scale: 0.98,
+          duration: 5.0,
+          ease: "power2.inOut"
+        }, 1.0);
+
+        // Internal video subtle counter-parallax
+        tl.to(videoInnerRef.current, {
+          scale: 1.06,
+          duration: 5.0,
+          ease: "none"
+        }, 1.0);
+
+        // 3. Company Name Reveal: Moves HORIZONTALLY from Left -> Right
+        tl.to(titleRef.current, {
+          xPercent: 0,
+          opacity: 1,
+          duration: 3.8,
+          ease: "power2.out"
+        }, 1.8);
+
+        // 4. Company Description Reveal: Progressively appears after the title
+        tl.to(descRef.current, {
+          yPercent: 0,
+          opacity: 1,
+          duration: 3.5,
+          ease: "power2.out"
+        }, 3.5);
+
+        // 5. Action Buttons Settle
+        tl.to(actionsRef.current, {
+          yPercent: 0,
+          opacity: 1,
+          duration: 2.2,
+          ease: "power2.out"
+        }, 5.2);
+
+        // 6. Buffer Hold (8.0 -> 10.0):
+        // Final unified composition is held stable before releasing pin into next section
+      });
+
+      // MOBILE & TABLET PINNED CHOREOGRAPHY (< 1024px)
+      mm.add("(max-width: 1023px)", () => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sceneRef.current,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            start: "top top",
+            end: "+=1600",
+            scrub: 0.8,
+            invalidateOnRefresh: true,
+          }
+        });
+
+        gsap.set(videoWrapperRef.current, {
+          width: "92vw",
+          height: "46vh",
+          yPercent: 0,
+          scale: 1.0
+        });
+        gsap.set(titleRef.current, { yPercent: 50, opacity: 0 });
+        gsap.set(descRef.current, { yPercent: 60, opacity: 0 });
+        gsap.set(actionsRef.current, { yPercent: 40, opacity: 0 });
+        gsap.set(scrollPromptRef.current, { opacity: 1, y: 0 });
+
+        // Scroll prompt fades
+        tl.to(scrollPromptRef.current, { opacity: 0, duration: 1.0 }, 0);
+
+        // Video shifts up slightly
+        tl.to(videoWrapperRef.current, {
+          height: "38vh",
+          yPercent: -10,
+          scale: 0.98,
+          duration: 4.0,
+          ease: "power2.out"
+        }, 0.8);
+
+        // Title reveals beneath video
+        tl.to(titleRef.current, {
+          yPercent: 0,
+          opacity: 1,
+          duration: 3.5,
+          ease: "power2.out"
+        }, 1.8);
+
+        // Description reveals beneath title
+        tl.to(descRef.current, {
+          yPercent: 0,
+          opacity: 1,
+          duration: 3.2,
+          ease: "power2.out"
+        }, 3.5);
+
+        // Actions settle
+        tl.to(actionsRef.current, {
+          yPercent: 0,
+          opacity: 1,
+          duration: 2.0,
+          ease: "power2.out"
+        }, 5.2);
+      });
+    }, sceneRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const toggleAudio = (e) => {
+    e.stopPropagation();
     if (videoRef.current) {
       const nextMuted = !videoRef.current.muted;
       videoRef.current.muted = nextMuted;
@@ -44,7 +236,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
     const el = document.querySelector(selector);
     if (el) {
       if (window.__lenis) {
-        window.__lenis.scrollTo(el, { offset: -80 });
+        window.__lenis.scrollTo(el, { offset: -74 });
       } else {
         el.scrollIntoView({ behavior: "smooth" });
       }
@@ -52,91 +244,138 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
   };
 
   return (
-    <section id="home" className="relative min-h-[88vh] sm:min-h-[94vh] flex flex-col justify-between bg-[#071731] text-white pt-24 sm:pt-36 pb-10 sm:pb-16 border-b border-white/10 overflow-hidden">
-      {/* 1. Atmospheric Sovereign Event Background Video Layer */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          poster="/hero-poster.jpg"
-          src="/hero-bg.mp4"
-          className="w-full h-full object-cover object-center scale-[1.02] opacity-80 sm:opacity-85 transition-opacity duration-700"
-        />
+    <div
+      ref={sceneRef}
+      id="home"
+      className="relative w-full h-screen bg-[#071731] text-[#F1F5F9] overflow-hidden select-none"
+    >
+      {/* 
+        ONE SINGLE FULL-VIEWPORT COMPOSITION
+        Top: Navbar (fixed)
+        Middle: Pinned Arena containing:
+          - Dominant Central TSA Video (transforms and shifts to right on scroll)
+          - Progressive Company Name & Description (revealed from left on scroll)
+        Bottom: Restrained Scroll Prompt (fades out on scroll)
+      */}
+      <div className="w-full h-full max-w-[1520px] mx-auto px-4 sm:px-8 pt-[84px] pb-6 flex flex-col justify-between relative z-10">
 
-        {/* Directional Scrim: keeps text legible while preserving authentic video clarity */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/98 via-[#071731]/75 via-55% to-black/30 sm:from-[#071731]/95 sm:via-[#071731]/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-transparent to-black/30" />
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#071731]/80 to-transparent" />
-      </div>
+        {/* Top Minimal Corporate Coordinates */}
+        <div className="flex items-center justify-between font-mono text-xs text-slate-400 pointer-events-none">
+          <div className="text-white font-semibold tracking-wider">
+            PT TRICATHA SEMPITERNAL ASIA
+          </div>
+          <div className="hidden sm:block">
+            JAKARTA · SOUTHEAST ASIA
+          </div>
+        </div>
 
-      {/* Subtle Ambient Red Glow for brand warmth */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#C8102E]/8 rounded-full blur-3xl pointer-events-none z-0" />
+        {/* Core Transformation Arena */}
+        <div className="relative flex-grow flex items-center justify-center my-auto">
 
-      {/* Main Content Area */}
-      <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10 w-full my-auto">
-        <div className="max-w-5xl xl:max-w-6xl">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-            className="space-y-6 sm:space-y-8"
+          {/* 
+            A. TSA VIDEO CANVAS
+            Initial State: Dominant center of viewport.
+            Scroll State: Shifts via parallax to the right, re-framing to support company identity.
+          */}
+          <div
+            ref={videoWrapperRef}
+            className="absolute z-10 rounded-sm overflow-hidden border border-white/15 bg-[#050F22] shadow-[0_24px_64px_rgba(0,0,0,0.7)] will-change-transform flex items-center justify-center"
           >
-            {/* Primary Monumental Headline */}
-            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[52px] xl:text-[60px] 2xl:text-[66px] font-bold text-white tracking-tight leading-[1.12] drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] max-w-5xl">
-              <span className="block whitespace-normal lg:whitespace-nowrap">
-                Strategic Business Events,
-              </span>
-              <span className="block mt-1 sm:mt-2 whitespace-normal lg:whitespace-nowrap">
-                <span className="font-editorial italic font-normal text-slate-200">
-                  Sovereign Plenaries,
-                </span>{" "}
-                &amp; Monumental Expos.
-              </span>
-            </h1>
+            <div ref={videoInnerRef} className="w-full h-full relative overflow-hidden will-change-transform">
+              <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                poster="/hero-poster.jpg"
+                src="/hero-bg.mp4"
+                className="w-full h-full object-cover object-center scale-[1.03]"
+              />
 
-            {/* Authoritative Subtitle */}
-            <p className="font-sans text-base sm:text-lg lg:text-xl text-slate-200 font-normal leading-relaxed max-w-2xl sm:max-w-3xl drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]">
-              PT Tricatha Sempiternal Asia delivers end-to-end event strategy, international trade expositions, ministerial conferences, and high-stakes corporate assemblies across Indonesia and the Southeast Asian corridor.
-            </p>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-black/20 pointer-events-none" />
 
-            {/* Direct Action Triggers */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+              {/* Sound Toggle */}
               <button
-                onClick={onExploreWork ? onExploreWork : () => handleScrollTo("#event")}
-                className="btn-editorial-red text-xs sm:text-sm py-3.5 px-7 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
+                type="button"
+                onClick={toggleAudio}
+                className="absolute bottom-4 right-4 z-30 px-3 py-1.5 rounded-sm bg-[#071731]/90 hover:bg-[#0E2552] text-white transition-colors flex items-center gap-2 border border-white/20 cursor-pointer text-[10px] font-mono shadow-lg"
+                title={isMuted ? "Unmute Background Audio" : "Mute Background Audio"}
               >
-                <span>Explore Events Archive</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={onLetsTalk ? onLetsTalk : () => handleScrollTo("#contact")}
-                className="btn-editorial-navy text-xs sm:text-sm py-3.5 px-7 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
-              >
-                <span>Consult Our Team</span>
-                <Calendar className="w-4 h-4 text-slate-300" />
+                {isMuted ? (
+                  <VolumeX className="w-3.5 h-3.5 text-slate-400" />
+                ) : (
+                  <Volume2 className="w-3.5 h-3.5 text-emerald-400" />
+                )}
+                <span>{isMuted ? "Sound Off" : "Sound On"}</span>
               </button>
             </div>
-          </motion.div>
-        </div>
-      </div>
+          </div>
 
-      {/* Audio Toggle Pill */}
-      <div className="absolute bottom-6 right-4 sm:right-8 z-20">
-        <button
-          onClick={toggleAudio}
-          className="px-3 py-1.5 rounded-full bg-[#0A1F44]/90 hover:bg-[#0E2552] text-white transition-all flex items-center gap-1.5 sm:gap-2 border border-white/15 hover:border-white/30 cursor-pointer text-[11px] font-mono shadow-lg backdrop-blur-sm"
-          title={isMuted ? "Unmute Background Audio" : "Mute Background Audio"}
-          aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+          {/* 
+            B. COMPANY IDENTITY & DESCRIPTION
+            Reveals progressively FROM the existing hero composition on the left side
+          */}
+          <div className="absolute left-0 top-0 bottom-0 w-full lg:w-[48%] z-20 flex flex-col justify-center pointer-events-none">
+            
+            {/* 1. Large Typography Company Name */}
+            <div ref={titleRef} className="space-y-3 will-change-transform">
+              <h1 className="font-heading text-4xl sm:text-5xl lg:text-[58px] xl:text-[66px] font-bold text-white tracking-tight leading-[1.02]">
+                TRICATHA <br />
+                <span className="text-slate-100">SEMPITERNAL</span> <br />
+                <span className="font-editorial italic font-normal text-slate-300">
+                  ASIA.
+                </span>
+              </h1>
+            </div>
+
+            {/* 2. Company Description */}
+            <div ref={descRef} className="mt-4 sm:mt-5 space-y-3 max-w-lg will-change-transform">
+              <p className="font-sans text-sm sm:text-base lg:text-[17px] text-slate-300 font-normal leading-relaxed">
+                PT Tricatha Sempiternal Asia delivers end-to-end event strategy, international trade exhibitions, ministerial conferences, and high-stakes corporate experiences across Southeast Asia.
+              </p>
+
+              <div className="font-mono text-xs text-slate-400 space-y-0.5 pt-2">
+                <div>SUDIRMAN PARK · CENTRAL JAKARTA</div>
+                <div className="text-white font-medium">SOVEREIGN PROTOCOL &amp; BROADCAST PRODUCTION</div>
+              </div>
+            </div>
+
+            {/* 3. Action Links */}
+            <div ref={actionsRef} className="mt-6 flex items-center gap-4 font-mono text-xs pointer-events-auto will-change-transform">
+              <button
+                type="button"
+                onClick={onExploreWork ? onExploreWork : () => handleScrollTo("#event")}
+                className="btn-editorial-red text-xs py-2.5 px-5 cursor-pointer inline-flex items-center gap-2"
+              >
+                <span>Explore Events</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+
+              <button
+                type="button"
+                onClick={onLetsTalk ? onLetsTalk : () => handleScrollTo("#contact")}
+                className="text-slate-300 hover:text-white transition-colors cursor-pointer py-2 px-3 border border-white/15 rounded-sm"
+              >
+                <span>Consult Secretariat</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* Bottom Restrained Scroll Prompt */}
+        <div
+          ref={scrollPromptRef}
+          className="text-center font-mono text-[11px] uppercase tracking-[0.25em] text-slate-400 pointer-events-none will-change-transform flex items-center justify-center gap-2"
         >
-          {isMuted ? <VolumeX className="w-3.5 h-3.5 text-slate-400" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
-          <span className="hidden sm:inline">{isMuted ? "Atmosphere Audio Off" : "Atmosphere Audio On"}</span>
-        </button>
+          <span>Scroll to explore</span>
+          <ArrowDown className="w-3.5 h-3.5 text-[#C8102E] animate-bounce" />
+        </div>
+
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,199 +1,313 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { coreCapabilities } from "../data/tsaData";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function WhatWeDoIntro({ navigateTo }) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef(null);
+  const itemsRef = useRef([]);
 
-  const activeItem = coreCapabilities[selectedIndex] || coreCapabilities[0];
-  const activeFormattedIdx = selectedIndex + 1 < 10 ? `0${selectedIndex + 1}` : selectedIndex + 1;
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Create scroll-driven synchronization for the capabilities list
+      itemsRef.current.forEach((el, index) => {
+        if (!el) return;
+
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top center+=100",
+          end: "bottom center+=100",
+          onEnter: () => setActiveIndex(index),
+          onEnterBack: () => setActiveIndex(index),
+        });
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const activeCapability = coreCapabilities[activeIndex] || coreCapabilities[0];
 
   const handleInquiry = () => {
     if (navigateTo) {
       navigateTo("/contact");
     } else {
-      window.history.pushState(null, "", "/contact");
-      window.dispatchEvent(new PopStateEvent("popstate"));
+      const el = document.getElementById("contact");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
-  const handleEventArchive = () => {
+  const handleEventsArchive = () => {
     if (navigateTo) {
       navigateTo("/events");
-    } else {
-      window.history.pushState(null, "", "/events");
-      window.dispatchEvent(new PopStateEvent("popstate"));
+    }
+  };
+
+  const scrollToItem = (index) => {
+    const el = itemsRef.current[index];
+    if (el) {
+      if (window.__lenis) {
+        window.__lenis.scrollTo(el, { offset: -120 });
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   return (
     <section
+      ref={containerRef}
       id="services"
-      className="bg-[#071731] text-white border-b border-white/10 relative overflow-hidden py-12 sm:py-16 lg:py-5 lg:h-[calc(100vh-4.5rem)] lg:min-h-[580px] lg:max-h-[900px] flex flex-col justify-between scroll-mt-[72px]"
+      className="bg-[#071731] text-white py-20 sm:py-28 border-b border-white/10 relative overflow-hidden"
     >
-      <div className="max-w-[1520px] mx-auto px-4 sm:px-8 w-full h-full flex flex-col justify-between">
-
-        {/* 1. COMPACT EDITORIAL HEADER BAR */}
-        <div className="shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-3 border-b border-white/10">
-          <div>
-            <div className="flex items-center gap-2 font-mono text-[10px] text-[#C8102E] tracking-widest uppercase font-semibold mb-1">
-              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-              <span>OPERATIONAL CAPABILITIES</span>
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
+        {/* Section Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/10">
+          <div className="space-y-3 max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-[#C8102E]" />
+              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#C8102E] font-semibold">
+                Operational Capabilities
+              </span>
             </div>
-            <h2 className="font-heading text-xl sm:text-2xl lg:text-[28px] font-semibold text-white tracking-tight leading-tight">
-              Integrated Capabilities &amp; <span className="font-editorial italic font-normal text-slate-200">Event Delivery</span>
+
+            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-white tracking-tight leading-[1.12]">
+              Integrated Event Architecture &amp; <br />
+              <span className="font-editorial italic font-normal text-slate-200">
+                End-to-End Delivery.
+              </span>
             </h2>
+
+            <p className="font-sans text-sm sm:text-base text-slate-300 leading-relaxed font-normal pt-1 max-w-2xl">
+              Operating across five accredited disciplines, TSA provides institutional clients with turnkey governance, sovereign protocol execution, multi-hall exhibition management, and cinematic broadcast production.
+            </p>
           </div>
 
-          <div className="flex items-center gap-4 font-mono text-xs text-slate-400">
-            <span className="hidden sm:inline text-slate-300">5 Accredited Disciplines</span>
+          <div className="flex items-center gap-4 shrink-0 font-mono text-xs">
             <button
-              onClick={handleEventArchive}
-              className="hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5 text-slate-300"
+              onClick={handleEventsArchive}
+              className="text-slate-300 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-2 group py-2"
             >
-              <span>Events Archive</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
+              <span>Explore Delivered Portfolio</span>
+              <ArrowUpRight className="w-4 h-4 text-[#C8102E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </button>
           </div>
         </div>
 
-        {/* 2. BALANCED SINGLE-VIEWPORT TWO-COLUMN COMPOSITION */}
-        <div className="flex-grow grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch pt-3 sm:pt-4 min-h-0">
+        {/* Desktop Sticky Scroll Storytelling Composition */}
+        <div className="hidden lg:grid lg:grid-cols-12 gap-12 lg:gap-16 pt-14 items-start relative">
+          
+          {/* Left Sticky Media Showcase (5 cols, pinned to viewport) */}
+          <div className="lg:col-span-5 sticky top-28 h-[calc(100vh-10rem)] max-h-[640px] flex flex-col justify-between">
+            <div className="relative w-full h-full rounded bg-[#050F22] border border-white/15 overflow-hidden shadow-2xl flex flex-col justify-between">
+              
+              {/* Image & Video Layers with Smooth Transitions */}
+              <div className="absolute inset-0 overflow-hidden">
+                {coreCapabilities.map((item, idx) => (
+                  <div
+                    key={item.id}
+                    className={`absolute inset-0 transition-all duration-700 ease-out ${
+                      idx === activeIndex
+                        ? "opacity-100 scale-100 z-10"
+                        : "opacity-0 scale-105 z-0 pointer-events-none"
+                    }`}
+                  >
+                    {idx === 0 ? (
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        src="/hero-bg-720p.mp4"
+                        className="w-full h-full object-cover object-center"
+                      />
+                    ) : (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="w-full h-full object-cover object-center"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#071731]/60 via-transparent to-transparent" />
+                  </div>
+                ))}
+              </div>
 
-          {/* Left Column: Full-Height Integrated Visual Area (5 cols) */}
-          <div className="lg:col-span-5 h-full flex flex-col min-h-0">
-            <div className="editorial-image-frame rounded-lg w-full aspect-[16/10] sm:aspect-[16/9] lg:aspect-auto lg:h-full relative overflow-hidden bg-[#050F22] border border-white/15 shadow-xl flex flex-col justify-between">
-
-              {/* Full-Cover Background Image with natural aspect-ratio preservation */}
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeItem.id}
-                  src={activeItem.image}
-                  alt={activeItem.title}
-                  initial={{ opacity: 0, scale: 1.03 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </AnimatePresence>
-
-              {/* Scrim Gradient Overlays for Readability & Depth */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/45 to-transparent pointer-events-none" />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
-
-              {/* Top In-Composition Telemetry Badge */}
-              <div className="relative z-10 p-4 sm:p-5 flex items-center justify-between pointer-events-none">
-                <span className="px-2.5 py-1 bg-[#071731]/90 backdrop-blur-xs font-mono text-[10px] text-[#C8102E] uppercase tracking-wider font-semibold rounded border border-white/10">
-                  DISCIPLINE {activeFormattedIdx} / 0{coreCapabilities.length}
+              {/* Top Operational Category Indicator */}
+              <div className="relative z-20 p-6 flex items-center justify-between">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-white/90 bg-[#071731]/80 px-3 py-1 rounded border border-white/10 backdrop-blur-sm">
+                  {activeCapability.category}
+                </span>
+                <span className="font-mono text-xs text-slate-300">
+                  {activeIndex + 1} / {coreCapabilities.length}
                 </span>
               </div>
 
-              {/* Bottom In-Composition Active Operational Focus Overlay */}
-              <div className="relative z-10 p-4 sm:p-5 lg:p-6 space-y-2.5">
+              {/* Bottom In-Frame Active Focus */}
+              <div className="relative z-20 p-6 sm:p-8 space-y-3">
                 <div className="space-y-1">
-                  <div className="font-mono text-[10px] text-[#C8102E] uppercase tracking-widest font-semibold">
-                    ACTIVE OPERATIONAL MANDATE
-                  </div>
-                  <h3 className="font-heading text-lg sm:text-xl font-semibold text-white tracking-tight leading-snug">
-                    {activeItem.title}
+                  <h3 className="font-heading text-2xl font-bold text-white tracking-tight">
+                    {activeCapability.title}
                   </h3>
-                  <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-2">
-                    {activeItem.shortDesc}
+                  <p className="font-sans text-xs text-slate-300 line-clamp-2 leading-relaxed">
+                    {activeCapability.shortDesc}
                   </p>
                 </div>
 
-                {/* Key Deliverables Line */}
-                <div className="pt-2 border-t border-white/10 hidden sm:block">
-                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1">
-                    DISCIPLINE DELIVERABLES:
-                  </div>
-                  <div className="space-y-0.5 font-sans text-xs text-slate-200">
-                    {activeItem.deliverables.slice(0, 2).map((deliv, idx) => (
-                      <div key={idx} className="flex items-start gap-1.5">
-                        <span className="font-mono text-[#C8102E] font-semibold shrink-0">—</span>
-                        <span className="truncate">{deliv}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-0.5">
+                <div className="pt-3 border-t border-white/15 flex items-center justify-between">
+                  <span className="font-mono text-[11px] text-slate-400">
+                    Sovereign &amp; Enterprise Standard
+                  </span>
                   <button
                     onClick={handleInquiry}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-white hover:text-[#C8102E] transition-colors cursor-pointer group uppercase tracking-wider"
+                    className="text-xs text-[#C8102E] hover:text-white font-semibold inline-flex items-center gap-1 cursor-pointer transition-colors"
                   >
-                    <span>Commission {activeItem.title}</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#C8102E] transition-transform group-hover:translate-x-1" />
+                    <span>Mandate Inquiry</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
               </div>
 
             </div>
+
+            {/* Quick Navigation Trackers */}
+            <div className="pt-4 flex items-center gap-2">
+              {coreCapabilities.map((cap, idx) => (
+                <button
+                  key={cap.id}
+                  onClick={() => scrollToItem(idx)}
+                  className={`flex-1 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    idx === activeIndex
+                      ? "bg-[#C8102E] ring-2 ring-[#C8102E]/30"
+                      : "bg-white/15 hover:bg-white/30"
+                  }`}
+                  aria-label={`Jump to ${cap.title}`}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* Right Column: Editorial Numbered Capability Index (7 cols, 5 Balanced Items) */}
-          <div className="lg:col-span-7 divide-y divide-white/10 border-t border-b border-white/10 h-full min-h-0 flex flex-col justify-between">
+          {/* Right Scrolling Narrative Track (7 cols) */}
+          <div className="lg:col-span-7 space-y-24 py-8">
             {coreCapabilities.map((item, index) => {
-              const isSelected = index === selectedIndex;
-              const formattedIdx = index + 1 < 10 ? `0${index + 1}` : index + 1;
+              const isActive = index === activeIndex;
 
               return (
                 <div
                   key={item.id}
-                  onClick={() => setSelectedIndex(index)}
-                  onMouseEnter={() => setSelectedIndex(index)}
-                  className={`flex-1 flex flex-col justify-center px-4 sm:px-6 py-2.5 sm:py-3 lg:py-2 transition-all duration-200 cursor-pointer group ${isSelected
-                    ? "bg-white/[0.035] pl-5 sm:pl-7 border-l-2 border-l-[#C8102E]"
-                    : "hover:bg-white/[0.015] border-l-2 border-l-transparent"
-                    }`}
+                  ref={(el) => (itemsRef.current[index] = el)}
+                  className={`p-8 sm:p-10 rounded border transition-all duration-500 ${
+                    isActive
+                      ? "bg-[#0A1F44] border-white/20 shadow-xl"
+                      : "bg-[#071731] border-white/10 opacity-70 hover:opacity-100"
+                  }`}
                 >
-                  <div className="flex items-center justify-between gap-4 w-full">
-                    {/* Left: Number & Main Content */}
-                    <div className="space-y-1 max-w-xl min-w-0 flex-grow">
-                      <div className="flex items-center gap-3">
-                        <span className={`font-mono text-sm sm:text-base font-bold transition-colors w-6 shrink-0 ${isSelected ? "text-[#C8102E]" : "text-slate-400 group-hover:text-slate-200"
-                          }`}>
-                          {formattedIdx}
-                        </span>
+                  {/* Category Identifier */}
+                  <div className="flex items-center gap-2 font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider mb-2">
+                    <span>{item.category}</span>
+                  </div>
 
-                        <span className="font-mono text-[10px] sm:text-[11px] tracking-wider uppercase text-slate-400 font-medium truncate">
-                          {item.category}
-                        </span>
-                      </div>
+                  {/* Discipline Title */}
+                  <h3 className="font-heading text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+                    {item.title}
+                  </h3>
 
-                      <div className="pl-9 sm:pl-9">
-                        <h3 className={`font-heading text-base sm:text-lg lg:text-xl font-semibold tracking-tight transition-all duration-200 leading-snug ${isSelected
-                          ? "text-white translate-x-1"
-                          : "text-slate-200 group-hover:text-white group-hover:translate-x-1"
-                          }`}>
-                          {item.title}
-                        </h3>
+                  {/* Comprehensive Short Description */}
+                  <p className="font-sans text-sm sm:text-base text-slate-300 leading-relaxed font-normal mb-8">
+                    {item.shortDesc}
+                  </p>
 
-                        <p className={`font-sans text-xs sm:text-sm font-normal leading-relaxed pt-0.5 transition-colors line-clamp-1 lg:line-clamp-2 ${isSelected ? "text-slate-200" : "text-slate-400 group-hover:text-slate-300"
-                          }`}>
-                          {item.shortDesc}
-                        </p>
-                      </div>
+                  {/* Core Deliverables Matrix */}
+                  <div className="border-t border-white/10 pt-6">
+                    <div className="font-mono text-xs uppercase tracking-wider text-slate-400 mb-4 font-semibold">
+                      Institutional Scope &amp; Deliverables
                     </div>
-
-                    {/* Right: Restrained Arrow Indicator */}
-                    <div className="shrink-0 pl-2">
-                      <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all ${isSelected
-                        ? "bg-[#C8102E] text-white shadow-xs"
-                        : "bg-white/5 text-slate-400 group-hover:text-white group-hover:bg-white/10"
-                        }`}>
-                        <ArrowRight className={`w-3.5 h-3.5 transition-transform duration-200 ${isSelected ? "translate-x-0.5" : "group-hover:translate-x-0.5"
-                          }`} />
-                      </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      {item.deliverables.map((deliv, dIdx) => (
+                        <div key={dIdx} className="flex items-start gap-2.5">
+                          <span className="text-[#C8102E] font-bold shrink-0 mt-0.5">—</span>
+                          <span className="font-sans text-xs text-slate-200 leading-relaxed">
+                            {deliv}
+                          </span>
+                        </div>
+                      ))}
                     </div>
+                  </div>
+
+                  {/* Action Link */}
+                  <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
+                    <button
+                      onClick={handleInquiry}
+                      className="btn-editorial-outline text-xs py-2 px-5 cursor-pointer inline-flex items-center gap-2"
+                    >
+                      <span>Inquire This Discipline</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 </div>
               );
             })}
           </div>
 
+        </div>
+
+        {/* Mobile & Tablet Reflow Composition (<lg) */}
+        <div className="lg:hidden space-y-12 pt-10">
+          {coreCapabilities.map((item, _index) => (
+            <div
+              key={item.id}
+              className="bg-[#0A1F44] rounded border border-white/10 overflow-hidden shadow-lg"
+            >
+              {/* Large Visual Frame */}
+              <div className="relative aspect-[16/10] overflow-hidden bg-[#050F22]">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44] via-transparent to-transparent" />
+                <div className="absolute top-3 left-3 z-10">
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-white bg-[#071731]/90 px-2.5 py-1 rounded border border-white/10">
+                    {item.category}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content Narrative */}
+              <div className="p-6 space-y-4">
+                <h3 className="font-heading text-xl font-bold text-white tracking-tight">
+                  {item.title}
+                </h3>
+                <p className="font-sans text-xs text-slate-300 leading-relaxed">
+                  {item.shortDesc}
+                </p>
+
+                <div className="border-t border-white/10 pt-4 space-y-2">
+                  <div className="font-mono text-[10px] text-slate-400 uppercase tracking-wider font-semibold">
+                    Core Scope:
+                  </div>
+                  {item.deliverables.map((deliv, dIdx) => (
+                    <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-200">
+                      <span className="text-[#C8102E] font-bold shrink-0">—</span>
+                      <span>{deliv}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-4 border-t border-white/10">
+                  <button
+                    onClick={handleInquiry}
+                    className="btn-editorial-red text-xs w-full py-2.5 cursor-pointer justify-center"
+                  >
+                    <span>Inquire Discipline</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
