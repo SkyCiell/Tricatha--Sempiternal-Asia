@@ -5,7 +5,7 @@ import AnimatedCounter from "./AnimatedCounter";
 
 export default function ImpactNumbers() {
   return (
-    <section className="py-20 sm:py-24 bg-[#0A1F44] text-white border-b border-white/10 relative overflow-hidden">
+    <section className="py-20 sm:py-24 bg-[#071731] text-white border-t border-b border-white/10 relative overflow-hidden">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
 
         {/* Header */}
@@ -29,7 +29,7 @@ export default function ImpactNumbers() {
           </p>
         </motion.div>
 
-        {/* 4 Metrics Grid */}
+        {/* 4 Metrics Strip (Architectural Telemetry Columns, No Generic Boxed Cards) */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -38,7 +38,7 @@ export default function ImpactNumbers() {
             hidden: {},
             visible: { transition: { staggerChildren: 0.08 } }
           }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-12 divide-y sm:divide-y-0 sm:divide-x divide-white/10"
         >
           {companyInfo.statsSummary.map((stat, index) => (
             <motion.div
@@ -47,7 +47,7 @@ export default function ImpactNumbers() {
                 hidden: { opacity: 0, y: 16 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
               }}
-              className="p-8 bg-[#0E2552] border border-white/10 rounded space-y-4 hover:border-white/20 transition-colors"
+              className={`space-y-3 pt-6 sm:pt-0 ${index > 0 ? "sm:pl-8" : ""}`}
             >
               {/* Visually Dominant Metric */}
               <div className="flex items-baseline gap-1">
@@ -64,11 +64,11 @@ export default function ImpactNumbers() {
                 </span>
               </div>
 
-              <div className="space-y-1.5 pt-3 border-t border-white/10">
-                <div className="font-heading text-base font-bold text-white">
+              <div className="space-y-1">
+                <div className="font-heading text-base font-bold text-white tracking-tight">
                   {stat.label}
                 </div>
-                <div className="font-sans text-xs text-slate-300 leading-relaxed">
+                <div className="font-sans text-xs text-slate-300 leading-relaxed max-w-xs">
                   {stat.desc}
                 </div>
               </div>
@@ -82,11 +82,10 @@ export default function ImpactNumbers() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-slate-400"
+          className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs font-mono text-slate-400"
         >
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-            <span className="text-slate-200 font-semibold uppercase">TRUSTED VENUE PARTNERS:</span>
+          <div className="text-slate-300 font-medium">
+            TRUSTED VENUE CORRIDORS:
           </div>
           <div className="text-slate-300">
             Jakarta Convention Center (JCC) · ICE BSD City · JIExpo Kemayoran · The Ritz-Carlton · Fairmont Jakarta

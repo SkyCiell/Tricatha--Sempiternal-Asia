@@ -68,7 +68,7 @@ export default function Contact({ preselectedService }) {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 bg-[#071731] text-[#F1F5F9] border-b border-white/10">
+    <section id="contact" className="py-16 sm:py-24 bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0]">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
 
         {/* Split Layout */}
@@ -77,83 +77,83 @@ export default function Contact({ preselectedService }) {
           {/* Left Column (5 cols): Coordinates & Confidentiality */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-3">
-              <h3 className="font-heading text-xl sm:text-2xl font-medium text-white">
+              <h3 className="font-heading text-2xl sm:text-3xl font-bold text-[#071731] tracking-tight">
                 Confidential Mandate Intake
               </h3>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-normal">
                 Connect with our directors to discuss high-level sovereign advisory, government liaison, plenary summit management, or corporate communications mandates.
               </p>
             </div>
 
             {/* Coordinates Matrix */}
-            <div className="space-y-5 pt-4 border-t border-white/10 font-sans text-xs">
+            <div className="space-y-5 pt-4 border-t border-[#E2E8F0] font-sans text-xs">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#E2E8F0] text-[#C8102E] flex items-center justify-center shrink-0 shadow-2xs">
                   <MapPin className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">HEADQUARTERS</div>
-                  <div className="font-medium text-white mt-0.5">Sudirman Park Apartment</div>
-                  <div className="text-slate-400 text-[11px] leading-relaxed">
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider font-mono font-medium">HEADQUARTERS</div>
+                  <div className="font-semibold text-[#071731] mt-0.5">Sudirman Park Apartment</div>
+                  <div className="text-[#64748B] text-[11px] leading-relaxed">
                     Jl. KH. Mas Mansyur Kav. 35, Karet Tengsin, Tanah Abang, Jakarta Pusat, DKI Jakarta, Indonesia
                   </div>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#E2E8F0] text-[#C8102E] flex items-center justify-center shrink-0 shadow-2xs">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">EXECUTIVE EMAIL</div>
-                  <a href={`mailto:${companyInfo.email}`} className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider font-mono font-medium">EXECUTIVE EMAIL</div>
+                  <a href={`mailto:${companyInfo.email}`} className="font-semibold text-[#071731] hover:text-[#C8102E] transition-colors mt-0.5 block">
                     {companyInfo.email}
                   </a>
-                  <div className="text-slate-400 text-[11px]">Direct protocol dispatch desk</div>
+                  <div className="text-[#64748B] text-[11px]">Direct protocol dispatch desk</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#E2E8F0] text-[#C8102E] flex items-center justify-center shrink-0 shadow-2xs">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">TELEPHONE DESK</div>
-                  <a href={`tel:${companyInfo.phone.replace(/\s+/g, '')}`} className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider font-mono font-medium">TELEPHONE DESK</div>
+                  <a href={`tel:${companyInfo.phone.replace(/\s+/g, '')}`} className="font-semibold text-[#071731] hover:text-[#C8102E] transition-colors mt-0.5 block">
                     {companyInfo.phone}
                   </a>
-                  <div className="text-slate-400 text-[11px]">Headquarters Secretariat</div>
+                  <div className="text-[#64748B] text-[11px]">Headquarters Secretariat</div>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded bg-[#0A1F44] border border-white/15 text-[#C8102E] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-lg bg-white border border-[#E2E8F0] text-[#C8102E] flex items-center justify-center shrink-0 shadow-2xs">
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-slate-400 uppercase tracking-wider font-mono font-medium">OPERATING HOURS</div>
-                  <div className="font-medium text-white mt-0.5">{companyInfo.hours}</div>
-                  <div className="text-slate-400 text-[11px]">Jakarta Western Indonesia Time (WIB)</div>
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider font-mono font-medium">OPERATING HOURS</div>
+                  <div className="font-semibold text-[#071731] mt-0.5">{companyInfo.hours}</div>
+                  <div className="text-[#64748B] text-[11px]">Jakarta Western Indonesia Time (WIB)</div>
                 </div>
               </div>
             </div>
 
             {/* Protocol Badge */}
-            <div className="p-5 bg-[#0A1F44] border border-white/10 rounded flex items-center gap-3.5">
+            <div className="p-5 bg-white border border-[#E2E8F0] rounded-lg shadow-2xs flex items-center gap-3.5">
               <ShieldCheck className="w-5 h-5 text-[#C8102E] shrink-0" />
               <div className="text-xs">
-                <span className="font-medium text-white block">Strict Non-Disclosure Protocol</span>
-                <span className="text-slate-400 text-[11px]">All submissions receive guaranteed institutional non-disclosure protection.</span>
+                <span className="font-semibold text-[#071731] block">Strict Non-Disclosure Protocol</span>
+                <span className="text-[#64748B] text-[11px]">All submissions receive guaranteed institutional non-disclosure protection.</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column (7 cols): Card with Form */}
-          <div className="lg:col-span-7 bg-[#0A1F44] border border-white/15 p-8 sm:p-10 rounded shadow-xl">
+          {/* Right Column (7 cols): Strong Navy Ending Intake Card */}
+          <div className="lg:col-span-7 bg-[#071731] text-white border border-[#071731] p-8 sm:p-10 rounded-xl shadow-xl">
 
             {isSubmitted ? (
               <div className="py-12 text-center space-y-4">
-                <div className="w-14 h-14 bg-[#071731] border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-14 h-14 bg-[#0A1F44] border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
                 <h3 className="font-heading text-xl sm:text-2xl font-medium text-white">
@@ -177,11 +177,6 @@ export default function Contact({ preselectedService }) {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
 
-                <div className="font-mono text-xs text-[#C8102E] font-medium uppercase tracking-widest pb-3 border-b border-white/10 flex items-center justify-between">
-                  <span>CONFIDENTIAL INTAKE FORM</span>
-                  <span className="text-slate-400 font-normal">ALL FIELDS CONFIDENTIAL</span>
-                </div>
-
                 {/* Name Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -194,7 +189,7 @@ export default function Contact({ preselectedService }) {
                       value={formData.firstName}
                       onChange={handleChange}
                       placeholder="e.g. Alexander"
-                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      className="w-full bg-[#0A1F44] border border-white/15 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
                     />
                     {errors.firstName && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.firstName}</span>}
                   </div>
@@ -209,7 +204,7 @@ export default function Contact({ preselectedService }) {
                       value={formData.lastName}
                       onChange={handleChange}
                       placeholder="e.g. Wijaya"
-                      className="w-full bg-[#071731] border border-white/20 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
+                      className="w-full bg-[#0A1F44] border border-white/15 rounded px-3.5 py-2.5 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:border-[#C8102E] transition-colors"
                     />
                     {errors.lastName && <span className="text-xs font-mono text-[#C8102E] mt-1 block">{errors.lastName}</span>}
                   </div>
@@ -300,11 +295,7 @@ export default function Contact({ preselectedService }) {
                 </div>
 
                 {/* Submit Action */}
-                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="text-[11px] font-mono text-slate-400 text-center sm:text-left">
-                    Direct dispatch to Sudirman Park, Jakarta
-                  </div>
-
+                <div className="pt-2 flex justify-end">
                   <button
                     type="submit"
                     className="btn-editorial-red w-full sm:w-auto"

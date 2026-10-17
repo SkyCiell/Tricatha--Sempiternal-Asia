@@ -52,7 +52,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
   };
 
   return (
-    <section id="home" className="relative min-h-[90vh] sm:min-h-[94vh] flex flex-col justify-between bg-[#071731] text-white pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-white/10 overflow-hidden">
+    <section id="home" className="relative w-screen h-screen min-h-[640px] flex flex-col justify-between bg-[#071731] text-white pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-white/10 overflow-hidden select-none">
       {/* 1. Atmospheric Sovereign Event Background Video Layer */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 select-none">
         <video

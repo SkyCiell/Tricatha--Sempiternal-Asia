@@ -32,7 +32,7 @@ export default function EditorialCTA({ onStartConversation, onExploreWork }) {
 
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
         <div className="max-w-4xl space-y-8">
-          
+
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
               <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
@@ -76,8 +76,8 @@ export default function EditorialCTA({ onStartConversation, onExploreWork }) {
               </div>
               <div>
                 <div className="text-slate-400 text-[10px] uppercase tracking-wider font-mono">Executive Secretariat</div>
-                <a href="mailto:info@tsa-group.com" className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
-                  info@tsa-group.com
+                <a href="mailto:gwi@sempiternalasia.com" className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
+                  gwi@sempiternalasia.com
                 </a>
               </div>
             </div>

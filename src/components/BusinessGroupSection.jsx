@@ -1,26 +1,37 @@
 import React, { useState } from "react";
-import { ArrowUpRight, ArrowRight, ShieldCheck, Video, Megaphone, Scale, Check, MapPin, Award } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Video, Megaphone, Scale, Terminal, UtensilsCrossed, Check, MapPin, Award } from "lucide-react";
 import { businessGroupData } from "../data/tsaData";
 
-const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
-const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
-const gwiPhoto = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop";
+const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop";
+const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2000&auto=format&fit=crop";
+const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2000&auto=format&fit=crop";
+const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";
+const gwiPhoto = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000&auto=format&fit=crop";
 
 const iconMap = {
-  ENCHANTE: ShieldCheck,
+  "TSA TECH": Terminal,
+  ENCHANTE: UtensilsCrossed,
   "DNA STUDIO": Video,
   GWI: Megaphone,
   GOADV: Scale
 };
 
 const visualMap = {
+  "TSA TECH": {
+    photo: techPhoto,
+    caption: "Purpose-Built Technology for Mission-Critical Operations",
+    venue: "Indonesian Law Enforcement Agencies",
+    statLabel: "Track Record",
+    statValue: "Delivered Since 2018",
+    route: "/business-group#tsa-tech"
+  },
   ENCHANTE: {
-    photo: plenaryPhoto,
-    caption: "Ambassadorial Gala & Diplomatic Dinners",
-    venue: "The Ritz-Carlton Jakarta · Ballroom",
-    statLabel: "Precedence Record",
-    statValue: "12+ Head-of-State Banquets",
-    tagline: "Haute Protocol & Diplomatic Banquets"
+    photo: culinaryPhoto,
+    caption: "Thoughtfully Prepared Culinary Products & Catering",
+    venue: "Corporate, Social & Private Occasions",
+    statLabel: "Occasion Scope",
+    statValue: "Corporate, Social & Private",
+    route: "/business-group#enchante"
   },
   "DNA STUDIO": {
     photo: aseanPhoto,
@@ -28,32 +39,32 @@ const visualMap = {
     venue: "The City Tower 12th Fl · Central Jakarta",
     statLabel: "Broadcasting Reach",
     statValue: "2.4M+ Syndicated Viewers",
-    tagline: "Creative Broadcast & 4K Cinema Production Suite"
+    route: "/business-group#dna-studio"
   },
   GWI: {
     photo: gwiPhoto,
-    caption: "Civic Scale Assembly & Cultural Activation",
-    venue: "Gelora Bung Karno & Monas Enclosure",
-    statLabel: "In-Person Scale",
-    statValue: "45,000+ Civic Attendees",
-    tagline: "Public Affairs & Civic Activations"
+    caption: "Bringing the Right Audience to the Right Experience",
+    venue: "National & International Conferences · Business-Matching Forums",
+    statLabel: "Target Audience Network",
+    statValue: "20,000+ Curated Contacts",
+    route: "/business-group#gwi"
   },
   GOADV: {
     photo: plenaryPhoto,
-    caption: "Cross-Ministry Regulatory Intelligence",
-    venue: "Ministry of Communication & Digital Affairs",
-    statLabel: "State Liaison",
-    statValue: "14 National Ministries Partnered",
-    tagline: "Government Relations & Policy Compliance"
+    caption: "Navigating Institutions, Advancing Strategic Objectives",
+    venue: "Government Ministries, Public Institutions & Diplomatic Communities",
+    statLabel: "Engagement Scope",
+    statValue: "Discretion & Institutional Trust",
+    route: "/business-group#govadv"
   }
 };
 
 export default function BusinessGroupSection({ navigateTo }) {
-  const [activeUnitId, setActiveUnitId] = useState("enchante");
+  const [activeUnitId, setActiveUnitId] = useState("tsa-tech");
 
   const activeUnit = businessGroupData.find((u) => u.id === activeUnitId) || businessGroupData[0];
-  const activeVisual = visualMap[activeUnit.code] || visualMap.ENCHANTE;
-  const ActiveIcon = iconMap[activeUnit.code] || ShieldCheck;
+  const activeVisual = visualMap[activeUnit.code] || visualMap["TSA TECH"];
+  const ActiveIcon = iconMap[activeUnit.code] || Terminal;
 
   const handleConsult = () => {
     if (navigateTo) {
@@ -71,70 +82,67 @@ export default function BusinessGroupSection({ navigateTo }) {
   };
 
   return (
-    <section id="business-group" className="py-20 sm:py-28 bg-[#FFFFFF] text-[#0A1F44] border-b border-[#E2E8F0] relative overflow-hidden">
-
-      {/* Subtle Blue Structural Accent Accents */}
-      <div className="absolute top-0 right-0 w-1/3 h-96 bg-[#EFF6FF] rounded-bl-[80px] pointer-events-none -z-0" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#F0FDF4]/30 rounded-tr-[80px] pointer-events-none -z-0" />
-
+    <section id="business-group" className="py-16 sm:py-24 bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0] relative overflow-hidden">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
 
         {/* Section Header: Blue & White Corporate Identity */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12 sm:mb-16 pb-8 border-b border-[#E2E8F0]">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12 pb-6 border-b border-[#E2E8F0]">
           <div className="space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#1E40AF] font-bold uppercase tracking-wider bg-[#EFF6FF] px-3 py-1 rounded border border-[#DBEAFE]">
-              <span className="w-2 h-2 rounded-full bg-[#1E40AF]" />
-              <span>TSA OPERATING DIVISIONS · DUAL BLUE &amp; WHITE SYSTEM</span>
+            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#071731] font-bold uppercase tracking-wider bg-white px-3 py-1 rounded border border-[#E2E8F0]">
+              <span className="w-2 h-2 rounded-full bg-[#C8102E]" />
+              <span>TSA OPERATING DIVISIONS · SPECIALIZED PRACTICE GROUPS</span>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#071731] tracking-tight leading-[1.12]">
-              Four Specialized Entities. <br />
-              <span className="font-editorial italic font-normal text-[#1E40AF]">
+              Specialized Business Entities. <br />
+              <span className="font-editorial italic font-normal text-[#0A1F44]/80">
                 One Unified Strategic Organization.
               </span>
             </h2>
 
             <p className="font-sans text-sm sm:text-base text-slate-600 leading-relaxed font-normal pt-1">
-              Headquartered at The City Tower in Central Jakarta, PT Tricatha Sempiternal Asia operates four distinct practice groups spanning sovereign diplomatic protocol, 4K multi-camera broadcast production, civic scale public affairs, and state regulatory intelligence.
+              Headquartered at The City Tower in Central Jakarta, PT Tricatha Sempiternal Asia operates specialized practice groups spanning mission-critical technology, bespoke food &amp; beverage, 4K broadcast production, experiential event management, and government advisory.
             </p>
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={handleFullDossier}
-              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-6 py-3 rounded bg-[#0A1F44] hover:bg-[#071731] text-white font-sans text-xs sm:text-sm font-semibold tracking-wide uppercase transition-colors cursor-pointer shadow-sm"
+              className="btn-editorial-red text-xs py-3 px-6 cursor-pointer flex items-center gap-2 shadow-xs"
             >
               <span>Explore Group Dossier</span>
-              <ArrowUpRight className="w-4 h-4 text-white/80" />
+              <ArrowUpRight className="w-4 h-4 text-white" />
             </button>
           </div>
         </div>
 
-        {/* Structured Entity Selector: 4 Crisp Corporate Tabs */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10">
+        {/* Structured Entity Selector: Exactly 1 Row of 5 Business Group Cards matching screenshot */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-10 items-stretch">
           {businessGroupData.map((unit) => {
             const isSelected = unit.id === activeUnitId;
-            const Icon = iconMap[unit.code] || ShieldCheck;
+            const Icon = iconMap[unit.code] || Terminal;
             return (
               <button
                 key={unit.id}
                 onClick={() => setActiveUnitId(unit.id)}
-                className={`p-4 sm:p-5 text-left rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-between min-h-[72px] ${isSelected
-                  ? "bg-[#0A1F44] border-[#0A1F44] text-white shadow-md ring-2 ring-[#1E40AF]/20"
-                  : "bg-[#F8FAFC] border-[#E2E8F0] text-slate-700 hover:bg-[#EFF6FF] hover:border-[#BFDBFE]"
-                  }`}
+                className={`p-4 sm:p-5 text-left rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-between min-h-[88px] sm:min-h-[96px] h-full ${
+                  isSelected
+                    ? "bg-white border-[#071731] shadow-md ring-1 ring-[#071731]/15 text-[#071731]"
+                    : "bg-white/60 border-[#E2E8F0] text-[#475569] hover:bg-white hover:border-slate-400 hover:text-[#071731]"
+                }`}
               >
-                <div className="space-y-0.5">
-                  <div className={`font-heading font-bold text-sm sm:text-base tracking-tight ${isSelected ? "text-white" : "text-[#071731]"}`}>
+                <div className="space-y-1 pr-2">
+                  <div className={`font-heading font-bold text-sm tracking-tight leading-snug ${isSelected ? "text-[#071731]" : "text-[#334155]"}`}>
                     {unit.name}
                   </div>
-                  <div className={`text-[11px] font-mono truncate max-w-[160px] ${isSelected ? "text-blue-200" : "text-slate-500"}`}>
+                  <div className="text-[11px] font-mono text-[#64748B] truncate max-w-[170px]">
                     {unit.badge}
                   </div>
                 </div>
 
-                <div className={`w-8 h-8 rounded flex items-center justify-center shrink-0 transition-colors ${isSelected ? "bg-[#1E40AF] text-white" : "bg-[#FFFFFF] border border-[#CBD5E1] text-[#0A1F44]"
-                  }`}>
+                <div className={`w-8 h-8 rounded flex items-center justify-center shrink-0 transition-colors ${
+                  isSelected ? "bg-[#071731] text-white" : "bg-slate-100 text-[#64748B]"
+                }`}>
                   <Icon className="w-4 h-4" />
                 </div>
               </button>
@@ -142,16 +150,15 @@ export default function BusinessGroupSection({ navigateTo }) {
           })}
         </div>
 
-        {/* Structured Multi-Content Block Dossier (Not Generic Service Cards) */}
-        <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-6 sm:p-10 lg:p-12 shadow-sm relative overflow-hidden">
-
+        {/* Structured Multi-Content Block Dossier */}
+        <div className="bg-white border border-[#E2E8F0] rounded-xl p-6 sm:p-10 lg:p-12 shadow-sm relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
 
             {/* Block 1: Left Content Pillar - Mandate, Metrics, and Focus Areas (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
 
               <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#1E40AF] uppercase tracking-wider">
+                <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#C8102E] uppercase tracking-wider">
                   <ActiveIcon className="w-3.5 h-3.5" />
                   <span>PRACTICE SPECIALIZATION · {activeUnit.badge}</span>
                 </div>
@@ -172,14 +179,14 @@ export default function BusinessGroupSection({ navigateTo }) {
               {/* Verified Metrics Strip */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
                 {activeUnit.metrics && activeUnit.metrics.map((metric, idx) => (
-                  <div key={idx} className="bg-white p-3.5 rounded-lg border border-[#E2E8F0] shadow-2xs">
+                  <div key={idx} className="bg-[#FAF9F6] p-3.5 rounded-lg border border-[#E2E8F0] shadow-2xs">
                     <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{metric.label}</div>
                     <div className="text-xl sm:text-2xl font-heading font-bold text-[#071731] mt-0.5">{metric.value}</div>
                   </div>
                 ))}
-                <div className="bg-white p-3.5 rounded-lg border border-[#E2E8F0] shadow-2xs">
+                <div className="bg-[#FAF9F6] p-3.5 rounded-lg border border-[#E2E8F0] shadow-2xs">
                   <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">{activeVisual.statLabel}</div>
-                  <div className="text-sm sm:text-base font-heading font-bold text-[#1E40AF] mt-1 truncate">{activeVisual.statValue}</div>
+                  <div className="text-sm sm:text-base font-heading font-bold text-[#071731] mt-1 truncate">{activeVisual.statValue}</div>
                 </div>
               </div>
 
@@ -190,8 +197,8 @@ export default function BusinessGroupSection({ navigateTo }) {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {activeUnit.focusAreas.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 bg-white p-2.5 rounded border border-[#E2E8F0]">
-                      <span className="w-5 h-5 rounded-full bg-[#EFF6FF] text-[#1E40AF] flex items-center justify-center shrink-0 mt-0.5">
+                    <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 bg-[#FAF9F6] p-2.5 rounded border border-[#E2E8F0]">
+                      <span className="w-5 h-5 rounded-full bg-[#EFF6FF] text-[#071731] flex items-center justify-center shrink-0 mt-0.5">
                         <Check className="w-3 h-3 stroke-[2.5]" />
                       </span>
                       <span className="font-medium">{item}</span>
@@ -209,6 +216,16 @@ export default function BusinessGroupSection({ navigateTo }) {
                   <span>Inquire Mandate with {activeUnit.name}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
+
+                {activeVisual.route && (
+                  <button
+                    onClick={() => (navigateTo ? navigateTo(activeVisual.route) : null)}
+                    className="px-5 py-3 rounded bg-white hover:bg-slate-50 text-[#071731] border border-[#CBD5E1] text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer inline-flex items-center gap-2 shadow-2xs"
+                  >
+                    <span>Explore Division Portfolio</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                  </button>
+                )}
               </div>
 
             </div>
@@ -225,14 +242,14 @@ export default function BusinessGroupSection({ navigateTo }) {
 
                 {/* Floating Venue Badge */}
                 <div className="absolute top-3.5 left-3.5 flex items-center gap-2">
-                  <span className="px-3 py-1 bg-[#1E40AF] text-white text-[11px] font-mono font-semibold uppercase tracking-wider rounded shadow-sm">
+                  <span className="px-3 py-1 bg-[#071731] text-white text-[11px] font-mono font-semibold uppercase tracking-wider rounded shadow-sm border border-white/20">
                     VERIFIED PRODUCTION
                   </span>
                 </div>
 
                 {/* Bottom Frame Details */}
                 <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white space-y-1">
-                  <div className="flex items-center gap-1.5 text-xs text-blue-200 font-mono">
+                  <div className="flex items-center gap-1.5 text-xs text-slate-200 font-mono">
                     <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
                     <span>{activeVisual.venue}</span>
                   </div>
@@ -243,9 +260,9 @@ export default function BusinessGroupSection({ navigateTo }) {
               </div>
 
               {/* Quick Facility Provenance Strip */}
-              <div className="p-4 bg-white rounded-lg border border-[#E2E8F0] flex items-center justify-between text-xs font-mono text-slate-600">
+              <div className="p-4 bg-[#FAF9F6] rounded-lg border border-[#E2E8F0] flex items-center justify-between text-xs font-mono text-slate-600">
                 <div className="flex items-center gap-2">
-                  <Award className="w-4 h-4 text-[#1E40AF]" />
+                  <Award className="w-4 h-4 text-[#071731]" />
                   <span className="font-semibold text-[#071731]">EXECUTIVE INTEGRATION:</span>
                 </div>
                 <span className="text-slate-500">The City Tower, Jakarta Pusat</span>
@@ -253,54 +270,6 @@ export default function BusinessGroupSection({ navigateTo }) {
 
             </div>
 
-          </div>
-
-        </div>
-
-        {/* Structured 4-Entity Comparative Matrix Block */}
-        <div className="mt-12 pt-8 border-t border-[#E2E8F0]">
-          <div className="text-xs font-mono font-semibold text-slate-500 uppercase tracking-widest mb-4">
-            COMPREHENSIVE PRACTICE OVERVIEW AT A GLANCE
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {businessGroupData.map((unit) => {
-              const visual = visualMap[unit.code] || visualMap.ENCHANTE;
-              const Icon = iconMap[unit.code] || ShieldCheck;
-              const isSelected = unit.id === activeUnitId;
-
-              return (
-                <div
-                  key={unit.id}
-                  onClick={() => setActiveUnitId(unit.id)}
-                  className={`p-5 rounded-lg border transition-all cursor-pointer bg-white ${isSelected
-                    ? "border-[#1E40AF] ring-2 ring-[#1E40AF]/15 shadow-sm"
-                    : "border-[#E2E8F0] hover:border-[#CBD5E1]"
-                    }`}
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="w-8 h-8 rounded bg-[#EFF6FF] text-[#1E40AF] flex items-center justify-center">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
-                      UNIT #{unit.code}
-                    </span>
-                  </div>
-
-                  <h4 className="font-heading font-bold text-base text-[#071731] mb-1">
-                    {unit.name}
-                  </h4>
-                  <p className="text-xs text-slate-600 line-clamp-2 mb-3">
-                    {unit.tagline}
-                  </p>
-
-                  <div className="pt-3 border-t border-[#F1F5F9] flex items-center justify-between text-[11px] font-mono">
-                    <span className="text-slate-500">VENUE:</span>
-                    <span className="text-[#1E40AF] font-semibold truncate max-w-[140px]">{visual.venue.split("·")[0]}</span>
-                  </div>
-                </div>
-              );
-            })}
           </div>
         </div>
 
