@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
-const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
+
+const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=1800&auto=format&fit=crop";
+const banquetPhoto = "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600&auto=format&fit=crop";
 
 export default function EnchantePage({ navigateTo }) {
   const handleInquiry = () => {
@@ -24,88 +26,73 @@ export default function EnchantePage({ navigateTo }) {
 
   const disciplines = [
     {
-      num: "01",
-      category: "DIPLOMATIC HIERARCHY",
-      title: "Sovereign Seating & Precedence Protocol",
+      category: "CORPORATE & EXECUTIVE",
+      title: "Corporate Catering & Summit Dining",
       description:
-        "Official precedence mapping aligned with Ministry of Foreign Affairs conventions, diplomatic receiving lines, and bilateral head-of-state table orders.",
-      specs: "Bilateral & Multilateral Envoys · VVIP Motorcade Marshaling"
+        "Thoughtfully curated executive dining, conference luncheons, VIP boardroom repasts, and large-scale corporate catering designed for seamless scheduling, impeccable timing, and refined presentation.",
+      specs: "Executive Plenaries · Boardroom Hospitality · Summit Dining"
     },
     {
-      num: "02",
-      category: "SPATIAL SCENOGRAPHY",
-      title: "Haute Banquet Tablescape & Floral Engineering",
+      category: "SOCIAL & PRIVATE",
+      title: "Social Occasions & Private Celebrations",
       description:
-        "Custom acoustic-balanced tablescapes, bespoke botanical architecture, hand-lettered state calligraphy, and curated candelabra lighting balances.",
-      specs: "Five-Star Ballroom Suites · Custom Centerpiece Fabrication"
+        "Bespoke catering and hospitality for intimate dinner parties, milestone anniversaries, wedding receptions, and social galas. Every menu is personalized to reflect the host's style and the celebration's spirit.",
+      specs: "Private Estates · Intimate Gatherings · Curated Galas"
     },
     {
-      num: "03",
-      category: "STATE CEREMONIALS",
-      title: "Bilateral Accord Signing Ceremonies",
+      category: "ARTISANAL CRAFT",
+      title: "Culinary Products & Artisanal Creations",
       description:
-        "Turnkey execution of bilateral treaty desks, accredited ceremonial penmanship accouterments, flag protocol decorum, and synchronized media cordons.",
-      specs: "Ministerial Summits · Sovereign Communiqué Plenaries"
+        "Handcrafted pastry collections, signature savoury delicacies, custom dessert tablescapes, and packaged artisanal culinary products developed with fresh, premium ingredients and exquisite craftsmanship.",
+      specs: "Artisanal Bakeries · Bespoke Menus · Seasonal Specialties"
     },
     {
-      num: "04",
-      category: "CONFIDENTIAL AUDIO",
-      title: "Encrypted Simultaneous Interpretation Suites",
+      category: "DISTINCTIVE PRESENTATION",
+      title: "Tablescape Design & Hospitality Service",
       description:
-        "Point-to-point infrared encrypted interpretation channels supporting multilateral delegations in confidential bilateral consultations.",
-      specs: "Zero Signal Leakage · Multi-Channel UN Languages"
+        "Distinctive presentation with customized tableware, live finishing stations, thematic food installations, and a highly trained front-of-house hospitality team delivering attentive, gracious service.",
+      specs: "Turnkey Styling · Professional Service Staff · Live Stations"
     }
   ];
 
   const venues = [
-    "The Ritz-Carlton Jakarta · Ballroom",
-    "Grand Hyatt Jakarta · Grand Ballroom",
-    "Fairmont Jakarta · Grand Ballroom",
-    "Hotel Mulia Senayan · Grand Ballroom",
-    "Park Hyatt Jakarta · Royal Glasshouse"
+    "Corporate Headquarters & Executive Boardrooms",
+    "Five-Star Hotel Ballrooms & Convention Centres",
+    "Private Residences & Estate Grounds",
+    "Curated Social Event Venues & Art Galleries",
+    "Outdoor Pavilions & Cultural Sanctuaries"
   ];
 
   return (
-    <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
+    <div className="bg-[#FAF9F6] min-h-screen text-[#071731] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
 
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
 
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-8">
+        <div className="pb-6 border-b border-[#071731]/10 mb-8">
           <button
             onClick={handleBackToGroup}
-            className="group inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-slate-300 hover:text-white transition-colors cursor-pointer"
+            className="group inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-slate-500 hover:text-[#071731] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1 text-[#C8102E]" />
-            <span>TSA Business Group / Entity 01</span>
+            <span>Back to Business Group</span>
           </button>
-
-          <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-            <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-            <span className="text-white font-semibold">ENCHANTÉE</span>
-            <span className="text-slate-600">·</span>
-            <span>HAUTE PROTOCOL &amp; SCENOGRAPHY</span>
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-[#071731]/10">
 
           {/* Left Title & Statement (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
-            <div className="inline-flex items-center gap-2 text-xs font-mono tracking-widest text-[#C8102E] font-semibold uppercase">
-              <span>EXECUTIVE CEREMONIAL PRACTICE</span>
-            </div>
-
-            <h1 className="font-heading text-4xl sm:text-6xl lg:text-[70px] font-semibold text-white tracking-tight leading-[1.04]">
-              Bespoke Protocol. <br />
-              <span className="font-editorial italic font-normal text-slate-200">
-                Flawless Ceremonial Poise.
+            <h1 className="font-heading text-4xl sm:text-6xl lg:text-[70px] font-semibold text-[#071731] tracking-tight leading-[1.04]">
+              Enchantée Kitchen <br />
+              <span className="font-editorial italic font-normal text-slate-600">
+                Thoughtfully Prepared, Distinctively Presented.
               </span>
             </h1>
 
-            <p className="text-slate-300 text-base sm:text-xl font-normal leading-relaxed max-w-2xl pt-2">
-              Where sovereign etiquette meets architectural scenography. Orchestrated under strict ministerial decorum for head-of-state banquets, ambassadorial galas, and bilateral plenaries.
+            <p className="text-slate-600 text-base sm:text-xl font-normal leading-relaxed max-w-2xl pt-2">
+              TSA’s dedicated food and beverage division, creating thoughtfully prepared culinary products and catering experiences for corporate, social, and private occasions.
             </p>
           </div>
 
@@ -115,7 +102,7 @@ export default function EnchantePage({ navigateTo }) {
               onClick={handleInquiry}
               className="btn-editorial-red"
             >
-              <span>Commission Protocol Mandate</span>
+              <span>Inquire for Catering &amp; Events</span>
               <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
@@ -123,55 +110,78 @@ export default function EnchantePage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 2. PANORAMIC VISUAL ANCHOR (Supporting Imagery Integrated with Composition) */}
-      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-8 sm:py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative rounded overflow-hidden border border-white/15 bg-[#050F22] shadow-2xl"
-        >
-          {/* Main Visual */}
-          <div className="aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden relative">
-            <img
-              src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1800&auto=format&fit=crop"
-              alt="Enchantée Haute Banquet Scenography"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent opacity-90 pointer-events-none" />
-          </div>
+      {/* 2. PANORAMIC VISUAL ANCHOR */}
+      {/* 2. 100vw x 100vh FULLSCREEN CULINARY & HOSPITALITY HERO SCENE */}
+      <section className="relative w-screen left-1/2 -translate-x-1/2 h-screen min-h-[680px] bg-[#071731] text-white overflow-hidden flex flex-col justify-between select-none">
+        {/* Fullscreen Photo Layer */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+          <motion.img
+            src={culinaryPhoto}
+            alt="Enchantée Kitchen Culinary & Catering Presentation"
+            initial={{ scale: 1.05, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Directional Scrim for Supreme Readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/75 via-45% to-[#071731]/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/60 via-55% to-transparent pointer-events-none" />
+        </div>
 
-          {/* Integrated Editorial Captions & Provenance */}
-          <div className="p-6 sm:p-8 bg-[#0A1F44] border-t border-white/10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div className="space-y-1 max-w-xl">
-              <div className="flex items-center gap-2 font-mono text-xs text-[#C8102E]">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span className="uppercase font-semibold">VERIFIED ARCHIVAL RECORD</span>
-              </div>
-              <div className="font-heading font-semibold text-base sm:text-lg text-white">
-                Annual Diplomatic Corps &amp; Ambassadorial Gala Dinner
-              </div>
-              <div className="font-sans text-xs sm:text-sm text-slate-300">
-                Grand Hyatt Jakarta Grand Ballroom · 450 Foreign Envoys, Cabinet Ministers &amp; Attachés
-              </div>
-            </div>
+        {/* Spacer */}
+        <div className="relative z-10 w-full pt-10" />
 
-            <div className="flex items-center gap-4 shrink-0">
+        {/* Center / Direct Typography Over Media */}
+        <div className="relative z-10 w-full px-6 sm:px-12 lg:px-16 my-auto py-6">
+          <div className="max-w-4xl space-y-4 sm:space-y-6">
+            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-bold text-white tracking-tight leading-[1.08] drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
+              Thoughtfully Prepared, <br />
+              <span className="font-editorial italic font-normal text-slate-300">
+                Distinctively Presented.
+              </span>
+            </h2>
+
+            <p className="font-sans text-base sm:text-lg lg:text-xl text-slate-200 font-normal leading-relaxed max-w-3xl drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              Enchantée Kitchen is TSA’s food and beverage division, creating culinary products and bespoke catering experiences for corporate, social, and private occasions. With attention to flavour, presentation, and reliable service.
+            </p>
+
+            <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
-                onClick={() => (navigateTo ? navigateTo("/events/diplomatic-corps-ambassadorial-gala-dinner-2024") : null)}
-                className="btn-editorial-outline text-xs flex items-center gap-2"
+                onClick={handleInquiry}
+                className="btn-editorial-red text-xs sm:text-sm py-3 px-6 cursor-pointer inline-flex items-center gap-2 shadow-lg"
               >
-                <span>Inspect Event Record</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                <span>Consult Our Culinary Team</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
+
+        {/* Bottom Spec Footer Over Media */}
+        <div className="relative z-10 w-full px-6 sm:px-12 lg:px-16 pb-8 sm:pb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4 border-t border-white/15 font-mono text-xs">
+            <div>
+              <span className="text-slate-400 block text-[10px] uppercase">Service Spectrum</span>
+              <span className="text-white font-medium">Corporate Luncheons &amp; Galas</span>
+            </div>
+            <div>
+              <span className="text-slate-400 block text-[10px] uppercase">Cuisine Philosophy</span>
+              <span className="text-white font-medium">Indonesian Heritage &amp; International</span>
+            </div>
+            <div>
+              <span className="text-slate-400 block text-[10px] uppercase">Hygiene &amp; Safety</span>
+              <span className="text-white font-medium">HACCP Aligned Production</span>
+            </div>
+            <div>
+              <span className="text-slate-400 block text-[10px] uppercase">Operational Base</span>
+              <span className="text-white font-medium">Greater Jakarta Corridor</span>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* 3. MANIFESTO OF DECORUM (Text as Visual Composition) */}
-      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28 border-b border-white/10">
+      {/* 3. MANIFESTO & ABOUT US */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28 border-b border-[#071731]/10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-baseline">
 
           {/* Left Anchor (4 cols) */}
@@ -180,14 +190,11 @@ export default function EnchantePage({ navigateTo }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4 space-y-3"
+            className="lg:col-span-4"
           >
-            <span className="font-mono text-xs text-[#C8102E] tracking-widest uppercase font-semibold block">
-              PHILOSOPHY OF DECORUM
-            </span>
-            <h2 className="font-heading text-2xl sm:text-4xl text-white font-semibold tracking-tight leading-tight">
-              Silence, Discretion, <br />
-              and Sovereign Dignity.
+            <h2 className="font-heading text-2xl sm:text-4xl text-[#071731] font-semibold tracking-tight leading-tight">
+              Warmth, Refinement, <br />
+              and Considered Craft.
             </h2>
           </motion.div>
 
@@ -199,18 +206,18 @@ export default function EnchantePage({ navigateTo }) {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="lg:col-span-8 space-y-8"
           >
-            <p className="font-heading text-xl sm:text-2xl lg:text-3xl text-slate-100 font-light leading-relaxed tracking-tight">
-              In sovereign statecraft, there is no second rehearsal. <br className="hidden sm:inline" />
-              Every seating hierarchy communicates diplomatic precedence. <br className="hidden sm:inline" />
-              Every crystal line and floral cadence honors bilateral respect.
-            </p>
+            <div>
+              <p className="font-editorial text-2xl sm:text-3xl lg:text-4xl text-[#071731] font-normal italic leading-snug tracking-tight">
+                "Thoughtfully Prepared, Distinctively Presented"
+              </p>
+            </div>
 
-            <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+            <div className="pt-6 border-t border-[#071731]/10 grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
               <p>
-                Operating as the dedicated protocol practice of <strong>PT Tricatha Sempiternal Asia</strong>, Enchantée bridges formal ministerial regulations with refined spatial scenography. We ensure flawless ceremonial execution across every bilateral banquet, ministerial luncheon, and sovereign accord signing.
+                Enchantée Kitchen is TSA’s food and beverage division, creating thoughtfully prepared culinary products and catering experiences for corporate, social, and private occasions. Every offering is developed with attention to flavour, quality, presentation, and the character of the occasion it is intended to complement.
               </p>
               <p>
-                From coordinating accredited precedence with embassy advance teams to deploying secure simultaneous interpretation suites, our officers preserve absolute confidentiality and sovereign decorum.
+                From intimate gatherings to larger-scale events, Enchantée Kitchen provides food and hospitality solutions tailored to each client’s requirements. With a balance of warmth, refinement, and reliable service, it aims to make every dining experience feel considered, welcoming, and memorable.
               </p>
             </div>
           </motion.div>
@@ -218,59 +225,52 @@ export default function EnchantePage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 4. THE FOUR DISCIPLINES (Editorial Numbered Ledger - NO CARDS) */}
-      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28 border-b border-white/10">
+      {/* 4. THE FOUR DISCIPLINES */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28 border-b border-[#071731]/10">
 
         {/* Section Intro */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/10">
-          <div className="space-y-2">
-            <span className="font-mono text-xs text-[#C8102E] uppercase tracking-widest font-semibold block">
-              OPERATIONAL SPECIFICATIONS
-            </span>
-            <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-              Ceremonial Capabilities
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-[#071731]/10">
+          <div>
+            <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-[#071731] tracking-tight">
+              Tailored Food &amp; Beverage Services
             </h2>
           </div>
-          <p className="text-sm text-slate-300 font-normal max-w-md leading-relaxed">
-            Four specialized disciplines structured for ministerial summits, diplomatic missions, and sovereign banqueting halls.
+          <p className="text-sm text-slate-600 font-normal max-w-md leading-relaxed">
+            From executive boardroom luncheons to grand celebration banquets, four comprehensive pillars designed to elevate every dining occasion.
           </p>
         </div>
 
         {/* Ledger Rows */}
-        <div className="divide-y divide-white/10 pt-4">
-          {disciplines.map((d) => (
+        <div className="divide-y divide-[#071731]/10 pt-4 border-b border-[#071731]/10">
+          {disciplines.map((d, idx) => (
             <motion.div
-              key={d.num}
+              key={idx}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-baseline group hover:bg-white/[0.015] transition-colors px-2 sm:px-4 rounded"
+              className="py-8 sm:py-12 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-baseline group hover:bg-[#071731]/[0.015] transition-colors px-2 sm:px-4 rounded"
             >
-              {/* Col 1: Numeral & Category (3 cols) */}
-              <div className="lg:col-span-3 flex items-baseline gap-4">
-                <span className="font-mono text-base sm:text-lg font-bold text-[#C8102E]">
-                  {d.num}
-                </span>
-                <span className="font-mono text-xs tracking-wider uppercase text-slate-400">
+              {/* Col 1: Category (3 cols) */}
+              <div className="lg:col-span-3">
+                <span className="font-mono text-xs tracking-wider uppercase text-[#C8102E] font-semibold">
                   {d.category}
                 </span>
               </div>
 
               {/* Col 2: Title (4 cols) */}
               <div className="lg:col-span-4">
-                <h3 className="font-heading text-xl sm:text-2xl font-semibold text-white tracking-tight group-hover:text-slate-100 transition-colors">
+                <h3 className="font-heading text-xl sm:text-2xl font-semibold text-[#071731] tracking-tight group-hover:text-[#C8102E] transition-colors">
                   {d.title}
                 </h3>
               </div>
 
               {/* Col 3: Description & Specs (5 cols) */}
               <div className="lg:col-span-5 space-y-3">
-                <p className="font-sans text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
+                <p className="font-sans text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
                   {d.description}
                 </p>
-                <div className="flex items-center gap-2 font-mono text-xs text-slate-400">
-                  <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+                <div className="font-mono text-xs text-slate-500">
                   <span>{d.specs}</span>
                 </div>
               </div>
@@ -280,122 +280,147 @@ export default function EnchantePage({ navigateTo }) {
 
       </section>
 
-      {/* 5. DISPLAY METRICS & VENUE PROVENANCE (Generous Whitespace Composition) */}
-      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-20 sm:py-28 border-b border-white/10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+      {/* 5A. SERVICE COMMITMENT (Airy Editorial Off-White Foundation) */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-16 sm:py-20 border-b border-[#071731]/10">
+        <div className="max-w-2xl mb-12">
+          <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-[#071731] tracking-tight">
+            Warmth, Refinement, &amp; Reliable Service.
+          </h2>
+        </div>
 
-          {/* Display Numbers (6 cols) */}
-          <div className="lg:col-span-6 space-y-12">
-            <div className="space-y-3">
-              <span className="font-mono text-xs text-[#C8102E] tracking-widest uppercase font-semibold block">
-                INSTITUTIONAL METRICS
-              </span>
-              <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-                Verified Diplomatic Track Record.
-              </h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
+          <div className="space-y-2">
+            <div className="font-heading text-4xl sm:text-5xl font-bold text-[#071731] tracking-tight">
+              100<span className="text-[#C8102E]">%</span>
             </div>
-
-            <div className="grid grid-cols-2 gap-8 sm:gap-12 pt-4">
-              <div className="space-y-2">
-                <div className="font-heading text-5xl sm:text-6xl font-bold text-white tracking-tight">
-                  14<span className="text-[#C8102E]">+</span>
-                </div>
-                <div className="font-heading text-sm sm:text-base text-white font-medium">
-                  State Banquets Delivered
-                </div>
-                <p className="font-sans text-xs text-slate-300">
-                  Orchestrated across Jakarta's premier sovereign salons.
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="font-heading text-5xl sm:text-6xl font-bold text-white tracking-tight">
-                  32
-                </div>
-                <div className="font-heading text-sm sm:text-base text-white font-medium">
-                  Diplomatic Missions Hosted
-                </div>
-                <p className="font-sans text-xs text-slate-300">
-                  Accredited foreign embassies and regional attaches.
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="font-heading text-5xl sm:text-6xl font-bold text-white tracking-tight">
-                  100<span className="text-[#C8102E]">%</span>
-                </div>
-                <div className="font-heading text-sm sm:text-base text-white font-medium">
-                  Precedence Compliance
-                </div>
-                <p className="font-sans text-xs text-slate-300">
-                  Full adherence to international protocol standards.
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <div className="font-heading text-5xl sm:text-6xl font-bold text-white tracking-tight">
-                  0
-                </div>
-                <div className="font-heading text-sm sm:text-base text-white font-medium">
-                  Margin of Error
-                </div>
-                <p className="font-sans text-xs text-slate-300">
-                  Single-source accountability under TSA governance.
-                </p>
-              </div>
+            <div className="font-heading text-sm sm:text-base text-[#071731] font-medium">
+              Tailored Hospitality
             </div>
+            <p className="font-sans text-xs text-slate-600">
+              Every menu, service style, and table setting is designed around each client’s unique occasion.
+            </p>
           </div>
 
-          {/* Provenance Venues & Photography (6 cols) */}
-          <div className="lg:col-span-6 space-y-8">
-            <div className="editorial-image-frame rounded aspect-[16/10] bg-[#050F22] border border-white/15 overflow-hidden shadow-2xl relative">
-              <img
-                src={aseanPhoto}
-                alt="Enchantée Diplomatic Plenary Reception"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-transparent to-transparent opacity-80 pointer-events-none" />
-
-              <div className="absolute bottom-4 left-4 right-4 p-4 bg-[#0A1F44]/95 backdrop-blur-xs rounded border border-white/10 text-white font-mono text-xs flex items-center justify-between">
-                <span>DIPLOMATIC PLENARY RECEPTION</span>
-                <span className="text-[#C8102E] font-semibold">JAKARTA</span>
-              </div>
+          <div className="space-y-2">
+            <div className="font-heading text-4xl sm:text-5xl font-bold text-[#071731] tracking-tight">
+              Fresh
             </div>
-
-            {/* Verified Venue Roster */}
-            <div className="space-y-3">
-              <div className="font-mono text-xs text-slate-400 uppercase tracking-wider font-semibold">
-                PREFERRED SOVEREIGN BALLROOM PARTNERS:
-              </div>
-              <div className="divide-y divide-white/10 font-mono text-xs text-slate-300">
-                {venues.map((venue, idx) => (
-                  <div key={idx} className="py-2.5 flex items-center justify-between">
-                    <span>{venue}</span>
-                    <span className="text-slate-400 text-[10px]">VERIFIED PARTNER</span>
-                  </div>
-                ))}
-              </div>
+            <div className="font-heading text-sm sm:text-base text-[#071731] font-medium">
+              Artisanal Ingredients
             </div>
-
+            <p className="font-sans text-xs text-slate-600">
+              Seasonal produce, premium meats, and handcrafted bakery creations made without compromise.
+            </p>
           </div>
 
+          <div className="space-y-2">
+            <div className="font-heading text-4xl sm:text-5xl font-bold text-[#071731] tracking-tight">
+              5★
+            </div>
+            <div className="font-heading text-sm sm:text-base text-[#071731] font-medium">
+              Presentation Quality
+            </div>
+            <p className="font-sans text-xs text-slate-600">
+              Distinctively presented with attention to detail, colour harmony, and tablescape aesthetic.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <div className="font-heading text-4xl sm:text-5xl font-bold text-[#071731] tracking-tight">
+              Full
+            </div>
+            <div className="font-heading text-sm sm:text-base text-[#071731] font-medium">
+              Turnkey Coordination
+            </div>
+            <p className="font-sans text-xs text-slate-600">
+              From setup and table styling to live cooking stations and professional front-of-house service.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* 6. CLOSING MANDATE INQUIRY PANEL */}
-      <section className="py-20 sm:py-28 bg-[#050F22] border-t border-white/10">
+      {/* 5B. 100vw x 100vh FULLSCREEN BANQUET CATERING SCENE */}
+      <section className="relative w-screen left-1/2 -translate-x-1/2 h-screen min-h-[680px] bg-[#071731] text-white overflow-hidden flex flex-col justify-between select-none">
+        {/* Fullscreen Photo Layer */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+          <motion.img
+            src={banquetPhoto}
+            alt="Enchantée Kitchen Dining Experience"
+            initial={{ scale: 1.05, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Directional Scrim for Supreme Readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/75 via-45% to-[#071731]/30 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/60 via-55% to-transparent pointer-events-none" />
+        </div>
+
+        {/* Spacer */}
+        <div className="relative z-10 w-full pt-10" />
+
+        {/* Center / Direct Typography Over Media */}
+        <div className="relative z-10 w-full px-6 sm:px-12 lg:px-16 my-auto py-6">
+          <div className="max-w-4xl space-y-4 sm:space-y-6">
+            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[54px] font-bold text-white tracking-tight leading-[1.08] drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
+              Occasions &amp; Venues <br />
+              <span className="font-editorial italic font-normal text-slate-300">
+                Served Across Indonesia.
+              </span>
+            </h2>
+
+            <p className="font-sans text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-3xl drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
+              From intimate gatherings to larger-scale events, Enchantée Kitchen provides food and hospitality solutions tailored to each client’s requirements. With a balance of warmth, refinement, and reliable service.
+            </p>
+
+            {/* Venues Served Directly Over Media */}
+            <div className="pt-2 flex flex-wrap gap-2.5 sm:gap-3 max-w-3xl">
+              {venues.map((venue, idx) => (
+                <div
+                  key={idx}
+                  className="px-3.5 py-2 rounded bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-mono text-slate-200"
+                >
+                  <span>{venue}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Spec Footer Over Media */}
+        <div className="relative z-10 w-full px-6 sm:px-12 lg:px-16 pb-8 sm:pb-10">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-4 border-t border-white/15 font-mono text-xs">
+            <div>
+              <span className="text-slate-400 block text-[10px] uppercase">Capacity</span>
+              <span className="text-white font-medium">Bespoke 20 to 2,000+ Guests</span>
+            </div>
+            <div>
+              <span className="text-slate-400 block text-[10px] uppercase">Service Models</span>
+              <span className="text-white font-medium">Plated, Buffet &amp; Canapés</span>
+            </div>
+            <div>
+              <span className="text-slate-400 block text-[10px] uppercase">Beverage Program</span>
+              <span className="text-white font-medium">Curated Mocktails &amp; Artisanal Tea</span>
+            </div>
+            <div>
+              <span className="text-slate-400 block text-[10px] uppercase">Hospitality Team</span>
+              <span className="text-white font-medium">Professional Butler Brigade</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CLOSING MANDATE INQUIRY PANEL (Selective Navy Contrast Moment) */}
+      <section className="py-20 sm:py-28">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          <div className="bg-[#0A1F44] border border-white/10 p-8 sm:p-14 rounded flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="bg-[#071731] text-white border border-[#071731] p-8 sm:p-14 rounded-xl shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="space-y-3 max-w-2xl">
-              <div className="flex items-center gap-2 font-mono text-xs text-[#C8102E]">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>EXECUTIVE PROTOCOL DIRECTORATE · THE CITY TOWER</span>
-              </div>
               <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-                Commission an Enchantée Mandate.
+                Plan Your Next Dining Experience.
               </h2>
               <p className="font-sans text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                For ambassadorial banquets, bilateral treaty signings, or high-precedence diplomatic gatherings, contact the Jakarta Executive Secretariat for confidential feasibility and protocol evaluation.
+                Whether you are organising an executive summit luncheon, an intimate celebratory gathering, or a large-scale corporate event, contact Enchantée Kitchen to curate a culinary experience tailored to your exact requirements.
               </p>
             </div>
 
@@ -404,7 +429,7 @@ export default function EnchantePage({ navigateTo }) {
                 onClick={handleInquiry}
                 className="btn-editorial-red flex items-center justify-center gap-2"
               >
-                <span>Initiate Mandate Inquiry</span>
+                <span>Request Catering Proposal</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
 

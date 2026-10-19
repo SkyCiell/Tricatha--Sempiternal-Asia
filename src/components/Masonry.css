@@ -1,35 +1,12 @@
-.masonry-list {
-  position: relative;
+/* Bento Grid Styling & Card Utilities */
+.tsa-bento-grid {
+  display: grid;
   width: 100%;
-  margin: 0 auto;
-  transition: height 0.3s ease-out;
 }
 
-.item-wrapper {
-  position: absolute;
-  will-change: transform, width, height, opacity;
-  padding: 6px;
-  box-sizing: border-box;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-}
-
-.item-wrapper > .item-img {
+.tsa-bento-card {
   position: relative;
-  background-size: cover;
-  background-position: center center;
   width: 100%;
   height: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  background-color: #0A1F44;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-out, border-color 0.3s ease-out;
-}
-
-.item-wrapper:hover > .item-img {
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
 }

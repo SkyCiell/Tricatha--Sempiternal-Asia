@@ -1,5 +1,4 @@
 // High-grade dummy corporate event photography URLs
-const gwiImage = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop";
 const aseanDiplomacyImage = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
 const govAdvImage = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 
@@ -10,9 +9,9 @@ export const companyInfo = {
   heroHeadline: "WE CREATE EVENTS\nTHAT MOVE PEOPLE.",
   heroSubtitle: "PT Tricatha Sempiternal Asia is a premier event organizer and business event company in Jakarta. We deliver end-to-end event strategy, monumental trade exhibitions, government plenaries, and high-stakes corporate experiences across Southeast Asia.",
   introHeadline: "WE TURN IDEAS INTO EXPERIENCES.",
-  introDescription: "Operating at the intersection of business strategy, sovereign protocol, and creative production, TSA executes corporate events, international exhibitions, ministerial conferences, and high-level business networking with uncompromising precision.",
+  introDescription: "PT Tricatha Sempiternal Asia is an Indonesian multidisciplinary company delivering integrated solutions across technology, event management, government advocacy, food and beverage, and digital content production. Through our specialized business units, we combine strategic insight, creative thinking, technical expertise, and trusted networks to help organizations navigate challenges, activate opportunities, and achieve meaningful, sustainable impact.",
   address: "Sudirman Park Apartment, Jl. KH. Mas Mansyur Kav. 35, Karet Tengsin, Tanah Abang, Jakarta Pusat, DKI Jakarta, Indonesia",
-  email: "info@tsa-group.com",
+  email: "gwi@sempiternalasia.com",
   phone: "+62 21 2358 4500",
   hours: "Monday – Friday: 08:30 – 17:30 WIB",
 
@@ -414,7 +413,7 @@ export const faqItems = [
   {
     id: "faq-start-project",
     question: "How can we start a project with TSA?",
-    answer: "You can initiate a consultation by clicking 'Let's Work Together' or contacting our secretariat directly via email at info@tsa-group.com or telephone at +62 21 2358 4500. Our strategic directors will review your event mandate, scope, and timeline to schedule an executive briefing."
+    answer: "You can initiate a consultation by clicking 'Let's Work Together' or contacting our secretariat directly via email at gwi@sempiternalasia.com or telephone at +62 21 2358 4500. Our strategic directors will review your event mandate, scope, and timeline to schedule an executive briefing."
   }
 ];
 
@@ -430,62 +429,90 @@ export const editorialProjects = featuredProjects;
 
 export const leadershipTeam = [
   {
-    name: "Arya Wibowo",
-    role: "Managing Director & Head of Plenary Protocol",
+    name: "Dina Ernawati Saksono",
+    role: "Chief Executive Officer",
     division: "Executive Board",
-    quote: "Precision in protocol is not merely procedural decorum; it is the strategic foundation of international trust.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
-    bio: "Over 15 years advising sovereign entities and multinational enterprises on bilateral conference decorum, VVIP security clearance, and multilateral event operations.",
-    mandateScope: "Sovereign Plenary Protocol · Head-of-State Delegations"
+    badge: "Chief Executive Officer",
+    quote: "Bridging technological expertise, sovereign governance, and creative excellence to deliver innovative strategies and measurable impact across Asia.",
+    image: "/team/dina-e-saksono.png",
+    fallbackImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    bio: "Dina Ernawati Saksono is the Chief Executive Officer of PT Tricatha Sempiternal Asia, leading the company’s strategic direction, business development, and multidisciplinary operations. She directly oversees TSA’s principal portfolios, including Gema Waskita Interaktifa, GovAdv, and DNA Studio, bringing together technology, government advisory, event management, stakeholder engagement, and creative production within one integrated business ecosystem.\n\nWith nearly two decades of experience working alongside the U.S. Department of Justice–ICITAP, Dina has contributed to international law-enforcement capacity building, environmental and natural-resource protection, and initiatives addressing violence against women and children. She founded the HELP Dashboard System and Application, launched by the Indonesian Chief of Police in 2018, and has represented Indonesia at the International Association of Women Police Training Conference in Barcelona. Her contributions have also been recognized through two Certificates of Appreciation from the Office of the U.S. Attorney General. Today, she brings this depth of institutional experience, international exposure, and cross-sector connectivity to TSA’s leadership and client engagements.",
+    mandateScope: "Strategic Direction · Business Development · Integrated Ecosystem"
   },
   {
-    name: "Siti Rahmania",
-    role: "Director of Trade Exhibitions & MICE",
-    division: "Exhibition Practice",
-    quote: "A monumental trade expo succeeds when thousands of commercial interactions flow with effortless clarity.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
-    bio: "Pioneered multi-hall spatial layouts and digital hosted buyer lounges for some of Southeast Asia's highest-capacity clean energy and industrial exhibitions.",
-    mandateScope: "MICE Floor Architecture · Commercial Matchmaking"
+    name: "R. Januardy",
+    role: "Chief Technology Officer",
+    division: "Technology & Engineering Division",
+    badge: "Chief Technology Officer",
+    quote: "Translating complex operational requirements into secure, scalable, and purpose-built digital architectures.",
+    image: "/team/r-januardy.png",
+    fallbackImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    bio: "R. Januardy is the Chief Technology Officer of PT Tricatha Sempiternal Asia, responsible for shaping the company’s technology strategy and overseeing the development of its digital solutions. With expertise spanning digital technology, telecommunications, and systems engineering, he provides the technical leadership required to translate complex operational requirements into secure, scalable, and purpose-built systems.\n\nA graduate of Electrical Engineering with a specialization in Telecommunication Engineering from Brawijaya University, Januardy leads capabilities across software and hardware engineering, digital product management, data digitization, big-data analytics, and backend web and application development. His approach combines technical precision with practical business understanding, ensuring that TSA’s technology solutions remain reliable, relevant, and aligned with the institutional and operational needs of each client.",
+    mandateScope: "Technology Strategy · Systems Engineering · Big-Data Analytics"
   },
   {
-    name: "Dimas Prasetyo",
-    role: "Chief Creative Officer & Broadcast Director",
-    division: "DNA Studio",
-    quote: "We transform convention halls into sensory experiences that permanently elevate corporate prestige.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
-    bio: "Award-winning creative director overseeing spatial scenography, immersive 4K multi-camera broadcast cinema, and kinetic lighting systems for flagship institutional summits.",
-    mandateScope: "Spatial Scenography · 4K Broadcast Cinema"
+    name: "Joseph Saryuf",
+    role: "Creative Director and Activation Lead",
+    division: "Creative Direction & Activations",
+    badge: "Creative Director & Activation Lead",
+    quote: "Transforming strategic institutional concepts into memorable spatial narratives, soundstages, and experiential activations that command attention.",
+    image: "/team/joseph-saryuf.png",
+    fallbackImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
+    bio: "Joseph Saryuf is TSA’s Creative Director and Activation Lead, bringing more than 20 years of experience in brand activation, experiential marketing, and integrated creative communications. Throughout his career, he has transformed brand objectives into engaging audience experiences through strategic activation concepts, multidisciplinary creative development, and carefully coordinated implementation.\n\nHis portfolio spans consumer brands, lifestyle companies, and entertainment properties, supported by expertise in creative direction, production oversight, content development, audience-engagement design, and cross-functional team leadership. At TSA, Joseph leads the creative and activation process with a balance of imagination, commercial understanding, and operational discipline—ensuring that every concept remains distinctive, relevant, and executable.",
+    mandateScope: "Brand Activation · Experiential Marketing · Creative Communications"
   },
   {
-    name: "Farhan Mahendra",
-    role: "Director of Government & Public Affairs",
-    division: "Institutional Relations",
-    quote: "Navigating complex stakeholder ecosystems requires deep institutional nuance and absolute integrity.",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
-    bio: "Senior policy advisor specializing in inter-ministerial coordination, bilateral accord architecture, and cross-border commercial delegation hospitality.",
-    mandateScope: "Government Liaison · Inter-Agency Working Groups"
+    name: "Raditya Pratama",
+    role: "Production and Multimedia Specialist",
+    division: "Production & Multimedia Division",
+    badge: "Production & Multimedia Specialist",
+    quote: "Connecting creative ideas with technical production to deliver polished visual, digital, and audiovisual content.",
+    image: "/team/raditya-pratama.png",
+    fallbackImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
+    bio: "Raditya Pratama is TSA’s Production and Multimedia Specialist, supporting the development and execution of visual, digital, and audiovisual materials across the company’s business units. His role connects creative ideas with technical production, helping transform concepts into polished content suitable for events, campaigns, digital platforms, and corporate communications.\n\nWorking across production and multimedia disciplines, Raditya contributes to the planning, development, and final presentation of each creative output. With attention to visual consistency, technical quality, and the intended audience experience, he helps ensure that TSA’s content is not only professionally produced but also aligned with each client’s identity, objectives, and communication requirements.",
+    mandateScope: "Audiovisual Production · Digital Platforms · Corporate Communications"
   }
 ];
 
-// TSA Business Group - 4 Operational Entities under PT Tricatha Sempiternal Asia
+// TSA Business Group - 5 Operational Entities under PT Tricatha Sempiternal Asia
 export const businessGroupData = [
+  {
+    id: "tsa-tech",
+    code: "TSA TECH",
+    name: "TSA IT & TECHNOLOGY",
+    fullName: "TSA | IT & Technology",
+    tagline: "Purpose-Built Technology for Mission-Critical Operations",
+    badge: "IT & Technology",
+    description: "Since 2018, TSA’s IT and Technology division has delivered digital systems and technology solutions for Indonesian Law Enforcement Agencies. Its work is grounded in a practical understanding of institutional operations, security requirements, information management, and the complex environments in which public-sector technology must perform.",
+    focusAreas: [
+      "Law Enforcement Digital Systems & Platforms",
+      "Secure Information Management & Integration",
+      "Mission-Critical Technology Infrastructure",
+      "Operational Coordination & Decision Support"
+    ],
+    metrics: [
+      { label: "Track Record", value: "Since 2018" },
+      { label: "Domain Focus", value: "Law Enforcement" }
+    ],
+    anchorId: "unit-tsa-tech"
+  },
   {
     id: "enchante",
     code: "ENCHANTE",
-    name: "ENCHANTE",
-    fullName: "Enchante Experiential & Haute Protocol",
-    tagline: "Haute Protocol, Diplomatic Banquets & Spatial Scenography",
-    badge: "Haute Protocol",
-    description: "Specialized in bilateral head-of-state diplomatic banquets, ambassadorial galas, luxury brand unveilings, and precision ceremonial precedence. Enchante transforms formal gatherings into unforgettable institutional milestones.",
+    name: "ENCHANTÉE KITCHEN",
+    fullName: "Enchantée Kitchen | Food & Beverage",
+    tagline: "Thoughtfully Prepared, Distinctively Presented",
+    badge: "Food & Beverage",
+    description: "Enchantée Kitchen is TSA’s food and beverage division, creating thoughtfully prepared culinary products and catering experiences for corporate, social, and private occasions. Every offering is developed with attention to flavour, quality, presentation, and the character of the occasion it is intended to complement.",
     focusAreas: [
-      "Bilateral Head-of-State Conferences",
-      "Diplomatic Gala & State Banquets",
-      "Haute Spatial Scenography & Architecture",
-      "VVIP Seating Etiquette & Motorcade Marshaling"
+      "Corporate Dining & Executive Catering",
+      "Social & Private Occasion Experiences",
+      "Artisanal Culinary Products & Menus",
+      "Distinctive Presentation & Hospitality Solutions"
     ],
     metrics: [
-      { label: "State Banquets", value: "12+" },
-      { label: "Precedence Compliance", value: "100%" }
+      { label: "Occasions Served", value: "Corporate & Social" },
+      { label: "Culinary Standard", value: "Artisanal Focus" }
     ],
     anchorId: "unit-enchante"
   },
@@ -513,39 +540,39 @@ export const businessGroupData = [
     id: "gwi",
     code: "GWI",
     name: "GWI",
-    fullName: "Gema Waskita Interaktifa",
-    tagline: "Public Affairs, Strategic Communications & Civic Activation",
-    badge: "Public Affairs & Civic Scale",
-    description: "Operating at the frontier of public sector communications, civic sentiment architecture, and high-capacity cultural festivals. Combining digital projection mapping with crisis narrative defense across nationwide campaigns.",
+    fullName: "GWI | Event Management",
+    tagline: "Bringing the Right Audience to the Right Experience",
+    badge: "Event Management & Experiential",
+    description: "Gema Waskita Interaktifa (GWI) is TSA’s event management and experiential division, delivering national and international conferences, corporate gatherings, business-matching programs, brand activations, and strategic engagements. We combine strategic planning, creative direction, and disciplined execution to transform each client’s objectives into a cohesive and professionally delivered experience.",
     focusAreas: [
-      "Strategic Public Affairs Orchestration",
-      "Corporate Crisis & Reputation Defense",
-      "High-Capacity Cultural Scenography",
-      "National Digital Narrative Amplification"
+      "National & International Conferences",
+      "Corporate Gatherings & Strategic Engagements",
+      "Business-Matching & Curated Audience Programs",
+      "Brand Activations & Experiential Environments"
     ],
     metrics: [
-      { label: "In-Person Scale", value: "45,000+" },
-      { label: "Digital Reach", value: "1.2M Viewers" }
+      { label: "Audience Network", value: "20,000+ Contacts" },
+      { label: "Execution Standard", value: "National & Global" }
     ],
     anchorId: "unit-gwi"
   },
   {
     id: "goadv",
     code: "GOADV",
-    name: "GOADV",
-    fullName: "GOADV Policy Intelligence & Regulatory Advisory",
-    tagline: "Government Relations, Policy Intelligence & Regulatory Compliance",
-    badge: "Government Relations",
-    description: "Bridges private enterprise and state regulatory authorities. Operating under strict protocol alignment, GOADV assists domestic and multinational institutions in navigating cross-ministry compliance and public-private partnerships (PPP).",
+    name: "GOVADV",
+    fullName: "GovAdv | Government Advisory",
+    tagline: "Navigating Institutions, Advancing Strategic Objectives",
+    badge: "Government Advisory",
+    description: "GovAdv is TSA’s government advisory and stakeholder-engagement division, supporting domestic and international organizations in understanding and navigating Indonesia’s institutional landscape. Its work draws upon extensive experience engaging government ministries, law enforcement agencies, public institutions, diplomatic communities, and private-sector stakeholders.",
     focusAreas: [
-      "Cross-Ministry Liaison & Regulatory Audits",
-      "Public-Private Sector Alliance Building",
-      "Digital Governance & Data Residency Frameworks",
-      "Bilateral Business Diplomacy Accords"
+      "Strategic Consultation & Institutional Engagement",
+      "Stakeholder Mapping & Public Sector Analysis",
+      "Facilitated Introductions & Partnership Building",
+      "Discreet Multi-Stakeholder Dialogue & Policy Navigation"
     ],
     metrics: [
-      { label: "Partnered Ministries", value: "14+" },
-      { label: "Approval Latency", value: "-68% Delay" }
+      { label: "Sector Engagement", value: "Public & Diplomatic" },
+      { label: "Engagement Ethos", value: "Discretion & Trust" }
     ],
     anchorId: "unit-govadv"
   }

@@ -6,11 +6,6 @@ import Footer from "./components/Footer";
 import WorkTogetherModal from "./components/WorkTogetherModal";
 import SplashScreen from "./components/SplashScreen";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 // Dedicated Pages for Each Route
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
@@ -25,6 +20,9 @@ import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
 import EnchantePage from "./pages/EnchantePage";
+import TechnologyPage from "./pages/TechnologyPage";
+import GovAdvPage from "./pages/GovAdvPage";
+import GwiPage from "./pages/GwiPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
 
 const VALID_ROUTES = [
@@ -33,8 +31,14 @@ const VALID_ROUTES = [
   "/about",
   "/business-group",
   "/brands",
+  "/technology",
+  "/tsa-tech",
+  "/it-technology",
   "/enchante",
   "/enchante-protocol",
+  "/govadv",
+  "/government-advisory",
+  "/gwi",
   "/services",
   "/event-management",
   "/portfolio",
@@ -51,11 +55,11 @@ const VALID_ROUTES = [
 
 function isRouteValid(path) {
   if (!path) return false;
-  const normalized = path.toLowerCase().replace(/\/+$/, "") || "/";
-  if (normalized.startsWith("/events/") && normalized.length > 8) {
+  const base = path.split("#")[0].toLowerCase().replace(/\/+$/, "") || "/";
+  if (base.startsWith("/events/") && base.length > 8) {
     return true;
   }
-  return VALID_ROUTES.includes(normalized);
+  return VALID_ROUTES.includes(base);
 }
 
 // Helper to sanitize incoming pathname or hash
@@ -125,12 +129,12 @@ export default function App() {
     lenis.scrollTo(0, { immediate: true });
     window.scrollTo(0, 0);
 
-    lenis.on("scroll", ScrollTrigger.update);
-    const updateGsapTicker = (time) => {
-      lenis.raf(time * 1000);
-    };
-    gsap.ticker.add(updateGsapTicker);
-    gsap.ticker.lagSmoothing(0);
+    let animationFrameId;
+    function raf(time) {
+      lenis.raf(time);
+      animationFrameId = requestAnimationFrame(raf);
+    }
+    animationFrameId = requestAnimationFrame(raf);
     window.__lenis = lenis;
 
     // Support Browser Back and Forward buttons (Popstate)
@@ -146,7 +150,7 @@ export default function App() {
 
     window.addEventListener("popstate", handlePopState);
     return () => {
-      gsap.ticker.remove(updateGsapTicker);
+      cancelAnimationFrame(animationFrameId);
       lenis.destroy();
       window.__lenis = null;
       window.removeEventListener("popstate", handlePopState);
@@ -154,27 +158,37 @@ export default function App() {
     };
   }, []);
 
-  // Recalculate ScrollTrigger on route change
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 260);
-    return () => clearTimeout(timer);
-  }, [currentPath]);
-
   // Route navigation handler - switches page and updates URL without section scrolling
   const navigateTo = (path) => {
-    const normalizedPath = path.toLowerCase().replace(/\/+$/, "") || "/";
+    if (!path) return;
+    const [pathPart, hashPart] = path.split("#");
+    const normalizedPath = (pathPart || "").toLowerCase().replace(/\/+$/, "") || "/";
     const targetRoute = isRouteValid(normalizedPath) ? normalizedPath : "/events";
+    const fullTarget = hashPart ? `${targetRoute}#${hashPart}` : targetRoute;
 
-    if (window.location.pathname !== targetRoute) {
-      window.history.pushState(null, "", targetRoute);
+    if (window.location.pathname !== targetRoute || (hashPart && window.location.hash !== `#${hashPart}`)) {
+      window.history.pushState(null, "", fullTarget);
     }
     setCurrentPath(targetRoute);
-    if (window.__lenis) {
-      window.__lenis.scrollTo(0, { immediate: true });
+
+    if (hashPart) {
+      setTimeout(() => {
+        window.dispatchEvent(new HashChangeEvent("hashchange"));
+        const el = document.getElementById(hashPart);
+        if (el) {
+          if (window.__lenis) {
+            window.__lenis.scrollTo(el, { offset: -80, duration: 1.0 });
+          } else {
+            el.scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      }, 120);
     } else {
-      window.scrollTo(0, 0);
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
     }
   };
 
@@ -203,7 +217,16 @@ export default function App() {
         return <BrandsPage key="business-group" navigateTo={navigateTo} />;
       case "/enchante":
       case "/enchante-protocol":
-        return <EnchantePage key="enchante" navigateTo={navigateTo} />;
+        return <BrandsPage key="business-group-enchante" initialUnit="enchante" navigateTo={navigateTo} />;
+      case "/technology":
+      case "/tsa-tech":
+      case "/it-technology":
+        return <BrandsPage key="business-group-tech" initialUnit="tsa-tech" navigateTo={navigateTo} />;
+      case "/govadv":
+      case "/government-advisory":
+        return <BrandsPage key="business-group-govadv" initialUnit="govadv" navigateTo={navigateTo} />;
+      case "/gwi":
+        return <BrandsPage key="business-group-gwi" initialUnit="gwi" navigateTo={navigateTo} />;
       case "/services":
       case "/event-management":
         return <EventManagementPage key="services" navigateTo={navigateTo} />;
@@ -237,7 +260,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#071731] text-[#F1F5F9] min-h-screen flex flex-col selection:bg-[#C8102E] selection:text-white relative">
+    <div className="bg-[#FAF9F6] text-[#071731] min-h-screen flex flex-col selection:bg-[#C8102E] selection:text-white relative">
       {/* Fullscreen Overlay Curtain Splash Screen */}
       <AnimatePresence
         onExitComplete={() => {

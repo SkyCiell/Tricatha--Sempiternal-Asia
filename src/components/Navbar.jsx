@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, ArrowUpRight, ArrowRight } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logoTSA from "../assets/LogoTSAA.jpeg";
 
 const NAV_ITEMS = [
@@ -10,13 +10,35 @@ const NAV_ITEMS = [
     id: "home"
   },
   {
-    name: "Business Group",
+    name: "Bisnis Group",
     path: "/business-group",
-    id: "business-group"
+    id: "business-group",
+    dropdown: [
+      {
+        name: "TSA IT & TECHNOLOGY",
+        path: "/business-group#tsa-tech"
+      },
+      {
+        name: "ENCHANTÉE KITCHEN",
+        path: "/business-group#enchante"
+      },
+      {
+        name: "DNA STUDIO",
+        path: "/business-group#dna-studio"
+      },
+      {
+        name: "GWI",
+        path: "/business-group#gwi"
+      },
+      {
+        name: "GOVADV",
+        path: "/business-group#govadv"
+      }
+    ]
   },
   {
     name: "Event",
-    path: "/event",
+    path: "/events",
     id: "event"
   },
   {
@@ -26,33 +48,35 @@ const NAV_ITEMS = [
     dropdown: [
       {
         name: "News",
-        description: "Official press dispatches & bulletins",
         path: "/news"
       },
       {
         name: "Internship",
-        description: "Operational fellowship & traineeship",
         path: "/internship"
       }
     ]
   },
   {
-    name: "Contact",
+    name: "Kontak",
     path: "/contact",
     id: "contact"
   }
 ];
 
 const getPathDefaultTheme = (path) => {
-  const normalized = path.toLowerCase().replace(/\/+$/, "") || "/";
-  if (normalized === "/business-group" || normalized === "/brands" || normalized === "/activities") {
-    return "light";
+  const normalized = (path || "/").toLowerCase().replace(/\/+$/, "") || "/";
+  if (normalized === "/" || normalized === "/home") {
+    if (typeof window !== "undefined" && window.scrollY >= window.innerHeight - 76) {
+      return "light";
+    }
+    return "dark";
   }
-  return "dark";
+  return "light";
 };
 
-export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal }) {
+export default function Navbar({ currentPath = "/", navigateTo }) {
   const [scrolled, setScrolled] = useState(false);
+  const [navVisible, setNavVisible] = useState(true);
   const [navTheme, setNavTheme] = useState(() => getPathDefaultTheme(currentPath));
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -60,6 +84,7 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
 
   const hoverTimeoutRef = useRef(null);
   const navContainerRef = useRef(null);
+  const lastScrollYRef = useRef(0);
 
   // Close mobile menu and immediately resume smooth scrolling
   const closeMobileMenuAndResumeScroll = useCallback(() => {
@@ -91,72 +116,120 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
   // Dynamic Theme Detection: checks the section or element directly beneath navbar vertical center
   const evaluateNavbarTheme = useCallback(() => {
     if (mobileMenuOpen) return;
-    setScrolled(window.scrollY > 20);
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    setScrolled(scrollY > 20);
+
+    const normalizedCurrent = currentPath.toLowerCase().replace(/\/+$/, "") || "/";
+    const isHome = normalizedCurrent === "/" || normalizedCurrent === "/home";
+
+    // 1. If at top of Home (inside fullscreen hero video/photo), always dark
+    if (isHome && scrollY < window.innerHeight - 76) {
+      setNavTheme("dark");
+      return;
+    }
 
     const navbarCheckY = 42;
     let detectedTheme = null;
 
+    // 2. Query all elements with explicit data-nav-theme or data-theme
     try {
-      const elements = document.elementsFromPoint(window.innerWidth / 2, navbarCheckY);
-      for (const el of elements) {
-        if (!el) continue;
-        if (el.closest("header") || el.closest("#splash-screen") || el.closest("[data-modal]")) {
-          continue;
-        }
-        const closestThemed = el.closest("[data-theme], [data-nav-theme]");
-        if (closestThemed) {
-          detectedTheme = closestThemed.getAttribute("data-theme") || closestThemed.getAttribute("data-nav-theme");
-          break;
-        }
-
-        let cur = el;
-        while (cur && cur !== document.body && cur !== document.documentElement) {
-          const bg = window.getComputedStyle(cur).backgroundColor;
-          if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") {
-            const rgb = bg.match(/\d+/g);
-            if (rgb && rgb.length >= 3) {
-              const [r, g, b] = rgb.map(Number);
-              const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-              detectedTheme = lum > 140 ? "light" : "dark";
-              break;
-            }
-          }
-          cur = cur.parentElement;
-        }
-        if (detectedTheme) break;
-      }
-    } catch {
-      // Fallback silently if elementsFromPoint is restricted
-    }
-
-    if (!detectedTheme) {
-      const themedElements = document.querySelectorAll("[data-theme], [data-nav-theme]");
-      let smallestHeight = Infinity;
+      const themedElements = document.querySelectorAll("[data-nav-theme], [data-theme]");
+      let smallestArea = Infinity;
       for (const elem of themedElements) {
         const rect = elem.getBoundingClientRect();
         if (rect.top <= navbarCheckY && rect.bottom > navbarCheckY) {
-          const height = rect.height;
-          if (height < smallestHeight) {
-            smallestHeight = height;
-            detectedTheme = elem.getAttribute("data-theme") || elem.getAttribute("data-nav-theme");
+          const area = rect.height * rect.width;
+          if (area < smallestArea) {
+            smallestArea = area;
+            detectedTheme = elem.getAttribute("data-nav-theme") || elem.getAttribute("data-theme");
           }
         }
       }
+    } catch {
+      // ignore
     }
 
+    // 3. Fallback using elementsFromPoint
     if (!detectedTheme) {
-      detectedTheme = getPathDefaultTheme(currentPath);
+      try {
+        const elements = document.elementsFromPoint(window.innerWidth / 2, navbarCheckY);
+        for (const el of elements) {
+          if (!el) continue;
+          if (el.closest("header") || el.closest("#splash-screen") || el.closest("[data-modal]")) {
+            continue;
+          }
+          const closestThemed = el.closest("[data-nav-theme], [data-theme]");
+          if (closestThemed) {
+            detectedTheme = closestThemed.getAttribute("data-nav-theme") || closestThemed.getAttribute("data-theme");
+            break;
+          }
+
+          let cur = el;
+          while (cur && cur !== document.body && cur !== document.documentElement) {
+            const bg = window.getComputedStyle(cur).backgroundColor;
+            if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") {
+              const rgb = bg.match(/\d+/g);
+              if (rgb && rgb.length >= 3) {
+                const [r, g, b] = rgb.map(Number);
+                const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+                detectedTheme = lum > 140 ? "light" : "dark";
+                break;
+              }
+            }
+            cur = cur.parentElement;
+          }
+          if (detectedTheme) break;
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    // 4. Default fallback: light for content sections, dark only in top hero
+    if (!detectedTheme) {
+      detectedTheme = isHome && scrollY < window.innerHeight - 76 ? "dark" : "light";
     }
 
     setNavTheme(detectedTheme);
   }, [currentPath, mobileMenuOpen]);
 
-  // Track scroll and route changes to evaluate theme
+  // Track scroll direction and route changes to evaluate theme & auto-hide navbar
   useEffect(() => {
+    setNavVisible(true);
+    lastScrollYRef.current = window.scrollY || 0;
     evaluateNavbarTheme();
 
     const handleScroll = () => {
       evaluateNavbarTheme();
+
+      if (mobileMenuOpen) {
+        setNavVisible(true);
+        return;
+      }
+
+      const currentScrollY = window.scrollY || window.pageYOffset || 0;
+
+      // Selalu tampil jika di bagian atas halaman (<= 80px)
+      if (currentScrollY <= 80) {
+        setNavVisible(true);
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      const diff = currentScrollY - lastScrollYRef.current;
+      const threshold = 10; // Abaikan scroll mikro agar tidak flicker
+
+      if (Math.abs(diff) > threshold) {
+        if (diff > 0) {
+          // Scroll ke bawah: sembunyikan navbar ke atas
+          setNavVisible(false);
+          setActiveDropdown(null);
+        } else {
+          // Scroll ke atas: munculkan kembali navbar
+          setNavVisible(true);
+        }
+        lastScrollYRef.current = currentScrollY;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -169,7 +242,7 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
       window.removeEventListener("resize", handleScroll);
       clearTimeout(timeoutId);
     };
-  }, [evaluateNavbarTheme]);
+  }, [evaluateNavbarTheme, mobileMenuOpen]);
 
   // Automatically close mobile menu when screen is resized to desktop width
   useEffect(() => {
@@ -207,29 +280,45 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
 
   // Check if a nav item matches the current page route
   const isItemActive = (item) => {
-    if (item.path === "/") {
-      return currentPath === "/" || currentPath === "/home";
+    const normalized = currentPath.toLowerCase().replace(/\/+$/, "") || "/";
+    if (item.id === "home") {
+      return normalized === "/" || normalized === "/home";
     }
-    if (item.path === "/business-group") {
-      return currentPath === "/business-group" || currentPath === "/brands";
-    }
-    if (item.path === "/event") {
-      return currentPath === "/event" || currentPath === "/events" || currentPath.startsWith("/events/");
-    }
-    if (item.path === "/activities") {
+    if (item.id === "business-group") {
       return (
-        currentPath === "/activities" ||
-        currentPath.startsWith("/activities/") ||
-        currentPath === "/news" ||
-        currentPath === "/articles" ||
-        currentPath === "/internship" ||
-        currentPath === "/careers"
+        normalized === "/business-group" ||
+        normalized === "/brands" ||
+        normalized === "/technology" ||
+        normalized === "/tsa-tech" ||
+        normalized === "/it-technology" ||
+        normalized === "/enchante" ||
+        normalized === "/enchante-protocol" ||
+        normalized === "/gwi" ||
+        normalized === "/govadv" ||
+        normalized === "/government-advisory"
       );
     }
-    if (item.path === "/contact") {
-      return currentPath === "/contact";
+    if (item.id === "event") {
+      return (
+        normalized === "/event" ||
+        normalized === "/events" ||
+        normalized.startsWith("/events/")
+      );
     }
-    return currentPath === item.path;
+    if (item.id === "activities") {
+      return (
+        normalized === "/activities" ||
+        normalized.startsWith("/activities/") ||
+        normalized === "/news" ||
+        normalized === "/articles" ||
+        normalized === "/internship" ||
+        normalized === "/careers"
+      );
+    }
+    if (item.id === "contact") {
+      return normalized === "/contact";
+    }
+    return normalized === item.path;
   };
 
   // Restrained hover handlers with brief grace period
@@ -244,20 +333,31 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
   const handleMouseLeave = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 150);
+    }, 180);
   };
 
-  // Main item click
-  const handleMainItemClick = (item) => {
-    setActiveDropdown(null);
-    closeMobileMenuAndResumeScroll();
-    if (navigateTo) {
-      navigateTo(item.path);
+  // Main item click: if item has dropdown, clicking toggles the dropdown on/off. If no dropdown, navigates immediately.
+  const handleMainItemClick = (item, e) => {
+    if (item.dropdown) {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      setActiveDropdown((prev) => (prev === item.id ? null : item.id));
+    } else {
+      setActiveDropdown(null);
+      closeMobileMenuAndResumeScroll();
+      if (navigateTo) {
+        navigateTo(item.path);
+      }
     }
   };
 
-  // Sub-item click from dropdown with safe anchor scroll
-  const handleSubItemClick = (item, sub) => {
+  // Sub-item click from dropdown with safe anchor scroll and retry mechanism
+  const handleSubItemClick = (item, sub, e) => {
+    if (e) {
+      e.stopPropagation();
+    }
     setActiveDropdown(null);
     closeMobileMenuAndResumeScroll();
 
@@ -269,32 +369,49 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
 
     if (normalizedCurrent === normalizedTarget) {
       if (targetHash) {
-        const el = document.getElementById(targetHash);
-        if (el) {
-          if (window.__lenis) {
-            window.__lenis.scrollTo(el, { offset: -74 });
-          } else {
-            el.scrollIntoView({ behavior: "smooth" });
+        const scrollToTarget = (retries = 5) => {
+          const el = document.getElementById(targetHash);
+          if (el) {
+            if (window.__lenis) {
+              window.__lenis.scrollTo(el, { offset: -74, duration: 1.0 });
+            } else {
+              el.scrollIntoView({ behavior: "smooth" });
+            }
+            if (window.history.pushState) {
+              window.history.pushState(null, "", normalizedTarget + "#" + targetHash);
+            }
+          } else if (retries > 0) {
+            setTimeout(() => scrollToTarget(retries - 1), 60);
           }
-          if (window.history.pushState) {
-            window.history.pushState(null, "", "#" + targetHash);
-          }
+        };
+        scrollToTarget();
+      } else {
+        if (window.__lenis) {
+          window.__lenis.scrollTo(0, { offset: 0, duration: 1.0 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }
     } else {
       if (navigateTo) {
         navigateTo(normalizedTarget);
         if (targetHash) {
-          setTimeout(() => {
+          const attemptScroll = (retries = 10) => {
             const el = document.getElementById(targetHash);
             if (el) {
               if (window.__lenis) {
-                window.__lenis.scrollTo(el, { offset: -74 });
+                window.__lenis.scrollTo(el, { offset: -74, duration: 1.0 });
               } else {
                 el.scrollIntoView({ behavior: "smooth" });
               }
+              if (window.history.pushState) {
+                window.history.pushState(null, "", normalizedTarget + "#" + targetHash);
+              }
+            } else if (retries > 0) {
+              setTimeout(() => attemptScroll(retries - 1), 80);
             }
-          }, 180);
+          };
+          setTimeout(() => attemptScroll(), 120);
         }
       }
     }
@@ -308,26 +425,18 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
     }
   };
 
-  const handleCtaClick = () => {
-    setActiveDropdown(null);
-    closeMobileMenuAndResumeScroll();
-    if (navigateTo) {
-      navigateTo("/contact");
-    } else if (onOpenWorkModal) {
-      onOpenWorkModal();
-    }
-  };
-
   const isLight = navTheme === "light";
 
   return (
     <header
       ref={navContainerRef}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ease-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${
+        navVisible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full pointer-events-none"
+      } ${
         isLight
           ? scrolled || mobileMenuOpen
-            ? "bg-white/98 backdrop-blur-md border-b border-slate-200 shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
-            : "bg-white/90 backdrop-blur-xs border-b border-slate-200/80"
+            ? "bg-white/98 backdrop-blur-md border-b border-[#071731]/10 shadow-[0_2px_12px_rgba(7,23,49,0.04)]"
+            : "bg-[#FAF9F6]/95 backdrop-blur-xs border-b border-[#071731]/10"
           : scrolled || mobileMenuOpen
             ? "bg-[#071731]/98 backdrop-blur-md border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
             : "bg-transparent border-b border-white/10"
@@ -337,180 +446,162 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
       <div className="h-[76px] sm:h-[80px] flex items-center">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 w-full flex items-center justify-between relative">
 
-        {/* Left: TSA Corporate Brand Emblem & Typography */}
-        <button
-          onClick={handleLogoClick}
-          className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] rounded py-1 shrink-0 max-w-[200px] xs:max-w-none"
-          aria-label="PT Tricatha Sempiternal Asia Homepage"
-        >
-          {/* Logo Badge */}
-          <div
-            className={`w-9 h-9 rounded flex items-center justify-center shrink-0 transition-colors duration-200 p-0.5 ${isLight
-                ? "bg-[#10264A] border border-[#10264A]"
-                : "bg-white border border-white/20"
+          {/* Left: TSA Corporate Brand Emblem & Typography */}
+          <button
+            onClick={handleLogoClick}
+            className="flex items-center gap-3 cursor-pointer group text-left focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] rounded py-1 shrink-0"
+            aria-label="PT Tricatha Sempiternal Asia Homepage"
+          >
+            {/* Logo Emblem Box */}
+            <div
+              className={`w-9 h-9 rounded-[3px] flex items-center justify-center shrink-0 transition-colors duration-200 p-0.5 ${
+                isLight
+                  ? "bg-[#071731] border border-[#071731]"
+                  : "bg-white border border-white/20"
               }`}
-          >
-            <img src={logoTSA} alt="TSA Official Emblem" className="w-full h-full object-cover rounded-[2px]" />
-          </div>
-
-          <div className="flex flex-col min-w-0">
-            <span
-              className={`font-heading font-bold text-[11px] sm:text-sm tracking-tight leading-none transition-colors duration-200 truncate ${isLight ? "text-[#10264A]" : "text-white"
-                }`}
             >
-              TRICHATA SEMPITERNAL ASIA
-            </span>
-            <span
-              className={`font-mono text-[9px] tracking-widest uppercase font-medium mt-1 transition-colors duration-200 hidden sm:block ${isLight ? "text-slate-500" : "text-slate-400"
+              <img src={logoTSA} alt="TSA Official Emblem" className="w-full h-full object-cover rounded-[2px]" />
+            </div>
+
+            <div className="flex flex-col">
+              <span
+                className={`font-heading font-bold text-sm tracking-tight leading-none transition-colors duration-200 ${
+                  isLight ? "text-[#071731]" : "text-white"
                 }`}
-            >
-              CORPORATE EVENT ORGANIZER · JAKARTA
-            </span>
-          </div>
-        </button>
-
-        {/* Center: Desktop Corporate Navigation */}
-        <nav
-          className="hidden lg:flex items-center gap-7 xl:gap-9 text-[13px] font-medium tracking-[0.01em]"
-          aria-label="Primary Corporate Navigation"
-        >
-          {NAV_ITEMS.map((item) => {
-            const isActive = isItemActive(item);
-            const hasDropdown = Boolean(item.dropdown);
-            const isDropdownOpen = activeDropdown === item.id;
-
-            return (
-              <div
-                key={item.id}
-                className="relative py-6 flex items-center"
-                onMouseEnter={() => (hasDropdown ? handleMouseEnter(item.id) : handleMouseEnter(null))}
-                onMouseLeave={handleMouseLeave}
               >
-                {/* Main Nav Button */}
-                <button
-                  onClick={() => handleMainItemClick(item)}
-                  aria-current={isActive ? "page" : undefined}
-                  aria-expanded={hasDropdown ? isDropdownOpen : undefined}
-                  aria-haspopup={hasDropdown ? "true" : undefined}
-                  className={`inline-flex items-center gap-1.5 py-1 transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] relative ${isLight
-                      ? isActive
-                        ? "text-[#10264A] font-semibold"
-                        : "text-slate-700 hover:text-[#10264A]"
-                      : isActive
-                        ? "text-white font-semibold"
-                        : "text-slate-300 hover:text-white"
-                    }`}
+                TRICHATA SEMPITERNAL ASIA
+              </span>
+              <span
+                className={`font-mono text-[9px] tracking-widest uppercase font-medium mt-1 transition-colors duration-200 ${
+                  isLight ? "text-slate-500" : "text-slate-400"
+                }`}
+              >
+                CORPORATE EVENT ORGANIZER · JAKARTA
+              </span>
+            </div>
+          </button>
+
+          {/* Right: Desktop Corporate Navigation (Clean & Uncluttered, No Unnecessary CTA) */}
+          <nav
+            className="hidden lg:flex items-center gap-7 xl:gap-9 text-[13px] font-medium tracking-[0.01em]"
+            aria-label="Primary Corporate Navigation"
+          >
+            {NAV_ITEMS.map((item) => {
+              const isActive = isItemActive(item);
+              const hasDropdown = Boolean(item.dropdown);
+              const isDropdownOpen = activeDropdown === item.id;
+
+              return (
+                <div
+                  key={item.id}
+                  className="relative py-6 flex items-center group"
+                  onMouseEnter={() => (hasDropdown ? handleMouseEnter(item.id) : handleMouseEnter(null))}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  <span>{item.name}</span>
+                  {/* Main Nav Button */}
+                  <button
+                    type="button"
+                    onClick={(e) => handleMainItemClick(item, e)}
+                    aria-current={isActive ? "page" : undefined}
+                    aria-expanded={hasDropdown ? isDropdownOpen : undefined}
+                    aria-haspopup={hasDropdown ? "true" : undefined}
+                    className={`inline-flex items-center gap-1.5 py-1 transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] relative ${
+                      isLight
+                        ? isActive
+                          ? "text-[#071731] font-semibold"
+                          : "text-slate-700 hover:text-[#071731]"
+                        : isActive
+                          ? "text-white font-semibold"
+                          : "text-slate-300 hover:text-white"
+                    }`}
+                  >
+                    <span>{item.name}</span>
 
-                  {hasDropdown && (
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${isDropdownOpen
-                          ? "rotate-180 text-[#C8102E]"
-                          : isLight
-                            ? "text-slate-400 group-hover:text-[#10264A]"
-                            : "text-slate-400 group-hover:text-white"
+                    {hasDropdown && (
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          isDropdownOpen
+                            ? "rotate-180 text-[#C8102E]"
+                            : isLight
+                              ? "text-slate-400 group-hover:text-[#071731]"
+                              : "text-slate-400 group-hover:text-white"
                         }`}
-                    />
-                  )}
-
-                  {/* Active Indicator: Thin Red Underline */}
-                  {isActive && (
-                    <motion.span
-                      layoutId="navbar-active-line"
-                      className="absolute -bottom-2 left-0 right-0 h-[1.5px] bg-[#C8102E]"
-                      transition={{ type: "spring", stiffness: 400, damping: 35 }}
-                    />
-                  )}
-                </button>
-
-                {/* Compact Contextual Dropdown Panel (Directly Under Nav Item) */}
-                {hasDropdown && (
-                  <AnimatePresence>
-                    {isDropdownOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 4 }}
-                        transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-                        className={`absolute top-[calc(100%-8px)] left-0 w-[280px] sm:w-[290px] rounded-lg border shadow-[0_10px_28px_rgba(16,38,74,0.08)] p-2 z-50 text-left transition-colors duration-150 ${isLight
-                            ? "bg-white border-slate-200/90 text-[#10264A]"
-                            : "bg-[#0B1E3F] border-white/12 text-white shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
-                          }`}
-                        role="menu"
-                        aria-label={`${item.name} submenu`}
-                      >
-                        <div className="space-y-0.5">
-                          {item.dropdown.map((sub, idx) => (
-                            <button
-                              key={idx}
-                              role="menuitem"
-                              onClick={() => handleSubItemClick(item, sub)}
-                              className={`w-full text-left px-3 py-2.5 rounded-md transition-all duration-150 cursor-pointer group flex flex-col space-y-0.5 ${isLight
-                                  ? "hover:bg-slate-50 text-[#10264A]"
-                                  : "hover:bg-[#10264A]/80 text-white"
-                                }`}
-                            >
-                              <div className="flex items-center justify-between">
-                                <span
-                                  className={`text-[13px] font-semibold tracking-normal transition-transform duration-150 group-hover:translate-x-0.5 ${isLight ? "text-[#10264A] group-hover:text-[#C8102E]" : "text-white group-hover:text-[#C8102E]"
-                                    }`}
-                                >
-                                  {sub.name}
-                                </span>
-                                <ArrowRight
-                                  className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-150 text-[#C8102E]"
-                                />
-                              </div>
-                              {sub.description && (
-                                <span
-                                  className={`text-[11px] leading-tight transition-colors ${isLight ? "text-slate-500" : "text-slate-400"
-                                    }`}
-                                >
-                                  {sub.description}
-                                </span>
-                              )}
-                            </button>
-                          ))}
-                        </div>
-                      </motion.div>
+                      />
                     )}
-                  </AnimatePresence>
-                )}
-              </div>
-            );
-          })}
-        </nav>
 
-        {/* Right: Red CTA Button & Mobile Trigger */}
-        <div className="flex items-center gap-3 shrink-0">
-          <button
-            onClick={handleCtaClick}
-            className="bg-[#C8102E] hover:bg-[#A50D26] text-white text-[11px] sm:text-xs font-semibold tracking-wider uppercase px-4 sm:px-5 py-2.5 rounded transition-all duration-200 cursor-pointer shadow-xs hidden sm:inline-flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E]"
-          >
-            <span>Consult Secretariat</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-white/90" />
-          </button>
+                    {/* Active Indicator: Crisp Controlled Red Line */}
+                    {isActive && (
+                      <motion.span
+                        layoutId="navbar-active-line"
+                        className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[#C8102E]"
+                        transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                      />
+                    )}
+                  </button>
 
-          {/* Mobile Hamburger Button (Min 48px touch target for phones) */}
-          <button
-            type="button"
-            onClick={toggleMobileMenu}
-            className={`lg:hidden p-2.5 min-w-[48px] min-h-[48px] flex items-center justify-center rounded transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] cursor-pointer touch-manipulation ${
-              isLight
-                ? "text-[#10264A] hover:bg-slate-100 active:bg-slate-200"
-                : "text-slate-200 hover:text-white hover:bg-white/10 active:bg-white/15"
-            }`}
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? (
-              <X className={`w-6 h-6 ${isLight ? "text-[#10264A]" : "text-white"}`} />
-            ) : (
-              <Menu className={`w-6 h-6 ${isLight ? "text-[#10264A]" : "text-white"}`} />
-            )}
-          </button>
-        </div>
+                  {/* Corporate Dropdown Panel (Directly Under Nav Item) */}
+                  {hasDropdown && (
+                    <AnimatePresence>
+                      {isDropdownOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 4 }}
+                          transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                          className={`absolute top-[calc(100%-8px)] left-0 min-w-[240px] rounded-[3px] border p-1.5 z-50 text-left transition-colors duration-150 pointer-events-auto ${
+                            isLight
+                              ? "bg-white border-[#071731]/10 text-[#071731] shadow-[0_12px_28px_rgba(7,23,49,0.09)]"
+                              : "bg-[#071731] border-white/15 text-white shadow-[0_16px_36px_rgba(0,0,0,0.55)]"
+                          }`}
+                          role="menu"
+                          aria-label={`${item.name} submenu`}
+                        >
+                          <div className="space-y-0.5">
+                            {item.dropdown.map((sub, idx) => (
+                              <button
+                                key={idx}
+                                type="button"
+                                role="menuitem"
+                                onClick={(e) => handleSubItemClick(item, sub, e)}
+                                className={`w-full text-left px-3.5 py-2.5 rounded-[2px] transition-colors duration-150 cursor-pointer flex items-center justify-between text-[12.5px] font-medium tracking-[0.02em] ${
+                                  isLight
+                                    ? "text-[#071731] hover:text-[#C8102E] hover:bg-slate-50"
+                                    : "text-slate-200 hover:text-white hover:bg-white/10"
+                                }`}
+                              >
+                                <span>{sub.name}</span>
+                              </button>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  )}
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Mobile Hamburger Button */}
+          <div className="flex items-center lg:hidden">
+            <button
+              type="button"
+              onClick={toggleMobileMenu}
+              className={`p-2.5 min-w-[48px] min-h-[48px] flex items-center justify-center rounded transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] cursor-pointer touch-manipulation ${
+                isLight
+                  ? "text-[#071731] hover:bg-slate-100 active:bg-slate-200"
+                  : "text-slate-200 hover:text-white hover:bg-white/10 active:bg-white/15"
+              }`}
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? (
+                <X className={`w-6 h-6 ${isLight ? "text-[#071731]" : "text-white"}`} />
+              ) : (
+                <Menu className={`w-6 h-6 ${isLight ? "text-[#071731]" : "text-white"}`} />
+              )}
+            </button>
+          </div>
 
         </div>
       </div>
@@ -519,7 +610,7 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop Dimmer: Dismiss menu on background tap */}
+            {/* Backdrop Dimmer */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -539,12 +630,12 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
               transition={{ duration: 0.18, ease: "easeOut" }}
               className={`lg:hidden relative z-50 border-t max-h-[calc(100vh-76px)] max-h-[calc(100dvh-76px)] sm:max-h-[calc(100vh-80px)] sm:max-h-[calc(100dvh-80px)] overflow-y-auto overscroll-contain shadow-2xl transition-colors duration-200 ${
                 isLight
-                  ? "bg-white border-slate-200 text-[#10264A]"
+                  ? "bg-white border-slate-200 text-[#071731]"
                   : "bg-[#071731] border-white/10 text-white"
               }`}
             >
-              <div className="max-w-[1520px] mx-auto px-4 sm:px-8 py-5 space-y-4">
-                <ul className="space-y-1.5 text-sm font-medium" role="menu">
+              <div className="max-w-[1520px] mx-auto px-4 sm:px-8 py-5 space-y-2">
+                <ul className="space-y-1 text-sm font-medium" role="menu">
                   {NAV_ITEMS.map((item) => {
                     const isActive = isItemActive(item);
                     const hasDropdown = Boolean(item.dropdown);
@@ -554,52 +645,47 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
                       <li
                         key={item.id}
                         role="none"
-                        className={`border-b pb-1.5 ${isLight ? "border-slate-100" : "border-white/5"}`}
+                        className={`border-b pb-1 ${isLight ? "border-slate-100" : "border-white/5"}`}
                       >
                         {hasDropdown ? (
-                          /* Tapping dropdown item toggles accordion on mobile */
                           <button
                             type="button"
                             onClick={() => setMobileExpandedGroup(isExpanded ? null : item.id)}
                             aria-expanded={isExpanded}
-                            className={`w-full text-left py-3 px-3 rounded flex items-center justify-between transition-colors touch-manipulation cursor-pointer min-h-[48px] ${
+                            className={`w-full text-left py-3 px-3 rounded-[3px] flex items-center justify-between transition-colors touch-manipulation cursor-pointer min-h-[48px] ${
                               isActive
                                 ? isLight
-                                  ? "bg-slate-100 text-[#10264A] font-semibold border-l-2 border-[#C8102E]"
+                                  ? "bg-slate-100 text-[#071731] font-semibold border-l-2 border-[#C8102E]"
                                   : "bg-[#0B1E3F] text-white font-semibold border-l-2 border-[#C8102E]"
                                 : isLight
-                                  ? "text-slate-700 hover:text-[#10264A] hover:bg-slate-50"
+                                  ? "text-slate-700 hover:text-[#071731] hover:bg-slate-50"
                                   : "text-slate-300 hover:text-white hover:bg-white/5"
                             }`}
                           >
-                            <span className="font-heading text-[15px] font-medium">{item.name}</span>
-                            <div className="flex items-center gap-2">
-                              {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />}
-                              <ChevronDown
-                                className={`w-4 h-4 transition-transform duration-200 ${
-                                  isExpanded ? "rotate-180 text-[#C8102E]" : "text-slate-400"
-                                }`}
-                              />
-                            </div>
+                            <span className="font-heading text-[15px]">{item.name}</span>
+                            <ChevronDown
+                              className={`w-4 h-4 transition-transform duration-200 ${
+                                isExpanded ? "rotate-180 text-[#C8102E]" : "text-slate-400"
+                              }`}
+                            />
                           </button>
                         ) : (
-                          /* Direct link (Home, Contact) */
                           <button
                             type="button"
                             role="menuitem"
                             onClick={() => handleMainItemClick(item)}
                             aria-current={isActive ? "page" : undefined}
-                            className={`w-full text-left py-3 px-3 rounded flex items-center justify-between transition-colors touch-manipulation cursor-pointer min-h-[48px] ${
+                            className={`w-full text-left py-3 px-3 rounded-[3px] flex items-center justify-between transition-colors touch-manipulation cursor-pointer min-h-[48px] ${
                               isActive
                                 ? isLight
-                                  ? "bg-slate-100 text-[#10264A] font-semibold border-l-2 border-[#C8102E]"
+                                  ? "bg-slate-100 text-[#071731] font-semibold border-l-2 border-[#C8102E]"
                                   : "bg-[#0B1E3F] text-white font-semibold border-l-2 border-[#C8102E]"
                                 : isLight
-                                  ? "text-slate-700 hover:text-[#10264A] hover:bg-slate-50"
+                                  ? "text-slate-700 hover:text-[#071731] hover:bg-slate-50"
                                   : "text-slate-300 hover:text-white hover:bg-white/5"
                             }`}
                           >
-                            <span className="font-heading text-[15px] font-medium">{item.name}</span>
+                            <span className="font-heading text-[15px]">{item.name}</span>
                             {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />}
                           </button>
                         )}
@@ -607,7 +693,7 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
                         {/* Accordion Submenu Items */}
                         {hasDropdown && isExpanded && (
                           <div
-                            className={`pl-3 pr-2 py-2 space-y-1 mt-1 mb-2 rounded border-l-2 ${
+                            className={`pl-3 pr-2 py-1 space-y-0.5 mt-1 mb-2 rounded-[2px] border-l-2 ${
                               isLight
                                 ? "bg-slate-50 border-slate-300"
                                 : "bg-[#0B1E3F]/80 border-slate-700"
@@ -617,26 +703,14 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
                               <button
                                 key={idx}
                                 type="button"
-                                onClick={() => handleSubItemClick(item, sub)}
-                                className={`w-full text-left py-2.5 px-3 min-h-[44px] flex items-center justify-between rounded transition-colors touch-manipulation cursor-pointer ${
+                                onClick={(e) => handleSubItemClick(item, sub, e)}
+                                className={`w-full text-left py-2.5 px-3 min-h-[44px] flex items-center justify-between rounded-[2px] transition-colors touch-manipulation cursor-pointer ${
                                   isLight
-                                    ? "text-slate-700 hover:text-[#10264A] hover:bg-white active:bg-slate-200"
-                                    : "text-slate-200 hover:text-white hover:bg-white/5 active:bg-white/10"
+                                    ? "text-slate-700 hover:text-[#071731] hover:bg-white"
+                                    : "text-slate-200 hover:text-white hover:bg-white/5"
                                 }`}
                               >
-                                <div className="flex flex-col pr-2">
-                                  <span className="font-medium text-xs sm:text-sm">{sub.name}</span>
-                                  {sub.description && (
-                                    <span
-                                      className={`text-[11px] mt-0.5 leading-tight ${
-                                        isLight ? "text-slate-500" : "text-slate-400"
-                                      }`}
-                                    >
-                                      {sub.description}
-                                    </span>
-                                  )}
-                                </div>
-                                <ArrowRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                <span className="font-medium text-xs sm:text-sm">{sub.name}</span>
                               </button>
                             ))}
                           </div>
@@ -645,17 +719,6 @@ export default function Navbar({ currentPath = "/", navigateTo, onOpenWorkModal 
                     );
                   })}
                 </ul>
-
-                <div className={`pt-3 border-t space-y-2.5 ${isLight ? "border-slate-200" : "border-white/10"}`}>
-                  <button
-                    type="button"
-                    onClick={handleCtaClick}
-                    className="w-full bg-[#C8102E] hover:bg-[#A50D26] active:bg-[#8A0A1F] text-white text-xs font-semibold tracking-wider uppercase py-3.5 px-4 rounded transition-colors cursor-pointer flex items-center justify-center gap-2 min-h-[48px] shadow-sm touch-manipulation"
-                  >
-                    <span>Consult Secretariat</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </button>
-                </div>
               </div>
             </motion.div>
           </>

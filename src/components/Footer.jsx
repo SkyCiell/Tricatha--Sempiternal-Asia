@@ -4,21 +4,21 @@ import logoTSA from "../assets/LogoTSAA.jpeg";
 
 const LinkedinIcon = () => (
   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
   </svg>
 );
 
 const InstagramIcon = () => (
   <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
   </svg>
 );
 
 const YoutubeIcon = () => (
   <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
   </svg>
 );
 
@@ -59,12 +59,12 @@ export default function Footer({ navigateTo }) {
   ];
 
   return (
-    <footer className="bg-[#050F22] text-white border-t border-white/10 pt-16 sm:pt-24 pb-12">
+    <footer data-nav-theme="dark" className="bg-[#050F22] text-white border-t border-white/10 pt-16 sm:pt-24 pb-12">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-        
+
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-white/10">
-          
+
           {/* Brand Col (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3">
@@ -75,27 +75,25 @@ export default function Footer({ navigateTo }) {
                 <span className="font-heading font-bold text-base tracking-tight text-white block leading-none">
                   TRICATHA SEMPITERNAL ASIA
                 </span>
-                <span className="font-sans text-[10px] text-slate-400 tracking-wider uppercase mt-1 block">
-                  SUDIRMAN PARK · JAKARTA
-                </span>
               </div>
             </div>
 
             <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
-              PT Tricatha Sempiternal Asia is a premier event organizer and business event company in Jakarta. We deliver corporate events, exhibitions, conferences, government-related events, business networking, and strategic programs across Southeast Asia.
+              PT Tricatha Sempiternal Asia is an Indonesian multidisciplinary company delivering integrated solutions across technology, event management, government advocacy, food and beverage, and digital content production.
             </p>
 
             {/* Business Group Entities Strip */}
             <div className="pt-3 border-t border-white/10 space-y-2">
-              <span className="text-[10px] font-mono text-[#C8102E] tracking-wider uppercase font-semibold block">
-                TSA Business Group Entities:
+              <span className="text-[10px] font-mono text-slate-400 tracking-wider uppercase font-semibold block">
+                Business Group:
               </span>
               <div className="flex flex-wrap gap-1.5 font-mono text-xs">
                 {[
-                  { name: "ENCHANTÉE", path: "/enchante" },
-                  { name: "DNA STUDIO", path: "/business-group" },
-                  { name: "GWI", path: "/business-group" },
-                  { name: "GOADV", path: "/business-group" }
+                  { name: "TSA IT & TECHNOLOGY", path: "/business-group#tsa-tech" },
+                  { name: "ENCHANTÉE KITCHEN", path: "/business-group#enchante" },
+                  { name: "DNA STUDIO", path: "/business-group#dna-studio" },
+                  { name: "GWI", path: "/business-group#gwi" },
+                  { name: "GOVADV", path: "/business-group#govadv" }
                 ].map((item) => (
                   <button
                     key={item.name}
@@ -141,7 +139,7 @@ export default function Footer({ navigateTo }) {
 
           {/* Quick Navigation (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <h3 className="font-sans font-semibold text-xs text-[#C8102E] tracking-wider uppercase">
+            <h3 className="font-sans font-semibold text-xs text-white tracking-wider uppercase">
               Navigation
             </h3>
             <ul className="space-y-2.5 font-sans text-xs text-slate-300">
@@ -160,7 +158,7 @@ export default function Footer({ navigateTo }) {
 
           {/* Core Services (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="font-sans font-semibold text-xs text-[#C8102E] tracking-wider uppercase">
+            <h3 className="font-sans font-semibold text-xs text-white tracking-wider uppercase">
               Capabilities &amp; Services
             </h3>
             <ul className="space-y-2 font-sans text-xs text-slate-300">
@@ -179,7 +177,7 @@ export default function Footer({ navigateTo }) {
 
           {/* Contact Details (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="font-sans font-semibold text-xs text-[#C8102E] tracking-wider uppercase">
+            <h3 className="font-sans font-semibold text-xs text-white tracking-wider uppercase">
               Executive Secretariat
             </h3>
 
@@ -195,8 +193,8 @@ export default function Footer({ navigateTo }) {
 
               <div className="flex items-center gap-2.5 pt-1">
                 <Mail className="w-4 h-4 text-[#C8102E] shrink-0" />
-                <a href="mailto:info@tsa-group.com" className="hover:text-white transition-colors">
-                  info@tsa-group.com
+                <a href="mailto:gwi@sempiternalasia.com" className="hover:text-white transition-colors">
+                  gwi@sempiternalasia.com
                 </a>
               </div>
 

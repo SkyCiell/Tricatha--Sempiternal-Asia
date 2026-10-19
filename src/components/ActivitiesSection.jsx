@@ -1,10 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { ArrowUpRight, ArrowRight, MapPin, Users2, Landmark, GraduationCap, Radio } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUpRight, ArrowRight, Compass, Users2, Landmark, GraduationCap, Radio, CheckCircle2, MapPin, Award } from "lucide-react";
 import { activitiesData } from "../data/tsaData";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const activityIconMap = {
   "act-team-building": Users2,
@@ -13,37 +9,34 @@ const activityIconMap = {
   "act-thought-dialogues": Radio
 };
 
+const activityTabTitles = {
+  "act-team-building": (
+    <>
+      Executive Immersion &amp; <br className="hidden sm:inline" />Strategic Team Building
+    </>
+  ),
+  "act-civic-heritage": (
+    <>
+      Civic &amp; Cultural Public <br className="hidden sm:inline" />Heritage Activations
+    </>
+  ),
+  "act-academic-fellowship": (
+    <>
+      University Talent &amp; <br className="hidden sm:inline" />Apprenticeship Fellowship
+    </>
+  ),
+  "act-thought-dialogues": (
+    <>
+      Cross-Border Thought <br className="hidden sm:inline" />Leadership Roundtables
+    </>
+  )
+};
+
 export default function ActivitiesSection({ navigateTo, onOpenWorkModal }) {
   const [activeActivityId, setActiveActivityId] = useState("act-team-building");
-  const sectionRef = useRef(null);
 
   const activeActivity = activitiesData.find((a) => a.id === activeActivityId) || activitiesData[0];
-  const ActiveIcon = activityIconMap[activeActivity.id] || Users2;
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const activityImgs = sectionRef.current?.querySelectorAll(".activity-parallax-img");
-      activityImgs?.forEach((img) => {
-        gsap.fromTo(
-          img,
-          { yPercent: -8, scale: 1.06 },
-          {
-            yPercent: 8,
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: img.parentElement,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            }
-          }
-        );
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [activeActivityId]);
+  const ActiveIcon = activityIconMap[activeActivity.id] || Compass;
 
   const handlePartnerInquiry = () => {
     if (onOpenWorkModal) {
@@ -56,180 +49,204 @@ export default function ActivitiesSection({ navigateTo, onOpenWorkModal }) {
     }
   };
 
-  const handleFullActivities = () => {
-    if (navigateTo) {
-      navigateTo("/activities");
-    }
-  };
-
   return (
-    <section
-      ref={sectionRef}
-      id="activities"
-      data-theme="light"
-      className="py-20 sm:py-28 bg-[#F6F6F2] text-[#0F172A] border-b border-[#E5E5DE] relative overflow-hidden"
-    >
-      <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10 space-y-12">
-        
-        {/* Section Header: Warm Off-White Editorial Magazine Layout */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-[#E5E5DE]">
-          <div className="space-y-3 max-w-3xl">
-            <div className="flex items-center gap-3">
-              <span className="w-8 h-[2px] bg-[#C8102E]" />
-              <span className="font-mono text-xs uppercase tracking-[0.2em] text-[#C8102E] font-semibold">
-                Programs &amp; Collaborations
-              </span>
-            </div>
+    <section id="activities" className="py-20 sm:py-28 bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0] relative overflow-hidden">
 
-            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#0F172A] tracking-tight leading-[1.12]">
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
+
+        {/* Section Header: Warm Off-White Editorial Magazine Layout */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 sm:pb-10 border-b border-[#E2E8F0]">
+          <div className="space-y-3 max-w-3xl">
+            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#071731] tracking-tight leading-[1.12]">
               Corporate Activities, <br />
-              <span className="font-editorial italic font-normal text-[#1E3A8A]">
+              <span className="font-editorial italic font-normal text-[#0A1F44]/80">
                 Collaborative Programs &amp; Initiatives.
               </span>
             </h2>
 
-            <p className="font-sans text-sm sm:text-base text-slate-600 leading-relaxed font-normal pt-1 max-w-2xl">
+            <p className="font-sans text-sm sm:text-base text-[#475569] leading-relaxed font-normal pt-1">
               Beyond event day management, TSA spearheads nationwide civic activations, executive leadership immersions, academic talent fellowships with leading universities, and cross-border thought leadership dialogues.
             </p>
           </div>
 
-          <div className="flex items-center gap-4 shrink-0 font-mono text-xs">
+          <div className="flex items-center gap-3 shrink-0">
             <button
-              onClick={handleFullActivities}
-              className="text-[#0F172A] hover:text-[#C8102E] transition-colors cursor-pointer inline-flex items-center gap-2 group font-semibold py-2"
+              onClick={handlePartnerInquiry}
+              className="btn-editorial-red text-xs py-3 px-6 cursor-pointer flex items-center gap-2 shadow-xs"
             >
-              <span>Explore All Initiatives</span>
-              <ArrowUpRight className="w-4 h-4 text-[#C8102E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <span>Partner With Us</span>
+              <ArrowUpRight className="w-4 h-4 text-white" />
             </button>
           </div>
         </div>
 
-        {/* 1. Four Pillar Selector (Clean minimal tabs, no generic pills) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* 1. Interactive 4-Pillar Track Selector Tabs */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-8 sm:mt-10 mb-10 items-stretch">
           {activitiesData.map((act) => {
             const isSelected = act.id === activeActivityId;
-            const Icon = activityIconMap[act.id] || Users2;
+            const Icon = activityIconMap[act.id] || Compass;
 
             return (
               <button
                 key={act.id}
                 onClick={() => setActiveActivityId(act.id)}
-                className={`p-5 text-left rounded border transition-all duration-200 cursor-pointer flex flex-col justify-between min-h-[96px] ${
-                  isSelected
-                    ? "bg-white border-[#0F172A] shadow-md ring-1 ring-[#0F172A] text-[#0F172A]"
-                    : "bg-[#FFFFFF]/70 border-[#E5E5DE] text-slate-700 hover:bg-white hover:border-slate-400"
-                }`}
+                className={`p-4 sm:p-5 text-left rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-between min-h-[88px] sm:min-h-[96px] h-full ${isSelected
+                    ? "bg-white border-[#071731] shadow-md ring-1 ring-[#071731]/15 text-[#071731]"
+                    : "bg-white/60 border-[#E2E8F0] text-[#475569] hover:bg-white hover:border-slate-400 hover:text-[#071731]"
+                  }`}
               >
-                <div className="flex items-center justify-between w-full mb-2">
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-slate-500 font-semibold">
-                    {act.category}
-                  </span>
-                  <Icon className={`w-4 h-4 ${isSelected ? "text-[#C8102E]" : "text-slate-400"}`} />
+                <div className="space-y-1 pr-2">
+                  <div className={`font-heading font-bold text-sm tracking-tight leading-snug ${isSelected ? "text-[#071731]" : "text-[#334155]"}`}>
+                    {activityTabTitles[act.id] || act.title}
+                  </div>
+                  <div className="text-[11px] font-mono text-[#64748B] truncate max-w-[170px]">
+                    {act.badge} · {act.year}
+                  </div>
                 </div>
-                <div className="font-heading font-bold text-sm tracking-tight leading-snug">
-                  {act.title}
+
+                <div className={`w-8 h-8 rounded flex items-center justify-center shrink-0 transition-colors ${isSelected ? "bg-[#C8102E] text-white" : "bg-slate-100 text-[#64748B]"
+                  }`}>
+                  <Icon className="w-4 h-4" />
                 </div>
               </button>
             );
           })}
         </div>
 
-        {/* 2. Structured Editorial Initiative Showcase */}
-        <div className="bg-white rounded border border-[#E5E5DE] shadow-sm overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
-            
-            {/* Left Photographic Canvas with Parallax Scrub (7 cols) */}
-            <div className="lg:col-span-7 relative min-h-[360px] sm:min-h-[460px] lg:min-h-[520px] overflow-hidden bg-[#071731]">
-              <img
-                src={activeActivity.image}
-                alt={activeActivity.title}
-                className="activity-parallax-img absolute inset-0 w-full h-full object-cover will-change-transform scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-transparent to-black/20" />
-              
-              <div className="absolute top-6 left-6 z-10">
-                <span className="font-mono text-xs uppercase tracking-wider text-white bg-[#0F172A]/90 px-3 py-1 rounded border border-white/15">
-                  {activeActivity.year}
-                </span>
-              </div>
+      </div>
 
-              <div className="absolute bottom-6 left-6 right-6 z-10 text-white space-y-1">
-                <div className="font-mono text-xs text-slate-300 flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
-                  <span>{activeActivity.location}</span>
-                </div>
-                <div className="font-heading font-semibold text-lg text-white">
-                  Partner: {activeActivity.partnerOrClient}
-                </div>
-              </div>
+      {/* 2. FULLSCREEN 100vw × 100vh CINEMATIC INITIATIVE SCENE */}
+      <div className="relative w-screen left-1/2 -translate-x-1/2 h-screen overflow-hidden bg-[#071731] my-4 select-none">
+        
+        {/* Fullscreen Photo (Edge-to-Edge 100vw × 100vh) */}
+        <img
+          src={activeActivity.image}
+          alt={activeActivity.title}
+          className="w-full h-full object-cover object-center scale-102 will-change-transform"
+        />
+
+        {/* Directional Cinematic Scrim */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/65 via-50% to-[#071731]/25 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/45 to-transparent pointer-events-none" />
+
+        {/* Typography Positioned Directly Over Media */}
+        <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-between z-10 text-white">
+          
+          {/* Top Bar Meta */}
+          <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+            <div className="flex items-center gap-2">
+              <span className="px-3 py-1 bg-[#C8102E] text-white font-semibold uppercase tracking-wider rounded text-[11px] shadow-md flex items-center gap-1.5">
+                <ActiveIcon className="w-3.5 h-3.5" />
+                <span>{activeActivity.category}</span>
+              </span>
+              <span className="px-3 py-1 bg-white/10 backdrop-blur-xs text-slate-200 border border-white/20 rounded text-[11px] flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
+                <span>{activeActivity.location}</span>
+              </span>
             </div>
 
-            {/* Right Editorial Dossier (5 cols) */}
-            <div className="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between">
-              <div className="space-y-6">
-                <div>
-                  <div className="flex items-center gap-2 text-xs font-mono text-[#C8102E] font-semibold uppercase tracking-wider mb-2">
-                    <ActiveIcon className="w-4 h-4 text-[#C8102E]" />
-                    <span>{activeActivity.category}</span>
-                  </div>
-                  <h3 className="font-heading text-2xl font-bold text-[#0F172A] tracking-tight leading-snug">
-                    {activeActivity.title}
-                  </h3>
-                  <div className="font-sans text-xs text-slate-500 font-medium mt-1">
-                    {activeActivity.subtitle}
-                  </div>
-                </div>
+            <div className="flex items-center gap-2 text-slate-300">
+              <Award className="w-3.5 h-3.5 text-[#C8102E]" />
+              <span>ACTIVE PROGRAM FRAMEWORK · {activeActivity.year}</span>
+            </div>
+          </div>
 
-                <p className="font-sans text-sm text-slate-600 leading-relaxed font-normal">
-                  {activeActivity.description}
-                </p>
-
-                {/* Highlights List */}
-                <div className="border-t border-[#E5E5DE] pt-4 space-y-2">
-                  <div className="font-mono text-xs uppercase tracking-wider text-slate-500 font-semibold">
-                    Key Program Highlights:
-                  </div>
-                  <div className="space-y-1.5">
-                    {activeActivity.highlights.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                        <span className="text-[#C8102E] font-bold shrink-0 mt-0.5">—</span>
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Quantitative Impact Metrics */}
-                <div className="border-t border-[#E5E5DE] pt-4 grid grid-cols-3 gap-3">
-                  {activeActivity.metrics.map((metric, mIdx) => (
-                    <div key={mIdx} className="space-y-0.5">
-                      <div className="font-heading text-lg font-bold text-[#0F172A]">
-                        {metric.value}
-                      </div>
-                      <div className="font-mono text-[10px] text-slate-500 uppercase">
-                        {metric.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom Direct Mandate Action */}
-              <div className="pt-8 border-t border-[#E5E5DE] flex items-center justify-between">
-                <button
-                  onClick={handlePartnerInquiry}
-                  className="btn-editorial-red text-xs py-2.5 px-6 cursor-pointer inline-flex items-center gap-2 shadow-sm"
-                >
-                  <span>Initiate Partnership</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-
-                <span className="font-mono text-xs text-slate-500">
-                  {activeActivity.location.split(",")[0]}
-                </span>
-              </div>
+          {/* Main Editorial Story Composition Over Media */}
+          <div className="max-w-4xl space-y-5 my-auto">
+            <div className="space-y-1">
+              <span className="text-[#C8102E] font-mono text-xs uppercase tracking-widest font-semibold block">
+                PARTNER / INSTITUTIONAL MANDATE: {activeActivity.partnerOrClient}
+              </span>
+              <h3 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-bold text-white tracking-tight leading-[1.08] drop-shadow-lg">
+                {activeActivity.title}
+              </h3>
             </div>
 
+            <p className="font-sans text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-3xl drop-shadow-md">
+              {activeActivity.description}
+            </p>
+
+            {/* Verified Activity Metrics Directly Over Media */}
+            <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-4 border-t border-white/15 max-w-2xl">
+              {activeActivity.metrics.map((metric, idx) => (
+                <div key={idx} className="space-y-1">
+                  <div className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">{metric.label}</div>
+                  <div className="text-2xl sm:text-3xl font-heading font-bold text-white tracking-tight">{metric.value}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* Direct Action Over Media */}
+            <div className="pt-4 flex flex-wrap items-center gap-3.5">
+              <button
+                onClick={handlePartnerInquiry}
+                className="btn-editorial-red text-xs py-3 px-6 cursor-pointer flex items-center gap-2 shadow-xl"
+              >
+                <span>Inquire Program Collaboration</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* Bottom Bar Info Over Media */}
+          <div className="flex items-center justify-between text-xs font-mono text-slate-400 border-t border-white/10 pt-3">
+            <span>SUBTITLE: {activeActivity.subtitle}</span>
+            <span>CENTRAL INITIATIVE: PT TRICATHA SEMPITERNAL ASIA</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10">
+
+        {/* 3. Academic & Institutional Collaborations Strip */}
+        <div className="mt-12 pt-8 border-t border-[#E2E8F0]">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <div>
+              <h4 className="font-heading text-lg font-bold text-[#071731]">
+                Institutional Partnerships Across Public &amp; Private Sectors
+              </h4>
+            </div>
+            <span className="text-xs font-mono text-[#64748B]">Jakarta · Bandung · Bogor · ASEAN</span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-5 bg-white rounded-lg border border-[#E2E8F0] shadow-xs space-y-2">
+              <div className="text-xs font-mono font-semibold text-[#C8102E] uppercase">
+                ACADEMIC &amp; TALENT ALLIANCE
+              </div>
+              <div className="font-heading font-bold text-sm text-[#071731]">
+                University Apprenticeship Consortium
+              </div>
+              <p className="text-xs text-[#475569] leading-relaxed">
+                Direct MICE protocol and 4K broadcast apprenticeships with top national universities (UI, ITB, UGM, Unpad) training future summit directors.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-lg border border-[#E2E8F0] shadow-xs space-y-2">
+              <div className="text-xs font-mono font-semibold text-[#C8102E] uppercase">
+                ENTERPRISE OFF-SITES &amp; SYNERGY
+              </div>
+              <div className="font-heading font-bold text-sm text-[#071731]">
+                BP TAPERA &amp; Corporate Immersions
+              </div>
+              <p className="text-xs text-[#475569] leading-relaxed">
+                Strategic retreats in Ciwidey and Bogor blending executive decision-making challenges with outdoor resilience and team cohesion drills.
+              </p>
+            </div>
+
+            <div className="p-5 bg-white rounded-lg border border-[#E2E8F0] shadow-xs space-y-2">
+              <div className="text-xs font-mono font-semibold text-[#C8102E] uppercase">
+                CIVIC CULTURAL SCALE
+              </div>
+              <div className="font-heading font-bold text-sm text-[#071731]">
+                GWI Heritage Activations
+              </div>
+              <p className="text-xs text-[#475569] leading-relaxed">
+                Engaging over 45,000 citizens through architectural projection mapping and digital heritage preservation at GBK Arena and national monuments.
+              </p>
+            </div>
           </div>
         </div>
 

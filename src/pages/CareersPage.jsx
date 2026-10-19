@@ -67,22 +67,25 @@ export default function CareersPage({ navigateTo }) {
   ];
 
   return (
-    <div className="bg-[#071731] min-h-screen text-[#F1F5F9] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
+    <div className="bg-[#FAF9F6] min-h-screen text-[#071731] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
       
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-[#071731]/10">
           
           {/* Left Title & Statement (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
-            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-white tracking-tight leading-[1.08]">
+            <div className="text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
+              Talent Appointments · The City Tower, Jakarta
+            </div>
+            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-[#071731] tracking-tight leading-[1.08]">
               Careers &amp; <br />
-              <span className="font-editorial italic font-normal text-slate-200">
+              <span className="font-editorial italic font-normal text-slate-600">
                 Sovereign Practice Opportunities.
               </span>
             </h1>
 
-            <p className="text-slate-300 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
+            <p className="text-slate-600 text-base sm:text-lg font-normal leading-relaxed max-w-2xl pt-1">
               Tricatha Sempiternal Asia invites seasoned strategists, protocol officers, spatial scenographers, and broadcast engineers to operate at the highest echelons of regional diplomacy and enterprise governance.
             </p>
           </div>
@@ -101,19 +104,19 @@ export default function CareersPage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 2. Executive Leadership Grid */}
-      <Leadership />
-
-      {/* 3. Open Career Mandates */}
-      <section className="py-20 sm:py-28 bg-[#071731] border-b border-white/10">
+      {/* 2. Open Career Mandates */}
+      <section className="py-16 sm:py-24 border-b border-[#071731]/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          <div className="pb-8 border-b border-white/10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="pb-8 border-b border-[#071731]/10 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-2">
-              <h2 className="font-heading text-2xl sm:text-4xl font-semibold tracking-tight text-white">
+              <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
+                ACTIVE ROSTER
+              </span>
+              <h2 className="font-heading text-2xl sm:text-4xl font-semibold tracking-tight text-[#071731]">
                 Current Strategic Openings
               </h2>
             </div>
-            <p className="text-sm text-slate-400 max-w-sm">
+            <p className="text-sm text-slate-600 max-w-sm">
               All appointments require background validation and binding non-disclosure covenants.
             </p>
           </div>
@@ -122,36 +125,36 @@ export default function CareersPage({ navigateTo }) {
             {jobOpenings.map((job) => (
               <div
                 key={job.id}
-                className="bg-[#0A1F44] border border-white/10 rounded p-7 sm:p-8 space-y-5 shadow-sm hover:border-white/25 transition-all flex flex-col justify-between"
+                className="bg-white border border-[#071731]/10 rounded p-7 sm:p-8 space-y-5 shadow-xs hover:border-[#071731]/30 transition-all flex flex-col justify-between"
               >
                 <div className="space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-[10px] font-mono text-[#C8102E] uppercase tracking-wider bg-[#071731] border border-white/10 px-2.5 py-0.5 rounded">
+                    <span className="text-[10px] font-mono text-[#C8102E] font-semibold uppercase tracking-wider bg-slate-100 border border-[#071731]/10 px-2.5 py-0.5 rounded">
                       {job.type}
                     </span>
-                    <span className="text-[11px] font-mono text-slate-400">
+                    <span className="text-[11px] font-mono text-slate-500">
                       {job.location}
                     </span>
                   </div>
 
-                  <h3 className="font-heading text-xl font-semibold text-white tracking-tight leading-snug">
+                  <h3 className="font-heading text-xl font-semibold text-[#071731] tracking-tight leading-snug">
                     {job.title}
                   </h3>
 
-                  <div className="text-xs font-mono text-slate-300">
+                  <div className="text-xs font-mono text-slate-500">
                     {job.division}
                   </div>
 
-                  <p className="text-sm text-slate-300 leading-relaxed font-normal">
+                  <p className="text-sm text-slate-600 leading-relaxed font-normal">
                     {job.desc}
                   </p>
 
                   <div className="pt-2 space-y-1.5">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block mb-1">
-                      KEY COMPETENCIES:
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 block mb-1">
+                      Candidate Profile &amp; Accreditation:
                     </span>
                     {job.requirements.map((req, rIdx) => (
-                      <div key={rIdx} className="flex items-start gap-2 text-xs text-slate-300">
+                      <div key={rIdx} className="flex items-start gap-2 text-xs text-slate-700">
                         <CheckCircle2 className="w-3.5 h-3.5 text-[#C8102E] shrink-0 mt-0.5" />
                         <span>{req}</span>
                       </div>
@@ -159,15 +162,15 @@ export default function CareersPage({ navigateTo }) {
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
-                    <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
+                <div className="pt-4 border-t border-[#071731]/10 flex items-center justify-between">
+                  <span className="text-[10px] font-mono text-slate-500 flex items-center gap-1.5">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#C8102E]" />
                     <span>{job.clearance}</span>
-                  </div>
+                  </span>
 
                   <button
                     onClick={handleInquiry}
-                    className="btn-editorial-red"
+                    className="btn-editorial-red text-xs py-1.5 px-3 inline-flex items-center gap-1"
                   >
                     <span>Apply Mandate</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -176,39 +179,41 @@ export default function CareersPage({ navigateTo }) {
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* 4. Fellowship Callout Panel */}
-      <section className="py-20 sm:py-28 bg-[#050F22] border-t border-white/10">
+      {/* 3. Executive Leadership Grid (Selective Navy Contrast Moment) */}
+      <Leadership />
+
+      {/* 4. Bottom Mandate Invitation Panel */}
+      <section className="py-20 sm:py-28">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-          <div className="bg-[#0A1F44] border border-white/10 p-8 sm:p-14 rounded flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="bg-[#071731] text-white border border-[#071731] p-8 sm:p-14 rounded-xl shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="space-y-3 max-w-2xl">
-              <div className="flex items-center gap-2 font-mono text-xs text-[#C8102E]">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>2026 ADMISSIONS ROADMAP</span>
+              <div className="text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
+                EXECUTIVE APPOINTMENTS · THE CITY TOWER
               </div>
               <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
-                Looking for Fellowship &amp; Internship Opportunities?
+                Submit an Unsolicited Confidential Dossier.
               </h2>
               <p className="font-sans text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                Our 2026 intake is currently open across software architecture, high-stakes diplomatic protocol, spatial stage design, and commercial advisory.
+                We review credentials from senior sovereign liaisons, bilingual show callers, and digital platform architects on a rolling basis. All files are reviewed under strict institutional confidentiality.
               </p>
             </div>
-            <div className="shrink-0">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 shrink-0">
               <button
-                onClick={() => {
-                  if (navigateTo) navigateTo("/internship");
-                }}
-                className="btn-editorial-red inline-flex items-center gap-2"
+                onClick={handleInquiry}
+                className="btn-editorial-red flex items-center justify-center gap-2"
               >
-                <span>Explore Internship Program</span>
+                <span>Submit Candidate Dossier</span>
                 <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         </div>
       </section>
+
     </div>
   );
 }
