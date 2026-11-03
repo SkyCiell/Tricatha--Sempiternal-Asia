@@ -28,13 +28,25 @@ export default function EventsPage({ navigateTo }) {
         (evt) => evt.category.toLowerCase() === activeCategory.toLowerCase()
       );
     }
+
     if (activeCategory === "All Events" || activeCategory === "All") {
-      return list.map((evt, idx) => {
-        if (idx === 0) return { ...evt, colSpan: 2 };
-        return { ...evt, colSpan: 1 };
-      });
+      // 8-item flush Bento pattern: Top 4 flush across 2 rows, bottom 4 flush across 2 rows
+      const bentoPatterns = ['wide', 'tall', 'standard', 'standard', 'tall', 'wide', 'standard', 'standard'];
+      return list.map((evt, idx) => ({
+        ...evt,
+        bentoSpan: bentoPatterns[idx % bentoPatterns.length]
+      }));
     }
-    return list.map(evt => ({ ...evt, colSpan: 1 }));
+
+    if (list.length === 4) {
+      const bentoPatterns = ['wide', 'tall', 'standard', 'standard'];
+      return list.map((evt, idx) => ({
+        ...evt,
+        bentoSpan: bentoPatterns[idx]
+      }));
+    }
+
+    return list.map((evt) => ({ ...evt, bentoSpan: 'standard' }));
   }, [allEvents, activeCategory]);
 
 

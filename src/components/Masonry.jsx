@@ -66,36 +66,44 @@ export default function Masonry({
     }
   };
 
+  // Determine grid container classes based on item count for flush alignment
+  let gridLayoutClass = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:auto-rows-[280px]';
+  if (items.length === 2) {
+    gridLayoutClass = 'grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:auto-rows-[320px] max-w-5xl mx-auto';
+  } else if (items.length === 1) {
+    gridLayoutClass = 'grid grid-cols-1 gap-5 sm:gap-6 lg:auto-rows-[380px] max-w-3xl mx-auto';
+  }
+
   return (
     <div className={`w-full ${className}`}>
       {/* 
-        Bento Asymmetric Grid System:
-        - Top edge is 100% level and flush across all columns
-        - Bottom edge is 100% level and flush across all columns
-        - Cards have varied spans (col-span-2, col-span-3, col-span-1) for dynamic editorial rhythm
+        Asymmetric Bento Grid:
+        - "Abstrak nya semua": Varied card shapes (2x1 wide, 1x2 tall, 1x1 standard)
+        - "Bagian atas dan bawah sama": Top and bottom edges are 100% flush, straight, and neat
+        - No separate section below the photo: 100% full-bleed photography
+        - "Hover dari gelap ke terang": Photo starts cinematic and dark, illuminates bright on hover
+        - Title & category appear smoothly on hover ("pas hover ke card nya aja")
       */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+      <div className={gridLayoutClass}>
         {items.map((item, index) => {
           const id = String(item.id || item.slug || index);
           const venueName = (item.location || item.venue || '').split(',')[0];
-          const span = item.colSpan || item.span || 1;
+          const spanType = item.bentoSpan || 'standard';
 
-          // Responsive asymmetric span classes
-          let spanClasses = 'col-span-1';
-          let photoAspectClass = 'aspect-[16/10]';
-
-          if (span === 3) {
-            spanClasses = 'col-span-1 md:col-span-2 lg:col-span-3';
-            photoAspectClass = 'aspect-[16/10] sm:aspect-[21/9] lg:aspect-[24/9]';
-          } else if (span === 2) {
-            spanClasses = 'col-span-1 lg:col-span-2';
-            photoAspectClass = 'aspect-[16/10] sm:aspect-[16/9] lg:aspect-[18/9]';
+          // Asymmetric Bento sizing per item
+          let cardClasses = 'col-span-1 row-span-1 min-h-[260px] lg:min-h-0';
+          if (spanType === 'wide') {
+            cardClasses = 'col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-1 min-h-[260px] lg:min-h-0';
+          } else if (spanType === 'tall') {
+            cardClasses = 'col-span-1 lg:col-span-1 lg:row-span-2 min-h-[300px] lg:min-h-0';
+          } else if (spanType === 'panoramic') {
+            cardClasses = 'col-span-1 md:col-span-2 lg:col-span-3 lg:row-span-1 min-h-[260px] lg:min-h-0';
           }
 
           return (
             <div
               key={id}
-              className={`group relative flex flex-col h-full bg-white rounded-xl border border-[#E2E8F0] hover:border-[#C8102E]/60 shadow-xs hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 overflow-hidden cursor-pointer select-none ${spanClasses}`}
+              className={`group relative flex flex-col w-full bg-slate-950 rounded-xl overflow-hidden cursor-pointer select-none border border-black/10 dark:border-white/10 hover:border-[#C8102E] shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 ${cardClasses}`}
               onClick={(e) => handleCardClick(e, item, index)}
               role="button"
               tabIndex={0}
@@ -108,75 +116,74 @@ export default function Masonry({
               aria-label={`${item.title} — ${item.category || 'Event'} (${item.year || ''})`}
             >
               {/* 
-                1. Photo Container with "Hover dari Gelap ke Terang" Effect:
-                - Default: Moody, cinematic, slightly dimmed (brightness-75 + dark atmospheric scrim)
-                - Hover: Smoothly illuminates to bright 100% clarity, dark scrim melts away, gentle scale zoom
+                1. Full-bleed Photo with "Hover dari Gelap ke Terang":
+                - Default: Moody, cinematic, darker (brightness-70 + atmospheric dark scrim)
+                - Hover: Smoothly illuminates to 100% bright clarity, dark tint melts away, gentle scale zoom
               */}
-              <div className={`relative w-full ${photoAspectClass} overflow-hidden bg-slate-900 border-b border-[#E2E8F0]/80 shrink-0`}>
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  loading="eager"
-                  decoding="async"
-                  onError={(e) => {
-                    if (item.fallbackImg && e.currentTarget.src !== item.fallbackImg) {
-                      e.currentTarget.src = item.fallbackImg;
-                    }
-                  }}
-                  className="w-full h-full object-cover object-center transition-all duration-700 ease-out filter brightness-[0.72] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 group-hover:scale-105"
-                />
+              <img
+                src={item.img}
+                alt={item.title}
+                loading="eager"
+                decoding="async"
+                onError={(e) => {
+                  if (item.fallbackImg && e.currentTarget.src !== item.fallbackImg) {
+                    e.currentTarget.src = item.fallbackImg;
+                  }
+                }}
+                className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 ease-out filter brightness-[0.70] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 group-hover:scale-108 pointer-events-none"
+              />
 
-                {/* Dark-to-Bright Scrim Overlay */}
-                <div className="absolute inset-0 bg-[#071731]/30 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
-                
-                {/* Subtle Ambient Vignette on Edges */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" />
+              {/* Atmospheric Dark Tint (dissolves smoothly on hover: from dark to bright) */}
+              <div className="absolute inset-0 bg-[#071731]/40 group-hover:bg-transparent transition-colors duration-500 pointer-events-none" />
+
+              {/* Minimal category pill on top-left (discreet indicator) */}
+              <div className="absolute top-3.5 left-3.5 z-10 pointer-events-none transition-opacity duration-300">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-white/90 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-sm border border-white/15 group-hover:bg-[#C8102E] group-hover:border-[#C8102E] transition-colors duration-300">
+                  {item.category || 'MICE'}
+                </span>
               </div>
 
-              {/* 2. Structured Card Information - Neatly Below The Photo */}
-              <div className="p-5 sm:p-6 flex flex-col flex-grow justify-between bg-white text-left">
-                <div>
-                  {/* Category Badge & Year */}
-                  <div className="flex items-center justify-between gap-2 mb-2.5">
-                    <span className="text-[#C8102E] bg-[#C8102E]/10 border border-[#C8102E]/25 text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-xs uppercase tracking-wider">
-                      {item.category || 'MICE'}
+              {/* 
+                2. Hover Caption Overlay ("kasih nama nya pas hover ke card nya aja"):
+                - Hidden in default state (opacity-0, translate-y-3)
+                - Slides up and fades in on hover over the card
+                - Displays Event Title and Category badge ("Team Building BP TAPERA 2025" & "Team Building")
+                - No separate white/grey section below the photo!
+              */}
+              <div className="absolute inset-0 z-20 flex flex-col justify-end p-5 sm:p-6 bg-gradient-to-t from-black/95 via-black/60 to-transparent opacity-0 translate-y-3 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400 ease-out pointer-events-none">
+                <div className="space-y-1.5 text-left pointer-events-auto">
+                  {/* Category & Year */}
+                  <div className="flex items-center gap-2">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-[#FF6B81] bg-black/40 px-2 py-0.5 rounded-xs border border-white/10">
+                      {item.category || 'Event'}
                     </span>
                     {item.year && (
-                      <span className="font-mono text-xs text-slate-500 font-medium">
-                        {item.year}
+                      <span className="text-xs font-mono text-white/80 font-medium">
+                        • {item.year}
                       </span>
                     )}
                   </div>
 
                   {/* Event Title */}
-                  <h3 className="font-heading font-bold text-[#071731] group-hover:text-[#C8102E] text-base sm:text-lg leading-snug tracking-tight line-clamp-2 transition-colors duration-200">
+                  <h3 className="font-heading font-bold text-white text-base sm:text-lg lg:text-xl leading-snug tracking-tight">
                     {item.title}
                   </h3>
 
                   {/* Venue / Location */}
                   {venueName && (
-                    <p className="mt-2 text-xs text-slate-500 font-sans flex items-center gap-1.5 line-clamp-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]/70 shrink-0" />
-                      <span>{venueName}</span>
+                    <p className="text-xs text-slate-300 font-sans line-clamp-1">
+                      {venueName}
                     </p>
                   )}
-                </div>
 
-                {/* Action Footer */}
-                <div className="mt-5 pt-3.5 border-t border-[#F1F5F9] flex items-center justify-between text-xs font-mono text-[#071731] group-hover:text-[#C8102E] font-semibold uppercase tracking-wider transition-colors duration-200">
-                  <span
-                    className="hover:underline cursor-pointer"
+                  {/* Action Link */}
+                  <div
+                    className="pt-2 inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-white hover:text-[#FF6B81] uppercase tracking-wider cursor-pointer"
                     onClick={(e) => handleDirectNavigate(e, item)}
                   >
-                    Explore Record
-                  </span>
-                  <HugeiconsIcon
-                    icon={ArrowUpRight01Icon}
-                    size={15}
-                    strokeWidth={2.5}
-                    className="text-[#C8102E] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    onClick={(e) => handleDirectNavigate(e, item)}
-                  />
+                    <span>Explore Event Details</span>
+                    <HugeiconsIcon icon={ArrowUpRight01Icon} size={14} strokeWidth={2.5} className="text-[#FF6B81]" />
+                  </div>
                 </div>
               </div>
             </div>

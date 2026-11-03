@@ -13,12 +13,12 @@ export default function LandingFeaturedEvents({ navigateTo }) {
     const adobe = EVENTS_DATA.find((e) => e.slug === "adobe-ai-art-revolution") || EVENTS_DATA[5];
 
     return [
-      { ...appmbgi, colSpan: 2 },
-      { ...taperaTb, colSpan: 1 },
-      { ...restorativeJustice, colSpan: 1 },
-      { ...illuminate, colSpan: 1 },
-      { ...investment, colSpan: 1 },
-      { ...adobe, colSpan: 3 }
+      { ...appmbgi, bentoSpan: 'wide' },
+      { ...taperaTb, bentoSpan: 'tall' },
+      { ...restorativeJustice, bentoSpan: 'standard' },
+      { ...illuminate, bentoSpan: 'standard' },
+      { ...investment, bentoSpan: 'standard' },
+      { ...adobe, bentoSpan: 'wide' }
     ];
   }, []);
 
