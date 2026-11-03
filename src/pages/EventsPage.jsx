@@ -18,14 +18,23 @@ export default function EventsPage({ navigateTo }) {
     }));
   }, []);
 
-  // Filtered list based on active category
+  // Filtered list based on active category with Bento composition
   const filteredEvents = useMemo(() => {
+    let list;
     if (activeCategory === "All Events" || activeCategory === "All") {
-      return allEvents;
+      list = allEvents;
+    } else {
+      list = allEvents.filter(
+        (evt) => evt.category.toLowerCase() === activeCategory.toLowerCase()
+      );
     }
-    return allEvents.filter(
-      (evt) => evt.category.toLowerCase() === activeCategory.toLowerCase()
-    );
+    if (activeCategory === "All Events" || activeCategory === "All") {
+      return list.map((evt, idx) => {
+        if (idx === 0) return { ...evt, colSpan: 2 };
+        return { ...evt, colSpan: 1 };
+      });
+    }
+    return list.map(evt => ({ ...evt, colSpan: 1 }));
   }, [allEvents, activeCategory]);
 
 
@@ -151,14 +160,6 @@ export default function EventsPage({ navigateTo }) {
           ) : (
             <Masonry
               items={filteredEvents}
-              columns={3}
-              columnWidth={360}
-              gap={24}
-              radius={10}
-              animateFrom="bottom"
-              hoverEffect="zoom"
-              lightbox
-              draggable
               onItemNavigate={handleEventClick}
             />
           )}

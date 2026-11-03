@@ -13,12 +13,12 @@ export default function LandingFeaturedEvents({ navigateTo }) {
     const adobe = EVENTS_DATA.find((e) => e.slug === "adobe-ai-art-revolution") || EVENTS_DATA[5];
 
     return [
-      { ...appmbgi, colSpan: 1 },
+      { ...appmbgi, colSpan: 2 },
       { ...taperaTb, colSpan: 1 },
       { ...restorativeJustice, colSpan: 1 },
       { ...illuminate, colSpan: 1 },
       { ...investment, colSpan: 1 },
-      { ...adobe, colSpan: 1 }
+      { ...adobe, colSpan: 3 }
     ];
   }, []);
 
@@ -70,14 +70,6 @@ export default function LandingFeaturedEvents({ navigateTo }) {
         <div className="pt-10">
           <Masonry
             items={featuredEvents}
-            columns={3}
-            columnWidth={360}
-            gap={24}
-            radius={10}
-            animateFrom="bottom"
-            hoverEffect="zoom"
-            lightbox
-            draggable
             onItemNavigate={handleEventClick}
           />
         </div>
