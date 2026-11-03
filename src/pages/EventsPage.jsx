@@ -133,8 +133,8 @@ export default function EventsPage({ navigateTo }) {
                     type="button"
                     onClick={() => setActiveCategory(cat)}
                     className={`py-2 px-3 sm:px-4 rounded-xs transition-colors duration-200 cursor-pointer flex items-center gap-2 border-b-2 ${isActive
-                        ? "text-[#071731] font-semibold border-[#C8102E] bg-black/5"
-                        : "text-slate-500 hover:text-[#071731] border-transparent hover:bg-black/[0.02]"
+                      ? "text-[#071731] font-semibold border-[#C8102E] bg-black/5"
+                      : "text-slate-500 hover:text-[#071731] border-transparent hover:bg-black/[0.02]"
                       }`}
                   >
                     <span>{cat}</span>
