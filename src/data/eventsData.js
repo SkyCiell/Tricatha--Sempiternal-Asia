@@ -25,6 +25,9 @@ export const EVENTS_DATA = [
   {
     id: "evt-appmbgi-2026",
     slug: "appmbgi-national-summit-2026",
+    url: "/events/appmbgi-national-summit-2026",
+    width: 1256,
+    height: 707,
     title: "APPMBGI NATIONAL SUMMIT 2026",
     client: "Asosiasi Pengusaha Pengolahan & Pemurnian Mineral Indonesia (APPMBGI)",
     category: "MICE",
@@ -69,6 +72,9 @@ export const EVENTS_DATA = [
   {
     id: "evt-tapera-tb-2025",
     slug: "team-building-bp-tapera-2025",
+    url: "/events/team-building-bp-tapera-2025",
+    width: 1057,
+    height: 706,
     title: "Team Building BP TAPERA 2025",
     client: "BP TAPERA (Badan Pengelola Tabungan Perumahan Rakyat)",
     category: "Team Building",
@@ -111,6 +117,9 @@ export const EVENTS_DATA = [
   {
     id: "evt-adobe-ai-2025",
     slug: "adobe-ai-art-revolution",
+    url: "/events/adobe-ai-art-revolution",
+    width: 837,
+    height: 626,
     title: "ADOBE - AI Art Revolution Creative and Innovate",
     client: "Adobe Systems & Creative Technology Community",
     category: "Community Event",
@@ -142,6 +151,9 @@ export const EVENTS_DATA = [
   {
     id: "evt-thales-kadin-2024",
     slug: "thales-kadin-innovation-day",
+    url: "/events/thales-kadin-innovation-day",
+    width: 1200,
+    height: 800,
     title: "THALES-KADIN Indonesia’s Innovation Day",
     client: "THALES Group & KADIN Indonesia",
     category: "Corporate Event",
@@ -167,6 +179,9 @@ export const EVENTS_DATA = [
   {
     id: "evt-ieis-2023",
     slug: "indonesia-europe-investment-summit-2023",
+    url: "/events/indonesia-europe-investment-summit-2023",
+    width: 1197,
+    height: 800,
     title: "Indonesia-Europe Investment Summit 2023",
     client: "Indonesia-Europe Bilateral Chamber & Investment Directorate",
     category: "MICE",
@@ -206,6 +221,9 @@ export const EVENTS_DATA = [
   {
     id: "evt-illuminate-asia-2024",
     slug: "illuminate-asia-exclusive-evening",
+    url: "/events/illuminate-asia-exclusive-evening",
+    width: 621,
+    height: 825,
     title: "Illuminate Asia Exclusive Evening",
     client: "Illuminate Asia Research & Advisory",
     category: "Gathering",
@@ -249,6 +267,9 @@ export const EVENTS_DATA = [
   {
     id: "evt-women-politics-2024",
     slug: "empowering-women-in-politics",
+    url: "/events/empowering-women-in-politics",
+    width: 956,
+    height: 637,
     title: "Empowering Women in Politics: Realizing the Potential Within!",
     client: "National Women Political Leadership Initiative",
     category: "Talk Show",
@@ -283,6 +304,9 @@ export const EVENTS_DATA = [
   {
     id: "evt-restorative-justice-2024",
     slug: "book-launching-restorative-justice",
+    url: "/events/book-launching-restorative-justice",
+    width: 1240,
+    height: 825,
     title: "Book Launching & Discussion on Restorative Justice",
     client: "Judicial Legal Council & Legal Reform Commission",
     category: "Talk Show",

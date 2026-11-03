@@ -70,8 +70,15 @@ export default function LandingFeaturedEvents({ navigateTo }) {
         <div className="pt-10">
           <Masonry
             items={featuredEvents}
-            columns={3}
-            onItemClick={handleEventClick}
+            columnWidth={320}
+            gap={18}
+            radius={12}
+            animateFrom="bottom"
+            hoverEffect="zoom"
+            captions="hover"
+            lightbox
+            draggable
+            onItemNavigate={handleEventClick}
           />
         </div>
       </div>

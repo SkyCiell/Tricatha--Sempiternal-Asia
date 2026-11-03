@@ -80,10 +80,10 @@ export default function EventDetailPage({ slug, navigateTo }) {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#071731] font-sans pb-20 selection:bg-[#C8102E] selection:text-white">
-      
+
       {/* 1. FULL UNINTERRUPTED COVER PHOTO (Clean Floating Back, Never Cropped) */}
       <section className="relative w-full bg-[#050F22] text-white overflow-hidden select-none border-b border-[#071731]/10">
-        
+
         {/* Floating Back Control - No Dividing Line */}
         <div className="absolute top-24 sm:top-28 left-4 sm:left-8 lg:left-12 z-20">
           <button
@@ -174,7 +174,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-8 sm:py-10">
         <div className="bg-white rounded p-6 sm:p-8 border border-[#071731]/10 shadow-sm">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 divide-y md:divide-y-0 md:divide-x divide-[#071731]/10">
-            
+
             {/* 1. Client */}
             <div className="space-y-1">
               <span className="text-[10px] sm:text-[11px] font-mono font-medium uppercase tracking-wider text-[#64748B] block">
@@ -267,7 +267,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-12 sm:pt-16">
         <div className="border-t border-[#071731]/10 pt-10 sm:pt-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
-            
+
             {/* Left Column: Narrative Summary */}
             <div className="lg:col-span-8 space-y-6">
               <div>
