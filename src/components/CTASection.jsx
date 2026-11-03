@@ -34,7 +34,7 @@ export default function CTASection({ scrollToSection }) {
             </button>
 
             <a
-              href="mailto:gwi@sempiternalasia.com"
+              href="mailto:de@sempiternalasia.com"
               className="px-8 py-4 border-2 border-white/30 hover:border-white hover:bg-white hover:text-[#071A33] text-white text-xs font-mono font-bold uppercase tracking-[0.16em] rounded-full transition-all duration-300 flex items-center justify-center gap-2"
             >
               <span>DIRECT EXECUTIVE DESK</span>

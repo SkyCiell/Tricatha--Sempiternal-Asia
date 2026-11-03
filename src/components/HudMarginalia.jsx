@@ -20,10 +20,10 @@ export default function HudMarginalia() {
       {/* Top Right: Architectural Contact Note */}
       <div className="absolute top-24 right-8 lg:right-12 pointer-events-auto">
         <a
-          href="mailto:partnership@tricatha.com"
+          href="mailto:de@sempiternalasia.com"
           className="font-architect text-[20px] text-[#0A1F44] hover:text-[#C8102E] transition-colors -rotate-3 inline-block"
         >
-          partnership@tricatha.com
+          de@sempiternalasia.com
         </a>
       </div>
 

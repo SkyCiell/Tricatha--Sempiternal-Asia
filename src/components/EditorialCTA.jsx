@@ -76,8 +76,8 @@ export default function EditorialCTA({ onStartConversation, onExploreWork }) {
               </div>
               <div>
                 <div className="text-slate-400 text-[10px] uppercase tracking-wider font-mono">Executive Secretariat</div>
-                <a href="mailto:gwi@sempiternalasia.com" className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
-                  gwi@sempiternalasia.com
+                <a href="mailto:de@sempiternalasia.com" className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
+                  de@sempiternalasia.com
                 </a>
               </div>
             </div>
@@ -88,8 +88,8 @@ export default function EditorialCTA({ onStartConversation, onExploreWork }) {
               </div>
               <div>
                 <div className="text-slate-400 text-[10px] uppercase tracking-wider font-mono">Telephone Inquiries</div>
-                <a href="tel:+622123584500" className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
-                  +62 21 2358 4500
+                <a href="tel:+628121000784" className="font-medium text-white hover:text-[#C8102E] transition-colors mt-0.5 block">
+                  +62-812-1000-784
                 </a>
               </div>
             </div>

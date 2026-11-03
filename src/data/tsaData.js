@@ -11,8 +11,8 @@ export const companyInfo = {
   introHeadline: "WE TURN IDEAS INTO EXPERIENCES.",
   introDescription: "PT Tricatha Sempiternal Asia is an Indonesian multidisciplinary company delivering integrated solutions across technology, event management, government advocacy, food and beverage, and digital content production. Through our specialized business units, we combine strategic insight, creative thinking, technical expertise, and trusted networks to help organizations navigate challenges, activate opportunities, and achieve meaningful, sustainable impact.",
   address: "Sudirman Park Apartment, Jl. KH. Mas Mansyur Kav. 35, Karet Tengsin, Tanah Abang, Jakarta Pusat, DKI Jakarta, Indonesia",
-  email: "gwi@sempiternalasia.com",
-  phone: "+62 21 2358 4500",
+  email: "de@sempiternalasia.com",
+  phone: "+62-812-1000-784",
   hours: "Monday – Friday: 08:30 – 17:30 WIB",
 
   statsSummary: [
@@ -413,7 +413,7 @@ export const faqItems = [
   {
     id: "faq-start-project",
     question: "How can we start a project with TSA?",
-    answer: "You can initiate a consultation by clicking 'Let's Work Together' or contacting our secretariat directly via email at gwi@sempiternalasia.com or telephone at +62 21 2358 4500. Our strategic directors will review your event mandate, scope, and timeline to schedule an executive briefing."
+    answer: "You can initiate a consultation by clicking 'Let's Work Together' or contacting our secretariat directly via email at de@sempiternalasia.com or telephone at +62-812-1000-784. Our strategic directors will review your event mandate, scope, and timeline to schedule an executive briefing."
   }
 ];
 

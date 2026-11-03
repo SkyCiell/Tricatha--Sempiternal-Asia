@@ -35,7 +35,7 @@ export default function ContactPage() {
             <span className="text-slate-300 uppercase tracking-wider">
               Urgent Ministerial &amp; Plenary Summit Dispatch Line:
             </span>
-            <span className="text-white font-semibold tracking-wider font-mono">+62 21 2358 4500 (EXT. 101)</span>
+            <span className="text-white font-semibold tracking-wider font-mono">+62-812-1000-784</span>
           </div>
 
           <div className="text-slate-300 text-[11px] font-mono">

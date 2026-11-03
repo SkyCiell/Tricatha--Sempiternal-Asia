@@ -193,15 +193,15 @@ export default function Footer({ navigateTo }) {
 
               <div className="flex items-center gap-2.5 pt-1">
                 <Mail className="w-4 h-4 text-[#C8102E] shrink-0" />
-                <a href="mailto:gwi@sempiternalasia.com" className="hover:text-white transition-colors">
-                  gwi@sempiternalasia.com
+                <a href="mailto:de@sempiternalasia.com" className="hover:text-white transition-colors">
+                  de@sempiternalasia.com
                 </a>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#C8102E] shrink-0" />
-                <a href="tel:+622123584500" className="hover:text-white transition-colors">
-                  +62 21 2358 4500
+                <a href="tel:+628121000784" className="hover:text-white transition-colors">
+                  +62-812-1000-784
                 </a>
               </div>
 
