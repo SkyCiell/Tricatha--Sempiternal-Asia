@@ -139,11 +139,10 @@ export default function LandingBusiness({ navigateTo }) {
 
             {/* Left Column: TSA Holding Editorial Profile */}
             <div className="lg:col-span-6 space-y-5">
-              <div className="space-y-2">
-                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold">
-                  <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                  <span>PARENT HOLDING · UNIFIED EXECUTIVE COMMAND</span>
-                </div>
+              <div className="space-y-1.5">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-medium block">
+                  Parent Holding · Executive Command
+                </span>
                 <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#071731] tracking-tight leading-tight">
                   PT Tricatha Sempiternal Asia
                 </h3>
@@ -158,18 +157,18 @@ export default function LandingBusiness({ navigateTo }) {
               </p>
 
               {/* Key Holding Indicators */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 font-mono text-xs border-t border-[#E2E8F0]">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 font-mono text-xs border-t border-[#E2E8F0]">
                 <div>
-                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">STRUCTURE</div>
-                  <div className="font-bold text-[#071731] mt-0.5">Holding Ecosystem</div>
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">Structure</div>
+                  <div className="font-semibold text-[#071731] mt-0.5">Holding Ecosystem</div>
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">PRACTICE ENTITIES</div>
-                  <div className="font-bold text-[#071731] mt-0.5">5 Business Units</div>
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">Practice Entities</div>
+                  <div className="font-semibold text-[#071731] mt-0.5">5 Business Units</div>
                 </div>
                 <div className="col-span-2 sm:col-span-1">
-                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">HEADQUARTERS</div>
-                  <div className="font-bold text-[#071731] mt-0.5">Sudirman Park, Jakarta</div>
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">Headquarters</div>
+                  <div className="font-semibold text-[#071731] mt-0.5">Sudirman Park, Jakarta</div>
                 </div>
               </div>
 
@@ -179,7 +178,7 @@ export default function LandingBusiness({ navigateTo }) {
                   onClick={() => handleBrandClick("/business-group")}
                   className="btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
                 >
-                  <span>Explore Full Group Ecosystem</span>
+                  <span>Explore Group Ecosystem</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -187,7 +186,7 @@ export default function LandingBusiness({ navigateTo }) {
 
             {/* Right Column: Authentic TSA Event Photography */}
             <div className="lg:col-span-6">
-              <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[16/11] shadow-md group">
+              <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[16/11] shadow-sm group">
                 <img
                   src={backgroundTSA}
                   alt="PT Tricatha Sempiternal Asia Strategic Summit Coordination and Assembly Production"
@@ -195,7 +194,7 @@ export default function LandingBusiness({ navigateTo }) {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-3 right-3 text-xs font-mono text-slate-200 bg-[#071731]/80 backdrop-blur-xs px-3 py-1.5 rounded border border-white/10 flex items-center justify-between">
+                <div className="absolute bottom-3 left-3 right-3 text-xs font-mono text-slate-200 bg-[#071731]/80 px-3 py-1.5 rounded border border-white/10 flex items-center justify-between">
                   <span>PT Tricatha Sempiternal Asia</span>
                   <span className="text-[#C8102E] font-semibold">SOVEREIGN MANDATE</span>
                 </div>
@@ -220,10 +219,10 @@ export default function LandingBusiness({ navigateTo }) {
                   className={`lg:col-span-6 space-y-6 ${isMediaRight ? "lg:order-1" : "lg:order-2"
                     }`}
                 >
-                  <div className="space-y-2">
-                    <div className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold">
+                  <div className="space-y-1.5">
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-medium block">
                       {chapter.brandName}
-                    </div>
+                    </span>
 
                     <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#071731] tracking-tight leading-tight">
                       {chapter.discipline}
@@ -267,7 +266,7 @@ export default function LandingBusiness({ navigateTo }) {
                   className={`lg:col-span-6 ${isMediaRight ? "lg:order-2" : "lg:order-1"
                     }`}
                 >
-                  <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[4/3] sm:aspect-[16/11] shadow-md group">
+                  <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[4/3] sm:aspect-[16/11] shadow-sm group">
                     <img
                       src={chapter.photo}
                       alt={chapter.photoCaption}

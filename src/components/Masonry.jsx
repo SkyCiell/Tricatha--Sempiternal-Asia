@@ -23,21 +23,21 @@ export default function Masonry({
   };
 
   // Determine grid container classes based on item count for flush alignment
-  let gridLayoutClass = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:auto-rows-[280px]';
+  let gridLayoutClass = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:auto-rows-[300px]';
   if (items.length === 2) {
-    gridLayoutClass = 'grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:auto-rows-[320px] max-w-5xl mx-auto';
+    gridLayoutClass = 'grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:auto-rows-[340px] max-w-5xl mx-auto';
   } else if (items.length === 1) {
-    gridLayoutClass = 'grid grid-cols-1 gap-5 sm:gap-6 lg:auto-rows-[380px] max-w-3xl mx-auto';
+    gridLayoutClass = 'grid grid-cols-1 gap-6 sm:gap-8 lg:auto-rows-[400px] max-w-3xl mx-auto';
   }
 
   return (
     <div className={`w-full ${className}`}>
       {/* 
-        Asymmetric Bento Grid:
-        - "Abstrak nya semua": Varied card shapes (2x1 wide, 1x2 tall, 1x1 standard)
-        - "Bagian atas dan bawah sama": Top and bottom edges are 100% flush, straight, and neat
-        - No black hover tint: Clean, natural photography with smooth zoom in / zoom out
-        - Click directly navigates to event detail page and gallery
+        Art-Directed Editorial Event Grid:
+        - Asymmetric Bento geometry: top & bottom edges 100% flush
+        - Pure photography without decorative badge clutter or floating glass boxes
+        - Seamless typography integrated directly onto the composition
+        - Direct navigation to full record on click
       */}
       <div className={gridLayoutClass}>
         {items.map((item, index) => {
@@ -58,7 +58,7 @@ export default function Masonry({
           return (
             <div
               key={id}
-              className={`group relative flex flex-col w-full bg-slate-900 rounded-xl overflow-hidden cursor-pointer select-none border border-black/10 dark:border-white/10 hover:border-[#C8102E] shadow-sm hover:shadow-xl transition-all duration-300 ${cardClasses}`}
+              className={`group relative flex flex-col justify-end w-full bg-[#071731] rounded-lg overflow-hidden cursor-pointer select-none border border-[#071731]/10 hover:border-[#071731]/40 shadow-xs hover:shadow-xl transition-all duration-500 ${cardClasses}`}
               onClick={(e) => handleCardClick(e, item)}
               role="button"
               tabIndex={0}
@@ -70,11 +70,7 @@ export default function Masonry({
               }}
               aria-label={`${item.title} — ${item.category || 'Event'} (${item.year || ''})`}
             >
-              {/* 
-                Clean Full-bleed Photo with Smooth Zoom In / Zoom Out on Hover:
-                - No black hover veil or darkened filter (100% natural brightness and color)
-                - Smooth scale-up on hover (zoom in) and returns on unhover (zoom out)
-              */}
+              {/* Full-bleed Photo with Smooth Natural Scale */}
               <img
                 src={item.img}
                 alt={item.title}
@@ -85,48 +81,28 @@ export default function Masonry({
                     e.currentTarget.src = item.fallbackImg;
                   }
                 }}
-                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-104 pointer-events-none"
               />
 
-              {/* Minimal category pill on top-left */}
-              <div className="absolute top-3.5 left-3.5 z-10 pointer-events-none">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-sm border border-white/20 shadow-xs">
-                  {item.category || 'MICE'}
-                </span>
-              </div>
+              {/* Directional Bottom Gradient for Typography Contrast */}
+              <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
 
-              {/* 
-                Hover Caption Overlay:
-                - No black screen over the photo
-                - Clean frosted card floating at the bottom on hover
-                - Displays Event Title and Category badge ("Team Building BP TAPERA 2025" & "Team Building")
-              */}
-              <div className="absolute inset-x-0 bottom-0 z-20 p-3.5 sm:p-4 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
-                <div className="inline-flex flex-col gap-1 bg-black/80 backdrop-blur-md p-3.5 rounded-lg border border-white/15 max-w-full shadow-2xl">
-                  {/* Category & Year */}
-                  <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FF6B81]">
-                      {item.category || 'Event'}
-                    </span>
-                    {item.year && (
-                      <span className="text-[11px] font-mono text-white/75 font-medium">
-                        • {item.year}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Event Title */}
-                  <h3 className="font-heading font-bold text-white text-sm sm:text-base leading-snug line-clamp-2">
-                    {item.title}
-                  </h3>
-
-                  {/* Venue / Location */}
-                  {venueName && (
-                    <p className="text-[11px] text-slate-300 font-sans line-clamp-1">
-                      {venueName}
-                    </p>
-                  )}
+              {/* Integrated Editorial Typography: Category, Title, Venue */}
+              <div className="relative z-10 p-5 sm:p-6 text-left pointer-events-none space-y-1">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-300 font-medium">
+                  <span>{item.category || 'MICE'}</span>
+                  {item.year && <span>· {item.year}</span>}
                 </div>
+
+                <h3 className="font-heading font-bold text-white text-lg sm:text-xl lg:text-2xl leading-snug tracking-tight">
+                  {item.title}
+                </h3>
+
+                {venueName && (
+                  <p className="text-xs text-slate-300 font-sans line-clamp-1 pt-0.5">
+                    {venueName}
+                  </p>
+                )}
               </div>
             </div>
           );

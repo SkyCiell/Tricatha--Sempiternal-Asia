@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, Volume2, VolumeX } from "lucide-react";
 
-export default function LandingHero({ navigateTo, onOpenWorkModal, onExploreWork, onLetsTalk }) {
+export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -100,9 +100,6 @@ export default function LandingHero({ navigateTo, onOpenWorkModal, onExploreWork
         <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#071731]/80 to-transparent" />
       </div>
 
-      {/* Subtle Ambient Red Glow for brand warmth */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#C8102E]/8 rounded-full blur-3xl pointer-events-none z-0" />
-
       {/* Main Content Area */}
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8 relative z-10 w-full my-auto">
         <div className="max-w-5xl xl:max-w-6xl">
@@ -113,7 +110,7 @@ export default function LandingHero({ navigateTo, onOpenWorkModal, onExploreWork
             className="space-y-6 sm:space-y-8"
           >
             {/* Primary Monumental Headline */}
-            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[52px] xl:text-[60px] 2xl:text-[66px] font-bold text-white tracking-tight leading-[1.12] drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] max-w-5xl">
+            <h1 className="font-heading text-3xl sm:text-5xl lg:text-[52px] xl:text-[60px] 2xl:text-[66px] font-bold text-white tracking-tight leading-[1.12] max-w-5xl">
               <span className="block whitespace-normal lg:whitespace-nowrap">
                 Strategic Business Events,
               </span>
@@ -126,7 +123,7 @@ export default function LandingHero({ navigateTo, onOpenWorkModal, onExploreWork
             </h1>
 
             {/* Authoritative Subtitle */}
-            <p className="font-sans text-base sm:text-lg lg:text-xl text-slate-200 font-normal leading-relaxed max-w-2xl sm:max-w-3xl drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]">
+            <p className="font-sans text-base sm:text-lg lg:text-xl text-slate-200/90 font-normal leading-relaxed max-w-2xl sm:max-w-3xl">
               PT Tricatha Sempiternal Asia delivers end-to-end event strategy, international trade expositions, ministerial conferences, and high-stakes corporate assemblies across Indonesia and the Southeast Asian corridor.
             </p>
 
@@ -135,7 +132,7 @@ export default function LandingHero({ navigateTo, onOpenWorkModal, onExploreWork
               <button
                 type="button"
                 onClick={handleExploreEvents}
-                className="btn-editorial-red text-xs sm:text-sm py-3.5 px-7 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
+                className="btn-editorial-red text-xs sm:text-sm py-3.5 px-7 cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Explore Events Archive</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -144,7 +141,7 @@ export default function LandingHero({ navigateTo, onOpenWorkModal, onExploreWork
               <button
                 type="button"
                 onClick={handleConsult}
-                className="btn-editorial-navy text-xs sm:text-sm py-3.5 px-7 cursor-pointer flex items-center justify-center gap-2 shadow-lg"
+                className="btn-editorial-navy text-xs sm:text-sm py-3.5 px-7 cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Consult Our Team</span>
                 <Calendar className="w-4 h-4 text-slate-300" />
@@ -159,7 +156,7 @@ export default function LandingHero({ navigateTo, onOpenWorkModal, onExploreWork
         <button
           type="button"
           onClick={toggleAudio}
-          className="px-3.5 py-1.5 rounded-full bg-[#0A1F44]/90 hover:bg-[#0E2552] text-white transition-all flex items-center gap-2 border border-white/15 hover:border-white/30 cursor-pointer text-[11px] font-mono shadow-lg backdrop-blur-sm"
+          className="px-3.5 py-1.5 rounded-full bg-[#0A1F44]/90 hover:bg-[#0E2552] text-white transition-all flex items-center gap-2 border border-white/15 hover:border-white/30 cursor-pointer text-[11px] font-mono shadow-sm"
           title={isMuted ? "Unmute Background Audio" : "Mute Background Audio"}
         >
           {isMuted ? <VolumeX className="w-3.5 h-3.5 text-slate-400" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
