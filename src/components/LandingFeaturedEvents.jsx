@@ -66,7 +66,7 @@ export default function LandingFeaturedEvents({ navigateTo }) {
           </div>
         </div>
 
-        {/* Grid Showcase dengan proporsi seragam dan interaktivitas React Bits */}
+        {/* Grid Showcase with uniform proportions and interactive cards */}
         <div className="pt-10">
           <Masonry
             items={featuredEvents}

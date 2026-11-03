@@ -166,7 +166,8 @@ export default function App() {
     const targetRoute = isRouteValid(normalizedPath) ? normalizedPath : "/events";
     const fullTarget = hashPart ? `${targetRoute}#${hashPart}` : targetRoute;
 
-    if (window.location.pathname !== targetRoute || (hashPart && window.location.hash !== `#${hashPart}`)) {
+    const targetHash = hashPart ? `#${hashPart}` : "";
+    if (window.location.pathname !== targetRoute || window.location.hash !== targetHash) {
       window.history.pushState(null, "", fullTarget);
     }
     setCurrentPath(targetRoute);
@@ -184,11 +185,19 @@ export default function App() {
         }
       }, 120);
     } else {
+      if (window.location.hash) {
+        window.history.replaceState(null, "", targetRoute);
+      }
+      window.scrollTo(0, 0);
       if (window.__lenis) {
         window.__lenis.scrollTo(0, { immediate: true });
-      } else {
-        window.scrollTo(0, 0);
       }
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        if (window.__lenis) {
+          window.__lenis.scrollTo(0, { immediate: true });
+        }
+      }, 50);
     }
   };
 

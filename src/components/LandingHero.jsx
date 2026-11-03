@@ -77,7 +77,7 @@ export default function LandingHero({ navigateTo, onOpenWorkModal, onExploreWork
     <section
       id="home"
       data-nav-theme="dark"
-      className="relative w-screen h-screen min-h-[640px] flex flex-col justify-between bg-[#071731] text-white pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-white/10 overflow-hidden select-none"
+      className="relative w-full h-screen min-h-[640px] flex flex-col justify-between bg-[#071731] text-white pt-28 sm:pt-36 pb-12 sm:pb-16 border-b border-white/10 overflow-hidden select-none"
       aria-label="PT Tricatha Sempiternal Asia Hero"
     >
       {/* 1. Atmospheric Sovereign Event Background Video Layer */}

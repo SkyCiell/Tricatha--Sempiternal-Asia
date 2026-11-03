@@ -5,6 +5,7 @@ import LandingBrands from "../components/LandingBrands";
 import LandingBusiness from "../components/LandingBusiness";
 import LandingFeaturedEvents from "../components/LandingFeaturedEvents";
 import Leadership from "../components/Leadership";
+import EditorialCTA from "../components/EditorialCTA";
 
 export default function HomePage({ navigateTo, onOpenWorkModal }) {
   return (
@@ -37,6 +38,12 @@ export default function HomePage({ navigateTo, onOpenWorkModal }) {
 
       {/* 6. MEET OUR TEAM */}
       <Leadership />
+
+      {/* 7. EXECUTIVE INQUIRY CTA */}
+      <EditorialCTA
+        onStartConversation={() => (onOpenWorkModal ? onOpenWorkModal() : (navigateTo ? navigateTo("/contact") : null))}
+        onExploreWork={() => (navigateTo ? navigateTo("/events") : null)}
+      />
     </div>
   );
 }

@@ -57,10 +57,10 @@ export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="w-10 h-10 rounded-full flex items-center justify-center text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close modal"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
@@ -84,7 +84,7 @@ export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
           </div>
 
           {/* Large Image Frame */}
-          <div className="editorial-image-frame rounded-lg aspect-[16/9] max-h-[200px] bg-[#071731] overflow-hidden border border-white/10">
+          <div className="editorial-image-frame rounded-lg aspect-[16/9] max-h-[160px] sm:max-h-[200px] bg-[#071731] overflow-hidden border border-white/10">
             <img
               src={project.image}
               alt={project.name}
@@ -127,7 +127,7 @@ export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
               <div className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
                 Event Documentation Records
               </div>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {project.gallery.map((imgUrl, i) => (
                   <div key={i} className="aspect-[4/3] rounded overflow-hidden bg-[#071731] border border-white/10">
                     <img src={imgUrl} alt={`${project.name} record ${i + 1}`} className="w-full h-full object-cover" />

@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import backgroundTSA from "../assets/Background_TSA.jpg";
 
 const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop";
 const micePhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2000&auto=format&fit=crop";
@@ -121,7 +122,7 @@ export default function LandingBusiness({ navigateTo }) {
     >
       <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="pb-14 sm:pb-20 border-b border-[#E2E8F0]">
+        <div className="pb-10 sm:pb-14 border-b border-[#E2E8F0]">
           <div className="max-w-3xl space-y-4">
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#071731] tracking-tight leading-[1.08]">
               Our Business.
@@ -129,6 +130,78 @@ export default function LandingBusiness({ navigateTo }) {
             <p className="font-sans text-base sm:text-lg text-[#334155] leading-relaxed font-normal">
               While our brands identify who operates inside the TSA network, our business areas define what the ecosystem delivers across industries. Each division translates specialized domain authority into measurable outcomes.
             </p>
+          </div>
+        </div>
+
+        {/* Holding Anchor Feature: PT Tricatha Sempiternal Asia */}
+        <div className="py-12 sm:py-16 border-b border-[#E2E8F0]">
+          <div className="bg-white rounded-lg border border-[#E2E8F0] p-6 sm:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Column: TSA Holding Editorial Profile */}
+            <div className="lg:col-span-6 space-y-5">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold">
+                  <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+                  <span>PARENT HOLDING · UNIFIED EXECUTIVE COMMAND</span>
+                </div>
+                <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#071731] tracking-tight leading-tight">
+                  PT Tricatha Sempiternal Asia
+                </h3>
+              </div>
+
+              <p className="font-editorial italic text-base sm:text-lg text-[#475569]">
+                "Single-source strategic command, fiduciary governance, and inter-ministerial liaison across all specialized practices."
+              </p>
+
+              <p className="font-sans text-sm sm:text-base text-[#334155] leading-relaxed font-normal">
+                Headquartered in Jakarta, PT Tricatha Sempiternal Asia acts as the parent holding organization guiding each specialized operating division. TSA guarantees institutional protocol, sovereign security covenants, and turnkey delivery standards across government and commercial corridors.
+              </p>
+
+              {/* Key Holding Indicators */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 font-mono text-xs border-t border-[#E2E8F0]">
+                <div>
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">STRUCTURE</div>
+                  <div className="font-bold text-[#071731] mt-0.5">Holding Ecosystem</div>
+                </div>
+                <div>
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">PRACTICE ENTITIES</div>
+                  <div className="font-bold text-[#071731] mt-0.5">5 Business Units</div>
+                </div>
+                <div className="col-span-2 sm:col-span-1">
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider">HEADQUARTERS</div>
+                  <div className="font-bold text-[#071731] mt-0.5">The City Tower, Jakarta</div>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={() => handleBrandClick("/business-group")}
+                  className="btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
+                >
+                  <span>Explore Full Group Ecosystem</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Right Column: Authentic TSA Event Photography */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[16/11] shadow-md group">
+                <img
+                  src={backgroundTSA}
+                  alt="PT Tricatha Sempiternal Asia Strategic Summit Coordination and Assembly Production"
+                  className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 left-3 right-3 text-xs font-mono text-slate-200 bg-[#071731]/80 backdrop-blur-xs px-3 py-1.5 rounded border border-white/10 flex items-center justify-between">
+                  <span>PT Tricatha Sempiternal Asia</span>
+                  <span className="text-[#C8102E] font-semibold">SOVEREIGN MANDATE</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 

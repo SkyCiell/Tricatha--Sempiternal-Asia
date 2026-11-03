@@ -7,7 +7,7 @@ export default function EditorialCTA({ onStartConversation, onExploreWork }) {
     if (onExploreWork) {
       onExploreWork();
     } else {
-      const el = document.querySelector("#projects");
+      const el = document.querySelector("#event") || document.querySelector("#projects");
       if (el) {
         if (window.__lenis) {
           window.__lenis.scrollTo(el, { offset: -80 });

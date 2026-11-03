@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowRight, Building2 } from "lucide-react";
+import backgroundTSA from "../assets/Background_TSA.jpg";
 const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 const gwiPhoto = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop";
 
@@ -37,12 +38,34 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
             el.scrollIntoView({ behavior: "smooth" });
           }
         }
+      } else if (!hash && !initialUnit) {
+        window.scrollTo(0, 0);
+        if (window.__lenis) {
+          window.__lenis.scrollTo(0, { immediate: true });
+        }
       }
     };
     handleHash();
     window.addEventListener("hashchange", handleHash);
     return () => window.removeEventListener("hashchange", handleHash);
-  }, []);
+  }, [initialUnit]);
+
+  useEffect(() => {
+    const hash = (window.location.hash || "").replace("#", "").toLowerCase();
+    if (!hash && !initialUnit) {
+      window.scrollTo(0, 0);
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { immediate: true });
+      }
+      const timer = setTimeout(() => {
+        window.scrollTo(0, 0);
+        if (window.__lenis) {
+          window.__lenis.scrollTo(0, { immediate: true });
+        }
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [initialUnit]);
 
   const handleInquiry = () => {
     if (navigateTo) navigateTo("/contact");
@@ -224,15 +247,56 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
       {/* 2. ECOSYSTEM ARCHITECTURE & SYNERGY MAP */}
       <section id="areas" className="max-w-[1520px] mx-auto px-4 sm:px-8 py-12 sm:py-16 border-b border-[#071731]/10 scroll-mt-[80px]">
 
-        {/* Holding Anchor Bar */}
-        <div className="p-6 sm:p-8 bg-white border border-[#071731]/10 rounded shadow-xs mb-8">
-          <div className="space-y-2 max-w-3xl">
-            <h2 className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-[#071731]">
+        {/* Holding Anchor Feature: PT Tricatha Sempiternal Asia */}
+        <div className="bg-white border border-[#071731]/10 rounded-lg shadow-xs mb-10 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center p-6 sm:p-8">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="inline-flex items-center gap-2 font-mono text-[11px] text-[#C8102E] font-semibold uppercase tracking-wider">
+              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
+              <span>PARENT HOLDING · EXECUTIVE OVERSIGHT &amp; GOVERNANCE</span>
+            </div>
+
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-[#071731]">
               PT TRICATHA SEMPITERNAL ASIA (HOLDING)
             </h2>
+
+            <p className="font-editorial italic text-sm sm:text-base text-slate-600">
+              "Unified strategic command, institutional protocol, and single-source accountability across 5 specialized practice divisions."
+            </p>
+
             <p className="font-sans text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
               Strategic direction, fiduciary oversight, and unified executive command from The City Tower 12th Floor, Central Jakarta. All group practices operate under single-source accountability.
             </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 font-mono text-xs border-t border-[#071731]/10 text-slate-600">
+              <div>
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">STRUCTURE</span>
+                <span className="font-semibold text-[#071731] block mt-0.5">Holding Ecosystem</span>
+              </div>
+              <div>
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">DIVISIONS</span>
+                <span className="font-semibold text-[#071731] block mt-0.5">5 Specialized Entities</span>
+              </div>
+              <div className="col-span-2 sm:col-span-1">
+                <span className="text-[10px] text-slate-400 uppercase tracking-wider block">HEADQUARTERS</span>
+                <span className="font-semibold text-[#071731] block mt-0.5">The City Tower, Jakarta</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="relative rounded overflow-hidden border border-[#071731]/10 bg-[#071731] aspect-[16/11] shadow-sm group">
+              <img
+                src={backgroundTSA}
+                alt="PT Tricatha Sempiternal Asia Sovereign Summit Coordination & Holding Representation"
+                className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute bottom-2.5 left-3 right-3 text-xs font-mono text-slate-200 bg-[#071731]/80 backdrop-blur-xs px-2.5 py-1 rounded border border-white/10 flex items-center justify-between">
+                <span>PT Tricatha Sempiternal Asia</span>
+                <span className="text-[#C8102E] font-semibold text-[10px]">SOVEREIGN MANDATE</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -246,8 +310,8 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
                 id={unit.id}
                 onClick={() => setActiveUnit(unit.id)}
                 className={`p-5 sm:p-6 rounded border transition-all text-left cursor-pointer flex flex-col justify-between ${isSelected
-                    ? "bg-[#071731] text-white border-[#071731] shadow-lg"
-                    : "bg-white text-[#071731] border-[#071731]/10 hover:border-[#071731]/30 hover:bg-[#FAF9F6]"
+                  ? "bg-[#071731] text-white border-[#071731] shadow-lg"
+                  : "bg-white text-[#071731] border-[#071731]/10 hover:border-[#071731]/30 hover:bg-[#FAF9F6]"
                   }`}
               >
                 <div className="space-y-2">
@@ -272,7 +336,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
 
       {/* 3. IN-DEPTH PRACTICE DOSSIER (Natural Responsive Editorial Card) */}
       <section className="relative w-full bg-[#071731] text-white overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 my-8 sm:my-12 shadow-2xl flex flex-col justify-between">
-        
+
         {/* Background Photo Layer */}
         <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
           <AnimatePresence mode="wait">

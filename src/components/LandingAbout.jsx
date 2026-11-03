@@ -1,6 +1,5 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-
 const plenaryPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";
 
 export default function LandingAbout({ navigateTo }) {
@@ -81,8 +80,8 @@ export default function LandingAbout({ navigateTo }) {
         </div>
       </div>
 
-      {/* 2. Fullscreen Photographic Composition: Authentic Plenary & Assembly Staging (100vw Edge-to-Edge) */}
-      <div data-nav-theme="dark" className="relative w-screen left-1/2 -translate-x-1/2 h-[560px] sm:h-[680px] lg:h-[780px] overflow-hidden bg-[#071731] select-none">
+      {/* 2. Fullscreen Photographic Composition: Authentic Plenary & Assembly Staging */}
+      <div data-nav-theme="dark" className="relative w-full h-[560px] sm:h-[680px] lg:h-[780px] overflow-hidden bg-[#071731] select-none">
         <img
           src={plenaryPhoto}
           alt="TSA Sovereign Plenary and Multidisciplinary Assembly Staging"

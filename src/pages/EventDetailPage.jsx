@@ -81,11 +81,33 @@ export default function EventDetailPage({ slug, navigateTo }) {
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#071731] font-sans pb-20 selection:bg-[#C8102E] selection:text-white">
       
-      {/* 1. NATURAL RESPONSIVE EVENT HEADER */}
-      <section className="relative w-full bg-[#071731] text-white overflow-hidden flex flex-col justify-between select-none border-b border-white/10 min-h-[460px] sm:min-h-[520px]">
+      {/* 1. FULL UNINTERRUPTED COVER PHOTO (Clean Floating Back, Never Cropped) */}
+      <section className="relative w-full bg-[#050F22] text-white overflow-hidden select-none border-b border-[#071731]/10">
         
-        {/* Fullscreen Photo Layer */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+        {/* Floating Back Control - No Dividing Line */}
+        <div className="absolute top-24 sm:top-28 left-4 sm:left-8 lg:left-12 z-20">
+          <button
+            onClick={handleBackToEvents}
+            className="group inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-slate-200 hover:text-white transition-colors cursor-pointer bg-[#071731]/80 hover:bg-[#071731] backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 shadow-lg"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1 text-[#C8102E]" />
+            <span>Return to Events Gallery</span>
+          </button>
+        </div>
+
+        {/* Full Cover Photo Stage - Never Cropped */}
+        <div className="relative w-full min-h-[380px] sm:min-h-[480px] lg:min-h-[580px] max-h-[85vh] bg-[#050F22] flex items-center justify-center overflow-hidden py-4 sm:py-6">
+          {/* Ambient blurred backdrop for subtle cinematic depth */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-25">
+            <img
+              src={event.img}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-full object-cover blur-3xl scale-110"
+            />
+          </div>
+
+          {/* Full uncropped cover photo */}
           <motion.img
             src={event.img}
             alt={event.title}
@@ -94,71 +116,58 @@ export default function EventDetailPage({ slug, navigateTo }) {
                 e.currentTarget.src = event.fallbackImg;
               }
             }}
-            initial={{ scale: 1.05, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full h-full object-cover object-center"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="relative z-10 max-w-full max-h-[80vh] w-auto h-auto object-contain mx-auto cursor-pointer drop-shadow-2xl"
+            onClick={() => setSelectedPhoto(event.img)}
+            title="Click to view full image"
             loading="eager"
           />
-
-          {/* Precise Directional Scrim for Readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/75 via-45% to-[#071731]/30 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/55 via-50% to-transparent pointer-events-none" />
         </div>
 
-        {/* Top Floating Back Bar Over Media */}
-        <div className="relative z-10 w-full pt-28 sm:pt-32 px-6 sm:px-12 lg:px-16 flex items-center justify-between gap-4 border-b border-white/10 pb-4">
-          <button
-            onClick={handleBackToEvents}
-            className="group inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-slate-300 hover:text-white transition-colors cursor-pointer"
-          >
-            <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1 text-[#C8102E]" />
-            <span>Return to Events Gallery</span>
-          </button>
-        </div>
+      </section>
 
-        {/* Bottom Prominent Typography Directly Layered Over Media */}
-        <div className="relative z-10 w-full px-6 sm:px-12 lg:px-16 pb-12 sm:pb-16 pt-8">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="max-w-5xl space-y-4 sm:space-y-6"
-          >
-            {/* Category, Year, Date */}
-            <div className="text-xs font-mono text-slate-300">
-              <span className="text-[#C8102E] font-semibold uppercase">{event.category}</span>
-              <span className="mx-2">·</span>
-              <span>{event.year}</span>
-              {event.date && (
-                <>
-                  <span className="mx-2">·</span>
-                  <span>{event.date}</span>
-                </>
-              )}
+      {/* 2. EDITORIAL EVENT TITLE & CORE METADATA */}
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-8 sm:pt-12 pb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="space-y-4 max-w-5xl"
+        >
+          {/* Category, Year, Date */}
+          <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#64748B]">
+            <span className="text-[#C8102E] font-semibold uppercase">{event.category}</span>
+            <span>·</span>
+            <span>{event.year}</span>
+            {event.date && (
+              <>
+                <span>·</span>
+                <span>{event.date}</span>
+              </>
+            )}
+          </div>
+
+          {/* Monumental Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-bold font-heading text-[#071731] tracking-tight leading-[1.08]">
+            {event.title}
+          </h1>
+
+          {/* Venue & Telemetry */}
+          <div className="flex flex-wrap items-center gap-6 text-sm text-[#475569] pt-1">
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-[#C8102E] shrink-0" />
+              <span className="font-normal">{event.venue}</span>
             </div>
-
-            {/* Monumental Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[56px] xl:text-[64px] font-bold font-heading text-white tracking-tight leading-[1.08] drop-shadow-[0_2px_16px_rgba(0,0,0,0.85)]">
-              {event.title}
-            </h1>
-
-            {/* Venue & Telemetry Directly Over Media */}
-            <div className="flex flex-wrap items-center gap-6 text-sm text-slate-200 pt-1">
+            {event.attendees && (
               <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#C8102E] shrink-0" />
-                <span className="font-normal">{event.venue}</span>
+                <Users className="w-4 h-4 text-[#C8102E] shrink-0" />
+                <span className="font-mono text-xs">{event.attendees}</span>
               </div>
-              {event.attendees && (
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-[#C8102E] shrink-0" />
-                  <span className="font-mono text-xs">{event.attendees}</span>
-                </div>
-              )}
-            </div>
-          </motion.div>
-        </div>
-
+            )}
+          </div>
+        </motion.div>
       </section>
 
       {/* 2. EVENT INFORMATION STRIP (Off-White Foundation) */}

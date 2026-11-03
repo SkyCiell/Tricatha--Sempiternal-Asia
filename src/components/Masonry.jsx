@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import "./Masonry.css";
 
 export default function Masonry({
@@ -16,28 +16,30 @@ export default function Masonry({
     }
   };
 
-  // Responsive Grid container: proporsi rapi seragam tanpa card persegi panjang lebar (col-span-2)
+  // Responsive Grid container: clean and natural proportions without forced cropping
   const gridContainerClass =
     columns === 4
-      ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7 auto-rows-[340px] sm:auto-rows-[380px] lg:auto-rows-[400px]"
-      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 auto-rows-[340px] sm:auto-rows-[380px] lg:auto-rows-[400px]";
+      ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 items-stretch"
+      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch";
 
   return (
     <div className={`w-full ${gridContainerClass}`}>
       {items.map((item, index) => {
+        const venueName = (item.location || item.venue || "").split(",")[0];
+
         return (
           <motion.div
             key={item.id || item.slug || index}
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-30px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{
-              duration: 0.5,
-              delay: Math.min(index * 0.05, 0.3),
+              duration: 0.45,
+              delay: Math.min(index * 0.05, 0.25),
               ease: [0.16, 1, 0.3, 1]
             }}
-            whileHover={{ y: -4 }}
-            className="group relative w-full h-full cursor-pointer select-none col-span-1"
+            whileHover={{ y: -5 }}
+            className="group flex flex-col h-full bg-white rounded-md border border-[#E2E8F0] hover:border-[#C8102E]/60 shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer select-none"
             onClick={() => handleClick(item)}
             role="button"
             tabIndex={0}
@@ -49,8 +51,8 @@ export default function Masonry({
             }}
             aria-label={`${item.title} — ${item.category} (${item.year})`}
           >
-            <div className="relative w-full h-full overflow-hidden rounded-[4px] bg-[#071731] border border-white/10 group-hover:border-[#C8102E]/60 shadow-md group-hover:shadow-2xl transition-all duration-300 flex flex-col justify-end">
-              {/* Native Image with dark-to-bright illumination on hover and smooth zoom */}
+            {/* 1. Clear & crisp photography without dark text overlays */}
+            <div className="relative w-full aspect-[16/10] overflow-hidden bg-slate-100 border-b border-[#E2E8F0]/80">
               <img
                 src={item.img}
                 alt={item.title}
@@ -61,43 +63,42 @@ export default function Masonry({
                     e.currentTarget.src = item.fallbackImg;
                   }
                 }}
-                className="absolute inset-0 w-full h-full object-cover brightness-[0.70] contrast-[1.05] group-hover:brightness-100 group-hover:contrast-100 transition-all duration-500 ease-out group-hover:scale-105 pointer-events-none"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
               />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 pointer-events-none" />
+            </div>
 
-              {/* Ambient Dark Scrim: Aktif secara default (gelap), memudar saat di-hover (terang) */}
-              <div className="absolute inset-0 bg-[#071731]/40 opacity-100 group-hover:opacity-0 transition-opacity duration-500 pointer-events-none" />
-
-              {/* Permanent directional gradient for guaranteed text legibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/95 via-[#071731]/45 to-transparent pointer-events-none" />
-
-              {/* Content metadata */}
-              <div className="relative z-10 p-5 sm:p-6 flex flex-col justify-end pointer-events-none">
-                <div className="flex items-center justify-between gap-2 mb-2 font-mono text-[11px]">
-                  <span className="text-[#C8102E] bg-[#C8102E]/10 border border-[#C8102E]/30 px-2.5 py-0.5 rounded-xs uppercase tracking-wider font-semibold">
+            {/* 2. Title, category & event details neatly below the photo */}
+            <div className="p-5 sm:p-6 flex flex-col flex-grow justify-between bg-white">
+              <div>
+                {/* Category Badge & Year */}
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-[#C8102E] bg-[#C8102E]/10 border border-[#C8102E]/25 text-[11px] font-mono font-semibold px-2.5 py-0.5 rounded-xs uppercase tracking-wider">
                     {item.category}
                   </span>
-                  <span className="text-slate-300 font-medium">
+                  <span className="font-mono text-xs text-slate-500 font-medium">
                     {item.year}
                   </span>
                 </div>
 
-                <h3 className="font-heading font-bold text-white text-base sm:text-lg lg:text-xl leading-snug tracking-tight mb-1.5 drop-shadow-sm">
+                {/* Event Title */}
+                <h3 className="font-heading font-bold text-[#071731] group-hover:text-[#C8102E] text-base sm:text-lg leading-snug tracking-tight line-clamp-2 transition-colors duration-200">
                   {item.title}
                 </h3>
 
-                {/* Extra Metadata Revealed Smoothly on Hover */}
-                <div className="space-y-1.5 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  {(item.location || item.venue) && (
-                    <div className="text-xs text-slate-300 font-sans truncate">
-                      {(item.location || item.venue).split(",")[0]}
-                    </div>
-                  )}
+                {/* Location / Venue */}
+                {venueName && (
+                  <p className="mt-2 text-xs text-slate-500 font-sans flex items-center gap-1.5 line-clamp-1">
+                    <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                    <span>{venueName}</span>
+                  </p>
+                )}
+              </div>
 
-                  <div className="font-mono text-[10px] text-white/90 uppercase tracking-widest flex items-center gap-1.5 pt-0.5">
-                    <span className="text-[#C8102E] font-semibold">Inspect Record</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
-                </div>
+              {/* Action Footer */}
+              <div className="mt-5 pt-3.5 border-t border-[#F1F5F9] flex items-center justify-between text-xs font-mono text-[#071731] group-hover:text-[#C8102E] font-semibold uppercase tracking-wider transition-colors duration-200">
+                <span>Explore Record</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </div>
           </motion.div>
