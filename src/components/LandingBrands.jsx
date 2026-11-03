@@ -16,12 +16,13 @@ const BRANDS = [
     discipline: "IT & Technology",
     tagline: "Purpose-Built Technology for Mission-Critical Operations",
     description:
-      "Since 2018, delivering digital systems, secure information management, and mission-critical technology platforms for Indonesian Law Enforcement Agencies.",
+      "Since 2018, delivering secure digital systems, command center telemetry, and mission-critical technology platforms for Indonesian Law Enforcement Agencies.",
     route: "/business-group#tsa-tech",
     photo: techPhoto,
     photoAlt: "TSA IT & Technology Mission-Critical Systems",
     accentColor: "#0284C7",
-    accentBorder: "hover:border-[#0284C7]"
+    gridSpan: "col-span-1 md:col-span-12 lg:col-span-7",
+    heightClass: "min-h-[300px] sm:min-h-[360px] lg:h-[380px]"
   },
   {
     id: "gwi",
@@ -31,12 +32,13 @@ const BRANDS = [
     discipline: "Event Management & Experiential",
     tagline: "Bringing the Right Audience to the Right Experience",
     description:
-      "Gema Waskita Interaktifa delivers national and international conferences, MICE trade expos, and strategic engagements backed by a network of 20,000+ contacts.",
+      "Gema Waskita Interaktifa delivers national & international plenary summits, MICE trade expos, and strategic audience mobilization backed by 20,000+ contacts.",
     route: "/business-group#gwi",
     photo: gwiPhoto,
     photoAlt: "GWI Strategic Event Management and Conferences",
     accentColor: "#C8102E",
-    accentBorder: "hover:border-[#C8102E]"
+    gridSpan: "col-span-1 md:col-span-12 lg:col-span-5",
+    heightClass: "min-h-[300px] sm:min-h-[360px] lg:h-[380px]"
   },
   {
     id: "govadv",
@@ -44,14 +46,15 @@ const BRANDS = [
     tag: "ADVISORY",
     name: "GOVADV",
     discipline: "Government Advisory",
-    tagline: "Navigating Institutions, Advancing Strategic Objectives",
+    tagline: "Navigating Institutions, Advancing Objectives",
     description:
-      "Supporting domestic and international organizations in understanding and navigating Indonesia's institutional landscape with discretion, context, and trust.",
+      "Guiding domestic and international corporations through Indonesia's institutional landscape with strategic context, discretion, and trust.",
     route: "/business-group#govadv",
     photo: govAdvPhoto,
     photoAlt: "GovAdv Institutional Government Advisory",
     accentColor: "#0D9488",
-    accentBorder: "hover:border-[#0D9488]"
+    gridSpan: "col-span-1 md:col-span-6 lg:col-span-4",
+    heightClass: "min-h-[280px] sm:min-h-[320px] lg:h-[340px]"
   },
   {
     id: "enchante",
@@ -61,12 +64,13 @@ const BRANDS = [
     discipline: "Food & Beverage",
     tagline: "Thoughtfully Prepared, Distinctively Presented",
     description:
-      "Crafting culinary products and refined catering experiences tailored for corporate plenaries, social occasions, and diplomatic gatherings with artisanal focus.",
+      "Crafting refined culinary products and bespoke catering tailored for corporate plenaries, diplomatic banquets, and high-profile social occasions.",
     route: "/business-group#enchante",
     photo: culinaryPhoto,
     photoAlt: "Enchantée Kitchen Artisanal Culinary Catering",
     accentColor: "#D97706",
-    accentBorder: "hover:border-[#D97706]"
+    gridSpan: "col-span-1 md:col-span-6 lg:col-span-4",
+    heightClass: "min-h-[280px] sm:min-h-[320px] lg:h-[340px]"
   },
   {
     id: "dna-studio",
@@ -74,14 +78,15 @@ const BRANDS = [
     tag: "BROADCAST",
     name: "DNA STUDIO",
     discipline: "Broadcast Media & 4K Cinema",
-    tagline: "Creative Broadcast & 4K Cinema Production Suite",
+    tagline: "Creative Broadcast & 4K Production Suite",
     description:
-      "Dedicated multi-camera broadcast soundstage at Sudirman Park, producing leader dialogues, audited hybrid AGM telecasts, and syndicated media.",
+      "Sudirman Park multi-camera broadcast soundstage producing leader dialogues, audited hybrid AGM telecasts, and syndicated commercial media.",
     route: "/business-group#dna-studio",
     photo: broadcastPhoto,
     photoAlt: "DNA Studio 4K Broadcast Scenography",
     accentColor: "#6366F1",
-    accentBorder: "hover:border-[#6366F1]"
+    gridSpan: "col-span-1 md:col-span-12 lg:col-span-4",
+    heightClass: "min-h-[280px] sm:min-h-[320px] lg:h-[340px]"
   }
 ];
 
@@ -133,8 +138,14 @@ export default function LandingBrands({ navigateTo }) {
           </div>
         </div>
 
-        {/* Minimalist Showcase Cards: 5 Vertically Aligned Cards Across Full Width */}
-        <div className="pt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6 items-stretch">
+        {/* 
+          Asymmetric Bento Grid:
+          - Top Row: 7 cols (Tech) + 5 cols (GWI) = 12 cols (Flush at baseline)
+          - Bottom Row: 4 cols (GovAdv) + 4 cols (Enchantée) + 4 cols (DNA Studio) = 12 cols (Flush at baseline)
+          - Full-bleed rich photography with smooth zoom on hover
+          - Clean bottom scrim with sharp typography, taglines, and direct navigation
+        */}
+        <div className="pt-10 grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
           {BRANDS.map((brand) => (
             <div
               key={brand.id}
@@ -147,69 +158,61 @@ export default function LandingBrands({ navigateTo }) {
                   handleBrandClick(brand.route);
                 }
               }}
-              className={`group relative flex flex-col h-full bg-white rounded-xl border border-[#E2E8F0] ${brand.accentBorder} shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden cursor-pointer select-none`}
+              className={`group relative flex flex-col justify-end rounded-xl overflow-hidden cursor-pointer select-none border border-black/10 dark:border-white/10 hover:border-[#C8102E] shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 bg-slate-950 ${brand.gridSpan} ${brand.heightClass}`}
             >
-              {/* Brand Accent Top Stripe */}
-              <div
-                className="h-1 w-full shrink-0"
-                style={{ backgroundColor: brand.accentColor }}
+              {/* Full-bleed Photo with Smooth Zoom on Hover */}
+              <img
+                src={brand.photo}
+                alt={brand.photoAlt}
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-106 pointer-events-none"
               />
 
-              {/* Card Photo Frame with Smooth Zoom on Hover */}
-              <div className="relative aspect-[16/11] w-full overflow-hidden bg-slate-900 shrink-0">
-                <img
-                  src={brand.photo}
-                  alt={brand.photoAlt}
-                  loading="lazy"
-                  className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-500 ease-out"
-                />
+              {/* Permanent Ambient Vignette for Razor-sharp Text Contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/10 pointer-events-none" />
 
-                {/* Number & Tag Badge */}
-                <div className="absolute top-3 left-3 z-10 pointer-events-none">
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-white bg-black/65 backdrop-blur-md px-2 py-0.5 rounded-xs border border-white/15">
-                    {brand.num} // {brand.tag}
-                  </span>
-                </div>
+              {/* Top Bar: Number Tag & Action Button */}
+              <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between pointer-events-none">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-white/95 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-sm border border-white/20 shadow-xs">
+                  {brand.num} // {brand.tag}
+                </span>
 
-                {/* Floating Corner Arrow Button */}
-                <div className="absolute top-3 right-3 z-10 pointer-events-none">
-                  <div className="w-7 h-7 rounded-full bg-white/90 text-[#071731] flex items-center justify-center shadow-md backdrop-blur-xs group-hover:bg-[#071731] group-hover:text-white transition-colors duration-200">
-                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </div>
+                <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md text-white/90 border border-white/20 flex items-center justify-center group-hover:bg-[#C8102E] group-hover:border-[#C8102E] group-hover:text-white transition-all duration-300 shadow-sm">
+                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
               </div>
 
-              {/* Card Structured Information */}
-              <div className="p-5 flex flex-col flex-grow justify-between bg-white text-left">
-                <div>
-                  {/* Discipline in Unique Accent Color */}
-                  <div
-                    className="text-[11px] font-mono font-semibold uppercase tracking-wider mb-1.5"
+              {/* Bottom Editorial Content Overlay */}
+              <div className="relative z-10 p-5 sm:p-6 text-left pointer-events-none space-y-2">
+                {/* Discipline Tag */}
+                <div className="flex items-center gap-2">
+                  <span
+                    className="text-[11px] font-mono font-bold uppercase tracking-wider"
                     style={{ color: brand.accentColor }}
                   >
                     {brand.discipline}
-                  </div>
-
-                  {/* Brand Title */}
-                  <h3 className="font-heading font-bold text-base text-[#071731] group-hover:text-[#C8102E] transition-colors duration-200 leading-snug tracking-tight">
-                    {brand.name}
-                  </h3>
-
-                  {/* Tagline */}
-                  <p className="text-xs font-editorial italic text-[#475569] mt-1 line-clamp-1">
-                    "{brand.tagline}"
-                  </p>
-
-                  {/* Description */}
-                  <p className="text-xs text-[#64748B] font-sans mt-2.5 leading-relaxed line-clamp-3">
-                    {brand.description}
-                  </p>
+                  </span>
                 </div>
 
-                {/* Footer Action */}
-                <div className="mt-5 pt-3.5 border-t border-[#F1F5F9] flex items-center justify-between text-xs font-mono font-semibold uppercase tracking-wider text-[#071731] group-hover:text-[#C8102E] transition-colors duration-200">
-                  <span>Explore Practice</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                {/* Brand Title */}
+                <h3 className="font-heading font-bold text-white text-lg sm:text-xl lg:text-2xl leading-snug tracking-tight">
+                  {brand.name}
+                </h3>
+
+                {/* Tagline */}
+                <p className="text-xs sm:text-sm font-editorial italic text-slate-300 line-clamp-1">
+                  "{brand.tagline}"
+                </p>
+
+                {/* Description */}
+                <p className="text-xs text-slate-300/90 font-sans line-clamp-2 leading-relaxed pt-0.5">
+                  {brand.description}
+                </p>
+
+                {/* Explore Action Link */}
+                <div className="pt-2 flex items-center gap-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-white group-hover:text-[#FF6B81] transition-colors duration-200">
+                  <span>Explore Practice Details</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#FF6B81]" />
                 </div>
               </div>
             </div>
