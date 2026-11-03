@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1800&auto=format&fit=crop";
 const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=1800&auto=format&fit=crop";
 const broadcastPhoto = "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop";
-const gwiPhoto = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1600&auto=format&fit=crop";
+const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 const govAdvPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 
 const BRANDS = [
@@ -16,82 +16,72 @@ const BRANDS = [
     discipline: "IT & Technology",
     tagline: "Purpose-Built Technology for Mission-Critical Operations",
     description:
-      "Delivering secure digital systems, command center telemetry, and mission-critical technology platforms for Indonesian Law Enforcement Agencies.",
+      "Since 2018, delivering digital systems, secure information management, and mission-critical technology platforms for Indonesian Law Enforcement Agencies.",
     route: "/business-group#tsa-tech",
     photo: techPhoto,
     photoAlt: "TSA IT & Technology Mission-Critical Systems",
     accentColor: "#0284C7",
-    accentBorder: "hover:border-[#0284C7]",
-    accentText: "text-[#0284C7]",
-    accentBg: "bg-sky-50"
+    accentBorder: "hover:border-[#0284C7]"
+  },
+  {
+    id: "gwi",
+    num: "02",
+    tag: "MICE",
+    name: "GWI",
+    discipline: "Event Management & Experiential",
+    tagline: "Bringing the Right Audience to the Right Experience",
+    description:
+      "Gema Waskita Interaktifa delivers national and international conferences, MICE trade expos, and strategic engagements backed by a network of 20,000+ contacts.",
+    route: "/business-group#gwi",
+    photo: gwiPhoto,
+    photoAlt: "GWI Strategic Event Management and Conferences",
+    accentColor: "#C8102E",
+    accentBorder: "hover:border-[#C8102E]"
+  },
+  {
+    id: "govadv",
+    num: "03",
+    tag: "ADVISORY",
+    name: "GOVADV",
+    discipline: "Government Advisory",
+    tagline: "Navigating Institutions, Advancing Strategic Objectives",
+    description:
+      "Supporting domestic and international organizations in understanding and navigating Indonesia's institutional landscape with discretion, context, and trust.",
+    route: "/business-group#govadv",
+    photo: govAdvPhoto,
+    photoAlt: "GovAdv Institutional Government Advisory",
+    accentColor: "#0D9488",
+    accentBorder: "hover:border-[#0D9488]"
   },
   {
     id: "enchante",
-    num: "02",
+    num: "04",
     tag: "CULINARY",
     name: "ENCHANTÉE KITCHEN",
     discipline: "Food & Beverage",
     tagline: "Thoughtfully Prepared, Distinctively Presented",
     description:
-      "Crafting refined culinary products and bespoke catering experiences tailored for corporate plenaries, state galas, and social occasions.",
+      "Crafting culinary products and refined catering experiences tailored for corporate plenaries, social occasions, and diplomatic gatherings with artisanal focus.",
     route: "/business-group#enchante",
     photo: culinaryPhoto,
     photoAlt: "Enchantée Kitchen Artisanal Culinary Catering",
     accentColor: "#D97706",
-    accentBorder: "hover:border-[#D97706]",
-    accentText: "text-[#D97706]",
-    accentBg: "bg-amber-50"
+    accentBorder: "hover:border-[#D97706]"
   },
   {
     id: "dna-studio",
-    num: "03",
+    num: "05",
     tag: "BROADCAST",
     name: "DNA STUDIO",
-    discipline: "Broadcast & 4K Cinema",
-    tagline: "Creative Broadcast & 4K Production Suite",
+    discipline: "Broadcast Media & 4K Cinema",
+    tagline: "Creative Broadcast & 4K Cinema Production Suite",
     description:
-      "Sudirman Park multi-camera soundstage delivering executive leader dialogues, live hybrid AGM telecasts, and syndicated commercial broadcasts.",
+      "Dedicated multi-camera broadcast soundstage at Sudirman Park, producing leader dialogues, audited hybrid AGM telecasts, and syndicated media.",
     route: "/business-group#dna-studio",
     photo: broadcastPhoto,
     photoAlt: "DNA Studio 4K Broadcast Scenography",
     accentColor: "#6366F1",
-    accentBorder: "hover:border-[#6366F1]",
-    accentText: "text-[#6366F1]",
-    accentBg: "bg-indigo-50"
-  },
-  {
-    id: "gwi",
-    num: "04",
-    tag: "MICE",
-    name: "GWI",
-    discipline: "Event & Experiential",
-    tagline: "Bringing the Right Audience to the Experience",
-    description:
-      "Gema Waskita Interaktifa manages national and international conferences, commercial trade expos, and high-level stakeholder convenings.",
-    route: "/business-group#gwi",
-    photo: gwiPhoto,
-    photoAlt: "GWI Strategic Event Management and Conferences",
-    accentColor: "#C8102E",
-    accentBorder: "hover:border-[#C8102E]",
-    accentText: "text-[#C8102E]",
-    accentBg: "bg-rose-50"
-  },
-  {
-    id: "govadv",
-    num: "05",
-    tag: "ADVISORY",
-    name: "GOVADV",
-    discipline: "Government Advisory",
-    tagline: "Navigating Institutions, Advancing Objectives",
-    description:
-      "Guiding domestic and international corporations through Indonesia's institutional landscape with strategic context, discretion, and trust.",
-    route: "/business-group#govadv",
-    photo: govAdvPhoto,
-    photoAlt: "GovAdv Institutional Government Advisory",
-    accentColor: "#0D9488",
-    accentBorder: "hover:border-[#0D9488]",
-    accentText: "text-[#0D9488]",
-    accentBg: "bg-teal-50"
+    accentBorder: "hover:border-[#6366F1]"
   }
 ];
 
@@ -157,7 +147,7 @@ export default function LandingBrands({ navigateTo }) {
                   handleBrandClick(brand.route);
                 }
               }}
-              className={`group relative flex flex-col h-full bg-white rounded-xl border border-[#E2E8F0] ${brand.accentBorder} shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer select-none`}
+              className={`group relative flex flex-col h-full bg-white rounded-xl border border-[#E2E8F0] ${brand.accentBorder} shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden cursor-pointer select-none`}
             >
               {/* Brand Accent Top Stripe */}
               <div
