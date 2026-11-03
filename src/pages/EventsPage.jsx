@@ -151,12 +151,13 @@ export default function EventsPage({ navigateTo }) {
           ) : (
             <Masonry
               items={filteredEvents}
-              columnWidth={320}
-              gap={18}
+              columnWidth={340}
+              gap={20}
               radius={12}
+              aspectRatio={0.72}
               animateFrom="bottom"
               hoverEffect="zoom"
-              captions="hover"
+              captions="always"
               lightbox
               draggable
               onItemNavigate={handleEventClick}

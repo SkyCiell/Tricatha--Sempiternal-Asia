@@ -10,14 +10,14 @@ const ITEM = 'group/item absolute top-0 left-0 will-change-transform data-[dragg
 const CARD =
   'group/card relative block h-full w-full cursor-pointer rounded-[var(--masonry-radius,12px)] border-0 bg-transparent p-0 text-left text-inherit no-underline outline-none [-webkit-tap-highlight-color:transparent] [font:inherit] [transform:perspective(900px)_rotateX(var(--masonry-tilt-x,0deg))_rotateY(var(--masonry-tilt-y,0deg))_translateY(var(--masonry-lift,0px))_scale(var(--masonry-scale,1))] [transition:transform_0.5s_cubic-bezier(0.2,0.8,0.2,1),box-shadow_0.5s_cubic-bezier(0.2,0.8,0.2,1),opacity_0.35s_ease] focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-current group-data-[hover=lift]/masonry:group-hover/item:shadow-[0_22px_40px_-22px_rgba(0,0,0,0.55)] group-data-[hover=lift]/masonry:group-hover/item:[--masonry-lift:-6px] group-data-[hover=lift]/masonry:group-hover/item:[--masonry-scale:1.02] group-data-[hover=tilt]/masonry:[transition:transform_0.25s_cubic-bezier(0.2,0.8,0.2,1),box-shadow_0.5s_cubic-bezier(0.2,0.8,0.2,1),opacity_0.35s_ease] group-data-[hover=tilt]/masonry:group-hover/item:shadow-[0_26px_44px_-24px_rgba(0,0,0,0.55)] group-data-[hover=tilt]/masonry:group-hover/item:[--masonry-scale:1.03] group-data-[dimmed]/item:opacity-35 group-data-[dragging]/item:cursor-grabbing group-data-[dragging]/item:shadow-[0_34px_60px_-26px_rgba(0,0,0,0.6)] group-data-[dragging]/item:[--masonry-scale:1.05]';
 const MEDIA =
-  'relative isolate block h-full w-full overflow-hidden rounded-[var(--masonry-radius,12px)] bg-[rgba(127,127,127,0.14)]';
+  'relative isolate block h-full w-full overflow-hidden rounded-[var(--masonry-radius,12px)] bg-[rgba(127,127,127,0.14)] border border-black/10 shadow-sm';
 const PARALLAX = 'absolute inset-0 block';
 const IMAGE =
   'pointer-events-none block h-full w-full object-cover opacity-0 select-none [-webkit-user-drag:none] [transition:opacity_0.5s_ease,transform_0.8s_cubic-bezier(0.2,0.8,0.2,1)] data-[loaded]:opacity-100 group-data-[hover=zoom]/masonry:group-hover/item:[transform:scale(1.07)]';
 const CAPTION =
-  'pointer-events-none absolute right-0 bottom-0 left-0 flex flex-col gap-0.5 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.02)_15%,rgba(0,0,0,0.08)_30%,rgba(0,0,0,0.18)_45%,rgba(0,0,0,0.3)_60%,rgba(0,0,0,0.42)_75%,rgba(0,0,0,0.5)_88%,rgba(0,0,0,0.54)_100%)] px-3.5 pt-10 pb-3 text-white [transition:opacity_0.35s_ease,transform_0.5s_cubic-bezier(0.2,0.8,0.2,1)] data-[mode=hover]:[transform:translateY(6px)] data-[mode=hover]:opacity-0 data-[mode=hover]:group-hover/item:[transform:none] data-[mode=hover]:group-hover/item:opacity-100 data-[mode=hover]:group-focus-visible/card:[transform:none] data-[mode=hover]:group-focus-visible/card:opacity-100';
-const TITLE = 'text-sm leading-[1.3] font-semibold tracking-[-0.01em]';
-const TEXT = 'text-xs leading-[1.4] opacity-80';
+  'pointer-events-none absolute right-0 bottom-0 left-0 flex flex-col gap-1 bg-[linear-gradient(180deg,rgba(7,23,49,0)_0%,rgba(7,23,49,0.3)_25%,rgba(7,23,49,0.75)_65%,rgba(7,23,49,0.92)_100%)] px-4 pt-12 pb-4 text-white [transition:opacity_0.35s_ease,transform_0.5s_cubic-bezier(0.2,0.8,0.2,1)] data-[mode=hover]:[transform:translateY(6px)] data-[mode=hover]:opacity-0 data-[mode=hover]:group-hover/item:[transform:none] data-[mode=hover]:group-hover/item:opacity-100 data-[mode=hover]:group-focus-visible/card:[transform:none] data-[mode=hover]:group-focus-visible/card:opacity-100';
+const TITLE = 'text-sm sm:text-base leading-[1.25] font-bold tracking-tight text-white line-clamp-1';
+const TEXT = 'text-xs leading-[1.4] text-slate-300 line-clamp-1';
 const GHOST = 'pointer-events-none absolute top-0 left-0';
 const BOX = 'fixed inset-0 z-[1000]';
 const BOX_BACKDROP = 'absolute inset-0 bg-[rgba(9,9,11,0.9)]';
@@ -45,13 +45,29 @@ const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
 const keyOf = item => String(item.id ?? item.slug ?? item.img);
 
-const aspectOf = (item, measured) => {
+const parseRatio = ratio => {
+  if (!ratio || ratio === 'auto') return null;
+  if (typeof ratio === 'number') return ratio > 0 ? ratio : null;
+  if (typeof ratio === 'string') {
+    if (ratio.includes('/')) {
+      const [w, h] = ratio.split('/').map(Number);
+      if (w > 0 && h > 0) return h / w;
+    }
+    const n = Number(ratio);
+    return n > 0 ? n : null;
+  }
+  return null;
+};
+
+const aspectOf = (item, measured, uniformAspect) => {
+  if (uniformAspect && uniformAspect > 0) return uniformAspect;
+  if (item.aspectRatio && item.aspectRatio > 0) return item.aspectRatio;
   const width = item.width ?? 0;
   const height = item.height ?? 0;
   if (width > 0 && height > 0) return height / width;
   if (measured[keyOf(item)]) return measured[keyOf(item)];
   if (height > 0) return height / 600;
-  return 1;
+  return 0.72;
 };
 
 const needsMeasure = item => !((item.height ?? 0) > 0);
@@ -65,7 +81,7 @@ const gridOf = (width, columns, columnWidth, gap) => {
   return { count, size: Math.max(1, (width - gap * (count - 1)) / count) };
 };
 
-const place = (heights, item, grid, gap, measured, commit) => {
+const place = (heights, item, grid, gap, measured, commit, uniformAspect) => {
   const { count, size } = grid;
   const span = Math.min(count, Math.max(1, Math.round(item.span || 1)));
   let column = 0;
@@ -79,7 +95,7 @@ const place = (heights, item, grid, gap, measured, commit) => {
     }
   }
   const w = size * span + gap * (span - 1);
-  const h = Math.max(1, w * aspectOf(item, measured));
+  const h = Math.max(1, Math.round(w * aspectOf(item, measured, uniformAspect)));
   if (commit) for (let k = column; k < column + span; k++) heights[k] = top + h + gap;
   return { x: Math.round(column * (size + gap)), y: Math.round(top), w, h };
 };
@@ -99,21 +115,21 @@ const scrollerOf = element => {
   return null;
 };
 
-const layoutOf = (list, width, columns, columnWidth, gap, measured) => {
+const layoutOf = (list, width, columns, columnWidth, gap, measured, uniformAspect) => {
   const grid = gridOf(width, columns, columnWidth, gap);
   const heights = new Array(grid.count).fill(0);
-  const tiles = list.map(item => ({ item, id: keyOf(item), ...place(heights, item, grid, gap, measured, true) }));
+  const tiles = list.map(item => ({ item, id: keyOf(item), ...place(heights, item, grid, gap, measured, true, uniformAspect) }));
   return { tiles, height: Math.max(0, Math.max(...heights) - gap) };
 };
 
-const slotsFor = (others, dragged, width, columns, columnWidth, gap, measured) => {
+const slotsFor = (others, dragged, width, columns, columnWidth, gap, measured, uniformAspect) => {
   const grid = gridOf(width, columns, columnWidth, gap);
   const heights = new Array(grid.count).fill(0);
   const slots = [];
   for (let i = 0; i <= others.length; i++) {
-    const slot = place(heights, dragged, grid, gap, measured, false);
+    const slot = place(heights, dragged, grid, gap, measured, false, uniformAspect);
     slots.push({ x: slot.x + slot.w / 2, y: slot.y + slot.h / 2 });
-    if (i < others.length) place(heights, others[i], grid, gap, measured, true);
+    if (i < others.length) place(heights, others[i], grid, gap, measured, true, uniformAspect);
   }
   return slots;
 };
@@ -124,6 +140,7 @@ const Masonry = ({
   columnWidth = 240,
   gap = 12,
   radius = 12,
+  aspectRatio = 0.72,
   animateFrom = 'bottom',
   stagger = 0.05,
   duration = 0.6,
@@ -164,8 +181,11 @@ const Masonry = ({
   const [openId, setOpenId] = useState(null);
   const [closing, setClosing] = useState(false);
 
+  const uniformAspect = parseRatio(aspectRatio);
+
   const settings = {
     gap: Math.max(0, gap),
+    aspectRatio: uniformAspect,
     animateFrom: ANIMATE_FROM.includes(animateFrom) ? animateFrom : 'bottom',
     stagger: Math.max(0, stagger),
     duration: Math.max(0.05, duration),
@@ -197,14 +217,14 @@ const Masonry = ({
   }, [items, order]);
 
   const layout = useMemo(
-    () => (width && ready ? layoutOf(ordered, width, columns, columnWidth, settings.gap, measured) : null),
-    [ordered, width, ready, columns, columnWidth, settings.gap, measured]
+    () => (width && ready ? layoutOf(ordered, width, columns, columnWidth, settings.gap, measured, uniformAspect) : null),
+    [ordered, width, ready, columns, columnWidth, settings.gap, measured, uniformAspect]
   );
   const layoutRef = useRef(layout);
   layoutRef.current = layout;
   const orderedRef = useRef(ordered);
   orderedRef.current = ordered;
-  const params = { width, columns, columnWidth, gap: settings.gap, measured };
+  const params = { width, columns, columnWidth, gap: settings.gap, measured, uniformAspect };
   const paramsRef = useRef(params);
   paramsRef.current = params;
 
@@ -658,7 +678,7 @@ const Masonry = ({
     const grid = paramsRef.current;
     if (!dragged || !grid.width) return;
     const others = list.filter(item => keyOf(item) !== drag.id);
-    const slots = slotsFor(others, dragged, grid.width, grid.columns, grid.columnWidth, grid.gap, grid.measured);
+    const slots = slotsFor(others, dragged, grid.width, grid.columns, grid.columnWidth, grid.gap, grid.measured, grid.uniformAspect);
     const cx = spring.x + spring.w / 2;
     const cy = spring.y + spring.h / 2;
     const current = list.indexOf(dragged);
@@ -723,7 +743,10 @@ const Masonry = ({
   const mediaRect = id => nodes.current.get(id)?.querySelector('[data-media]')?.getBoundingClientRect() ?? null;
 
   const frameFor = item => {
-    const aspect = aspectOf(item, measured);
+    const naturalAspect = (item.width && item.height)
+      ? item.height / item.width
+      : (measured[keyOf(item)] || aspectOf(item, measured));
+    const aspect = naturalAspect;
     const pad = window.innerWidth < 640 ? 16 : 72;
     const room = item.title || item.description || item.url ? 64 : 0;
     const maxW = Math.max(40, window.innerWidth - pad * 2);
