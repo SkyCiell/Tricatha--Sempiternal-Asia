@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ArrowUpRight } from "lucide-react";
 
 const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1800&auto=format&fit=crop";
@@ -10,69 +10,105 @@ const govAdvPhoto = "https://images.unsplash.com/photo-1511578314322-379afb47686
 const BRANDS = [
   {
     id: "tsa-tech",
+    num: "01",
+    tag: "TECH",
     name: "TSA IT & TECHNOLOGY",
     discipline: "IT & Technology",
     tagline: "Purpose-Built Technology for Mission-Critical Operations",
     description:
-      "Since 2018, delivering digital systems, secure information management, and mission-critical technology platforms for Indonesian Law Enforcement Agencies.",
+      "Delivering secure digital systems, command center telemetry, and mission-critical technology platforms for Indonesian Law Enforcement Agencies.",
     route: "/business-group#tsa-tech",
     photo: techPhoto,
-    photoAlt: "TSA IT & Technology Mission-Critical Systems"
+    photoAlt: "TSA IT & Technology Mission-Critical Systems",
+    accentColor: "#0284C7",
+    accentBorder: "hover:border-[#0284C7]",
+    accentText: "text-[#0284C7]",
+    accentBg: "bg-sky-50"
   },
   {
     id: "enchante",
+    num: "02",
+    tag: "CULINARY",
     name: "ENCHANTÉE KITCHEN",
     discipline: "Food & Beverage",
     tagline: "Thoughtfully Prepared, Distinctively Presented",
     description:
-      "Crafting culinary products and refined catering experiences tailored for corporate plenaries, social occasions, and diplomatic gatherings with artisanal focus.",
+      "Crafting refined culinary products and bespoke catering experiences tailored for corporate plenaries, state galas, and social occasions.",
     route: "/business-group#enchante",
     photo: culinaryPhoto,
-    photoAlt: "Enchantée Kitchen Artisanal Culinary Catering"
+    photoAlt: "Enchantée Kitchen Artisanal Culinary Catering",
+    accentColor: "#D97706",
+    accentBorder: "hover:border-[#D97706]",
+    accentText: "text-[#D97706]",
+    accentBg: "bg-amber-50"
   },
   {
     id: "dna-studio",
+    num: "03",
+    tag: "BROADCAST",
     name: "DNA STUDIO",
-    discipline: "Broadcast Media & 4K Cinema",
-    tagline: "Creative Broadcast & 4K Cinema Production Suite",
+    discipline: "Broadcast & 4K Cinema",
+    tagline: "Creative Broadcast & 4K Production Suite",
     description:
-      "Dedicated multi-camera broadcast soundstage at Sudirman Park, producing leader dialogues, audited hybrid AGM telecasts, and syndicated media.",
+      "Sudirman Park multi-camera soundstage delivering executive leader dialogues, live hybrid AGM telecasts, and syndicated commercial broadcasts.",
     route: "/business-group#dna-studio",
     photo: broadcastPhoto,
-    photoAlt: "DNA Studio 4K Broadcast Scenography"
+    photoAlt: "DNA Studio 4K Broadcast Scenography",
+    accentColor: "#6366F1",
+    accentBorder: "hover:border-[#6366F1]",
+    accentText: "text-[#6366F1]",
+    accentBg: "bg-indigo-50"
   },
   {
     id: "gwi",
+    num: "04",
+    tag: "MICE",
     name: "GWI",
-    discipline: "Event Management & Experiential",
-    tagline: "Bringing the Right Audience to the Right Experience",
+    discipline: "Event & Experiential",
+    tagline: "Bringing the Right Audience to the Experience",
     description:
-      "Gema Waskita Interaktifa delivers national and international conferences, MICE trade expos, and strategic engagements backed by a network of 20,000+ contacts.",
+      "Gema Waskita Interaktifa manages national and international conferences, commercial trade expos, and high-level stakeholder convenings.",
     route: "/business-group#gwi",
     photo: gwiPhoto,
-    photoAlt: "GWI Strategic Event Management and Conferences"
+    photoAlt: "GWI Strategic Event Management and Conferences",
+    accentColor: "#C8102E",
+    accentBorder: "hover:border-[#C8102E]",
+    accentText: "text-[#C8102E]",
+    accentBg: "bg-rose-50"
   },
   {
     id: "govadv",
+    num: "05",
+    tag: "ADVISORY",
     name: "GOVADV",
     discipline: "Government Advisory",
-    tagline: "Navigating Institutions, Advancing Strategic Objectives",
+    tagline: "Navigating Institutions, Advancing Objectives",
     description:
-      "Supporting domestic and international organizations in understanding and navigating Indonesia's institutional landscape with discretion, context, and trust.",
+      "Guiding domestic and international corporations through Indonesia's institutional landscape with strategic context, discretion, and trust.",
     route: "/business-group#govadv",
     photo: govAdvPhoto,
-    photoAlt: "GovAdv Institutional Government Advisory"
+    photoAlt: "GovAdv Institutional Government Advisory",
+    accentColor: "#0D9488",
+    accentBorder: "hover:border-[#0D9488]",
+    accentText: "text-[#0D9488]",
+    accentBg: "bg-teal-50"
   }
 ];
 
 export default function LandingBrands({ navigateTo }) {
-  const [activeBrandId, setActiveBrandId] = useState(BRANDS[0].id);
-
-  const activeBrand = BRANDS.find((b) => b.id === activeBrandId) || BRANDS[0];
-
   const handleBrandClick = (route) => {
     if (navigateTo && route) {
       navigateTo(route);
+    } else if (route) {
+      window.location.href = route;
+    }
+  };
+
+  const handleViewAllBrands = () => {
+    if (navigateTo) {
+      navigateTo("/business-group");
+    } else {
+      window.location.href = "/business-group";
     }
   };
 
@@ -85,7 +121,7 @@ export default function LandingBrands({ navigateTo }) {
     >
       <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="pb-10 sm:pb-12 border-b border-[#E2E8F0]">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 sm:pb-12 border-b border-[#E2E8F0]">
           <div className="space-y-3 max-w-3xl">
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[#071731] tracking-tight leading-[1.1]">
               Our Brands.
@@ -94,144 +130,97 @@ export default function LandingBrands({ navigateTo }) {
               Five specialized operating brands representing the multidisciplinary depth of PT Tricatha Sempiternal Asia.
             </p>
           </div>
-        </div>
 
-        {/* Visual Brand Showcase: Interactive Showcase on Large Screens */}
-        <div className="hidden lg:grid grid-cols-12 gap-10 lg:gap-14 pt-10 items-start">
-          {/* Left Column: Brand Index List (5 cols) */}
-          <div className="lg:col-span-5 space-y-2">
-            {BRANDS.map((brand) => {
-              const isActive = brand.id === activeBrandId;
-              return (
-                <div
-                  key={brand.id}
-                  onMouseEnter={() => setActiveBrandId(brand.id)}
-                  onClick={() => handleBrandClick(brand.route)}
-                  className={`p-5 transition-all duration-200 cursor-pointer border-b ${
-                    isActive
-                      ? "border-[#071731] bg-white shadow-xs"
-                      : "border-[#E2E8F0] hover:bg-white/60 hover:border-slate-300"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-[11px] font-mono uppercase text-[#C8102E] font-semibold tracking-wider">
-                        {brand.discipline}
-                      </div>
-                      <h3 className="font-heading font-bold text-lg text-[#071731] tracking-tight mt-0.5">
-                        {brand.name}
-                      </h3>
-                      <p className="text-xs text-[#64748B] font-sans mt-1 line-clamp-1">
-                        {brand.tagline}
-                      </p>
-                    </div>
-
-                    <div className="shrink-0 pl-3">
-                      <div
-                        className={`w-8 h-8 rounded flex items-center justify-center transition-colors ${
-                          isActive
-                            ? "bg-[#071731] text-white"
-                            : "bg-[#FAF9F6] text-[#64748B]"
-                        }`}
-                      >
-                        <ArrowUpRight className="w-4 h-4" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Right Column: Active Brand Visual Canvas (7 cols) */}
-          <div className="lg:col-span-7">
-            <div className="bg-white border border-[#E2E8F0] rounded-lg overflow-hidden shadow-sm">
-              {/* Brand Visual Media */}
-              <div className="relative aspect-[16/10] w-full bg-[#071731] overflow-hidden">
-                <img
-                  key={activeBrand.id}
-                  src={activeBrand.photo}
-                  alt={activeBrand.photoAlt}
-                  className="w-full h-full object-cover object-center transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
-              </div>
-
-              {/* Brand Details Bar */}
-              <div className="p-8 space-y-4">
-                <div className="space-y-1">
-                  <div className="text-xs font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
-                    {activeBrand.discipline}
-                  </div>
-                  <h3 className="font-heading text-2xl font-bold text-[#071731] tracking-tight">
-                    {activeBrand.name}
-                  </h3>
-                  <div className="text-sm font-editorial italic text-[#475569]">
-                    "{activeBrand.tagline}"
-                  </div>
-                </div>
-
-                <p className="text-sm text-[#334155] font-sans leading-relaxed">
-                  {activeBrand.description}
-                </p>
-
-                <div className="pt-2 flex items-center justify-end border-t border-[#E2E8F0]">
-                  <button
-                    type="button"
-                    onClick={() => handleBrandClick(activeBrand.route)}
-                    className="btn-editorial-red text-xs py-2.5 px-5 cursor-pointer inline-flex items-center gap-2"
-                  >
-                    <span>Explore {activeBrand.name}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            </div>
+          <div className="shrink-0">
+            <button
+              type="button"
+              onClick={handleViewAllBrands}
+              className="btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2 shadow-xs"
+            >
+              <span>Explore All Brands</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </button>
           </div>
         </div>
 
-        {/* Mobile & Tablet Stacked Editorial Cards */}
-        <div className="lg:hidden space-y-6 pt-8">
+        {/* Minimalist Showcase Cards: 5 Vertically Aligned Cards Across Full Width */}
+        <div className="pt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6 items-stretch">
           {BRANDS.map((brand) => (
             <div
               key={brand.id}
-              className="bg-white border border-[#E2E8F0] rounded-lg overflow-hidden shadow-xs"
+              onClick={() => handleBrandClick(brand.route)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleBrandClick(brand.route);
+                }
+              }}
+              className={`group relative flex flex-col h-full bg-white rounded-xl border border-[#E2E8F0] ${brand.accentBorder} shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer select-none`}
             >
-              <div className="relative aspect-[16/9] w-full bg-[#071731] overflow-hidden">
+              {/* Brand Accent Top Stripe */}
+              <div
+                className="h-1 w-full shrink-0"
+                style={{ backgroundColor: brand.accentColor }}
+              />
+
+              {/* Card Photo Frame with Smooth Zoom on Hover */}
+              <div className="relative aspect-[16/11] w-full overflow-hidden bg-slate-900 shrink-0">
                 <img
                   src={brand.photo}
                   alt={brand.photoAlt}
-                  className="w-full h-full object-cover object-center"
                   loading="lazy"
+                  className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-500 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/60 via-transparent to-transparent pointer-events-none" />
+
+                {/* Number & Tag Badge */}
+                <div className="absolute top-3 left-3 z-10 pointer-events-none">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-white bg-black/65 backdrop-blur-md px-2 py-0.5 rounded-xs border border-white/15">
+                    {brand.num} // {brand.tag}
+                  </span>
+                </div>
+
+                {/* Floating Corner Arrow Button */}
+                <div className="absolute top-3 right-3 z-10 pointer-events-none">
+                  <div className="w-7 h-7 rounded-full bg-white/90 text-[#071731] flex items-center justify-center shadow-md backdrop-blur-xs group-hover:bg-[#071731] group-hover:text-white transition-colors duration-200">
+                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </div>
+                </div>
               </div>
 
-              <div className="p-5 space-y-3">
+              {/* Card Structured Information */}
+              <div className="p-5 flex flex-col flex-grow justify-between bg-white text-left">
                 <div>
-                  <div className="text-[11px] font-mono uppercase text-[#C8102E] font-semibold tracking-wider">
+                  {/* Discipline in Unique Accent Color */}
+                  <div
+                    className="text-[11px] font-mono font-semibold uppercase tracking-wider mb-1.5"
+                    style={{ color: brand.accentColor }}
+                  >
                     {brand.discipline}
                   </div>
-                  <h3 className="font-heading font-bold text-lg text-[#071731] tracking-tight mt-0.5">
+
+                  {/* Brand Title */}
+                  <h3 className="font-heading font-bold text-base text-[#071731] group-hover:text-[#C8102E] transition-colors duration-200 leading-snug tracking-tight">
                     {brand.name}
                   </h3>
-                  <p className="text-xs font-editorial italic text-[#64748B]">
+
+                  {/* Tagline */}
+                  <p className="text-xs font-editorial italic text-[#475569] mt-1 line-clamp-1">
                     "{brand.tagline}"
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-xs text-[#64748B] font-sans mt-2.5 leading-relaxed line-clamp-3">
+                    {brand.description}
                   </p>
                 </div>
 
-                <p className="text-xs text-[#334155] leading-relaxed">
-                  {brand.description}
-                </p>
-
-                <button
-                  type="button"
-                  onClick={() => handleBrandClick(brand.route)}
-                  className="w-full btn-editorial-navy text-xs py-3 px-4 cursor-pointer flex items-center justify-center gap-2 mt-2"
-                >
-                  <span>Explore {brand.name}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </button>
+                {/* Footer Action */}
+                <div className="mt-5 pt-3.5 border-t border-[#F1F5F9] flex items-center justify-between text-xs font-mono font-semibold uppercase tracking-wider text-[#071731] group-hover:text-[#C8102E] transition-colors duration-200">
+                  <span>Explore Practice</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                </div>
               </div>
             </div>
           ))}
