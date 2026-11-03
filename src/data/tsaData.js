@@ -497,46 +497,6 @@ export const businessGroupData = [
     anchorId: "unit-tsa-tech"
   },
   {
-    id: "enchante",
-    code: "ENCHANTE",
-    name: "ENCHANTÉE KITCHEN",
-    fullName: "Enchantée Kitchen | Food & Beverage",
-    tagline: "Thoughtfully Prepared, Distinctively Presented",
-    badge: "Food & Beverage",
-    description: "Enchantée Kitchen is TSA’s food and beverage division, creating thoughtfully prepared culinary products and catering experiences for corporate, social, and private occasions. Every offering is developed with attention to flavour, quality, presentation, and the character of the occasion it is intended to complement.",
-    focusAreas: [
-      "Corporate Dining & Executive Catering",
-      "Social & Private Occasion Experiences",
-      "Artisanal Culinary Products & Menus",
-      "Distinctive Presentation & Hospitality Solutions"
-    ],
-    metrics: [
-      { label: "Occasions Served", value: "Corporate & Social" },
-      { label: "Culinary Standard", value: "Artisanal Focus" }
-    ],
-    anchorId: "unit-enchante"
-  },
-  {
-    id: "dna-studio",
-    code: "DNA STUDIO",
-    name: "DNA STUDIO",
-    fullName: "DNA STUDIO Creative Broadcast & Cinema",
-    tagline: "Creative Broadcast & 4K Cinema Production Suite",
-    badge: "Cinema & Broadcast",
-    description: "Headquartered at Sudirman Park in Central Jakarta, DNA STUDIO is TSA's dedicated 4K multi-camera broadcast facility. Producing executive leader dialogues, high-production corporate podcasts, and syndicated plenary live feeds.",
-    focusAreas: [
-      "Turnkey 4K Cinema Multi-Cam Live Feeds",
-      "Executive Thought Leadership Podcasts",
-      "Simultaneous Interpretation Audio Routing",
-      "Syndicated International Broadcast Distribution"
-    ],
-    metrics: [
-      { label: "Syndicated Views", value: "2.4M+" },
-      { label: "Studio Hardware", value: "4K Cinema Rig" }
-    ],
-    anchorId: "unit-dna"
-  },
-  {
     id: "gwi",
     code: "GWI",
     name: "GWI",
@@ -575,6 +535,46 @@ export const businessGroupData = [
       { label: "Engagement Ethos", value: "Discretion & Trust" }
     ],
     anchorId: "unit-govadv"
+  },
+  {
+    id: "enchante",
+    code: "ENCHANTE",
+    name: "ENCHANTÉE KITCHEN",
+    fullName: "Enchantée Kitchen | Food & Beverage",
+    tagline: "Thoughtfully Prepared, Distinctively Presented",
+    badge: "Food & Beverage",
+    description: "Enchantée Kitchen is TSA’s food and beverage division, creating thoughtfully prepared culinary products and catering experiences for corporate, social, and private occasions. Every offering is developed with attention to flavour, quality, presentation, and the character of the occasion it is intended to complement.",
+    focusAreas: [
+      "Corporate Dining & Executive Catering",
+      "Social & Private Occasion Experiences",
+      "Artisanal Culinary Products & Menus",
+      "Distinctive Presentation & Hospitality Solutions"
+    ],
+    metrics: [
+      { label: "Occasions Served", value: "Corporate & Social" },
+      { label: "Culinary Standard", value: "Artisanal Focus" }
+    ],
+    anchorId: "unit-enchante"
+  },
+  {
+    id: "dna-studio",
+    code: "DNA STUDIO",
+    name: "DNA STUDIO",
+    fullName: "DNA STUDIO Creative Broadcast & Cinema",
+    tagline: "Creative Broadcast & 4K Cinema Production Suite",
+    badge: "Cinema & Broadcast",
+    description: "Headquartered at Sudirman Park in Central Jakarta, DNA STUDIO is TSA's dedicated 4K multi-camera broadcast facility. Producing executive leader dialogues, high-production corporate podcasts, and syndicated plenary live feeds.",
+    focusAreas: [
+      "Turnkey 4K Cinema Multi-Cam Live Feeds",
+      "Executive Thought Leadership Podcasts",
+      "Simultaneous Interpretation Audio Routing",
+      "Syndicated International Broadcast Distribution"
+    ],
+    metrics: [
+      { label: "Syndicated Views", value: "2.4M+" },
+      { label: "Studio Hardware", value: "4K Cinema Rig" }
+    ],
+    anchorId: "unit-dna"
   }
 ];
 

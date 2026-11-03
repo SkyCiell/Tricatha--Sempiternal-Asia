@@ -6,22 +6,45 @@ import {
   Users,
   ArrowUpRight,
   Maximize2,
-  X
+  X,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { getEventBySlug, EVENTS_DATA } from "../data/eventsData";
 
 export default function EventDetailPage({ slug, navigateTo }) {
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(null);
+
+  // Retrieve event by slug or fallback to the first event
+  const event = getEventBySlug(slug) || EVENTS_DATA[0];
+
+  const galleryImages = event?.gallery && event.gallery.length > 0
+    ? event.gallery
+    : [event?.img || ""];
+
+  const handlePrevPhoto = (e) => {
+    if (e) e.stopPropagation();
+    setSelectedPhotoIndex((prev) => (prev > 0 ? prev - 1 : galleryImages.length - 1));
+  };
+
+  const handleNextPhoto = (e) => {
+    if (e) e.stopPropagation();
+    setSelectedPhotoIndex((prev) => (prev < galleryImages.length - 1 ? prev + 1 : 0));
+  };
 
   useEffect(() => {
-    if (!selectedPhoto) return;
+    if (selectedPhotoIndex === null) return;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     if (window.__lenis) window.__lenis.stop();
 
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        setSelectedPhoto(null);
+        setSelectedPhotoIndex(null);
+      } else if (e.key === "ArrowLeft") {
+        setSelectedPhotoIndex((prev) => (prev > 0 ? prev - 1 : galleryImages.length - 1));
+      } else if (e.key === "ArrowRight") {
+        setSelectedPhotoIndex((prev) => (prev < galleryImages.length - 1 ? prev + 1 : 0));
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -30,10 +53,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
       if (window.__lenis) window.__lenis.start();
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedPhoto]);
-
-  // Retrieve event by slug or fallback to the first event
-  const event = getEventBySlug(slug) || EVENTS_DATA[0];
+  }, [selectedPhotoIndex, galleryImages.length]);
 
   const handleBackToEvents = () => {
     if (navigateTo) {
@@ -74,9 +94,6 @@ export default function EventDetailPage({ slug, navigateTo }) {
     );
   }
 
-  const galleryImages = event.gallery && event.gallery.length > 0
-    ? event.gallery
-    : [event.img];
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#071731] font-sans pb-20 selection:bg-[#C8102E] selection:text-white">
@@ -120,7 +137,10 @@ export default function EventDetailPage({ slug, navigateTo }) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative z-10 max-w-full max-h-[80vh] w-auto h-auto object-contain mx-auto cursor-pointer drop-shadow-2xl"
-            onClick={() => setSelectedPhoto(event.img)}
+            onClick={() => {
+              const idx = galleryImages.indexOf(event.img);
+              setSelectedPhotoIndex(idx !== -1 ? idx : 0);
+            }}
             title="Click to view full image"
             loading="eager"
           />
@@ -237,7 +257,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
           {galleryImages.map((imgSrc, idx) => (
             <div
               key={idx}
-              onClick={() => setSelectedPhoto(imgSrc)}
+              onClick={() => setSelectedPhotoIndex(idx)}
               className="editorial-image-frame group relative overflow-hidden rounded bg-white aspect-[4/3] cursor-pointer shadow-xs border border-[#071731]/10"
             >
               <img
@@ -370,34 +390,75 @@ export default function EventDetailPage({ slug, navigateTo }) {
         </div>
       </section>
 
-      {/* 6. LIGHTBOX IMAGE PREVIEW MODAL */}
-      {selectedPhoto && (
+      {/* 6. LIGHTBOX IMAGE PREVIEW MODAL (Bright Theme with Prev/Next Navigation) */}
+      {selectedPhotoIndex !== null && galleryImages[selectedPhotoIndex] && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050F22]/95 backdrop-blur-md"
-          onClick={() => setSelectedPhoto(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#FAF9F6]/95 backdrop-blur-md transition-all"
+          onClick={() => setSelectedPhotoIndex(null)}
           role="dialog"
           aria-modal="true"
         >
+          {/* Top Right Close Button */}
+          <button
+            onClick={() => setSelectedPhotoIndex(null)}
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 z-40 w-11 h-11 rounded-full bg-white text-[#071731] hover:bg-[#C8102E] hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-[#071731]/10 shadow-lg"
+            aria-label="Close photo preview"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          {/* Left Arrow (Prev) */}
+          {galleryImages.length > 1 && (
+            <button
+              onClick={handlePrevPhoto}
+              className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white text-[#071731] hover:bg-[#C8102E] hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-[#071731]/10 shadow-xl group"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="w-6 h-6 transition-transform group-hover:-translate-x-0.5" />
+            </button>
+          )}
+
+          {/* Right Arrow (Next) */}
+          {galleryImages.length > 1 && (
+            <button
+              onClick={handleNextPhoto}
+              className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white text-[#071731] hover:bg-[#C8102E] hover:text-white flex items-center justify-center transition-colors cursor-pointer border border-[#071731]/10 shadow-xl group"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="w-6 h-6 transition-transform group-hover:translate-x-0.5" />
+            </button>
+          )}
+
+          {/* Centered Image with Border and Shadow */}
           <div
-            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center"
+            className="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center px-10 sm:px-16"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={() => setSelectedPhoto(null)}
-              className="absolute -top-12 right-0 w-10 h-10 rounded bg-white/10 text-white hover:bg-[#C8102E] flex items-center justify-center transition-colors cursor-pointer border border-white/20"
-              aria-label="Close photo preview"
-            >
-              <X className="w-5 h-5" />
-            </button>
             <img
-              src={selectedPhoto}
-              alt="High resolution documentation preview"
-              className="max-w-full max-h-[85vh] object-contain rounded shadow-2xl border border-white/20"
+              key={selectedPhotoIndex}
+              src={galleryImages[selectedPhotoIndex]}
+              alt={`${event.title} record ${selectedPhotoIndex + 1}`}
+              onError={(e) => {
+                if (event.fallbackImg && e.currentTarget.src !== event.fallbackImg) {
+                  e.currentTarget.src = event.fallbackImg;
+                }
+              }}
+              className="max-w-full max-h-[78vh] sm:max-h-[82vh] object-contain rounded-lg shadow-2xl border border-[#071731]/10 bg-white"
             />
+
+            {/* Bottom Meta & Index Pill */}
+            <div className="mt-3.5 px-4 py-1.5 rounded-full bg-white text-[#071731] border border-[#071731]/10 shadow-sm text-xs font-mono font-medium flex items-center gap-2 select-none">
+              <span className="font-bold text-[#C8102E]">{selectedPhotoIndex + 1}</span>
+              <span className="text-slate-300">/</span>
+              <span className="text-slate-600">{galleryImages.length}</span>
+              <span className="text-slate-300">·</span>
+              <span className="font-sans text-slate-700 font-medium truncate max-w-[200px] sm:max-w-md">
+                {event.title}
+              </span>
+            </div>
           </div>
         </div>
       )}
-
     </div>
   );
 }

@@ -23,20 +23,20 @@ const NAV_ITEMS = [
         path: "/business-group#tsa-tech"
       },
       {
-        name: "ENCHANTÉE KITCHEN",
-        path: "/business-group#enchante"
-      },
-      {
-        name: "DNA STUDIO",
-        path: "/business-group#dna-studio"
-      },
-      {
         name: "GWI",
         path: "/business-group#gwi"
       },
       {
         name: "GOVADV",
         path: "/business-group#govadv"
+      },
+      {
+        name: "ENCHANTÉE KITCHEN",
+        path: "/business-group#enchante"
+      },
+      {
+        name: "DNA STUDIO",
+        path: "/business-group#dna-studio"
       }
     ]
   },

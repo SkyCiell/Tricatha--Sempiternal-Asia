@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import backgroundTSA from "../assets/Background_TSA.jpg";
 
 const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop";
-const micePhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2000&auto=format&fit=crop";
+const micePhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 const govPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";
 const broadcastPhoto = "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2000&auto=format&fit=crop";
 const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2000&auto=format&fit=crop";
@@ -67,6 +67,25 @@ const BUSINESS_CHAPTERS = [
     layout: "media-right"
   },
   {
+    id: "biz-culinary",
+    discipline: "Executive Hospitality & Artisanal Culinary Solutions",
+    brandName: "ENCHANTÉE KITCHEN",
+    brandRoute: "/business-group#enchante",
+    domain: "Hospitality & Bespoke Dining",
+    headline: "Thoughtfully prepared culinary products and bespoke catering for high-profile assemblies.",
+    description:
+      "Enchantée Kitchen creates refined culinary offerings, tailored banquets, and hospitality management for corporate assemblies, diplomatic galas, and private institutional gatherings. Every menu is developed with attention to flavour, presentation, and the dignified character of the occasion.",
+    deliverables: [
+      "Corporate dining and executive conference catering",
+      "Curated culinary products and bespoke tasting menus",
+      "Diplomatic reception hospitality staffing and decorum",
+      "Tailored banquets, canapé bars, and VIP service"
+    ],
+    photo: culinaryPhoto,
+    photoCaption: "Enchantée Kitchen Artisanal Culinary Catering & Executive Dining",
+    layout: "media-left"
+  },
+  {
     id: "biz-broadcast",
     discipline: "Creative Broadcast & 4K Cinema Scenography",
     brandName: "DNA STUDIO",
@@ -83,25 +102,6 @@ const BUSINESS_CHAPTERS = [
     ],
     photo: broadcastPhoto,
     photoCaption: "DNA Studio 4K Broadcast Suite and Telecast Soundstage",
-    layout: "media-left"
-  },
-  {
-    id: "biz-culinary",
-    discipline: "Executive Hospitality & Artisanal Culinary Solutions",
-    brandName: "ENCHANTÉE KITCHEN",
-    brandRoute: "/business-group#enchante",
-    domain: "Hospitality & Bespoke Dining",
-    headline: "Thoughtfully prepared culinary products and bespoke catering for high-profile assemblies.",
-    description:
-      "Enchantée Kitchen creates refined culinary offerings, tailored banquets, and hospitality management for corporate assemblies, diplomatic galas, and private institutional gatherings. Every menu is developed with attention to flavour, presentation, and the dignified character of the occasion.",
-    deliverables: [
-      "Corporate dining and executive conference catering",
-      "Curated culinary products and bespoke tasting menus",
-      "Diplomatic reception hospitality staffing and decorum",
-      "Distinctive tablescape architecture and spatial service design"
-    ],
-    photo: culinaryPhoto,
-    photoCaption: "Artisanal Hospitality and Executive Dining Solutions",
     layout: "media-right"
   }
 ];
@@ -136,7 +136,7 @@ export default function LandingBusiness({ navigateTo }) {
         {/* Holding Anchor Feature: PT Tricatha Sempiternal Asia */}
         <div className="py-12 sm:py-16 border-b border-[#E2E8F0]">
           <div className="bg-white rounded-lg border border-[#E2E8F0] p-6 sm:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            
+
             {/* Left Column: TSA Holding Editorial Profile */}
             <div className="lg:col-span-6 space-y-5">
               <div className="space-y-2">
@@ -169,7 +169,7 @@ export default function LandingBusiness({ navigateTo }) {
                 </div>
                 <div className="col-span-2 sm:col-span-1">
                   <div className="text-[10px] text-[#64748B] uppercase tracking-wider">HEADQUARTERS</div>
-                  <div className="font-bold text-[#071731] mt-0.5">The City Tower, Jakarta</div>
+                  <div className="font-bold text-[#071731] mt-0.5">Sudirman Park, Jakarta</div>
                 </div>
               </div>
 
@@ -217,9 +217,8 @@ export default function LandingBusiness({ navigateTo }) {
               >
                 {/* Content Column */}
                 <div
-                  className={`lg:col-span-6 space-y-6 ${
-                    isMediaRight ? "lg:order-1" : "lg:order-2"
-                  }`}
+                  className={`lg:col-span-6 space-y-6 ${isMediaRight ? "lg:order-1" : "lg:order-2"
+                    }`}
                 >
                   <div className="space-y-2">
                     <div className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold">
@@ -265,9 +264,8 @@ export default function LandingBusiness({ navigateTo }) {
 
                 {/* Major Photography Column */}
                 <div
-                  className={`lg:col-span-6 ${
-                    isMediaRight ? "lg:order-2" : "lg:order-1"
-                  }`}
+                  className={`lg:col-span-6 ${isMediaRight ? "lg:order-2" : "lg:order-1"
+                    }`}
                 >
                   <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[4/3] sm:aspect-[16/11] shadow-md group">
                     <img
