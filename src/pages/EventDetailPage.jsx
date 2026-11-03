@@ -5,7 +5,6 @@ import {
   MapPin,
   Users,
   ArrowUpRight,
-  Maximize2,
   X,
   ChevronLeft,
   ChevronRight
@@ -258,7 +257,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
             <div
               key={idx}
               onClick={() => setSelectedPhotoIndex(idx)}
-              className="editorial-image-frame group relative overflow-hidden rounded bg-white aspect-[4/3] cursor-pointer shadow-xs border border-[#071731]/10"
+              className="editorial-image-frame group relative overflow-hidden rounded-lg bg-[#071731] aspect-[4/3] cursor-pointer shadow-xs hover:shadow-xl transition-all duration-500 border border-[#071731]/10 select-none"
             >
               <img
                 src={imgSrc}
@@ -268,16 +267,9 @@ export default function EventDetailPage({ slug, navigateTo }) {
                     e.currentTarget.src = event.fallbackImg;
                   }
                 }}
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-106 pointer-events-none"
                 loading="lazy"
               />
-
-              {/* Soft Dark Overlay on Hover */}
-              <div className="absolute inset-0 bg-[#071731]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
-                <div className="w-9 h-9 rounded bg-white/20 text-white flex items-center justify-center backdrop-blur-xs">
-                  <Maximize2 className="w-4 h-4" />
-                </div>
-              </div>
             </div>
           ))}
         </div>
