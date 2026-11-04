@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import backgroundTSA from "../assets/Background_TSA.jpg";
-const plenaryPhoto = "/events/book-launching-restorative-justice/cover.jpg";
 const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 
 export default function BrandsPage({ navigateTo, initialUnit }) {
@@ -91,7 +90,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
         "Operational Coordination & Situational Decision Support",
         "Resilient Mission-Critical Technology Infrastructure"
       ],
-      photo: backgroundTSA,
+      photo: "/final-photos/brands/technology/TSAIT.jpeg",
       photoCaption: "Purpose-Built Technology for Mission-Critical Operations · TSA IT & Technology",
       venues: "Indonesian Law Enforcement Agencies · Command Secretariats · Institutional Facilities",
       featuredEvent: {
@@ -199,7 +198,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
         "Facilitated Introductions & Partnership Building",
         "Discreet Multi-Stakeholder Dialogue & Policy Navigation"
       ],
-      photo: plenaryPhoto,
+      photo: "/final-photos/brands/gov-adv/GoADV.jpeg",
       photoCaption: "Government Advisory & Strategic Stakeholder Engagement · GovAdv",
       venues: "Government Ministries · Diplomatic Missions · Public Institutions · Private Sector Conclaves",
       featuredEvent: {

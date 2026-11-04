@@ -2,9 +2,9 @@ import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import backgroundTSA from "../assets/Background_TSA.jpg";
 
-const techPhoto = backgroundTSA;
+const techPhoto = "/final-photos/brands/technology/TSAIT.jpeg";
 const micePhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
-const govPhoto = "/events/book-launching-restorative-justice/photo-1.jpg";
+const govPhoto = "/final-photos/brands/gov-adv/GoADV.jpeg";
 const broadcastPhoto = "/events/empowering-women-in-politics/photo-3.jpg";
 const culinaryPhoto = "/events/illuminate-asia-exclusive-evening/photo-2.jpg";
 

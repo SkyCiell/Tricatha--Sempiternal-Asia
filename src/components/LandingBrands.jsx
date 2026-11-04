@@ -1,13 +1,12 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import ModalCards from "./ui/modal-cards";
-import backgroundTSA from "../assets/Background_TSA.jpg";
 
-const techPhoto = backgroundTSA;
+const techPhoto = "/final-photos/brands/technology/TSAIT.jpeg";
 const culinaryPhoto = "/events/illuminate-asia-exclusive-evening/cover.jpg";
 const broadcastPhoto = "/events/empowering-women-in-politics/cover.jpg";
 const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
-const govAdvPhoto = "/events/book-launching-restorative-justice/cover.jpg";
+const govAdvPhoto = "/final-photos/brands/gov-adv/GoADV.jpeg";
 
 const BRANDS = [
   {

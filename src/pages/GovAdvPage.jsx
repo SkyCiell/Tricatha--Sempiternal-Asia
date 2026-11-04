@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 
-const plenaryPhoto = "/events/book-launching-restorative-justice/cover.jpg";
+const plenaryPhoto = "/final-photos/brands/gov-adv/GoADV.jpeg";
 const conclavePhoto = "/events/indonesia-europe-investment-summit-2023/photo-2.jpg";
 
 export default function GovAdvPage({ navigateTo }) {

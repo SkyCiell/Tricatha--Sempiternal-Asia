@@ -4,7 +4,7 @@ import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 
 import backgroundTSA from "../assets/Background_TSA.jpg";
 
-const techPhoto = backgroundTSA;
+const techPhoto = "/final-photos/brands/technology/TSAIT.jpeg";
 const commandPhoto = backgroundTSA;
 
 export default function TechnologyPage({ navigateTo }) {
