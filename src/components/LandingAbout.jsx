@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 
-const plenaryPhoto = "/brands/di-bawah-about-us.png";
+const plenaryPhoto = "/brands/dibawah-about-us.jpeg";
 
 export default function LandingAbout({ navigateTo }) {
   const handleReadCharter = () => {
