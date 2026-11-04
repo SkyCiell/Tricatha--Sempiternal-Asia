@@ -2,7 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 
-const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1800&auto=format&fit=crop";
+import backgroundTSA from "../assets/Background_TSA.jpg";
+
+const techPhoto = backgroundTSA;
 const commandPhoto = "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1600&auto=format&fit=crop";
 
 export default function TechnologyPage({ navigateTo }) {

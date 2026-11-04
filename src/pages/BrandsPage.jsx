@@ -91,7 +91,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
         "Operational Coordination & Situational Decision Support",
         "Resilient Mission-Critical Technology Infrastructure"
       ],
-      photo: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1800&auto=format&fit=crop",
+      photo: backgroundTSA,
       photoCaption: "Purpose-Built Technology for Mission-Critical Operations · TSA IT & Technology",
       venues: "Indonesian Law Enforcement Agencies · Command Secretariats · Institutional Facilities",
       featuredEvent: {

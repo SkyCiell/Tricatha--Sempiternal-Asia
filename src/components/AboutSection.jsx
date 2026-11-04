@@ -2,7 +2,9 @@ import React from "react";
 import { ArrowUpRight, ArrowRight, Compass, Sparkles, Cpu, Network, MapPin, Award } from "lucide-react";
 import { companyInfo } from "../data/tsaData";
 
-const plenaryPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";
+import backgroundTSA from "../assets/Background_TSA.jpg";
+
+const plenaryPhoto = backgroundTSA;
 
 export default function AboutSection({ navigateTo }) {
   const handleReadCharter = () => {

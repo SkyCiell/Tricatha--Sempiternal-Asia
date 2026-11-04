@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { ArrowUpRight, ArrowRight, Video, Megaphone, Scale, Terminal, UtensilsCrossed, Check, MapPin, Award } from "lucide-react";
 import { businessGroupData } from "../data/tsaData";
 
-const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000&auto=format&fit=crop";
+import backgroundTSA from "../assets/Background_TSA.jpg";
+
+const techPhoto = backgroundTSA;
 const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2000&auto=format&fit=crop";
 const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2000&auto=format&fit=crop";
 const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";

@@ -2,7 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import Leadership from "../components/Leadership";
-const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
+import backgroundTSA from "../assets/Background_TSA.jpg";
+
+const plenaryPhoto = backgroundTSA;
 
 export default function AboutPage({ navigateTo }) {
   const handleInquiry = () => {

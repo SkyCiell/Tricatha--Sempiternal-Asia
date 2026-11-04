@@ -1,6 +1,8 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-const plenaryPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";
+import backgroundTSA from "../assets/Background_TSA.jpg";
+
+const plenaryPhoto = backgroundTSA;
 
 export default function LandingAbout({ navigateTo }) {
   const handleReadCharter = () => {
