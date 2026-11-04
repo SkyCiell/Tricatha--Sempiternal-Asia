@@ -59,14 +59,14 @@ export default function Footer({ navigateTo }) {
   ];
 
   return (
-    <footer data-nav-theme="dark" className="bg-[#050F22] text-white border-t border-white/10 pt-16 sm:pt-24 pb-12">
+    <footer data-nav-theme="dark" className="bg-[#050F22] text-white border-t border-white/10 pt-12 sm:pt-24 pb-10 sm:pb-12">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
 
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16 pb-12 sm:pb-16 border-b border-white/10">
 
           {/* Brand Col (4 cols) */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-5 sm:space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded p-0.5 bg-white border border-white/20 flex items-center justify-center shrink-0">
                 <img src={logoTSA} alt="TSA Emblem" className="w-full h-full object-cover" />
@@ -98,7 +98,7 @@ export default function Footer({ navigateTo }) {
                   <button
                     key={item.name}
                     onClick={() => handleNav(item.path)}
-                    className="px-2.5 py-1 rounded bg-[#071731] hover:bg-[#C8102E] text-white border border-white/15 text-[11px] transition-colors cursor-pointer"
+                    className="px-2.5 py-1.5 rounded bg-white/5 hover:bg-white/15 text-slate-300 hover:text-white border border-white/10 transition-colors cursor-pointer text-[10px] sm:text-[11px] touch-manipulation min-h-[32px]"
                   >
                     {item.name}
                   </button>
@@ -106,85 +106,71 @@ export default function Footer({ navigateTo }) {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 pt-2">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#C8102E] hover:bg-[#C8102E] transition-colors"
-                aria-label="LinkedIn"
-              >
-                <LinkedinIcon />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#C8102E] hover:bg-[#C8102E] transition-colors"
-                aria-label="Instagram"
-              >
-                <InstagramIcon />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:border-[#C8102E] hover:bg-[#C8102E] transition-colors"
-                aria-label="YouTube"
-              >
-                <YoutubeIcon />
-              </a>
+            {/* Social Links */}
+            <div className="pt-2 flex items-center gap-3">
+              {[
+                { icon: LinkedinIcon, label: "LinkedIn", href: "https://linkedin.com" },
+                { icon: InstagramIcon, label: "Instagram", href: "https://instagram.com" },
+                { icon: YoutubeIcon, label: "YouTube", href: "https://youtube.com" }
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`TSA on ${s.label}`}
+                  className="w-11 h-11 rounded-full bg-white/5 hover:bg-[#C8102E] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-white/10 touch-manipulation active:scale-95"
+                >
+                  <s.icon />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Navigation (2 cols) */}
+          {/* Quick Nav (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <h3 className="font-sans font-semibold text-xs text-white tracking-wider uppercase">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold block">
               Navigation
-            </h3>
-            <ul className="space-y-2.5 font-sans text-xs text-slate-300">
-              {navLinks.map((item) => (
-                <li key={item.name}>
+            </span>
+            <ul className="space-y-1 font-sans text-sm">
+              {navLinks.map((link) => (
+                <li key={link.name}>
                   <button
-                    onClick={() => handleNav(item.path)}
-                    className="hover:text-white transition-colors cursor-pointer text-left focus:outline-none"
+                    type="button"
+                    onClick={() => handleNav(link.path)}
+                    className="text-slate-300 hover:text-white transition-colors cursor-pointer text-left py-1.5 touch-manipulation block w-full"
                   >
-                    {item.name}
+                    {link.name}
                   </button>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Core Services (3 cols) */}
+          {/* Services Scope (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="font-sans font-semibold text-xs text-white tracking-wider uppercase">
-              Capabilities &amp; Services
-            </h3>
-            <ul className="space-y-2 font-sans text-xs text-slate-300">
-              {serviceLinks.map((svc) => (
-                <li key={svc}>
-                  <button
-                    onClick={() => handleNav("/events")}
-                    className="hover:text-white transition-colors cursor-pointer text-left focus:outline-none"
-                  >
-                    {svc}
-                  </button>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold block">
+              Capabilities
+            </span>
+            <ul className="space-y-1 font-sans text-xs sm:text-sm text-slate-300">
+              {serviceLinks.map((service) => (
+                <li key={service} className="py-1">
+                  {service}
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Details (3 cols) */}
+          {/* Headquarters Location & Inquiries (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h3 className="font-sans font-semibold text-xs text-white tracking-wider uppercase">
-              Executive Secretariat
-            </h3>
+            <span className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold block">
+              Headquarters
+            </span>
 
-            <div className="space-y-3 font-sans text-xs text-slate-300 leading-relaxed">
+            <div className="space-y-3 font-sans text-xs text-slate-300">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C8102E] shrink-0 mt-0.5" />
-                <div>
+                <div className="leading-relaxed">
                   Sudirman Park Apartment<br />
                   Jl. KH. Mas Mansyur Kav. 35, Karet Tengsin, Tanah Abang<br />
                   Jakarta Pusat, DKI Jakarta, Indonesia
@@ -193,14 +179,14 @@ export default function Footer({ navigateTo }) {
 
               <div className="flex items-center gap-2.5 pt-1">
                 <Mail className="w-4 h-4 text-[#C8102E] shrink-0" />
-                <a href="mailto:de@sempiternalasia.com" className="hover:text-white transition-colors">
+                <a href="mailto:de@sempiternalasia.com" className="hover:text-white transition-colors py-1 block">
                   de@sempiternalasia.com
                 </a>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#C8102E] shrink-0" />
-                <a href="tel:+628121000784" className="hover:text-white transition-colors">
+                <a href="tel:+628121000784" className="hover:text-white transition-colors py-1 block">
                   +62-812-1000-784
                 </a>
               </div>
@@ -214,17 +200,17 @@ export default function Footer({ navigateTo }) {
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-slate-400">
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-slate-400 text-center sm:text-left">
           <div>
             © {currentYear} PT Tricatha Sempiternal Asia. All rights reserved.
           </div>
 
           <button
             onClick={handleScrollToTop}
-            className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors cursor-pointer group"
+            className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors cursor-pointer group min-h-[44px] px-3 py-1.5 touch-manipulation active:scale-95"
           >
             <span>Back to Top</span>
-            <div className="w-6 h-6 rounded bg-white/10 flex items-center justify-center group-hover:bg-[#C8102E] transition-colors">
+            <div className="w-7 h-7 rounded bg-white/10 flex items-center justify-center group-hover:bg-[#C8102E] transition-colors">
               <ArrowUp className="w-3.5 h-3.5 text-white" />
             </div>
           </button>

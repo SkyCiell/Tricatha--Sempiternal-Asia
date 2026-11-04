@@ -117,58 +117,58 @@ export default function LandingBusiness({ navigateTo }) {
     <section
       id="business"
       data-nav-theme="light"
-      className="bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0] py-16 sm:py-28 relative"
+      className="bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0] py-12 sm:py-24 relative"
       aria-label="TSA Core Business Areas"
     >
       <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="pb-10 sm:pb-14 border-b border-[#E2E8F0]">
-          <div className="max-w-3xl space-y-4">
-            <h2 className="font-heading text-3xl sm:text-5xl lg:text-[54px] font-bold text-[#071731] tracking-tight leading-[1.08]">
+        {/* Section Header with Responsive Text Scaling */}
+        <div className="pb-8 sm:pb-14 border-b border-[#E2E8F0]">
+          <div className="max-w-3xl space-y-3 sm:space-y-4">
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-[54px] font-bold text-[#071731] tracking-tight leading-[1.12]">
               Our Business.
             </h2>
-            <p className="font-sans text-base sm:text-lg text-[#334155] leading-relaxed font-normal">
+            <p className="font-sans text-sm sm:text-base lg:text-lg text-[#334155] leading-relaxed font-normal">
               While our brands identify who operates inside the TSA network, our business areas define what the ecosystem delivers across industries. Each division translates specialized domain authority into measurable outcomes.
             </p>
           </div>
         </div>
 
         {/* Holding Anchor Feature: PT Tricatha Sempiternal Asia */}
-        <div className="py-12 sm:py-16 border-b border-[#E2E8F0]">
-          <div className="bg-white rounded-lg border border-[#E2E8F0] p-6 sm:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="py-10 sm:py-16 border-b border-[#E2E8F0]">
+          <div className="bg-white rounded-lg sm:rounded-xl border border-[#E2E8F0] p-5 sm:p-10 shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
             {/* Left Column: TSA Holding Editorial Profile */}
-            <div className="lg:col-span-6 space-y-5">
-              <div className="space-y-1.5">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-medium block">
+            <div className="lg:col-span-6 space-y-4 sm:space-y-5">
+              <div className="space-y-1 sm:space-y-1.5">
+                <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold block">
                   Parent Holding · Executive Command
                 </span>
-                <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#071731] tracking-tight leading-tight">
+                <h3 className="font-heading text-xl sm:text-3xl lg:text-4xl font-bold text-[#071731] tracking-tight leading-tight">
                   PT Tricatha Sempiternal Asia
                 </h3>
               </div>
 
-              <p className="font-editorial italic text-base sm:text-lg text-[#475569]">
+              <p className="font-editorial italic text-sm sm:text-lg text-[#475569]">
                 "Single-source strategic command, fiduciary governance, and inter-ministerial liaison across all specialized practices."
               </p>
 
-              <p className="font-sans text-sm sm:text-base text-[#334155] leading-relaxed font-normal">
+              <p className="font-sans text-xs sm:text-base text-[#334155] leading-relaxed font-normal">
                 Headquartered in Jakarta, PT Tricatha Sempiternal Asia acts as the parent holding organization guiding each specialized operating division. TSA guarantees institutional protocol, sovereign security covenants, and turnkey delivery standards across government and commercial corridors.
               </p>
 
               {/* Key Holding Indicators */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3 font-mono text-xs border-t border-[#E2E8F0]">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 pt-3 font-mono text-xs border-t border-[#E2E8F0]">
                 <div>
                   <div className="text-[10px] text-[#64748B] uppercase tracking-wider">Structure</div>
-                  <div className="font-semibold text-[#071731] mt-0.5">Holding Ecosystem</div>
+                  <div className="font-semibold text-[#071731] text-xs sm:text-sm mt-0.5">Holding Ecosystem</div>
                 </div>
                 <div>
                   <div className="text-[10px] text-[#64748B] uppercase tracking-wider">Practice Entities</div>
-                  <div className="font-semibold text-[#071731] mt-0.5">5 Business Units</div>
+                  <div className="font-semibold text-[#071731] text-xs sm:text-sm mt-0.5">5 Business Units</div>
                 </div>
                 <div className="col-span-2 sm:col-span-1">
                   <div className="text-[10px] text-[#64748B] uppercase tracking-wider">Headquarters</div>
-                  <div className="font-semibold text-[#071731] mt-0.5">Sudirman Park, Jakarta</div>
+                  <div className="font-semibold text-[#071731] text-xs sm:text-sm mt-0.5 truncate">Sudirman Park, Jakarta</div>
                 </div>
               </div>
 
@@ -176,7 +176,7 @@ export default function LandingBusiness({ navigateTo }) {
                 <button
                   type="button"
                   onClick={() => handleBrandClick("/business-group")}
-                  className="btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
+                  className="w-full sm:w-auto btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px] touch-manipulation active:scale-[0.99]"
                 >
                   <span>Explore Group Ecosystem</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -186,7 +186,7 @@ export default function LandingBusiness({ navigateTo }) {
 
             {/* Right Column: Authentic TSA Event Photography */}
             <div className="lg:col-span-6">
-              <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[16/11] shadow-sm group">
+              <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[16/10] sm:aspect-[16/11] shadow-sm group">
                 <img
                   src={backgroundTSA}
                   alt="PT Tricatha Sempiternal Asia Strategic Summit Coordination and Assembly Production"
@@ -194,7 +194,7 @@ export default function LandingBusiness({ navigateTo }) {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-3 right-3 text-xs font-mono text-slate-200 bg-[#071731]/80 px-3 py-1.5 rounded border border-white/10 flex items-center justify-between">
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 text-[11px] sm:text-xs font-mono text-slate-200 bg-[#071731]/85 px-3 py-1.5 rounded border border-white/10 flex items-center justify-between">
                   <span>PT Tricatha Sempiternal Asia</span>
                   <span className="text-[#C8102E] font-semibold">SOVEREIGN MANDATE</span>
                 </div>
@@ -212,36 +212,36 @@ export default function LandingBusiness({ navigateTo }) {
             return (
               <div
                 key={chapter.id}
-                className="py-14 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center"
+                className="py-10 sm:py-20 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-16 items-center"
               >
                 {/* Content Column */}
                 <div
-                  className={`lg:col-span-6 space-y-6 ${isMediaRight ? "lg:order-1" : "lg:order-2"
+                  className={`lg:col-span-6 space-y-4 sm:space-y-6 ${isMediaRight ? "lg:order-1" : "lg:order-2"
                     }`}
                 >
-                  <div className="space-y-1.5">
-                    <span className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-medium block">
+                  <div className="space-y-1 sm:space-y-1.5">
+                    <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold block">
                       {chapter.brandName}
                     </span>
 
-                    <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-[#071731] tracking-tight leading-tight">
+                    <h3 className="font-heading text-xl sm:text-3xl lg:text-4xl font-bold text-[#071731] tracking-tight leading-tight">
                       {chapter.discipline}
                     </h3>
                   </div>
 
-                  <p className="font-editorial italic text-base sm:text-lg text-[#475569]">
+                  <p className="font-editorial italic text-sm sm:text-lg text-[#475569]">
                     "{chapter.headline}"
                   </p>
 
-                  <p className="font-sans text-sm sm:text-base text-[#334155] leading-relaxed font-normal">
+                  <p className="font-sans text-xs sm:text-base text-[#334155] leading-relaxed font-normal">
                     {chapter.description}
                   </p>
 
                   {/* Core Deliverables List */}
-                  <div className="space-y-2.5 pt-2">
-                    <ul className="space-y-2 border-t border-[#E2E8F0] pt-4 font-sans text-xs sm:text-sm text-[#1E293B]">
+                  <div className="space-y-2 pt-1 sm:pt-2">
+                    <ul className="space-y-2 border-t border-[#E2E8F0] pt-3.5 sm:pt-4 font-sans text-xs sm:text-sm text-[#1E293B]">
                       {chapter.deliverables.map((item, idx) => (
-                        <li key={idx} className="flex items-baseline gap-2.5">
+                        <li key={idx} className="flex items-baseline gap-2">
                           <span className="text-[#C8102E] font-bold">—</span>
                           <span>{item}</span>
                         </li>
@@ -253,7 +253,7 @@ export default function LandingBusiness({ navigateTo }) {
                     <button
                       type="button"
                       onClick={() => handleBrandClick(chapter.brandRoute)}
-                      className="btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
+                      className="w-full sm:w-auto btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px] touch-manipulation active:scale-[0.99]"
                     >
                       <span>Explore {chapter.brandName}</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -266,7 +266,7 @@ export default function LandingBusiness({ navigateTo }) {
                   className={`lg:col-span-6 ${isMediaRight ? "lg:order-2" : "lg:order-1"
                     }`}
                 >
-                  <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[4/3] sm:aspect-[16/11] shadow-sm group">
+                  <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[16/10] sm:aspect-[16/11] shadow-sm group">
                     <img
                       src={chapter.photo}
                       alt={chapter.photoCaption}

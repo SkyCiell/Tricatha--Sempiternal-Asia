@@ -1,7 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import ModalCards from "./ui/modal-cards";
-
 import backgroundTSA from "../assets/Background_TSA.jpg";
 
 const techPhoto = backgroundTSA;
@@ -34,7 +33,7 @@ const BRANDS = [
     photo: techPhoto,
     photoAlt: "TSA IT & Technology Mission-Critical Systems Architecture",
     gridSpan: "col-span-1 md:col-span-12 lg:col-span-7",
-    heightClass: "h-[340px] sm:h-[400px] lg:h-[420px]",
+    heightClass: "h-[280px] sm:h-[360px] lg:h-[420px]",
     imgPosition: "object-center"
   },
   {
@@ -60,7 +59,7 @@ const BRANDS = [
     photo: gwiPhoto,
     photoAlt: "GWI Strategic Event Management and Multilateral Summits",
     gridSpan: "col-span-1 md:col-span-12 lg:col-span-5",
-    heightClass: "h-[340px] sm:h-[400px] lg:h-[420px]",
+    heightClass: "h-[280px] sm:h-[360px] lg:h-[420px]",
     imgPosition: "object-[center_35%]"
   },
   {
@@ -86,7 +85,7 @@ const BRANDS = [
     photo: govAdvPhoto,
     photoAlt: "GovAdv Sovereign Government Advisory and Institutional Liaison",
     gridSpan: "col-span-1 md:col-span-6 lg:col-span-4",
-    heightClass: "h-[300px] sm:h-[340px] lg:h-[360px]",
+    heightClass: "h-[250px] sm:h-[310px] lg:h-[360px]",
     imgPosition: "object-center"
   },
   {
@@ -112,7 +111,7 @@ const BRANDS = [
     photo: culinaryPhoto,
     photoAlt: "Enchantée Kitchen Artisanal Culinary Catering and Hospitality",
     gridSpan: "col-span-1 md:col-span-6 lg:col-span-4",
-    heightClass: "h-[300px] sm:h-[340px] lg:h-[360px]",
+    heightClass: "h-[250px] sm:h-[310px] lg:h-[360px]",
     imgPosition: "object-[center_60%]"
   },
   {
@@ -138,7 +137,7 @@ const BRANDS = [
     photo: broadcastPhoto,
     photoAlt: "DNA Studio 4K Broadcast Scenography and Soundstage",
     gridSpan: "col-span-1 md:col-span-12 lg:col-span-4",
-    heightClass: "h-[300px] sm:h-[340px] lg:h-[360px]",
+    heightClass: "h-[250px] sm:h-[310px] lg:h-[360px]",
     imgPosition: "object-center"
   }
 ];
@@ -156,26 +155,26 @@ export default function LandingBrands({ navigateTo }) {
     <section
       id="brands"
       data-nav-theme="light"
-      className="bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0] py-16 sm:py-24 relative"
+      className="bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0] py-12 sm:py-24 relative"
       aria-label="TSA Operating Practices"
     >
       <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 sm:pb-12 border-b border-[#E2E8F0]">
-          <div className="space-y-3 max-w-3xl">
-            <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[#071731] tracking-tight leading-[1.1]">
+        {/* Section Header with Responsive Alignment */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-5 sm:gap-6 pb-8 sm:pb-12 border-b border-[#E2E8F0]">
+          <div className="space-y-2.5 sm:space-y-3 max-w-3xl">
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-[#071731] tracking-tight leading-[1.15]">
               Operating Brands.
             </h2>
-            <p className="font-sans text-sm sm:text-base text-[#64748B] leading-relaxed font-normal">
-              Specialized entities orchestrated under PT Tricatha Sempiternal Asia, each maintaining dedicated domain authority. Click any division to expand its operational dossier.
+            <p className="font-sans text-xs sm:text-base text-[#64748B] leading-relaxed font-normal">
+              Specialized entities orchestrated under PT Tricatha Sempiternal Asia, each maintaining dedicated domain authority. Tap any card to open its operational dossier.
             </p>
           </div>
 
-          <div className="shrink-0">
+          <div className="shrink-0 w-full sm:w-auto">
             <button
               type="button"
               onClick={handleViewAllBrands}
-              className="btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
+              className="w-full sm:w-auto btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px] touch-manipulation"
             >
               <span>Explore Group Portfolio</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -187,7 +186,7 @@ export default function LandingBrands({ navigateTo }) {
         <ModalCards
           items={BRANDS}
           onNavigate={navigateTo}
-          cardGridClassName="pt-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8"
+          cardGridClassName="pt-8 sm:pt-10 grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 lg:gap-8"
         />
       </div>
     </section>

@@ -38,19 +38,19 @@ export default function LandingAbout({ navigateTo }) {
       aria-label="About PT Tricatha Sempiternal Asia"
     >
       {/* 1. Concise Editorial Typography and Narrative */}
-      <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start pb-16 border-b border-[#E2E8F0]">
-          <div className="lg:col-span-5 space-y-4">
-            <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[#071731] tracking-tight leading-[1.1]">
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 border-b border-[#E2E8F0]">
+          <div className="lg:col-span-5 space-y-3 sm:space-y-4">
+            <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-[#071731] tracking-tight leading-[1.15]">
               A Multidisciplinary Organization Built for Purpose and Impact.
             </h2>
           </div>
 
-          <div className="lg:col-span-7 space-y-6">
-            <p className="font-sans text-base sm:text-lg text-[#334155] leading-relaxed font-normal">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+            <p className="font-sans text-sm sm:text-base lg:text-lg text-[#334155] leading-relaxed font-normal">
               PT Tricatha Sempiternal Asia is an Indonesian multidisciplinary company delivering integrated solutions across technology, event management, government advocacy, food and beverage, and digital content production.
             </p>
-            <p className="font-sans text-sm sm:text-base text-[#64748B] leading-relaxed font-normal">
+            <p className="font-sans text-xs sm:text-base text-[#64748B] leading-relaxed font-normal">
               Through our specialized business units, we combine strategic insight, creative thinking, technical expertise, and trusted networks to help organizations navigate challenges, activate opportunities, and achieve meaningful, sustainable impact.
             </p>
 
@@ -58,7 +58,7 @@ export default function LandingAbout({ navigateTo }) {
               <button
                 type="button"
                 onClick={handleReadCharter}
-                className="btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2 shadow-xs"
+                className="w-full sm:w-auto btn-editorial-red text-xs py-3.5 sm:py-3 px-6 cursor-pointer inline-flex items-center justify-center gap-2 shadow-xs min-h-[44px] touch-manipulation active:scale-[0.99]"
               >
                 <span>Read Corporate Charter</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -68,10 +68,10 @@ export default function LandingAbout({ navigateTo }) {
         </div>
 
         {/* Core Principles: Typographic Columns without Card Boxes */}
-        <div className="pt-12 sm:pt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="pt-10 sm:pt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
           {capabilities.map((item) => (
-            <div key={item.title} className="space-y-2 border-t border-[#071731]/15 pt-4">
-              <h3 className="font-heading font-bold text-[#071731] text-base tracking-tight">
+            <div key={item.title} className="space-y-1.5 sm:space-y-2 border-t border-[#071731]/15 pt-3.5 sm:pt-4">
+              <h3 className="font-heading font-bold text-[#071731] text-sm sm:text-base tracking-tight">
                 {item.title}
               </h3>
               <p className="text-xs sm:text-sm text-[#475569] font-sans leading-relaxed">
@@ -82,8 +82,8 @@ export default function LandingAbout({ navigateTo }) {
         </div>
       </div>
 
-      {/* 2. Fullscreen Photographic Composition: Authentic Plenary & Assembly Staging */}
-      <div data-nav-theme="dark" className="relative w-full h-[560px] sm:h-[680px] lg:h-[780px] overflow-hidden bg-[#071731] select-none">
+      {/* 2. Fullscreen Photographic Composition: Authentic Assembly Staging */}
+      <div data-nav-theme="dark" className="relative w-full h-[360px] sm:h-[520px] lg:h-[720px] overflow-hidden bg-[#071731] select-none">
         <img
           src={plenaryPhoto}
           alt="TSA Sovereign Plenary and Multidisciplinary Assembly Staging"
@@ -95,12 +95,12 @@ export default function LandingAbout({ navigateTo }) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent pointer-events-none" />
 
         {/* Integrated Framing Context Overlay */}
-        <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-end text-white z-10">
-          <div className="max-w-3xl space-y-3">
-            <h3 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
+        <div className="absolute inset-0 p-5 sm:p-12 lg:p-16 flex flex-col justify-end text-white z-10">
+          <div className="max-w-3xl space-y-2 sm:space-y-3">
+            <h3 className="font-heading text-lg sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
               Delivering with sovereign protocol standards and multidisciplinary coordination.
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+            <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-3 sm:line-clamp-none">
               Whether orchestrating inter-ministerial plenaries, enterprise software architecture, or curated dining, TSA maintains single-source accountability.
             </p>
           </div>
