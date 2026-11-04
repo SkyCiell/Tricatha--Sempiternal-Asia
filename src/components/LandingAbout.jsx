@@ -1,8 +1,7 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-import backgroundTSA from "../assets/Background_TSA.jpg";
 
-const plenaryPhoto = backgroundTSA;
+const plenaryPhoto = "/brands/di-bawah-about-us.png";
 
 export default function LandingAbout({ navigateTo }) {
   const handleReadCharter = () => {
@@ -82,27 +81,44 @@ export default function LandingAbout({ navigateTo }) {
         </div>
       </div>
 
-      {/* 2. Fullscreen Photographic Composition: Authentic Assembly Staging */}
-      <div data-nav-theme="dark" className="relative w-full h-[360px] sm:h-[520px] lg:h-[720px] overflow-hidden bg-[#071731] select-none">
-        <img
-          src={plenaryPhoto}
-          alt="TSA Sovereign Plenary and Multidisciplinary Assembly Staging"
-          className="w-full h-full object-cover object-center"
-          loading="lazy"
-        />
+      {/* 2. Authentic Assembly Staging: Jakarta Geopolitical Forum Plenary */}
+      <div data-nav-theme="dark" className="relative w-full bg-[#071731] border-t border-[#E2E8F0] select-none">
+        <div className="max-w-[1520px] mx-auto">
+          {/* Framed 3:2 Photographic Showcase matching exact 1600x1066 photo aspect ratio */}
+          <div className="relative w-full aspect-[3/2] overflow-hidden bg-[#071731]">
+            <img
+              src={plenaryPhoto}
+              alt="TSA Sovereign Plenary Delegation at Jakarta Geopolitical Forum IX"
+              className="w-full h-full object-cover object-center"
+              loading="lazy"
+            />
+          </div>
+        </div>
 
-        {/* Directional Cinematic Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent pointer-events-none" />
+        {/* Editorial Context & Framing Caption Bar */}
+        <div className="bg-[#071731] text-white border-t border-white/10 px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="max-w-[1520px] mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
+            <div className="space-y-1.5 sm:space-y-2 max-w-3xl">
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#C8102E]" />
+                <span className="text-[11px] font-mono uppercase tracking-wider text-slate-300">
+                  National Forum Execution &bull; Jakarta Geopolitical Forum IX
+                </span>
+              </div>
+              <h3 className="font-heading text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight leading-snug">
+                Delivering with sovereign protocol standards and multidisciplinary coordination.
+              </h3>
+              <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
+                Whether orchestrating inter-ministerial plenaries, enterprise software architecture, or curated dining, TSA maintains single-source accountability.
+              </p>
+            </div>
 
-        {/* Integrated Framing Context Overlay */}
-        <div className="absolute inset-0 p-5 sm:p-12 lg:p-16 flex flex-col justify-end text-white z-10">
-          <div className="max-w-3xl space-y-2 sm:space-y-3">
-            <h3 className="font-heading text-lg sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
-              Delivering with sovereign protocol standards and multidisciplinary coordination.
-            </h3>
-            <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-3 sm:line-clamp-none">
-              Whether orchestrating inter-ministerial plenaries, enterprise software architecture, or curated dining, TSA maintains single-source accountability.
-            </p>
+            <div className="shrink-0 flex items-center gap-3 pt-2 lg:pt-0">
+              <div className="px-3.5 py-2 rounded bg-white/5 border border-white/10 text-left sm:text-right">
+                <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400">Execution Standard</div>
+                <div className="text-xs sm:text-sm font-semibold text-white font-heading">Ministerial Grade</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
