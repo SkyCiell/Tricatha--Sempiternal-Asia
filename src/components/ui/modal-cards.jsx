@@ -111,12 +111,23 @@ export default function ModalCards({
                 </span>
               </div>
 
-              <motion.h3
-                layoutId={`card-title-${item.id}`}
-                className="font-heading text-lg sm:text-2xl font-bold text-white tracking-tight leading-snug group-hover:text-white transition-colors"
-              >
-                {item.name}
-              </motion.h3>
+              {/* Brand Title with Integrated Logo */}
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                {item.logo && (
+                  <img
+                    src={item.logo}
+                    alt={item.logoAlt || `${item.name} logo`}
+                    loading="lazy"
+                    className="w-7 h-7 sm:w-8 sm:h-8 object-contain shrink-0 rounded-xs"
+                  />
+                )}
+                <motion.h3
+                  layoutId={`card-title-${item.id}`}
+                  className="font-heading text-lg sm:text-2xl font-bold text-white tracking-tight leading-snug group-hover:text-white transition-colors"
+                >
+                  {item.name}
+                </motion.h3>
+              </div>
 
               <p className="font-sans text-xs sm:text-sm text-slate-300 line-clamp-2 leading-relaxed">
                 {item.summary || item.description}
@@ -195,13 +206,22 @@ export default function ModalCards({
                       {activeItem.discipline}
                     </div>
 
-                    <motion.h2
-                      id={`modal-title-${activeItem.id}`}
-                      layoutId={`card-title-${activeItem.id}`}
-                      className="font-heading text-xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight"
-                    >
-                      {activeItem.name}
-                    </motion.h2>
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      {activeItem.logo && (
+                        <img
+                          src={activeItem.logo}
+                          alt={activeItem.logoAlt || `${activeItem.name} logo`}
+                          className="w-8 h-8 sm:w-11 sm:h-11 object-contain shrink-0 rounded-xs"
+                        />
+                      )}
+                      <motion.h2
+                        id={`modal-title-${activeItem.id}`}
+                        layoutId={`card-title-${activeItem.id}`}
+                        className="font-heading text-xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight"
+                      >
+                        {activeItem.name}
+                      </motion.h2>
+                    </div>
 
                     {activeItem.tagline && (
                       <p className="font-editorial italic text-xs sm:text-base text-slate-200 max-w-2xl line-clamp-2 sm:line-clamp-none">

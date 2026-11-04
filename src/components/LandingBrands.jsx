@@ -12,6 +12,8 @@ const BRANDS = [
   {
     id: "tsa-tech",
     name: "TSA IT & Technology",
+    logo: "/brands/tsa-emblem.png",
+    logoAlt: "TSA IT & Technology Official Emblem",
     discipline: "Mission-Critical Systems",
     tagline: "Purpose-Built Technology for Mission-Critical Operations",
     summary: "Secure digital infrastructure and tactical command systems for Indonesian Law Enforcement Agencies.",
@@ -38,6 +40,8 @@ const BRANDS = [
   {
     id: "gwi",
     name: "GWI",
+    logo: null, // Note: GWI logo asset missing from repository
+    logoAlt: "GWI Logo",
     discipline: "MICE & Commercial Expositions",
     tagline: "Bringing the Right Audience to the Right Experience",
     summary: "National summits, multilateral trade expos, and curated audience mobilization across Southeast Asia.",
@@ -64,6 +68,8 @@ const BRANDS = [
   {
     id: "govadv",
     name: "GovAdv",
+    logo: null, // Note: GovAdv logo asset missing from repository
+    logoAlt: "GovAdv Logo",
     discipline: "Government Advisory",
     tagline: "Navigating Institutions, Advancing Strategic Objectives",
     summary: "Institutional consultation, regulatory analysis, and public-private strategic dialogue.",
@@ -90,6 +96,8 @@ const BRANDS = [
   {
     id: "enchante",
     name: "Enchantée Kitchen",
+    logo: "/brands/enchante/enchante-kitchen-logo.jpg",
+    logoAlt: "Enchantée Kitchen Official Logo",
     discipline: "Executive Hospitality",
     tagline: "Thoughtfully Prepared, Distinctively Presented",
     summary: "Artisanal culinary curation and tailored banquets for diplomatic assemblies and state occasions.",
@@ -116,6 +124,8 @@ const BRANDS = [
   {
     id: "dna-studio",
     name: "DNA Studio",
+    logo: null, // Note: DNA Studio logo asset missing from repository
+    logoAlt: "DNA Studio Logo",
     discipline: "Broadcast & 4K Cinema",
     tagline: "Creative Broadcast & 4K Cinema Production Suite",
     summary: "Multi-camera broadcast soundstage producing leader dialogues, hybrid AGMs, and syndicated telecasts.",
