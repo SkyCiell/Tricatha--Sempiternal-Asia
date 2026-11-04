@@ -138,21 +138,6 @@ export default function Contact({ preselectedService }) {
               </div>
             </div>
 
-            {/* Corporate Secretariat Environment */}
-            <div className="relative rounded-lg overflow-hidden border border-[#E2E8F0] bg-[#071731] aspect-[16/9] shadow-xs group">
-              <img
-                src="/events/thales-kadin-innovation-day/cover.jpg"
-                alt="TSA Executive Secretariat & Command Operations"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/80 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 text-[10px] sm:text-[11px] font-mono text-slate-200 bg-[#071731]/85 px-3 py-1.5 rounded border border-white/10 flex items-center justify-between">
-                <span>Central Secretariat Desk</span>
-                <span className="text-[#C8102E] font-semibold">JAKARTA PUSAT</span>
-              </div>
-            </div>
 
             {/* Protocol Badge */}
             <div className="p-5 bg-white border border-[#E2E8F0] rounded-lg shadow-2xs flex items-center gap-3.5">
