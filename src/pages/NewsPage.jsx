@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowUpRight, ArrowRight, Newspaper } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { editorialInsights } from "../data/tsaData";
 import { EVENTS_DATA } from "../data/eventsData";
 

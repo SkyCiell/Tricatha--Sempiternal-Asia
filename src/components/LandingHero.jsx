@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, Volume2, VolumeX } from "lucide-react";
 
 export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
+  const containerRef = useRef(null);
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -29,6 +30,32 @@ export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
         });
       }
     }
+  }, []);
+
+  // Performance: Pause video decoding when scrolled out of view, resume when visible
+  useEffect(() => {
+    const container = containerRef.current;
+    const video = videoRef.current;
+    if (!container || !video || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!videoRef.current) return;
+          if (entry.isIntersecting) {
+            videoRef.current.play().catch(() => {});
+          } else {
+            videoRef.current.pause();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(container);
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   const toggleAudio = () => {
@@ -75,6 +102,7 @@ export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
 
   return (
     <section
+      ref={containerRef}
       id="home"
       data-nav-theme="dark"
       className="relative w-full h-[100dvh] min-h-[580px] sm:min-h-[640px] flex flex-col justify-between bg-[#071731] text-white pt-24 sm:pt-36 pb-14 sm:pb-16 border-b border-white/10 overflow-hidden select-none"
@@ -88,11 +116,13 @@ export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           poster="/hero-poster.jpg"
-          src="/hero-bg.mp4"
           className="w-full h-full object-cover object-center scale-[1.02] opacity-80 sm:opacity-85 transition-opacity duration-700"
-        />
+        >
+          <source media="(max-width: 768px)" src="/hero-bg-720p.mp4" type="video/mp4" />
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
 
         {/* Directional Scrim: keeps text legible while preserving authentic video clarity */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/60 via-55% to-black/20" />

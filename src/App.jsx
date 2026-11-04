@@ -19,10 +19,6 @@ import InternshipPage from "./pages/InternshipPage";
 import FAQPage from "./pages/FAQPage";
 import ContactPage from "./pages/ContactPage";
 import NewsPage from "./pages/NewsPage";
-import EnchantePage from "./pages/EnchantePage";
-import TechnologyPage from "./pages/TechnologyPage";
-import GovAdvPage from "./pages/GovAdvPage";
-import GwiPage from "./pages/GwiPage";
 import ActivitiesPage from "./pages/ActivitiesPage";
 
 const VALID_ROUTES = [
@@ -117,25 +113,39 @@ export default function App() {
     }
     setCurrentPath(initialRoute);
 
-    // Initialize Lenis smooth momentum scrolling
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.5,
-    });
+    // Initialize Lenis smooth momentum scrolling only on desktop (never hijack mobile native touch)
+    const isMobileDevice =
+      typeof window !== "undefined" &&
+      (window.matchMedia("(max-width: 1024px)").matches ||
+        (window.matchMedia("(pointer: coarse)").matches && !window.matchMedia("(hover: hover)").matches));
 
-    lenis.scrollTo(0, { immediate: true });
-    window.scrollTo(0, 0);
+    let lenis = null;
+    let animationFrameId = null;
 
-    let animationFrameId;
-    function raf(time) {
-      lenis.raf(time);
+    if (!isMobileDevice) {
+      lenis = new Lenis({
+        duration: 0.9,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        syncTouch: false,
+      });
+
+      lenis.scrollTo(0, { immediate: true });
+
+      function raf(time) {
+        if (lenis) {
+          lenis.raf(time);
+          animationFrameId = requestAnimationFrame(raf);
+        }
+      }
       animationFrameId = requestAnimationFrame(raf);
+      window.__lenis = lenis;
+    } else {
+      window.__lenis = null;
     }
-    animationFrameId = requestAnimationFrame(raf);
-    window.__lenis = lenis;
+
+    window.scrollTo(0, 0);
 
     // Support Browser Back and Forward buttons (Popstate)
     const handlePopState = () => {
@@ -150,8 +160,8 @@ export default function App() {
 
     window.addEventListener("popstate", handlePopState);
     return () => {
-      cancelAnimationFrame(animationFrameId);
-      lenis.destroy();
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      if (lenis) lenis.destroy();
       window.__lenis = null;
       window.removeEventListener("popstate", handlePopState);
       window.removeEventListener("beforeunload", handleBeforeUnload);

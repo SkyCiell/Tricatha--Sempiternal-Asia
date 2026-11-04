@@ -25,6 +25,8 @@ export default function EditorialCTA({ onStartConversation, onExploreWork }) {
         <img
           src={plenaryPhoto}
           alt="High-Stakes Plenary Summit Staging by TSA"
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover opacity-10"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#071731] via-[#071731]/95 to-[#071731]" />

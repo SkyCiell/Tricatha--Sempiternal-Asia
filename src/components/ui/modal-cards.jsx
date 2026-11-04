@@ -82,7 +82,7 @@ export default function ModalCards({
                 handleCardClick(item);
               }
             }}
-            className={`group relative flex flex-col justify-end rounded-lg sm:rounded-xl overflow-hidden cursor-pointer select-none border border-[#071731]/10 hover:border-[#071731]/40 shadow-xs hover:shadow-xl active:scale-[0.985] transition-all duration-300 bg-[#071731] focus:outline-none focus:ring-2 focus:ring-[#C8102E] touch-manipulation ${item.gridSpan || "col-span-1 md:col-span-6 lg:col-span-4"} ${item.heightClass || "h-[280px] sm:h-[340px] lg:h-[400px]"}`}
+            className={`group relative flex flex-col justify-end rounded-lg sm:rounded-xl overflow-hidden cursor-pointer select-none border border-[#071731]/10 hover:border-[#071731]/40 shadow-xs hover:shadow-xl transition-[border-color,box-shadow] duration-300 bg-[#071731] focus:outline-none focus:ring-2 focus:ring-[#C8102E] touch-manipulation ${item.gridSpan || "col-span-1 md:col-span-6 lg:col-span-4"} ${item.heightClass || "h-[280px] sm:h-[340px] lg:h-[400px]"}`}
           >
             {/* Background Photography with Shared Layout Transition */}
             <motion.div

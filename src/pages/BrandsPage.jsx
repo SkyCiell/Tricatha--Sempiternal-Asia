@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowRight, Building2 } from "lucide-react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import backgroundTSA from "../assets/Background_TSA.jpg";
 const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
 const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";

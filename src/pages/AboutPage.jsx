@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import Leadership from "../components/Leadership";
 import backgroundTSA from "../assets/Background_TSA.jpg";
 

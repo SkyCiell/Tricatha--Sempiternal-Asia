@@ -74,7 +74,7 @@ export default function Masonry({
               <img
                 src={item.img}
                 alt={item.title}
-                loading="eager"
+                loading={index < 2 ? "eager" : "lazy"}
                 decoding="async"
                 onError={(e) => {
                   if (item.fallbackImg && e.currentTarget.src !== item.fallbackImg) {

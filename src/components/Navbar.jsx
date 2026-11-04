@@ -121,29 +121,42 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
     });
   };
 
+  // Cache of themed sections to prevent repeated DOM queries during scroll
+  const themedElementsRef = useRef([]);
+
+  const refreshThemedElements = useCallback(() => {
+    try {
+      themedElementsRef.current = Array.from(document.querySelectorAll("[data-nav-theme], [data-theme]"));
+    } catch {
+      themedElementsRef.current = [];
+    }
+  }, []);
+
   // Dynamic Theme Detection: checks the section or element directly beneath navbar vertical center
   const evaluateNavbarTheme = useCallback(() => {
     if (mobileMenuOpen) return;
     const scrollY = window.scrollY || window.pageYOffset || 0;
-    setScrolled(scrollY > 20);
+    setScrolled((prev) => (prev !== (scrollY > 20) ? scrollY > 20 : prev));
 
     const normalizedCurrent = currentPath.toLowerCase().replace(/\/+$/, "") || "/";
     const isHome = normalizedCurrent === "/" || normalizedCurrent === "/home";
 
     // 1. If at top of Home (inside fullscreen hero video/photo), always dark
     if (isHome && scrollY < window.innerHeight - 76) {
-      setNavTheme("dark");
+      setNavTheme((prev) => (prev !== "dark" ? "dark" : prev));
       return;
     }
 
     const navbarCheckY = 42;
     let detectedTheme = null;
 
-    // 2. Query all elements with explicit data-nav-theme or data-theme
-    try {
-      const themedElements = document.querySelectorAll("[data-nav-theme], [data-theme]");
+    // 2. Query cached elements with explicit data-nav-theme
+    const elements = themedElementsRef.current;
+    if (elements.length > 0) {
       let smallestArea = Infinity;
-      for (const elem of themedElements) {
+      for (let i = 0; i < elements.length; i++) {
+        const elem = elements[i];
+        if (!elem || !elem.isConnected) continue;
         const rect = elem.getBoundingClientRect();
         if (rect.top <= navbarCheckY && rect.bottom > navbarCheckY) {
           const area = rect.height * rect.width;
@@ -153,65 +166,30 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
           }
         }
       }
-    } catch {
-      // ignore
     }
 
-    // 3. Fallback using elementsFromPoint
-    if (!detectedTheme) {
-      try {
-        const elements = document.elementsFromPoint(window.innerWidth / 2, navbarCheckY);
-        for (const el of elements) {
-          if (!el) continue;
-          if (el.closest("header") || el.closest("#splash-screen") || el.closest("[data-modal]")) {
-            continue;
-          }
-          const closestThemed = el.closest("[data-nav-theme], [data-theme]");
-          if (closestThemed) {
-            detectedTheme = closestThemed.getAttribute("data-nav-theme") || closestThemed.getAttribute("data-theme");
-            break;
-          }
-
-          let cur = el;
-          while (cur && cur !== document.body && cur !== document.documentElement) {
-            const bg = window.getComputedStyle(cur).backgroundColor;
-            if (bg && bg !== "transparent" && bg !== "rgba(0, 0, 0, 0)") {
-              const rgb = bg.match(/\d+/g);
-              if (rgb && rgb.length >= 3) {
-                const [r, g, b] = rgb.map(Number);
-                const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-                detectedTheme = lum > 140 ? "light" : "dark";
-                break;
-              }
-            }
-            cur = cur.parentElement;
-          }
-          if (detectedTheme) break;
-        }
-      } catch {
-        // ignore
-      }
-    }
-
-    // 4. Default fallback: light for content sections, dark only in top hero
+    // 3. Fast fallback: light for content sections, dark only in top hero
     if (!detectedTheme) {
       detectedTheme = isHome && scrollY < window.innerHeight - 76 ? "dark" : "light";
     }
 
-    setNavTheme(detectedTheme);
+    setNavTheme((prev) => (prev !== detectedTheme ? detectedTheme : prev));
   }, [currentPath, mobileMenuOpen]);
 
-  // Track scroll direction and route changes to evaluate theme & auto-hide navbar
+  // Track scroll direction and route changes with requestAnimationFrame throttling
   useEffect(() => {
+    refreshThemedElements();
     setNavVisible(true);
     lastScrollYRef.current = window.scrollY || 0;
     evaluateNavbarTheme();
 
-    const handleScroll = () => {
+    let ticking = false;
+
+    const onScrollTick = () => {
       evaluateNavbarTheme();
 
       if (mobileMenuOpen) {
-        setNavVisible(true);
+        setNavVisible((prev) => (!prev ? true : prev));
         return;
       }
 
@@ -219,13 +197,13 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
 
       // Always visible when at the top of the page (<= 80px)
       if (currentScrollY <= 80) {
-        setNavVisible(true);
+        setNavVisible((prev) => (!prev ? true : prev));
         lastScrollYRef.current = currentScrollY;
         return;
       }
 
       const diff = currentScrollY - lastScrollYRef.current;
-      const threshold = 10; // Ignore micro-scroll to avoid flicker
+      const threshold = 12; // Ignore micro-scroll to avoid flicker
 
       if (Math.abs(diff) > threshold) {
         if (diff > 0) {
@@ -240,17 +218,35 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          onScrollTick();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-    const timeoutId = setTimeout(evaluateNavbarTheme, 60);
+    const handleResize = () => {
+      refreshThemedElements();
+      handleScroll();
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleResize, { passive: true });
+
+    const timeoutId = setTimeout(() => {
+      refreshThemedElements();
+      evaluateNavbarTheme();
+    }, 80);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", handleResize);
       clearTimeout(timeoutId);
     };
-  }, [evaluateNavbarTheme, mobileMenuOpen]);
+  }, [evaluateNavbarTheme, mobileMenuOpen, refreshThemedElements]);
 
   // Automatically close mobile menu when screen is resized to desktop width
   useEffect(() => {
