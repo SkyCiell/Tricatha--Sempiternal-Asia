@@ -1,6 +1,7 @@
 import React from "react";
 import { companyInfo, institutionalReviews } from "../data/tsaData";
-const aboutPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
+import backgroundTSA from "../assets/Background_TSA.jpg";
+const aboutPhoto = backgroundTSA;
 import { Star, ShieldCheck, Building2, Globe2 } from "lucide-react";
 import AnimatedCounter from "./AnimatedCounter";
 

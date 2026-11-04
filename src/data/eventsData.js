@@ -1,14 +1,14 @@
-// High-grade default corporate event photography fallbacks
+// High-grade corporate event photography fallbacks mapped to local project assets
 const defaultFallbackPhotos = {
-  summit: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop",
-  teambuilding: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop",
-  capacity: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop",
-  creative: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1600&auto=format&fit=crop",
-  evening: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1600&auto=format&fit=crop",
-  talkshow: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1600&auto=format&fit=crop",
-  legal: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1600&auto=format&fit=crop",
-  investment: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1600&auto=format&fit=crop",
-  innovation: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop"
+  summit: "/events/appmbgi-national-summit-2026/cover.jpg",
+  teambuilding: "/events/team-building-bp-tapera-2025/cover.jpg",
+  capacity: "/events/team-building-bp-tapera-2025/photo-1.jpg",
+  creative: "/events/adobe-ai-art-revolution/cover.jpg",
+  evening: "/events/illuminate-asia-exclusive-evening/cover.jpg",
+  talkshow: "/events/empowering-women-in-politics/cover.jpg",
+  legal: "/events/book-launching-restorative-justice/cover.jpg",
+  investment: "/events/indonesia-europe-investment-summit-2023/cover.jpg",
+  innovation: "/events/thales-kadin-innovation-day/cover.jpg"
 };
 
 export const EVENT_CATEGORIES = [

@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 
-const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1800&auto=format&fit=crop";
-const conclavePhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
+const plenaryPhoto = "/events/book-launching-restorative-justice/cover.jpg";
+const conclavePhoto = "/events/indonesia-europe-investment-summit-2023/photo-2.jpg";
 
 export default function GovAdvPage({ navigateTo }) {
   const handleInquiry = () => {

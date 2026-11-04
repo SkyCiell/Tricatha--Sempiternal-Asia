@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { editorialInsights } from "../data/tsaData";
-import { EVENTS_DATA } from "../data/eventsData";
 
 export default function NewsPage({ navigateTo }) {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -18,7 +17,7 @@ export default function NewsPage({ navigateTo }) {
       date: "March 2026",
       readTime: "4 min read",
       excerpt: "Operational deployment begins across Halls 1, 2, and 3 at Indonesia Convention Exhibition (ICE) BSD City, accommodating 50,000+ delegates and international technology pavilions with zero margin for error.",
-      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
+      image: "/events/adobe-ai-art-revolution/cover.jpg",
       author: "TSA Event Operations Directorate",
       url: "/events/sea-energy-transition-clean-tech-mice-expo-2025"
     },
@@ -30,7 +29,7 @@ export default function NewsPage({ navigateTo }) {
       date: "February 2026",
       readTime: "3 min read",
       excerpt: "The TSA Executive Secretariat has formalized bilateral precedence schedules, encrypted telepresence conduits, and sovereign security perimeters uniting 18 ministerial delegations.",
-      image: EVENTS_DATA[0]?.img || "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
+      image: "/events/indonesia-europe-investment-summit-2023/cover.jpg",
       author: "Executive Secretariat",
       url: "/events/asean-sovereign-strategic-diplomacy-plenary-2025"
     },
@@ -115,8 +114,8 @@ export default function NewsPage({ navigateTo }) {
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
                     className={`px-3.5 py-1.5 rounded transition-all cursor-pointer border flex items-center gap-2 ${isActive
-                        ? "bg-[#071731] text-white border-[#071731] font-semibold shadow-xs"
-                        : "bg-white text-slate-700 border-[#071731]/10 hover:border-[#071731]/30"
+                      ? "bg-[#071731] text-white border-[#071731] font-semibold shadow-xs"
+                      : "bg-white text-slate-700 border-[#071731]/10 hover:border-[#071731]/30"
                       }`}
                   >
                     <span>{cat}</span>
@@ -152,7 +151,7 @@ export default function NewsPage({ navigateTo }) {
             {/* Typography Positioned Directly Over Media */}
             <div className="relative z-10 p-6 sm:p-10 lg:p-14 w-full text-white">
               <div className="max-w-4xl space-y-4">
-                
+
                 <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-300">
                   <span className="text-[#C8102E] font-semibold uppercase">{leadArticle.category}</span>
                   <span>·</span>

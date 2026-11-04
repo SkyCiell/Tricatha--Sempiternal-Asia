@@ -5,9 +5,9 @@ import { businessGroupData } from "../data/tsaData";
 import backgroundTSA from "../assets/Background_TSA.jpg";
 
 const techPhoto = backgroundTSA;
-const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2000&auto=format&fit=crop";
-const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2000&auto=format&fit=crop";
-const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";
+const culinaryPhoto = "/events/illuminate-asia-exclusive-evening/cover.jpg";
+const plenaryPhoto = "/events/book-launching-restorative-justice/cover.jpg";
+const aseanPhoto = "/events/empowering-women-in-politics/cover.jpg";
 const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 
 const iconMap = {

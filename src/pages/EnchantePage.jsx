@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 
-const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=1800&auto=format&fit=crop";
-const banquetPhoto = "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600&auto=format&fit=crop";
+const culinaryPhoto = "/events/illuminate-asia-exclusive-evening/cover.jpg";
+const banquetPhoto = "/events/illuminate-asia-exclusive-evening/photo-2.jpg";
 
 export default function EnchantePage({ navigateTo }) {
   const handleInquiry = () => {

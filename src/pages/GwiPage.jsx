@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
 
 const mainConferencePhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
-const businessMatchingPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
+const businessMatchingPhoto = "/events/appmbgi-national-summit-2026/photo-1.jpg";
 
 export default function GwiPage({ navigateTo }) {
   const handleInquiry = () => {

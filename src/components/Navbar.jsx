@@ -445,8 +445,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
             {/* Logo Emblem Box */}
             <div
               className={`w-9 h-9 rounded-[3px] flex items-center justify-center shrink-0 transition-colors duration-200 p-0.5 ${isLight
-                  ? "bg-[#071731] border border-[#071731]"
-                  : "bg-white border border-white/20"
+                ? "bg-[#071731] border border-[#071731]"
+                : "bg-white border border-white/20"
                 }`}
             >
               <img src={logoTSA} alt="TSA Official Emblem" className="w-full h-full object-cover rounded-[2px]" />
@@ -492,12 +492,12 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                       onClick={(e) => handleMainItemClick(item, e)}
                       aria-current={isActive ? "page" : undefined}
                       className={`inline-flex items-center py-1 transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] relative ${isLight
-                          ? isActive
-                            ? "text-[#071731] font-semibold"
-                            : "text-slate-700 hover:text-[#071731]"
-                          : isActive
-                            ? "text-white font-semibold"
-                            : "text-slate-300 hover:text-white"
+                        ? isActive
+                          ? "text-[#071731] font-semibold"
+                          : "text-slate-700 hover:text-[#071731]"
+                        : isActive
+                          ? "text-white font-semibold"
+                          : "text-slate-300 hover:text-white"
                         }`}
                     >
                       <span>{item.name}</span>
@@ -522,10 +522,10 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                       >
                         <ChevronDown
                           className={`w-3.5 h-3.5 transition-transform duration-200 ${isDropdownOpen
-                              ? "rotate-180 text-[#C8102E]"
-                              : isLight
-                                ? "text-slate-400 hover:text-[#071731]"
-                                : "text-slate-400 hover:text-white"
+                            ? "rotate-180 text-[#C8102E]"
+                            : isLight
+                              ? "text-slate-400 hover:text-[#071731]"
+                              : "text-slate-400 hover:text-white"
                             }`}
                         />
                       </button>
@@ -542,8 +542,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                           exit={{ opacity: 0, y: 4 }}
                           transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
                           className={`absolute top-[calc(100%-8px)] left-0 min-w-[240px] rounded-[3px] border p-1.5 z-50 text-left transition-colors duration-150 pointer-events-auto ${isLight
-                              ? "bg-white border-[#071731]/10 text-[#071731] shadow-[0_12px_28px_rgba(7,23,49,0.09)]"
-                              : "bg-[#071731] border-white/15 text-white shadow-[0_16px_36px_rgba(0,0,0,0.55)]"
+                            ? "bg-white border-[#071731]/10 text-[#071731] shadow-[0_12px_28px_rgba(7,23,49,0.09)]"
+                            : "bg-[#071731] border-white/15 text-white shadow-[0_16px_36px_rgba(0,0,0,0.55)]"
                             }`}
                           role="menu"
                           aria-label={`${item.name} submenu`}
@@ -556,8 +556,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                                 role="menuitem"
                                 onClick={(e) => handleSubItemClick(item, sub, e)}
                                 className={`w-full text-left px-3.5 py-2.5 rounded-[2px] transition-colors duration-150 cursor-pointer flex items-center justify-between text-[12.5px] font-medium tracking-[0.02em] ${isLight
-                                    ? "text-[#071731] hover:text-[#C8102E] hover:bg-slate-50"
-                                    : "text-slate-200 hover:text-white hover:bg-white/10"
+                                  ? "text-[#071731] hover:text-[#C8102E] hover:bg-slate-50"
+                                  : "text-slate-200 hover:text-white hover:bg-white/10"
                                   }`}
                               >
                                 <span>{sub.name}</span>
@@ -579,8 +579,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
               type="button"
               onClick={toggleMobileMenu}
               className={`p-2.5 min-w-[48px] min-h-[48px] flex items-center justify-center rounded transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#C8102E] cursor-pointer touch-manipulation ${isLight
-                  ? "text-[#071731] hover:bg-slate-100 active:bg-slate-200"
-                  : "text-slate-200 hover:text-white hover:bg-white/10 active:bg-white/15"
+                ? "text-[#071731] hover:bg-slate-100 active:bg-slate-200"
+                : "text-slate-200 hover:text-white hover:bg-white/10 active:bg-white/15"
                 }`}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
@@ -619,8 +619,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
               className={`lg:hidden relative z-50 border-t max-h-[calc(100vh-76px)] max-h-[calc(100dvh-76px)] sm:max-h-[calc(100vh-80px)] sm:max-h-[calc(100dvh-80px)] overflow-y-auto overscroll-contain shadow-2xl transition-colors duration-200 ${isLight
-                  ? "bg-white border-slate-200 text-[#071731]"
-                  : "bg-[#071731] border-white/10 text-white"
+                ? "bg-white border-slate-200 text-[#071731]"
+                : "bg-[#071731] border-white/10 text-white"
                 }`}
             >
               <div className="max-w-[1520px] mx-auto px-4 sm:px-8 py-5 space-y-2">
@@ -640,12 +640,12 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                           <div>
                             <div
                               className={`w-full py-1 px-3 rounded-[3px] flex items-center justify-between transition-colors min-h-[48px] ${isActive
-                                  ? isLight
-                                    ? "bg-slate-100 text-[#071731] font-semibold border-l-2 border-[#C8102E]"
-                                    : "bg-[#0B1E3F] text-white font-semibold border-l-2 border-[#C8102E]"
-                                  : isLight
-                                    ? "text-slate-700 hover:text-[#071731] hover:bg-slate-50"
-                                    : "text-slate-300 hover:text-white hover:bg-white/5"
+                                ? isLight
+                                  ? "bg-slate-100 text-[#071731] font-semibold border-l-2 border-[#C8102E]"
+                                  : "bg-[#0B1E3F] text-white font-semibold border-l-2 border-[#C8102E]"
+                                : isLight
+                                  ? "text-slate-700 hover:text-[#071731] hover:bg-slate-50"
+                                  : "text-slate-300 hover:text-white hover:bg-white/5"
                                 }`}
                             >
                               <button
@@ -673,8 +673,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                             {isExpanded && (
                               <div
                                 className={`pl-3 pr-2 py-1 space-y-0.5 mt-1 mb-2 rounded-[2px] border-l-2 ${isLight
-                                    ? "bg-slate-50 border-slate-300"
-                                    : "bg-[#0B1E3F]/80 border-slate-700"
+                                  ? "bg-slate-50 border-slate-300"
+                                  : "bg-[#0B1E3F]/80 border-slate-700"
                                   }`}
                               >
                                 {item.dropdown.map((sub, idx) => (
@@ -683,8 +683,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                                     type="button"
                                     onClick={(e) => handleSubItemClick(item, sub, e)}
                                     className={`w-full text-left py-2.5 px-3 min-h-[44px] flex items-center justify-between rounded-[2px] transition-colors touch-manipulation cursor-pointer ${isLight
-                                        ? "text-slate-700 hover:text-[#071731] hover:bg-white"
-                                        : "text-slate-200 hover:text-white hover:bg-white/5"
+                                      ? "text-slate-700 hover:text-[#071731] hover:bg-white"
+                                      : "text-slate-200 hover:text-white hover:bg-white/5"
                                       }`}
                                   >
                                     <span className="font-medium text-xs sm:text-sm">{sub.name}</span>
@@ -700,12 +700,12 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                             onClick={() => handleMainItemClick(item)}
                             aria-current={isActive ? "page" : undefined}
                             className={`w-full text-left py-3 px-3 rounded-[3px] flex items-center justify-between transition-colors touch-manipulation cursor-pointer min-h-[48px] ${isActive
-                                ? isLight
-                                  ? "bg-slate-100 text-[#071731] font-semibold border-l-2 border-[#C8102E]"
-                                  : "bg-[#0B1E3F] text-white font-semibold border-l-2 border-[#C8102E]"
-                                : isLight
-                                  ? "text-slate-700 hover:text-[#071731] hover:bg-slate-50"
-                                  : "text-slate-300 hover:text-white hover:bg-white/5"
+                              ? isLight
+                                ? "bg-slate-100 text-[#071731] font-semibold border-l-2 border-[#C8102E]"
+                                : "bg-[#0B1E3F] text-white font-semibold border-l-2 border-[#C8102E]"
+                              : isLight
+                                ? "text-slate-700 hover:text-[#071731] hover:bg-slate-50"
+                                : "text-slate-300 hover:text-white hover:bg-white/5"
                               }`}
                           >
                             <span className="font-heading text-[15px]">{item.name}</span>

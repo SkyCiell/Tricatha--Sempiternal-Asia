@@ -9,7 +9,7 @@ import {
   Building2,
   GraduationCap
 } from "lucide-react";
-const heroPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
+const heroPhoto = "/events/adobe-ai-art-revolution/photo-1.jpg";
 
 export default function InternshipPage({ _navigateTo }) {
   const [applicationModalOpen, setApplicationModalOpen] = useState(false);

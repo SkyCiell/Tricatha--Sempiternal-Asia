@@ -51,22 +51,26 @@ export default function AboutPage({ navigateTo }) {
     {
       period: "2018 – 2020",
       milestone: "Foundation & Sovereign Protocol Practice",
-      detail: "Established in Jakarta as a specialized advisory focusing on diplomatic seating precedence, ministerial bilateral meetings, and high-level stakeholder convenings."
+      detail: "Established in Jakarta as a specialized advisory focusing on diplomatic seating precedence, ministerial bilateral meetings, and high-level stakeholder convenings.",
+      photo: "/events/book-launching-restorative-justice/photo-2.jpg"
     },
     {
       period: "2021 – 2022",
       milestone: "Turnkey MICE & Commercial Expo Engineering",
-      detail: "Scaled operations into large-scale exhibition architecture, managing multi-hall trade expos and national congresses across Indonesia's primary exhibition hubs."
+      detail: "Scaled operations into large-scale exhibition architecture, managing multi-hall trade expos and national congresses across Indonesia's primary exhibition hubs.",
+      photo: "/events/appmbgi-national-summit-2026/photo-2.jpg"
     },
     {
       period: "2023 – 2024",
       milestone: "DNA Studio Broadcast Center & Holding Expansion",
-      detail: "Commissioned the dedicated 4K multi-camera soundstage at The City Tower 12th Floor, unifying broadcast telepresence, GWI civic activations, and GOADV state relations."
+      detail: "Commissioned the dedicated 4K multi-camera soundstage at The City Tower 12th Floor, unifying broadcast telepresence, GWI civic activations, and GOADV state relations.",
+      photo: "/events/empowering-women-in-politics/photo-2.jpg"
     },
     {
       period: "2025 – 2026",
       milestone: "Flagship Regional Plenaries & Pan-ASEAN Delivery",
-      detail: "Orchestrating sovereign summits and monumental clean energy expositions uniting 18 ministerial delegations and over 45,000 in-person participants."
+      detail: "Orchestrating sovereign summits and monumental clean energy expositions uniting 18 ministerial delegations and over 45,000 in-person participants.",
+      photo: "/events/indonesia-europe-investment-summit-2023/cover.jpg"
     }
   ];
 
@@ -179,6 +183,23 @@ export default function AboutPage({ navigateTo }) {
             <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
               Every production executed by TSA adheres to three non-negotiable standards established since our founding. We do not compromise on protocol precedence, operational fidelity, or cross-border network access.
             </p>
+
+            <div className="pt-3 hidden sm:block">
+              <div className="relative rounded-lg overflow-hidden border border-[#071731]/10 aspect-[16/10] bg-[#071731] shadow-2xs group">
+                <img
+                  src="/events/indonesia-europe-investment-summit-2023/photo-1.jpg"
+                  alt="TSA Diplomatic Protocol Precedence & Assembly Staging"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-2 left-2 right-2 text-[10px] font-mono text-slate-200 bg-[#071731]/80 px-2.5 py-1 rounded border border-white/10 flex items-center justify-between">
+                  <span>Sovereign Signing Assembly</span>
+                  <span className="text-[#C8102E] font-semibold">JAKARTA</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Tenet Entries (7 cols) */}
@@ -232,7 +253,19 @@ export default function AboutPage({ navigateTo }) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-12">
           {milestones.map((m, idx) => (
-            <div key={idx} className="space-y-3 pt-6 border-t-2 border-[#071731]/15 hover:border-[#C8102E] transition-colors">
+            <div key={idx} className="space-y-3 pt-6 border-t-2 border-[#071731]/15 hover:border-[#C8102E] transition-colors group">
+              {m.photo && (
+                <div className="relative rounded overflow-hidden aspect-[16/10] bg-[#071731] border border-[#071731]/10 mb-3 shadow-2xs">
+                  <img
+                    src={m.photo}
+                    alt={m.milestone}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-104 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/60 via-transparent to-transparent pointer-events-none" />
+                </div>
+              )}
               <div className="font-mono text-xs font-bold text-[#C8102E] tracking-wider">
                 {m.period}
               </div>

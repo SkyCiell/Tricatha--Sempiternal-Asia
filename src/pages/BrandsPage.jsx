@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import backgroundTSA from "../assets/Background_TSA.jpg";
-const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
+const plenaryPhoto = "/events/book-launching-restorative-justice/cover.jpg";
 const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 
 export default function BrandsPage({ navigateTo, initialUnit }) {
@@ -118,7 +118,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
         "Curated Culinary Products & Bespoke Tasting Menus",
         "Distinctive Presentation, Tablescape & Service Staffing"
       ],
-      photo: "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=1800&auto=format&fit=crop",
+      photo: "/events/illuminate-asia-exclusive-evening/cover.jpg",
       photoCaption: "Thoughtfully Prepared Culinary Presentation · Enchantée Kitchen",
       venues: "Corporate Plenaries · Private Estates · Five-Star Ballrooms · Curated Social Venues",
       featuredEvent: {
@@ -145,7 +145,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
         "Leader Dialogue Broadcast Curation & Digital Distribution",
         "Kinetic Soundstage Lighting & Acoustic Scenography"
       ],
-      photo: "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop",
+      photo: "/events/empowering-women-in-politics/cover.jpg",
       photoCaption: "DNA Studio Leader Dialogue: Geopolitical Horizons · Broadcast Suite",
       venues: "The City Tower 12th Fl · Soehanna Hall SCBD · Live Satellite Up-Links",
       featuredEvent: {

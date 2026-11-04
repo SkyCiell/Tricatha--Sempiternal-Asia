@@ -4,10 +4,10 @@ import ModalCards from "./ui/modal-cards";
 import backgroundTSA from "../assets/Background_TSA.jpg";
 
 const techPhoto = backgroundTSA;
-const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=1800&auto=format&fit=crop";
-const broadcastPhoto = "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop";
+const culinaryPhoto = "/events/illuminate-asia-exclusive-evening/cover.jpg";
+const broadcastPhoto = "/events/empowering-women-in-politics/cover.jpg";
 const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
-const govAdvPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
+const govAdvPhoto = "/events/book-launching-restorative-justice/cover.jpg";
 
 const BRANDS = [
   {

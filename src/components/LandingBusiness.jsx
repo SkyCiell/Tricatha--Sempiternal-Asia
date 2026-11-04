@@ -4,9 +4,9 @@ import backgroundTSA from "../assets/Background_TSA.jpg";
 
 const techPhoto = backgroundTSA;
 const micePhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
-const govPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";
-const broadcastPhoto = "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=2000&auto=format&fit=crop";
-const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2000&auto=format&fit=crop";
+const govPhoto = "/events/book-launching-restorative-justice/photo-1.jpg";
+const broadcastPhoto = "/events/empowering-women-in-politics/photo-3.jpg";
+const culinaryPhoto = "/events/illuminate-asia-exclusive-evening/photo-2.jpg";
 
 const BUSINESS_CHAPTERS = [
   {

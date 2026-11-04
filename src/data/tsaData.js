@@ -1,7 +1,3 @@
-// High-grade dummy corporate event photography URLs
-const aseanDiplomacyImage = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1600&auto=format&fit=crop";
-const govAdvImage = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop";
-
 export const companyInfo = {
   name: "TRICATHA SEMPITERNAL ASIA",
   shortName: "TSA",
@@ -43,7 +39,7 @@ export const coreCapabilities = [
       "VVIP Guest Protocol & Security Escort Coordination",
       "Real-Time Command Center & Technical Troubleshooting"
     ],
-    image: aseanDiplomacyImage
+    image: "/events/appmbgi-national-summit-2026/photo-1.jpg"
   },
   {
     id: "exhibition-expo",
@@ -56,7 +52,7 @@ export const coreCapabilities = [
       "Automated Visitor Registration & Digital Badge Telemetry",
       "Sponsorship Packaging & Commercial Partner Management"
     ],
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop"
+    image: "/events/indonesia-europe-investment-summit-2023/photo-2.jpg"
   },
   {
     id: "conference-forum",
@@ -69,7 +65,7 @@ export const coreCapabilities = [
       "Interactive Q&A Telemetry & Live Polling Systems",
       "Speaker Management & Thought Leadership Curation"
     ],
-    image: govAdvImage
+    image: "/events/empowering-women-in-politics/cover.jpg"
   },
   {
     id: "government-institutional",
@@ -82,7 +78,7 @@ export const coreCapabilities = [
       "Inter-Ministerial Liaison & State Agency Coordination",
       "Encrypted Communication & High-Security Venue Logistics"
     ],
-    image: aseanDiplomacyImage
+    image: "/events/book-launching-restorative-justice/cover.jpg"
   },
   {
     id: "corporate-events",
@@ -95,7 +91,7 @@ export const coreCapabilities = [
       "Executive Gala Dinners & Award Ceremonies",
       "Corporate Milestone & Anniversary Productions"
     ],
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1200&auto=format&fit=crop"
+    image: "/events/illuminate-asia-exclusive-evening/cover.jpg"
   }
 ];
 
@@ -153,16 +149,16 @@ export const featuredProjects = [
     category: "Exhibition & Technology Conference",
     year: "2026",
     location: "ICE BSD City, Greater Jakarta",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop",
+    image: "/events/adobe-ai-art-revolution/cover.jpg",
     shortDesc: "Southeast Asia's benchmark artificial intelligence exhibition convening global frontier tech leaders, enterprise software giants, national policymakers, and venture capital syndicates.",
     role: "Full turnkey event management, spatial floor architecture, 180+ interactive enterprise booths, sovereign AI keynote stage, and AI-powered B2B matchmaking lounges.",
     scope: "Exhibition Floor Architecture · Keynote Plenary · VVIP Protocol · 180+ Enterprise Pavilions",
     impact: "180+ Global Exhibitors · 24,000+ Registered Attendees · 35 Ministerial Keynotes",
     overview: "Conceived as the sovereign crossroads for enterprise AI in Southeast Asia, AI Global EXPO 2026 delivers 3 full exhibition halls, dual plenary keynote stages, and bilateral tech governance conclaves under strict international MICE standards.",
     gallery: [
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop"
+      "/events/adobe-ai-art-revolution/cover.jpg",
+      "/events/adobe-ai-art-revolution/photo-1.jpg",
+      "/events/adobe-ai-art-revolution/photo-2.jpg"
     ]
   },
   {
@@ -171,16 +167,16 @@ export const featuredProjects = [
     category: "International Business Exhibition",
     year: "2025",
     location: "Jakarta International Expo (JIExpo) Kemayoran",
-    image: "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1200&auto=format&fit=crop",
+    image: "/events/indonesia-europe-investment-summit-2023/photo-2.jpg",
     shortDesc: "Prestigious bilateral cultural & commercial exposition series promoting industrial partnerships, retail distribution, creative IP showcases, and diplomatic economic cooperation.",
     role: "Cross-border exhibitor management, turnkey Japanese pavilion construction, bilateral B2B trade matchmaking, cultural performance stage production, and bilingual operational staff deployment.",
     scope: "Cross-Border Trade Pavilion · Bilingual Operations · B2B Investment Salons · Cultural Mainstage",
     impact: "95 Japanese Enterprises · $120M Projected Bilateral Trade · 38,000 Public & Trade Visitors",
     overview: "Orchestrating high-level bilateral programs between Japanese enterprise delegations and Indonesian trade bodies, unifying cultural prestige with commercial investment opportunities.",
     gallery: [
-      "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?q=80&w=1200&auto=format&fit=crop",
-      aseanDiplomacyImage,
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1200&auto=format&fit=crop"
+      "/events/indonesia-europe-investment-summit-2023/photo-2.jpg",
+      "/events/indonesia-europe-investment-summit-2023/cover.jpg",
+      "/events/appmbgi-national-summit-2026/photo-4.jpg"
     ]
   },
   {
@@ -189,16 +185,16 @@ export const featuredProjects = [
     category: "Government & Sovereign Diplomatic Forum",
     year: "2025",
     location: "Jakarta Convention Center (JCC), Senayan",
-    image: aseanDiplomacyImage,
+    image: "/events/book-launching-restorative-justice/cover.jpg",
     shortDesc: "A premier diplomatic convention gathering ministerial delegations and sovereign envoys from across Southeast Asia to advance regional economic alignment and multilateral cooperation.",
     role: "Head-of-state diplomatic protocol, secure delegation logistics, multilateral plenary design, encrypted simultaneous interpretation, and bilateral accord signing ceremonies.",
     scope: "VVIP Protocol Logistics · Sovereign Seating Etiquette · Encrypted Multi-Lingual Telemetry",
     impact: "18 Head-of-State Delegations · 12 Bilateral Accords Signed ($450M+) · Zero Protocol Incidents",
     overview: "Orchestrated head-of-state diplomatic forum gathering 18 ministerial delegations from across the Southeast Asian corridor. Managed bilateral negotiation rooms, simultaneous translation infrastructure, and sovereign reception protocols with zero margin for error.",
     gallery: [
-      aseanDiplomacyImage,
-      govAdvImage,
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop"
+      "/events/book-launching-restorative-justice/cover.jpg",
+      "/events/book-launching-restorative-justice/photo-1.jpg",
+      "/events/book-launching-restorative-justice/photo-2.jpg"
     ]
   },
   {
@@ -207,16 +203,16 @@ export const featuredProjects = [
     category: "Government Institutional Conference",
     year: "2024",
     location: "The Ritz-Carlton Jakarta, Mega Kuningan",
-    image: govAdvImage,
+    image: "/events/thales-kadin-innovation-day/cover.jpg",
     shortDesc: "An executive sovereign assembly convening public sector directors general, ministry secretaries, and systems architects to deliberate national digital governance and digital sovereignty.",
     role: "Strategic agenda curation, high-level panel facilitation, plenary scenography, real-time executive telemetry setup, and inter-agency working group logistics.",
     scope: "Inter-Ministerial Liaison · Stage Scenography · Real-Time Executive Telemetry",
     impact: "14 Participating Ministries · 850 Executive Delegates · Zero-Downtime Session Execution",
     overview: "High-level state convention convening directors general, ministry secretaries, and systems architects to deliberate digital sovereignty, sovereign cloud governance, and inter-agency data integration.",
     gallery: [
-      govAdvImage,
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?q=80&w=1200&auto=format&fit=crop",
-      aseanDiplomacyImage
+      "/events/thales-kadin-innovation-day/cover.jpg",
+      "/events/empowering-women-in-politics/photo-1.jpg",
+      "/events/book-launching-restorative-justice/photo-3.jpg"
     ]
   },
   {
@@ -225,16 +221,16 @@ export const featuredProjects = [
     category: "International MICE Exhibition",
     year: "2025",
     location: "Indonesia Convention Exhibition (ICE BSD City)",
-    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1200&auto=format&fit=crop",
+    image: "/events/appmbgi-national-summit-2026/photo-1.jpg",
     shortDesc: "Turnkey MICE execution spanning three exhibition halls, ministerial keynote stages, and B2B matchmaking lounges uniting multinational energy consortiums and regional infrastructure investors.",
     role: "Exhibition floor plan architecture, delegate flow control, 200+ corporate pavilions, VIP green energy lounge, and international press broadcast center.",
     scope: "3 Exhibition Halls · 200+ Corporate Pavilions · Ministerial Keynotes · Hosted Buyer Lounges",
     impact: "15,000+ Trade Attendees · 200+ Global Exhibitors · $320M Investment Pipeline",
     overview: "Turnkey MICE execution spanning three exhibition halls, ministerial keynote stages, and B2B matchmaking lounges uniting multinational energy consortiums and regional infrastructure investors.",
     gallery: [
-      "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
-      govAdvImage
+      "/events/appmbgi-national-summit-2026/photo-1.jpg",
+      "/events/appmbgi-national-summit-2026/photo-2.jpg",
+      "/events/appmbgi-national-summit-2026/cover.jpg"
     ]
   },
   {
@@ -243,16 +239,16 @@ export const featuredProjects = [
     category: "Corporate Event & Investor Summit",
     year: "2025",
     location: "Fairmont Hotel Ballroom, Jakarta",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1200&auto=format&fit=crop",
+    image: "/events/empowering-women-in-politics/photo-2.jpg",
     shortDesc: "Hybrid in-person and digital AGM orchestration with real-time audited proxy voting systems, investor relations media staging, and executive board panel coordination.",
     role: "Encrypted electronic voting integration, shareholder credential verification, strict corporate governance decorum, 4K broadcast stream, and executive media scrum coordination.",
     scope: "Audited Electronic Voting · Hybrid Telecast · Corporate Governance Protocol",
     impact: "1,400 Attending Shareholders · 99.8% Quorum Achieved · Zero Protocol Flaws",
     overview: "Hybrid in-person and digital AGM orchestration with real-time audited proxy voting systems, investor relations media staging, and executive board panel coordination.",
     gallery: [
-      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1200&auto=format&fit=crop",
-      govAdvImage,
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop"
+      "/events/empowering-women-in-politics/photo-2.jpg",
+      "/events/empowering-women-in-politics/cover.jpg",
+      "/events/illuminate-asia-exclusive-evening/photo-1.jpg"
     ]
   }
 ];
@@ -361,7 +357,7 @@ export const editorialInsights = [
     date: "February 2026",
     readTime: "5 min read",
     excerpt: "How modern event organizers are transforming traditional trade expos into data-driven commercial ecosystems that maximize exhibitor ROI and buyer engagement.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop"
+    image: "/events/appmbgi-national-summit-2026/cover.jpg"
   },
   {
     id: "insights-protocol-summits",
@@ -370,7 +366,7 @@ export const editorialInsights = [
     date: "January 2026",
     readTime: "7 min read",
     excerpt: "An executive analysis of security clearance coordination, bilateral seating etiquette, and flawless plenary execution when hosting regional heads of state.",
-    image: aseanDiplomacyImage
+    image: "/events/book-launching-restorative-justice/cover.jpg"
   },
   {
     id: "insights-agm-hybrid",
@@ -379,7 +375,7 @@ export const editorialInsights = [
     date: "December 2025",
     readTime: "6 min read",
     excerpt: "Essential strategies for corporate secretariats executing hybrid AGMs with audited electronic voting, encrypted proxy channels, and executive media management.",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1200&auto=format&fit=crop"
+    image: "/events/empowering-women-in-politics/photo-1.jpg"
   }
 ];
 
@@ -435,7 +431,7 @@ export const leadershipTeam = [
     badge: "Chief Executive Officer",
     quote: "Bridging technological expertise, sovereign governance, and creative excellence to deliver innovative strategies and measurable impact across Asia.",
     image: "/team/dina-e-saksono.png",
-    fallbackImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    fallbackImage: "/team/dina-e-saksono.png",
     bio: "Dina Ernawati Saksono is the Chief Executive Officer of PT Tricatha Sempiternal Asia, leading the company’s strategic direction, business development, and multidisciplinary operations. She directly oversees TSA’s principal portfolios, including Gema Waskita Interaktifa, GovAdv, and DNA Studio, bringing together technology, government advisory, event management, stakeholder engagement, and creative production within one integrated business ecosystem.\n\nWith nearly two decades of experience working alongside the U.S. Department of Justice–ICITAP, Dina has contributed to international law-enforcement capacity building, environmental and natural-resource protection, and initiatives addressing violence against women and children. She founded the HELP Dashboard System and Application, launched by the Indonesian Chief of Police in 2018, and has represented Indonesia at the International Association of Women Police Training Conference in Barcelona. Her contributions have also been recognized through two Certificates of Appreciation from the Office of the U.S. Attorney General. Today, she brings this depth of institutional experience, international exposure, and cross-sector connectivity to TSA’s leadership and client engagements.",
     mandateScope: "Strategic Direction · Business Development · Integrated Ecosystem"
   },
@@ -446,7 +442,7 @@ export const leadershipTeam = [
     badge: "Chief Technology Officer",
     quote: "Translating complex operational requirements into secure, scalable, and purpose-built digital architectures.",
     image: "/team/r-januardy.png",
-    fallbackImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+    fallbackImage: "/team/r-januardy.png",
     bio: "R. Januardy is the Chief Technology Officer of PT Tricatha Sempiternal Asia, responsible for shaping the company’s technology strategy and overseeing the development of its digital solutions. With expertise spanning digital technology, telecommunications, and systems engineering, he provides the technical leadership required to translate complex operational requirements into secure, scalable, and purpose-built systems.\n\nA graduate of Electrical Engineering with a specialization in Telecommunication Engineering from Brawijaya University, Januardy leads capabilities across software and hardware engineering, digital product management, data digitization, big-data analytics, and backend web and application development. His approach combines technical precision with practical business understanding, ensuring that TSA’s technology solutions remain reliable, relevant, and aligned with the institutional and operational needs of each client.",
     mandateScope: "Technology Strategy · Systems Engineering · Big-Data Analytics"
   },
@@ -457,7 +453,7 @@ export const leadershipTeam = [
     badge: "Creative Director & Activation Lead",
     quote: "Transforming strategic institutional concepts into memorable spatial narratives, soundstages, and experiential activations that command attention.",
     image: "/team/joseph-saryuf.png",
-    fallbackImage: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
+    fallbackImage: "/team/joseph-saryuf.png",
     bio: "Joseph Saryuf is TSA’s Creative Director and Activation Lead, bringing more than 20 years of experience in brand activation, experiential marketing, and integrated creative communications. Throughout his career, he has transformed brand objectives into engaging audience experiences through strategic activation concepts, multidisciplinary creative development, and carefully coordinated implementation.\n\nHis portfolio spans consumer brands, lifestyle companies, and entertainment properties, supported by expertise in creative direction, production oversight, content development, audience-engagement design, and cross-functional team leadership. At TSA, Joseph leads the creative and activation process with a balance of imagination, commercial understanding, and operational discipline—ensuring that every concept remains distinctive, relevant, and executable.",
     mandateScope: "Brand Activation · Experiential Marketing · Creative Communications"
   },
@@ -468,7 +464,7 @@ export const leadershipTeam = [
     badge: "Production & Multimedia Specialist",
     quote: "Connecting creative ideas with technical production to deliver polished visual, digital, and audiovisual content.",
     image: "/team/raditya-pratama.png",
-    fallbackImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=800&auto=format&fit=crop",
+    fallbackImage: "/team/raditya-pratama.png",
     bio: "Raditya Pratama is TSA’s Production and Multimedia Specialist, supporting the development and execution of visual, digital, and audiovisual materials across the company’s business units. His role connects creative ideas with technical production, helping transform concepts into polished content suitable for events, campaigns, digital platforms, and corporate communications.\n\nWorking across production and multimedia disciplines, Raditya contributes to the planning, development, and final presentation of each creative output. With attention to visual consistency, technical quality, and the intended audience experience, he helps ensure that TSA’s content is not only professionally produced but also aligned with each client’s identity, objectives, and communication requirements.",
     mandateScope: "Audiovisual Production · Digital Platforms · Corporate Communications"
   }
@@ -589,7 +585,7 @@ export const activitiesData = [
     partnerOrClient: "BP TAPERA & Enterprise Secretariats",
     location: "Ciwidey, Bandung & Royal Tulip Bogor",
     year: "2024 – 2025",
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop",
+    image: "/events/team-building-bp-tapera-2025/cover.jpg",
     shortDesc: "High-impact experiential team-building programs combining strategic leadership drills, institutional risk navigation, and collaborative synergy challenges.",
     description: "Organized for corporate officers and institutional personnel across premier retreat grounds in West Java. Programs merge rigorous leadership scenario modeling with outdoor group dynamics designed to reinforce organizational resilience and cross-division alignment.",
     metrics: [
@@ -613,7 +609,7 @@ export const activitiesData = [
     partnerOrClient: "Ministry of Culture & Civic Heritage Foundation",
     location: "Gelora Bung Karno & Taman Ismail Marzuki, Jakarta",
     year: "2024 – 2025",
-    image: "/events/appmbgi-national-summit-2026/photo-3.jpg",
+    image: "/events/adobe-ai-art-revolution/cover.jpg",
     shortDesc: "Massive public cultural engagement celebrations bringing national heritage alive through monumental spatial scenography and interactive projection mapping.",
     description: "Conducted under Gema Waskita Interaktifa (GWI), these high-capacity initiatives convene public patrons, cultural custodians, and municipal stakeholders to celebrate Indonesian heritage through immersive digital art installations and civic participation.",
     metrics: [
@@ -637,7 +633,7 @@ export const activitiesData = [
     partnerOrClient: "Premier Indonesian & ASEAN Universities",
     location: "Sudirman Park & Field Event Sites, Jakarta",
     year: "Ongoing Multi-Cohort",
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop",
+    image: "/events/adobe-ai-art-revolution/photo-2.jpg",
     shortDesc: "A rigorous professional apprenticeship immersing selected university scholars into live sovereign protocol, 4K broadcast operations, and MICE logistics.",
     description: "TSA collaborates with top-tier universities to mentor the next generation of event architects. Fellows participate in live plenary simulations, venue command center monitoring, and international buyer liaison under direct supervision from TSA directors.",
     metrics: [
@@ -661,7 +657,7 @@ export const activitiesData = [
     partnerOrClient: "Diplomatic Envoys, Trade Chambers & Energy Councils",
     location: "DNA Studio, Sudirman Park",
     year: "2024 – 2026",
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1200&auto=format&fit=crop",
+    image: "/events/empowering-women-in-politics/cover.jpg",
     shortDesc: "Closed-door and syndicated dialogue series examining ASEAN economic integration, clean tech investment, and sovereign digital governance.",
     description: "TSA convenes policy directors, former ambassadors, and industry chairpersons for moderated dialogue sessions at our 4K broadcast suite. Insights are synthesized into executive briefs and syndicated to regional business networks.",
     metrics: [
