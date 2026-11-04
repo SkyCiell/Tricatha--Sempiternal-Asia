@@ -29,7 +29,7 @@ export default function WhyTSASection() {
   return (
     <section id="about" className="py-20 sm:py-28 bg-[#071731] text-white border-b border-white/10">
       <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
-        
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -55,7 +55,7 @@ export default function WhyTSASection() {
 
         {/* Editorial Asymmetric Spread */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pt-12 items-stretch">
-          
+
           {/* Left Column: Visual Operational Anchor (5 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -71,7 +71,7 @@ export default function WhyTSASection() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/30 to-transparent opacity-90 pointer-events-none" />
-              
+
               <div className="absolute bottom-5 left-5 right-5 p-5 bg-[#0A1F44]/95 border border-white/15 rounded text-white space-y-2">
                 <div className="font-heading font-bold text-sm sm:text-base">
                   National Digital Governance Conclave

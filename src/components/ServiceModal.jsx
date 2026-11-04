@@ -29,14 +29,14 @@ export default function ServiceModal({ service, onClose, onSelectContact }) {
   return (
     <AnimatePresence>
       <div data-lenis-prevent className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-10 overscroll-contain">
-        {/* Backdrop: Translucent with subtle 20% blur allowing background visibility */}
+        {/* Backdrop: Solid high-contrast overlay */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           onClick={onClose}
-          className="fixed inset-0 bg-[#050F22]/50 backdrop-blur-[5px]"
+          className="fixed inset-0 bg-[#050F22]/85"
         />
 
         {/* Modal Container: Compact, centered, doesn't overwhelm viewport */}

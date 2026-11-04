@@ -104,7 +104,7 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 {activeItem.deliverables.map((deliv, idx) => (
                   <span
                     key={idx}
-                    className="px-3.5 py-1.5 rounded bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-sans text-slate-200"
+                    className="px-3.5 py-1.5 rounded bg-white/5 border border-white/15 text-xs sm:text-sm font-sans text-slate-200"
                   >
                     {deliv}
                   </span>
@@ -137,8 +137,8 @@ export default function WhatWeDoIntro({ navigateTo }) {
                 onClick={() => setSelectedIndex(index)}
                 className={`text-left p-3 sm:p-4 rounded transition-all duration-300 cursor-pointer border ${
                   isSelected
-                    ? "bg-white/15 backdrop-blur-md border-white/30 text-white shadow-lg"
-                    : "bg-black/25 backdrop-blur-sm border-white/10 text-slate-400 hover:text-white hover:bg-white/10"
+                    ? "bg-[#0E2552] border-white/30 text-white shadow-md"
+                    : "bg-[#071731]/90 border-white/10 text-slate-400 hover:text-white hover:bg-[#0A1F44]"
                 }`}
               >
                 <div className={`font-mono text-[10px] uppercase tracking-wider mb-1 font-semibold ${isSelected ? "text-[#C8102E]" : "text-slate-400"}`}>

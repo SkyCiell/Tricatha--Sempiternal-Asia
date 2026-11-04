@@ -49,7 +49,7 @@ export default function AboutPage({ navigateTo }) {
 
   const milestones = [
     {
-      period: "2018 – 2020",
+      period: "2018 - 2020",
       milestone: "Foundation & Sovereign Protocol Practice",
       detail: "Established in Jakarta as a specialized advisory focusing on diplomatic seating precedence, ministerial bilateral meetings, and high-level stakeholder convenings.",
       photo: "/events/book-launching-restorative-justice/photo-2.jpg"
@@ -194,9 +194,9 @@ export default function AboutPage({ navigateTo }) {
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-2 left-2 right-2 text-[10px] font-mono text-slate-200 bg-[#071731]/80 px-2.5 py-1 rounded border border-white/10 flex items-center justify-between">
+                <div className="absolute bottom-2 left-2 right-2 text-[10px] font-mono text-slate-200 bg-[#071731]/85 px-2.5 py-1 rounded border border-white/10 flex items-center justify-between">
                   <span>Sovereign Signing Assembly</span>
-                  <span className="text-[#C8102E] font-semibold">JAKARTA</span>
+                  <span className="text-slate-300">Central Jakarta</span>
                 </div>
               </div>
             </div>

@@ -151,7 +151,7 @@ export const featuredProjects = [
     location: "ICE BSD City, Greater Jakarta",
     image: "/events/adobe-ai-art-revolution/cover.jpg",
     shortDesc: "Southeast Asia's benchmark artificial intelligence exhibition convening global frontier tech leaders, enterprise software giants, national policymakers, and venture capital syndicates.",
-    role: "Full turnkey event management, spatial floor architecture, 180+ interactive enterprise booths, sovereign AI keynote stage, and AI-powered B2B matchmaking lounges.",
+    role: "Full turnkey event management, spatial floor architecture, 180+ interactive enterprise booths, executive keynote stage, and curated B2B matchmaking lounges.",
     scope: "Exhibition Floor Architecture · Keynote Plenary · VVIP Protocol · 180+ Enterprise Pavilions",
     impact: "180+ Global Exhibitors · 24,000+ Registered Attendees · 35 Ministerial Keynotes",
     overview: "Conceived as the sovereign crossroads for enterprise AI in Southeast Asia, AI Global EXPO 2026 delivers 3 full exhibition halls, dual plenary keynote stages, and bilateral tech governance conclaves under strict international MICE standards.",
@@ -454,7 +454,7 @@ export const leadershipTeam = [
     quote: "Transforming strategic institutional concepts into memorable spatial narratives, soundstages, and experiential activations that command attention.",
     image: "/team/joseph-saryuf.png",
     fallbackImage: "/team/joseph-saryuf.png",
-    bio: "Joseph Saryuf is TSA’s Creative Director and Activation Lead, bringing more than 20 years of experience in brand activation, experiential marketing, and integrated creative communications. Throughout his career, he has transformed brand objectives into engaging audience experiences through strategic activation concepts, multidisciplinary creative development, and carefully coordinated implementation.\n\nHis portfolio spans consumer brands, lifestyle companies, and entertainment properties, supported by expertise in creative direction, production oversight, content development, audience-engagement design, and cross-functional team leadership. At TSA, Joseph leads the creative and activation process with a balance of imagination, commercial understanding, and operational discipline—ensuring that every concept remains distinctive, relevant, and executable.",
+    bio: "Joseph Saryuf is TSA’s Creative Director and Activation Lead, bringing more than 20 years of experience in brand activation, experiential marketing, and integrated creative communications. Throughout his career, he has transformed brand objectives into engaging audience experiences through strategic activation concepts, multidisciplinary creative development, and carefully coordinated implementation.\n\nHis portfolio spans consumer brands, lifestyle companies, and entertainment properties, supported by expertise in creative direction, production oversight, content development, audience-engagement design, and cross-functional team leadership. At TSA, Joseph leads the creative and activation process with a balance of imagination, commercial understanding, and operational discipline, ensuring that every concept remains distinctive, relevant, and executable.",
     mandateScope: "Brand Activation · Experiential Marketing · Creative Communications"
   },
   {

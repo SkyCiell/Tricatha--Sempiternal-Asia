@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowUpRight, ArrowRight, Compass, Users2, Landmark, GraduationCap, Radio, CheckCircle2, MapPin, Award } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Compass, Users2, Landmark, GraduationCap, Radio, MapPin, Award } from "lucide-react";
 import { activitiesData } from "../data/tsaData";
 
 const activityIconMap = {
@@ -139,7 +139,7 @@ export default function ActivitiesSection({ navigateTo, onOpenWorkModal }) {
                 <ActiveIcon className="w-3.5 h-3.5" />
                 <span>{activeActivity.category}</span>
               </span>
-              <span className="px-3 py-1 bg-white/10 backdrop-blur-xs text-slate-200 border border-white/20 rounded text-[11px] flex items-center gap-1">
+              <span className="px-3 py-1 bg-white/5 text-slate-200 border border-white/20 rounded text-[11px] flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
                 <span>{activeActivity.location}</span>
               </span>
@@ -147,7 +147,7 @@ export default function ActivitiesSection({ navigateTo, onOpenWorkModal }) {
 
             <div className="flex items-center gap-2 text-slate-300">
               <Award className="w-3.5 h-3.5 text-[#C8102E]" />
-              <span>ACTIVE PROGRAM FRAMEWORK · {activeActivity.year}</span>
+              <span>Initiative Archive · {activeActivity.year}</span>
             </div>
           </div>
 

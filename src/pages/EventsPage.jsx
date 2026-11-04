@@ -79,7 +79,7 @@ export default function EventsPage({ navigateTo }) {
   return (
     <div className="min-h-screen font-sans selection:bg-[#C8102E] selection:text-white">
 
-      {/* 1. OPENING MASTHEAD & ARCHIVE HEADER — Off-White Canvas */}
+      {/* 1. OPENING MASTHEAD & ARCHIVE HEADER: Off-White Canvas */}
       <section className="bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0] pt-24 sm:pt-32 pb-10 sm:pb-16 relative">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-4">
@@ -114,10 +114,10 @@ export default function EventsPage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 2. RESTRAINED STICKY CATEGORY FILTER BAR — Clean Light Track */}
+      {/* 2. RESTRAINED STICKY CATEGORY FILTER BAR: Clean Light Track */}
       <nav
         aria-label="Events Category Filter"
-        className="sticky top-16 sm:top-20 z-30 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-[#E2E8F0]"
+        className="sticky top-16 sm:top-20 z-30 bg-[#FAF9F6] border-b border-[#E2E8F0]"
       >
         <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-4">
 
@@ -178,7 +178,7 @@ export default function EventsPage({ navigateTo }) {
         </div>
       </section>
 
-      {/* 4. CLOSING EXECUTIVE INQUIRY PANEL — Rich Navy & Crimson Accent */}
+      {/* 4. CLOSING EXECUTIVE INQUIRY PANEL: Rich Navy & Crimson Accent */}
       <section className="bg-[#0A1F44] text-white py-14 sm:py-20 border-b border-white/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">

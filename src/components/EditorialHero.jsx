@@ -129,7 +129,7 @@ export default function EditorialHero({ onExploreWork, onLetsTalk }) {
       <div className="absolute bottom-6 right-6 sm:right-8 z-20">
         <button
           onClick={toggleAudio}
-          className="px-3.5 py-1.5 rounded-full bg-[#0A1F44]/90 hover:bg-[#0E2552] text-white transition-all flex items-center gap-2 border border-white/15 hover:border-white/30 cursor-pointer text-[11px] font-mono shadow-lg backdrop-blur-sm"
+          className="px-3.5 py-1.5 rounded-full bg-[#0A1F44]/95 hover:bg-[#0E2552] text-white transition-all flex items-center gap-2 border border-white/15 hover:border-white/30 cursor-pointer text-[11px] font-mono shadow-md"
           title={isMuted ? "Unmute Background Audio" : "Mute Background Audio"}
         >
           {isMuted ? <VolumeX className="w-3.5 h-3.5 text-slate-400" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}

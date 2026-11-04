@@ -9,10 +9,10 @@ export default function CompanyIntro() {
   return (
     <section id="about" className="py-20 sm:py-28 bg-[#071731] text-[#F1F5F9] border-b border-white/10 overflow-hidden">
       <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8">
-        
+
         {/* 1. Main Asymmetric Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column (5 cols): Curated Photo with Editorial Frame */}
           <div className="lg:col-span-5 relative">
             <div className="editorial-image-frame relative aspect-[4/5] rounded overflow-hidden border border-white/15 shadow-sm bg-[#050F22]">
@@ -22,12 +22,12 @@ export default function CompanyIntro() {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050F22]/90 via-transparent to-transparent opacity-80 pointer-events-none" />
-              
-              {/* Sovereign Clearance Badge */}
-              <div className="absolute bottom-5 left-5 right-5 bg-[#071731]/95 backdrop-blur-md border border-white/15 p-4 rounded text-white font-mono text-xs">
-                <div className="flex items-center gap-2 text-[#C8102E] font-medium mb-1">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>HEADQUARTERS CLEARANCE</span>
+
+              {/* Headquarters Location Card */}
+              <div className="absolute bottom-5 left-5 right-5 bg-[#071731]/95 border border-white/15 p-4 rounded text-white font-mono text-xs">
+                <div className="flex items-center gap-2 text-slate-300 font-medium mb-1">
+                  <Building2 className="w-4 h-4 text-[#C8102E]" />
+                  <span>HEADQUARTERS</span>
                 </div>
                 <p className="text-[11px] text-slate-300 font-sans leading-snug">
                   Sudirman Park Apartment, Jl. KH. Mas Mansyur Kav. 35, Jakarta Pusat.
@@ -106,12 +106,9 @@ export default function CompanyIntro() {
         {/* 3. Institutional Endorsements */}
         <div className="mt-16 sm:mt-20 pt-10 border-t border-white/10">
           <div className="flex items-center justify-between mb-8 text-xs font-mono text-slate-400">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-              <span className="text-white font-medium uppercase tracking-widest">
-                Institutional Endorsements
-              </span>
-            </div>
+            <span className="text-white font-medium uppercase tracking-widest">
+              Institutional Endorsements
+            </span>
             <span className="hidden sm:inline">DIPLOMATIC &amp; ENTERPRISE REVIEWS</span>
           </div>
 

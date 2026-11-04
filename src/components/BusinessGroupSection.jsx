@@ -88,9 +88,8 @@ export default function BusinessGroupSection({ navigateTo }) {
         {/* Section Header: Blue & White Corporate Identity */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12 pb-6 border-b border-[#E2E8F0]">
           <div className="space-y-3 max-w-3xl">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-[#071731] font-bold uppercase tracking-wider bg-white px-3 py-1 rounded border border-[#E2E8F0]">
-              <span className="w-2 h-2 rounded-full bg-[#C8102E]" />
-              <span>TSA OPERATING DIVISIONS · SPECIALIZED PRACTICE GROUPS</span>
+            <div className="text-xs font-mono uppercase tracking-wider text-[#C8102E] font-semibold">
+              Operating Divisions
             </div>
 
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-[46px] font-bold text-[#071731] tracking-tight leading-[1.12]">
@@ -125,11 +124,10 @@ export default function BusinessGroupSection({ navigateTo }) {
               <button
                 key={unit.id}
                 onClick={() => setActiveUnitId(unit.id)}
-                className={`p-4 sm:p-5 text-left rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-between min-h-[88px] sm:min-h-[96px] h-full ${
-                  isSelected
+                className={`p-4 sm:p-5 text-left rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-between min-h-[88px] sm:min-h-[96px] h-full ${isSelected
                     ? "bg-white border-[#071731] shadow-md ring-1 ring-[#071731]/15 text-[#071731]"
                     : "bg-white/60 border-[#E2E8F0] text-[#475569] hover:bg-white hover:border-slate-400 hover:text-[#071731]"
-                }`}
+                  }`}
               >
                 <div className="space-y-1 pr-2">
                   <div className={`font-heading font-bold text-sm tracking-tight leading-snug ${isSelected ? "text-[#071731]" : "text-[#334155]"}`}>
@@ -140,9 +138,8 @@ export default function BusinessGroupSection({ navigateTo }) {
                   </div>
                 </div>
 
-                <div className={`w-8 h-8 rounded flex items-center justify-center shrink-0 transition-colors ${
-                  isSelected ? "bg-[#071731] text-white" : "bg-slate-100 text-[#64748B]"
-                }`}>
+                <div className={`w-8 h-8 rounded flex items-center justify-center shrink-0 transition-colors ${isSelected ? "bg-[#071731] text-white" : "bg-slate-100 text-[#64748B]"
+                  }`}>
                   <Icon className="w-4 h-4" />
                 </div>
               </button>

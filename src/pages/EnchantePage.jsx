@@ -379,7 +379,7 @@ export default function EnchantePage({ navigateTo }) {
               {venues.map((venue, idx) => (
                 <div
                   key={idx}
-                  className="px-3.5 py-2 rounded bg-white/10 backdrop-blur-md border border-white/15 text-xs sm:text-sm font-mono text-slate-200"
+                  className="px-3.5 py-2 rounded bg-white/5 border border-white/15 text-xs sm:text-sm font-mono text-slate-200"
                 >
                   <span>{venue}</span>
                 </div>

@@ -123,7 +123,7 @@ export default function Leadership() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setActiveLeader(null)}
-              className="absolute inset-0 bg-[#050F22]/90 backdrop-blur-sm cursor-pointer"
+              className="absolute inset-0 bg-[#050F22]/90 cursor-pointer"
             />
 
             <motion.div

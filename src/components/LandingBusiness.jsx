@@ -196,7 +196,7 @@ export default function LandingBusiness({ navigateTo }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-2.5 left-2.5 right-2.5 text-[11px] sm:text-xs font-mono text-slate-200 bg-[#071731]/85 px-3 py-1.5 rounded border border-white/10 flex items-center justify-between">
                   <span>PT Tricatha Sempiternal Asia</span>
-                  <span className="text-[#C8102E] font-semibold">SOVEREIGN MANDATE</span>
+                  <span className="text-slate-300">Executive Secretariat</span>
                 </div>
               </div>
             </div>
@@ -242,7 +242,7 @@ export default function LandingBusiness({ navigateTo }) {
                     <ul className="space-y-2 border-t border-[#E2E8F0] pt-3.5 sm:pt-4 font-sans text-xs sm:text-sm text-[#1E293B]">
                       {chapter.deliverables.map((item, idx) => (
                         <li key={idx} className="flex items-baseline gap-2">
-                          <span className="text-[#C8102E] font-bold">—</span>
+                          <span className="text-[#C8102E] font-bold text-base leading-none">·</span>
                           <span>{item}</span>
                         </li>
                       ))}

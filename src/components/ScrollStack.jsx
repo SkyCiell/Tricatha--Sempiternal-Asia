@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
-export function ScrollStackItem({ project, index, total, onClick }) {
+export function ScrollStackItem({ project, index, _total, onClick }) {
   const containerRef = useRef(null);
   const topOffset = 100 + index * 26;
 

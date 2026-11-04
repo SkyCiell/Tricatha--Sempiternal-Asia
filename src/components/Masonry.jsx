@@ -68,7 +68,7 @@ export default function Masonry({
                   handleCardClick(e, item);
                 }
               }}
-              aria-label={`${item.title} — ${item.category || 'Event'} (${item.year || ''})`}
+              aria-label={`${item.title}: ${item.category || 'Event'} (${item.year || ''})`}
             >
               {/* Full-bleed Photo with Smooth Natural Scale */}
               <img

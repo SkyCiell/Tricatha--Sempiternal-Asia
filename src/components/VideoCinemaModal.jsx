@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { X, Play, Pause, Volume2, VolumeX, Maximize, RotateCcw, ShieldCheck } from "lucide-react";
+import { X, Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from "lucide-react";
 
 export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg.mp4" }) {
   const videoRef = useRef(null);
@@ -131,7 +131,7 @@ export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg
       role="dialog"
       aria-modal="true"
       aria-label="TSA Operational Showreel Cinema View"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/95 animate-fade-in"
       onClick={onClose}
     >
       <div
@@ -141,7 +141,6 @@ export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg
         {/* Top Header Bar */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[#0A1F44] border-b border-white/10 text-white">
           <div className="flex items-center gap-2.5">
-            <span className="w-2 h-2 rounded-full bg-[#C8102E] animate-pulse" />
             <span className="font-mono text-xs font-semibold tracking-wider uppercase text-slate-200">
               TSA OPERATIONAL ARCHIVE REEL
             </span>
@@ -190,10 +189,9 @@ export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg
             </button>
           )}
 
-          {/* Lower HUD Tag */}
-          <div className="absolute top-4 left-4 pointer-events-none flex items-center gap-2 px-3 py-1 rounded bg-[#071731]/80 backdrop-blur-xs border border-white/15 text-[11px] font-mono text-slate-300">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#C8102E]" />
-            <span>IEIS &amp; EUROCHAM PLENARY DELEGATIONS</span>
+          {/* Video Metadata Tag */}
+          <div className="absolute top-4 left-4 pointer-events-none px-3 py-1 rounded bg-[#071731]/90 border border-white/15 text-[11px] font-mono text-slate-300">
+            <span>IEIS &amp; EUROCHAM PLENARY ARCHIVE</span>
           </div>
         </div>
 

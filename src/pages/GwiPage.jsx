@@ -158,7 +158,7 @@ export default function GwiPage({ navigateTo }) {
             </h2>
 
             <p className="font-sans text-base sm:text-lg lg:text-xl text-slate-200 font-normal leading-relaxed max-w-3xl drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
-              GWI does more than organize events—we connect our clients with the right people. Supported by an organic, multisector database of more than 20,000 contacts, we curate target audiences according to each engagement’s specific objectives.
+              GWI does more than organize events: we connect our clients with the right people. Supported by an organic, multisector database of more than 20,000 contacts, we curate target audiences according to each engagement’s specific objectives.
             </p>
 
             <div className="pt-2">
@@ -234,7 +234,7 @@ export default function GwiPage({ navigateTo }) {
                 Gema Waskita Interaktifa (GWI) is TSA’s event management and experiential division, delivering national and international conferences, corporate gatherings, business-matching programs, brand activations, and strategic engagements. We combine strategic planning, creative direction, and disciplined execution to transform each client’s objectives into a cohesive and professionally delivered experience.
               </p>
               <p>
-                GWI does more than organize events—we connect our clients with the right people. Supported by an organic, multisector database of more than 20,000 contacts, we curate target audiences according to each engagement’s specific objectives. This capability enables us to bring relevant decision-makers, government representatives, business leaders, industry professionals, and communities into the room—creating events that are not only well executed, but also purposeful and commercially meaningful.
+                GWI does more than organize events: we connect our clients with the right people. Supported by an organic, multisector database of more than 20,000 contacts, we curate target audiences according to each engagement’s specific objectives. This capability enables us to bring relevant decision-makers, government representatives, business leaders, industry professionals, and communities into the room, creating events that are not only well executed, but also purposeful and commercially meaningful.
               </p>
             </div>
           </motion.div>
@@ -304,7 +304,7 @@ export default function GwiPage({ navigateTo }) {
             Curating the Room: 20,000+ Verified Contacts.
           </h2>
           <p className="font-sans text-sm sm:text-base text-slate-600 leading-relaxed pt-2">
-            Supported by an organic, multisector database, GWI curates target audiences according to each engagement’s specific objectives—bringing relevant decision-makers into the room.
+            Supported by an organic, multisector database, GWI curates target audiences according to each engagement’s specific objectives, bringing relevant decision-makers into the room.
           </p>
         </div>
 
@@ -388,7 +388,7 @@ export default function GwiPage({ navigateTo }) {
             </h2>
 
             <p className="font-sans text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-3xl drop-shadow-[0_1px_8px_rgba(0,0,0,0.8)]">
-              Bringing relevant decision-makers, government representatives, business leaders, industry professionals, and communities into the room—creating events that are not only well executed, but commercially meaningful.
+              Bringing relevant decision-makers, government representatives, business leaders, industry professionals, and communities into the room, creating events that are not only well executed, but commercially meaningful.
             </p>
 
             {/* Audience Sectors Matrix Directly Over Media */}
@@ -396,7 +396,7 @@ export default function GwiPage({ navigateTo }) {
               {audienceSectors.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-3.5 rounded bg-white/10 backdrop-blur-md border border-white/15 space-y-1"
+                  className="p-3.5 rounded bg-white/5 border border-white/15 space-y-1"
                 >
                   <div className="text-white font-medium text-xs sm:text-sm">
                     {item.sector}

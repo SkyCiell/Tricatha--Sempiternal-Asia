@@ -53,7 +53,7 @@ export default function Insights({ scrollToSection }) {
                   <FileText className="w-3.5 h-3.5" />
                   <span>{leadArticle.category}</span>
                 </span>
-                <span className="px-3 py-1 bg-white/10 backdrop-blur-xs text-slate-200 border border-white/20 rounded text-[11px]">
+                <span className="px-3 py-1 bg-white/5 text-slate-200 border border-white/20 rounded text-[11px]">
                   {leadArticle.date}
                 </span>
               </div>

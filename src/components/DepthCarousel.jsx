@@ -13,7 +13,7 @@ export default function DepthCarousel({
   visibleCards = 4,
   falloff = 0.15,
   blur = 2,
-  autoplay = false,
+  _autoplay = false,
   loop = true,
   cardWidth = 420,
   cardHeight = 540,

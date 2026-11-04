@@ -63,7 +63,7 @@ export default function PortfolioPage({ navigateTo }) {
       </section>
 
       {/* 2. Category Filter Bar */}
-      <section className="sticky top-16 sm:top-20 z-30 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-[#071731]/10 py-3.5">
+      <section className="sticky top-16 sm:top-20 z-30 bg-[#FAF9F6] border-b border-[#071731]/10 py-3.5">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 flex items-center justify-between gap-4">
           <div className="overflow-x-auto scrollbar-none pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 flex-grow">
             <div className="flex items-center gap-2 whitespace-nowrap font-mono text-xs">
@@ -154,7 +154,7 @@ export default function PortfolioPage({ navigateTo }) {
                       <span>Inspect Project Case Dossier</span>
                     </button>
 
-                    <div className="text-xs font-mono text-slate-300 px-4 py-2.5 rounded bg-white/10 backdrop-blur-md border border-white/15">
+                    <div className="text-xs font-mono text-slate-300 px-4 py-2.5 rounded bg-white/5 border border-white/15">
                       VERIFIED IMPACT: {leadProject.impact}
                     </div>
                   </div>
@@ -189,11 +189,11 @@ export default function PortfolioPage({ navigateTo }) {
                       />
                       
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 bg-white/90 backdrop-blur-xs font-mono text-[10px] text-[#071731] font-medium rounded border border-[#071731]/10">
+                        <span className="px-2.5 py-1 bg-white font-mono text-[10px] text-[#071731] font-medium rounded border border-[#071731]/10">
                           {project.category}
                         </span>
                       </div>
-                      <div className="absolute top-3 right-3 font-mono text-xs text-white bg-[#071731]/80 backdrop-blur-xs px-2.5 py-0.5 rounded font-medium">
+                      <div className="absolute top-3 right-3 font-mono text-xs text-white bg-[#071731]/95 px-2.5 py-0.5 rounded font-medium">
                         {project.year}
                       </div>
                     </div>

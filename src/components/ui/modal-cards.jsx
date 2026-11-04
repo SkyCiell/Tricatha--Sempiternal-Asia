@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowUpRight, ArrowRight, Check, ShieldCheck } from "lucide-react";
+import { X, ArrowUpRight, ArrowRight, Check } from "lucide-react";
 
 /**
  * ModalCards - React Bits Pro compliant animated modal cards component
@@ -100,15 +100,6 @@ export default function ModalCards({
               <div className="absolute inset-0 bg-[#071731]/20 transition-opacity duration-300 group-hover:bg-[#071731]/10 pointer-events-none" />
             </motion.div>
 
-            {/* Mobile & Desktop Interactive Pill: Always visible on mobile, hover-expanded on desktop */}
-            <div className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-10">
-              <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-black/60 sm:bg-white/95 backdrop-blur-md text-white sm:text-[#071731] text-[10px] sm:text-[11px] font-mono font-medium tracking-wide shadow-md border border-white/20 sm:border-transparent opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
-                <span className="hidden sm:inline">View Overview</span>
-                <span className="sm:hidden">Overview</span>
-                <ArrowUpRight className="w-3 h-3 text-[#FF6B81] sm:text-[#C8102E]" />
-              </span>
-            </div>
-
             {/* Card Content Overlay */}
             <div className="relative z-10 p-5 sm:p-7 space-y-2 sm:space-y-2.5">
               <div className="flex items-center justify-between gap-3">
@@ -151,7 +142,7 @@ export default function ModalCards({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
               onClick={handleClose}
-              className="absolute inset-0 bg-[#071731]/85 backdrop-blur-sm cursor-pointer"
+              className="absolute inset-0 bg-[#071731]/85 cursor-pointer"
             />
 
             {/* Expanded Modal Canvas: Native bottom-sheet on phone (<640px), floating card on tablet/desktop */}
@@ -173,7 +164,7 @@ export default function ModalCards({
                   type="button"
                   onClick={handleClose}
                   aria-label="Close modal dialog (Esc)"
-                  className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-black/65 hover:bg-black/90 active:scale-95 text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-lg backdrop-blur-xs focus:ring-2 focus:ring-white focus:outline-none touch-manipulation"
+                  className="w-11 h-11 sm:w-10 sm:h-10 rounded-full bg-black/75 hover:bg-black active:scale-95 text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:ring-2 focus:ring-white focus:outline-none touch-manipulation"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -200,9 +191,8 @@ export default function ModalCards({
 
                   {/* Header Overlay inside Hero */}
                   <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 text-white space-y-1.5 sm:space-y-2 z-10">
-                    <div className="inline-flex items-center gap-1.5 sm:gap-2 font-mono text-[10px] sm:text-xs text-white uppercase tracking-wider font-semibold bg-[#C8102E] px-2.5 py-1 rounded">
-                      <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                      <span>{activeItem.discipline}</span>
+                    <div className="font-mono text-xs text-[#FF8596] sm:text-slate-300 uppercase tracking-widest font-semibold">
+                      {activeItem.discipline}
                     </div>
 
                     <motion.h2

@@ -99,7 +99,7 @@ export default function NewsPage({ navigateTo }) {
       </section>
 
       {/* 2. DRAFTING FILTER BAR */}
-      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-3 sticky top-16 sm:top-20 z-30 bg-[#FAF9F6]/95 backdrop-blur-md border-b border-[#071731]/10">
+      <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-3 sticky top-16 sm:top-20 z-30 bg-[#FAF9F6] border-b border-[#071731]/10">
         <div className="flex items-center justify-between gap-4 pb-1">
           <div className="overflow-x-auto scrollbar-none pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 flex-grow">
             <div className="flex items-center gap-2 whitespace-nowrap min-w-max font-mono text-xs">

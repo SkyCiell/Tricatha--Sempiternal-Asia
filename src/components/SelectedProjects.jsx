@@ -74,7 +74,7 @@ export default function SelectedProjects() {
 
               {/* Top Corner Badges */}
               <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                <span className="px-3 py-1 bg-[#071A33]/90 backdrop-blur-sm border border-white/20 text-white font-mono text-[10px] uppercase tracking-wider rounded-md">
+                <span className="px-3 py-1 bg-[#071A33]/95 border border-white/20 text-white font-mono text-[10px] uppercase tracking-wider rounded-md">
                   {project.category}
                 </span>
                 <span className="px-3 py-1 bg-[#C62828] text-white font-mono text-[10px] font-bold uppercase tracking-wider rounded-md">

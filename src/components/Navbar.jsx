@@ -425,10 +425,10 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out ${navVisible || mobileMenuOpen ? "translate-y-0" : "-translate-y-full pointer-events-none"
         } ${isLight
           ? scrolled || mobileMenuOpen
-            ? "bg-white/98 backdrop-blur-md border-b border-[#071731]/10 shadow-[0_2px_12px_rgba(7,23,49,0.04)]"
-            : "bg-[#FAF9F6]/95 backdrop-blur-xs border-b border-[#071731]/10"
+            ? "bg-white border-b border-[#071731]/10 shadow-[0_2px_12px_rgba(7,23,49,0.04)]"
+            : "bg-[#FAF9F6] border-b border-[#071731]/10"
           : scrolled || mobileMenuOpen
-            ? "bg-[#071731]/98 backdrop-blur-md border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
+            ? "bg-[#071731] border-b border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.35)]"
             : "bg-transparent border-b border-white/10"
         }`}
     >
@@ -607,7 +607,7 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.15 }}
               onClick={closeMobileMenuAndResumeScroll}
-              className="lg:hidden fixed inset-0 top-[76px] sm:top-[80px] bg-black/60 backdrop-blur-xs z-40"
+              className="lg:hidden fixed inset-0 top-[76px] sm:top-[80px] bg-black/60 z-40"
               aria-hidden="true"
             />
 

@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
   ArrowUpRight,
-  Clock,
   CheckCircle2,
   X,
-  ArrowRight,
-  ShieldCheck,
-  Building2,
-  GraduationCap
+  ArrowRight
 } from "lucide-react";
 const heroPhoto = "/events/adobe-ai-art-revolution/photo-1.jpg";
 
@@ -50,6 +46,7 @@ export default function InternshipPage({ _navigateTo }) {
 
   const handleApplyClick = (trackTitle) => {
     const targetRole = trackTitle || selectedTrack;
+    setSelectedTrack(targetRole);
     setFormData((prev) => ({ ...prev, role: targetRole }));
     setApplicationModalOpen(true);
     setSubmitted(false);
@@ -192,7 +189,7 @@ export default function InternshipPage({ _navigateTo }) {
           {/* Viewport Overlay Content Directly Over Media */}
           <div className="relative z-10 p-6 sm:p-10 lg:p-14 w-full text-white">
             <div className="max-w-4xl space-y-4">
-              
+
               <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-300">
                 <span className="text-[#C8102E] font-semibold uppercase">Operational Fellowship</span>
                 <span>·</span>
@@ -207,7 +204,7 @@ export default function InternshipPage({ _navigateTo }) {
               </h2>
 
               <p className="font-sans text-sm sm:text-base text-slate-200 font-normal leading-relaxed max-w-3xl drop-shadow-md">
-                We believe exceptional professionals are forged through rigorous responsibility. At TSA, fellows do not observe from the sidelines—you will stand alongside our senior directors inside control booths, ministerial plenary suites, and broadcast control rooms across ICE BSD City, JCC Senayan, and The City Tower.
+                We believe exceptional professionals are forged through rigorous responsibility. At TSA, fellows do not observe from the sidelines: you will stand alongside our senior directors inside control booths, ministerial plenary suites, and broadcast control rooms across ICE BSD City, JCC Senayan, and The City Tower.
               </p>
 
               {/* Key Operational Tenets Over Media */}
@@ -377,7 +374,7 @@ export default function InternshipPage({ _navigateTo }) {
 
       {/* 6. APPLICATION MODAL */}
       {applicationModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#071731]/80 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#071731]/85">
           <div className="relative w-full max-w-2xl bg-white border border-[#071731]/15 rounded p-6 sm:p-10 shadow-2xl text-[#071731] max-h-[90vh] overflow-y-auto">
 
             <button

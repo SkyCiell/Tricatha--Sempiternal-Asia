@@ -104,7 +104,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
         <div className="absolute top-24 sm:top-28 left-4 sm:left-8 lg:left-12 z-20">
           <button
             onClick={handleBackToEvents}
-            className="group inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-slate-200 hover:text-white transition-colors cursor-pointer bg-[#071731]/80 hover:bg-[#071731] backdrop-blur-md px-4 py-2.5 rounded-full border border-white/20 shadow-lg"
+            className="group inline-flex items-center gap-2 text-xs font-mono font-medium uppercase tracking-wider text-slate-200 hover:text-white transition-colors cursor-pointer bg-[#071731]/95 hover:bg-[#071731] px-4 py-2.5 rounded-md border border-white/20 shadow-md"
           >
             <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1 text-[#C8102E]" />
             <span>Return to Events Gallery</span>
@@ -385,7 +385,7 @@ export default function EventDetailPage({ slug, navigateTo }) {
       {/* 6. LIGHTBOX IMAGE PREVIEW MODAL (Bright Theme with Prev/Next Navigation) */}
       {selectedPhotoIndex !== null && galleryImages[selectedPhotoIndex] && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#FAF9F6]/95 backdrop-blur-md transition-all"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#050F22]/95 transition-all"
           onClick={() => setSelectedPhotoIndex(null)}
           role="dialog"
           aria-modal="true"

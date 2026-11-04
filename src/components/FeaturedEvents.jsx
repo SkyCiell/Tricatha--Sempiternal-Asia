@@ -42,8 +42,8 @@ export default function FeaturedEvents({ scrollToSection }) {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071A33] via-transparent to-transparent opacity-80" />
 
                 {/* Floating Badges */}
-                <div className="absolute top-4 left-4 bg-[#071A33]/90 text-white border border-white/20 px-3 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider backdrop-blur-sm">
-                  <span className="text-[#C62828] font-bold">SOVEREIGN PLENARY</span> · {currentEvent.location}
+                <div className="absolute top-4 left-4 bg-[#071A33]/95 text-white border border-white/20 px-3 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider">
+                  <span className="text-[#C62828] font-semibold">{currentEvent.category || "Plenary Assembly"}</span> · {currentEvent.location}
                 </div>
 
                 <div className="absolute top-4 right-4 bg-[#C62828] text-white px-3 py-1.5 rounded-md font-mono text-xs uppercase tracking-wider font-bold">

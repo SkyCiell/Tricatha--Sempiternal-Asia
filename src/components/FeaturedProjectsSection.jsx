@@ -23,9 +23,8 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
           className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-5 sm:pb-6 border-b border-white/10"
         >
           <div className="space-y-1.5 max-w-2xl">
-            <div className="inline-flex items-center gap-2 font-mono text-[11px] text-[#C8102E] uppercase font-semibold tracking-wider">
-              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-              <span>ACCREDITED PRODUCTIONS · VERIFIED CASE RECORDS</span>
+            <div className="font-mono text-[11px] text-[#C8102E] uppercase font-semibold tracking-wider">
+              Selected Productions
             </div>
             <h2 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
               Selected Event Records &amp; <br className="hidden sm:inline" />
@@ -66,7 +65,7 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
                   <span className="px-2.5 py-1 bg-[#C8102E] text-white font-semibold uppercase tracking-wider rounded">
                     FLAGSHIP EXPO
                   </span>
-                  <span className="px-2.5 py-1 bg-[#071731]/85 backdrop-blur-xs text-slate-200 border border-white/15 rounded">
+                  <span className="px-2.5 py-1 bg-[#071731]/95 text-slate-200 border border-white/15 rounded">
                     {leadProject.category}
                   </span>
                 </div>
@@ -183,7 +182,7 @@ export default function FeaturedProjectsSection({ navigateTo, onOpenWorkModal })
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44] via-transparent to-transparent opacity-80 pointer-events-none" />
 
                     <div className="absolute top-2.5 left-2.5">
-                      <span className="px-2 py-0.5 bg-[#071731]/90 backdrop-blur-xs text-[10px] font-mono text-slate-200 border border-white/15 rounded">
+                      <span className="px-2 py-0.5 bg-[#071731]/95 text-[10px] font-mono text-slate-200 border border-white/15 rounded">
                         {project.year}
                       </span>
                     </div>

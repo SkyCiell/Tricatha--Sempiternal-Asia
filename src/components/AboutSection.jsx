@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight, ArrowRight, Compass, Sparkles, Cpu, Network, MapPin, Award } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Compass, Sparkles, Cpu, Network, MapPin } from "lucide-react";
 import { companyInfo } from "../data/tsaData";
 
 import backgroundTSA from "../assets/Background_TSA.jpg";
@@ -166,9 +166,8 @@ export default function AboutSection({ navigateTo }) {
           
           {/* Top Bar Meta Over Media */}
           <div className="flex items-center justify-between font-mono text-xs text-white/90">
-            <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-xs border border-white/20 rounded uppercase tracking-widest text-[11px]">
-              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-              <span>MULTIDISCIPLINARY ARCHITECTURE · SCENIC OPERATIONAL COMMAND</span>
+            <span className="text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">
+              Operational Command
             </span>
 
             <div className="hidden sm:flex items-center gap-2 text-slate-300">
@@ -219,7 +218,7 @@ export default function AboutSection({ navigateTo }) {
               <button
                 type="button"
                 onClick={handleReadCharter}
-                className="px-5 py-3 rounded bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer inline-flex items-center gap-2 backdrop-blur-xs shadow-xl"
+                className="btn-editorial-outline text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
               >
                 <span>Read Full Doctrine</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />

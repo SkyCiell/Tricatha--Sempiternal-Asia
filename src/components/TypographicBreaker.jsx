@@ -32,6 +32,12 @@ export default function TypographicBreaker({ word, theme = "navy", subtitle }) {
           </h3>
         </motion.div>
 
+        {subtitle && (
+          <p className={`font-mono text-xs uppercase tracking-wider ${textStyles[theme] || textStyles.navy}`}>
+            {subtitle}
+          </p>
+        )}
+
       </div>
     </div>
   );

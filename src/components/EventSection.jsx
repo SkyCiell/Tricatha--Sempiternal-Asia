@@ -104,7 +104,7 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
                 <span className="px-3 py-1 bg-[#C8102E] text-white font-semibold uppercase tracking-wider rounded text-[11px] shadow-md">
                   Upcoming Flagship Summit · {leadEvent.year}
                 </span>
-                <span className="px-3 py-1 bg-white/10 backdrop-blur-xs text-slate-200 border border-white/20 rounded text-[11px]">
+                <span className="px-3 py-1 bg-white/10 text-slate-200 border border-white/20 rounded text-[11px]">
                   {leadEvent.category}
                 </span>
               </div>
@@ -175,7 +175,7 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
 
                 <button
                   onClick={handleViewArchive}
-                  className="px-5 py-3 rounded bg-white/10 hover:bg-white/20 text-white border border-white/25 text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer inline-flex items-center gap-2 backdrop-blur-xs shadow-xl"
+                  className="btn-editorial-outline text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
                 >
                   <span>Browse All 2026 Summits</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
@@ -247,7 +247,7 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/80 via-transparent to-transparent opacity-75 pointer-events-none" />
 
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 bg-[#071731]/90 backdrop-blur-xs text-slate-200 border border-white/15 rounded">
+                      <span className="px-2.5 py-0.5 bg-[#071731]/95 text-slate-200 border border-white/15 rounded">
                         {event.category}
                       </span>
                       <span className="px-2.5 py-0.5 bg-[#C8102E] text-white font-bold rounded">
@@ -310,7 +310,7 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/80 via-transparent to-transparent opacity-75 pointer-events-none" />
 
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between font-mono text-[10px]">
-                      <span className="px-2.5 py-0.5 bg-[#071731]/90 backdrop-blur-xs text-slate-200 border border-white/15 rounded">
+                      <span className="px-2.5 py-0.5 bg-[#071731]/95 text-slate-200 border border-white/15 rounded">
                         {event.category.split(" ")[0]}
                       </span>
                       <span className="px-2.5 py-0.5 bg-[#C8102E] text-white font-bold rounded">
@@ -369,7 +369,7 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/80 via-transparent to-transparent opacity-75 pointer-events-none" />
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between font-mono text-[11px]">
-                      <span className="px-2.5 py-0.5 bg-[#071731]/90 backdrop-blur-xs text-slate-200 border border-white/15 rounded">
+                      <span className="px-2.5 py-0.5 bg-[#071731]/95 text-slate-200 border border-white/15 rounded">
                         {event.category}
                       </span>
                       <span className="px-2.5 py-0.5 bg-[#C8102E] text-white font-bold rounded">

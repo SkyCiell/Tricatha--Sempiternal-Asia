@@ -34,14 +34,14 @@ export default function ProjectModal({ project, onClose }) {
         role="dialog"
         aria-modal="true"
       >
-        {/* Backdrop: Translucent with subtle 20% blur allowing background visibility */}
+        {/* Backdrop: Solid high-contrast overlay */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           onClick={onClose}
-          className="fixed inset-0 bg-[#050F22]/50 backdrop-blur-[5px]"
+          className="fixed inset-0 bg-[#050F22]/85"
         />
 
         {/* Modal Container: Compact, centered, doesn't overwhelm viewport */}

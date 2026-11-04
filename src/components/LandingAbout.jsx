@@ -81,30 +81,30 @@ export default function LandingAbout({ navigateTo }) {
         </div>
       </div>
 
-      {/* 2. Fullscreen Photographic Composition: Authentic Assembly Staging */}
-      <div data-nav-theme="dark" className="relative w-full h-[360px] sm:h-[520px] lg:h-[720px] overflow-hidden bg-[#071731] select-none">
-        <img
-          src={plenaryPhoto}
-          alt="TSA Sovereign Plenary and Multidisciplinary Assembly Staging"
-          className="w-full h-full object-cover object-center"
-          loading="lazy"
-        />
+        {/* 2. Fullscreen Photographic Composition: Authentic Assembly Staging */}
+        <div data-nav-theme="dark" className="relative w-full h-[360px] sm:h-[520px] lg:h-[720px] overflow-hidden bg-[#071731] select-none">
+          <img
+            src={plenaryPhoto}
+            alt="TSA Sovereign Plenary and Multidisciplinary Assembly Staging"
+            className="w-full h-full object-cover object-center"
+            loading="lazy"
+          />
 
-        {/* Directional Cinematic Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent pointer-events-none" />
+              {/* Directional Cinematic Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/40 to-transparent pointer-events-none" />
 
-        {/* Integrated Framing Context Overlay */}
-        <div className="absolute inset-0 p-5 sm:p-12 lg:p-16 flex flex-col justify-end text-white z-10">
-          <div className="max-w-3xl space-y-2 sm:space-y-3">
-            <h3 className="font-heading text-lg sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
-              Delivering with sovereign protocol standards and multidisciplinary coordination.
-            </h3>
-            <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-3 sm:line-clamp-none">
-              Whether orchestrating inter-ministerial plenaries, enterprise software architecture, or curated dining, TSA maintains single-source accountability.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+              {/* Integrated Framing Context Overlay */}
+              <div className="absolute inset-0 p-5 sm:p-12 lg:p-16 flex flex-col justify-end text-white z-10">
+                <div className="max-w-3xl space-y-2 sm:space-y-3">
+                  <h3 className="font-heading text-lg sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-snug">
+                    Delivering with sovereign protocol standards and multidisciplinary coordination.
+                  </h3>
+                  <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-3 sm:line-clamp-none">
+                    Whether orchestrating inter-ministerial plenaries, enterprise software architecture, or curated dining, TSA maintains single-source accountability.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          );
 }

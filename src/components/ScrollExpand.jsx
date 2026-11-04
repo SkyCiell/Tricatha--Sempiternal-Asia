@@ -123,7 +123,7 @@ export default function ScrollExpand({
     >
       {/* Pinned Viewport Frame */}
       <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center bg-[#FFFFFF]">
-        
+
         {/* Expanding Media Container */}
         <div
           className="relative overflow-hidden shadow-2xl transition-shadow duration-300"
@@ -153,16 +153,11 @@ export default function ScrollExpand({
 
           {/* Editorial Content Overlay */}
           <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-between z-10 text-white">
-            
+
             {/* Top Corner Meta Tag */}
             <div className="flex items-center justify-between">
-              <span className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 backdrop-blur-xs border border-white/20 rounded text-[11px] font-mono tracking-widest text-white uppercase">
-                <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-                <span>{tag}</span>
-              </span>
-
-              <span className="hidden sm:inline-block font-mono text-xs text-white/70">
-                SCROLL TO IMMERSE
+              <span className="font-mono text-xs uppercase tracking-wider text-slate-300 font-semibold">
+                {tag}
               </span>
             </div>
 

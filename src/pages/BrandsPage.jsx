@@ -159,7 +159,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
       title: "GWI | Event Management",
       tagline: "Bringing the Right Audience to the Right Experience",
       mandate:
-        "Gema Waskita Interaktifa (GWI) is TSA’s event management and experiential division, delivering national and international conferences, corporate gatherings, business-matching programs, brand activations, and strategic engagements. We combine strategic planning, creative direction, and disciplined execution to transform each client’s objectives into a cohesive and professionally delivered experience. GWI does more than organize events—we connect our clients with the right people. Supported by an organic, multisector database of more than 20,000 contacts, we curate target audiences according to each engagement’s specific objectives. This capability enables us to bring relevant decision-makers, government representatives, business leaders, industry professionals, and communities into the room—creating events that are not only well executed, but also purposeful and commercially meaningful.",
+        "Gema Waskita Interaktifa (GWI) is TSA’s event management and experiential division, delivering national and international conferences, corporate gatherings, business-matching programs, brand activations, and strategic engagements. We combine strategic planning, creative direction, and disciplined execution to transform each client’s objectives into a cohesive and professionally delivered experience. GWI does more than organize events: we connect our clients with the right people. Supported by an organic, multisector database of more than 20,000 contacts, we curate target audiences according to each engagement’s specific objectives. This capability enables us to bring relevant decision-makers, government representatives, business leaders, industry professionals, and communities into the room, creating events that are not only well executed, but also purposeful and commercially meaningful.",
       metrics: [
         { label: "Audience Database", value: "20,000+ Contacts" },
         { label: "Target Sectors", value: "Multi-Sector" },
@@ -249,9 +249,8 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
         {/* Holding Anchor Feature: PT Tricatha Sempiternal Asia */}
         <div className="bg-white border border-[#071731]/10 rounded-lg shadow-xs mb-10 overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center p-6 sm:p-8">
           <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 font-mono text-[11px] text-[#C8102E] font-semibold uppercase tracking-wider">
-              <span className="w-1.5 h-1.5 bg-[#C8102E] rounded-full" />
-              <span>PARENT HOLDING · EXECUTIVE OVERSIGHT &amp; GOVERNANCE</span>
+            <div className="font-mono text-[11px] text-[#C8102E] font-semibold uppercase tracking-wider">
+              Parent Holding &amp; Governance
             </div>
 
             <h2 className="font-heading text-2xl sm:text-3xl font-bold tracking-tight text-[#071731]">
@@ -291,9 +290,9 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute bottom-2.5 left-3 right-3 text-xs font-mono text-slate-200 bg-[#071731]/80 backdrop-blur-xs px-2.5 py-1 rounded border border-white/10 flex items-center justify-between">
+              <div className="absolute bottom-2.5 left-3 right-3 text-xs font-mono text-slate-200 bg-[#071731]/85 px-2.5 py-1 rounded border border-white/10 flex items-center justify-between">
                 <span>PT Tricatha Sempiternal Asia</span>
-                <span className="text-[#C8102E] font-semibold text-[10px]">SOVEREIGN MANDATE</span>
+                <span className="text-slate-300 text-[10px]">Executive Secretariat</span>
               </div>
             </div>
           </div>
@@ -389,7 +388,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
                       {currentEntity.deliverables.map((item, idx) => (
                         <span
                           key={idx}
-                          className="text-xs bg-white/10 backdrop-blur-xs border border-white/15 text-slate-200 px-3 py-1.5 rounded-xs"
+                          className="text-xs bg-white/5 border border-white/15 text-slate-200 px-3 py-1.5 rounded-xs"
                         >
                           {item}
                         </span>
