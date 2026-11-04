@@ -6,7 +6,7 @@ const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=8
 const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=2000&auto=format&fit=crop";
 const plenaryPhoto = "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2000&auto=format&fit=crop";
 const aseanPhoto = "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2000&auto=format&fit=crop";
-const gwiPhoto = "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2000&auto=format&fit=crop";
+const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 
 const iconMap = {
   "TSA TECH": Terminal,

@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import ModalCards from "./ui/modal-cards";
 
 const techPhoto = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1800&auto=format&fit=crop";
 const culinaryPhoto = "https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=1800&auto=format&fit=crop";
@@ -12,7 +13,21 @@ const BRANDS = [
     id: "tsa-tech",
     name: "TSA IT & Technology",
     discipline: "Mission-Critical Systems",
+    tagline: "Purpose-Built Technology for Mission-Critical Operations",
     summary: "Secure digital infrastructure and tactical command systems for Indonesian Law Enforcement Agencies.",
+    fullDescription:
+      "Since 2018, TSA’s IT & Technology division has delivered specialized digital software, situational command coordination, and secure information platforms for Indonesian Law Enforcement Agencies. The division provides dependable technology infrastructure designed to operate under strict protocol, security covenants, and operational rigor.",
+    deliverables: [
+      "Law enforcement digital platforms and operational coordination",
+      "Secure public-sector information architecture and system integration",
+      "Operational coordination and situational decision support",
+      "Resilient mission-critical technology infrastructure"
+    ],
+    metrics: [
+      { label: "Track Record", value: "Since 2018" },
+      { label: "Domain Focus", value: "Law Enforcement" },
+      { label: "Security Covenants", value: "Classified-Grade" }
+    ],
     route: "/business-group#tsa-tech",
     photo: techPhoto,
     photoAlt: "TSA IT & Technology Mission-Critical Systems Architecture",
@@ -24,7 +39,21 @@ const BRANDS = [
     id: "gwi",
     name: "GWI",
     discipline: "MICE & Commercial Expositions",
+    tagline: "Bringing the Right Audience to the Right Experience",
     summary: "National summits, multilateral trade expos, and curated audience mobilization across Southeast Asia.",
+    fullDescription:
+      "Delivered through Gema Waskita Interaktifa, TSA manages large-scale international conferences, multi-hall commercial trade expositions, and strategic engagements. Backed by a verified multi-sector audience database of more than 20,000 contacts, GWI curates the right delegates, ministers, and buyers into the room.",
+    deliverables: [
+      "Multi-hall spatial floor architecture and turnkey booth logistics",
+      "National and international plenary agendas with keynote curation",
+      "B2B buyer-seller matchmaking salons and hosted buyer management",
+      "Curated audience mobilization across sovereign and commercial sectors"
+    ],
+    metrics: [
+      { label: "Audience Network", value: "20,000+ Contacts" },
+      { label: "Execution Standard", value: "National & Global" },
+      { label: "Flagship Format", value: "B2B Trade Expos" }
+    ],
     route: "/business-group#gwi",
     photo: gwiPhoto,
     photoAlt: "GWI Strategic Event Management and Multilateral Summits",
@@ -36,7 +65,21 @@ const BRANDS = [
     id: "govadv",
     name: "GovAdv",
     discipline: "Government Advisory",
+    tagline: "Navigating Institutions, Advancing Strategic Objectives",
     summary: "Institutional consultation, regulatory analysis, and public-private strategic dialogue.",
+    fullDescription:
+      "GovAdv supports domestic and international organizations in understanding and engaging Indonesia's institutional landscape. Drawing upon deep experience with national ministries, state secretariats, and diplomatic envoys, GovAdv facilitates dialogue with discretion, context, and institutional trust.",
+    deliverables: [
+      "Strategic institutional consultation and stakeholder mapping",
+      "Public-sector regulatory analysis and inter-ministerial liaison",
+      "Carefully facilitated introductions and public-private alliances",
+      "Discreet multi-stakeholder dialogue and bilateral accord staging"
+    ],
+    metrics: [
+      { label: "Sector Scope", value: "Public & Diplomatic" },
+      { label: "Operating Standard", value: "Institutional Trust" },
+      { label: "Engagement", value: "Bilateral Dialogue" }
+    ],
     route: "/business-group#govadv",
     photo: govAdvPhoto,
     photoAlt: "GovAdv Sovereign Government Advisory and Institutional Liaison",
@@ -48,7 +91,21 @@ const BRANDS = [
     id: "enchante",
     name: "Enchantée Kitchen",
     discipline: "Executive Hospitality",
+    tagline: "Thoughtfully Prepared, Distinctively Presented",
     summary: "Artisanal culinary curation and tailored banquets for diplomatic assemblies and state occasions.",
+    fullDescription:
+      "Enchantée Kitchen creates refined culinary offerings, tailored banquets, and hospitality management for corporate assemblies, diplomatic galas, and private institutional gatherings. Every menu is developed with attention to flavour, presentation, and the dignified character of the occasion.",
+    deliverables: [
+      "Corporate dining and executive conference catering",
+      "Curated culinary products and bespoke tasting menus",
+      "Diplomatic reception hospitality staffing and decorum",
+      "Tailored banquets, canapé bars, and VIP service"
+    ],
+    metrics: [
+      { label: "Occasions Served", value: "Corporate & Social" },
+      { label: "Culinary Standard", value: "Artisanal Focus" },
+      { label: "Menu Scope", value: "Bespoke Dining" }
+    ],
     route: "/business-group#enchante",
     photo: culinaryPhoto,
     photoAlt: "Enchantée Kitchen Artisanal Culinary Catering and Hospitality",
@@ -60,7 +117,21 @@ const BRANDS = [
     id: "dna-studio",
     name: "DNA Studio",
     discipline: "Broadcast & 4K Cinema",
+    tagline: "Creative Broadcast & 4K Cinema Production Suite",
     summary: "Multi-camera broadcast soundstage producing leader dialogues, hybrid AGMs, and syndicated telecasts.",
+    fullDescription:
+      "Headquartered at Sudirman Park in Central Jakarta, DNA Studio is TSA's dedicated media engineering soundstage. We engineer 4K multi-camera telecasts, virtual AGM electronic voting systems, live satellite uplinks, and syndicated thought leadership forums viewed across the ASEAN corridor.",
+    deliverables: [
+      "4K multi-camera live broadcast switching and telepresence feeds",
+      "Audited hybrid AGM electronic proxy voting architecture",
+      "Leader dialogue broadcast curation and digital distribution",
+      "Kinetic soundstage lighting, acoustic scenography, and LED arrays"
+    ],
+    metrics: [
+      { label: "Syndicated Views", value: "2.4M+ Viewers" },
+      { label: "Production Suite", value: "4K Cinema Rig" },
+      { label: "Location", value: "Sudirman Park, Jakarta" }
+    ],
     route: "/business-group#dna-studio",
     photo: broadcastPhoto,
     photoAlt: "DNA Studio 4K Broadcast Scenography and Soundstage",
@@ -71,14 +142,6 @@ const BRANDS = [
 ];
 
 export default function LandingBrands({ navigateTo }) {
-  const handleBrandClick = (route) => {
-    if (navigateTo && route) {
-      navigateTo(route);
-    } else if (route) {
-      window.location.href = route;
-    }
-  };
-
   const handleViewAllBrands = () => {
     if (navigateTo) {
       navigateTo("/business-group");
@@ -102,7 +165,7 @@ export default function LandingBrands({ navigateTo }) {
               Operating Brands.
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#64748B] leading-relaxed font-normal">
-              Specialized entities orchestrated under PT Tricatha Sempiternal Asia, each maintaining dedicated domain authority.
+              Specialized entities orchestrated under PT Tricatha Sempiternal Asia, each maintaining dedicated domain authority. Click any division to expand its operational dossier.
             </p>
           </div>
 
@@ -118,60 +181,12 @@ export default function LandingBrands({ navigateTo }) {
           </div>
         </div>
 
-        {/* 
-          Art-Directed Editorial Showcase:
-          - No decorative pill badges, no floating badge clutter
-          - Clean, purposeful photography with integrated typography
-          - Asymmetrical 12-column layout (7+5 top, 4+4+4 bottom)
-          - Natural contrast scrim for comfortable legibility
-        */}
-        <div className="pt-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8">
-          {BRANDS.map((brand) => (
-            <div
-              key={brand.id}
-              onClick={() => handleBrandClick(brand.route)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  handleBrandClick(brand.route);
-                }
-              }}
-              className={`group relative flex flex-col justify-end rounded-lg overflow-hidden cursor-pointer select-none border border-[#071731]/10 hover:border-[#071731]/40 shadow-xs hover:shadow-xl transition-all duration-500 bg-[#071731] ${brand.gridSpan} ${brand.heightClass}`}
-            >
-              {/* Full-bleed Photo with Natural Crop & Subtle Scale */}
-              <img
-                src={brand.photo}
-                alt={brand.photoAlt}
-                loading="lazy"
-                className={`absolute inset-0 w-full h-full object-cover ${brand.imgPosition} transition-transform duration-700 ease-out group-hover:scale-104 pointer-events-none`}
-              />
-
-              {/* Directional Bottom Scrim (Legibility without Darkening the Full Photo) */}
-              <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black/90 via-black/45 to-transparent pointer-events-none" />
-
-              {/* Editorial Typography (Direct, Integrated, No Clutter) */}
-              <div className="relative z-10 p-6 sm:p-8 text-left pointer-events-none space-y-1.5">
-                <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-slate-300/80 font-medium">
-                  <span>{brand.discipline}</span>
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white flex items-center gap-1 font-sans text-xs">
-                    <span>Explore</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
-                  </span>
-                </div>
-
-                <h3 className="font-heading font-bold text-white text-2xl sm:text-3xl tracking-tight leading-tight">
-                  {brand.name}
-                </h3>
-
-                <p className="text-xs sm:text-sm font-sans text-slate-300 font-normal leading-relaxed max-w-xl line-clamp-2 pt-0.5">
-                  {brand.summary}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Modal Cards Component */}
+        <ModalCards
+          items={BRANDS}
+          onNavigate={navigateTo}
+          cardGridClassName="pt-10 grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8"
+        />
       </div>
     </section>
   );

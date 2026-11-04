@@ -613,7 +613,7 @@ export const activitiesData = [
     partnerOrClient: "Ministry of Culture & Civic Heritage Foundation",
     location: "Gelora Bung Karno & Taman Ismail Marzuki, Jakarta",
     year: "2024 – 2025",
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
+    image: "/events/appmbgi-national-summit-2026/photo-3.jpg",
     shortDesc: "Massive public cultural engagement celebrations bringing national heritage alive through monumental spatial scenography and interactive projection mapping.",
     description: "Conducted under Gema Waskita Interaktifa (GWI), these high-capacity initiatives convene public patrons, cultural custodians, and municipal stakeholders to celebrate Indonesian heritage through immersive digital art installations and civic participation.",
     metrics: [
