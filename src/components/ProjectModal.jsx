@@ -61,7 +61,7 @@ export default function ProjectModal({ project, onClose }) {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44] via-[#0A1F44]/50 to-transparent" />
-            
+
             <button
               onClick={onClose}
               className="absolute top-3 right-3 p-1.5 rounded-full flex items-center justify-center bg-black/60 hover:bg-[#C8102E] text-white transition-colors cursor-pointer z-10 shadow-lg"

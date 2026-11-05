@@ -135,11 +135,10 @@ export default function WhatWeDoIntro({ navigateTo }) {
               <button
                 key={item.id}
                 onClick={() => setSelectedIndex(index)}
-                className={`text-left p-3 sm:p-4 rounded transition-all duration-300 cursor-pointer border ${
-                  isSelected
+                className={`text-left p-3 sm:p-4 rounded transition-all duration-300 cursor-pointer border ${isSelected
                     ? "bg-[#0E2552] border-white/30 text-white shadow-md"
                     : "bg-[#071731]/90 border-white/10 text-slate-400 hover:text-white hover:bg-[#0A1F44]"
-                }`}
+                  }`}
               >
                 <div className={`font-mono text-[10px] uppercase tracking-wider mb-1 font-semibold ${isSelected ? "text-[#C8102E]" : "text-slate-400"}`}>
                   {item.category}

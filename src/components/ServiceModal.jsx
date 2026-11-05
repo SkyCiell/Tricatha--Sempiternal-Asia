@@ -57,7 +57,7 @@ export default function ServiceModal({ service, onClose, onSelectContact }) {
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F3A] via-[#0B1F3A]/40 to-transparent" />
-              
+
               {/* Floating Close Button */}
               <button
                 onClick={onClose}

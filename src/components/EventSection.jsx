@@ -81,117 +81,117 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
           </div>
         </div>
 
-      {/* 2. Featured Flagship Production: AI Global EXPO 2026 (100vw × 100vh Fullscreen Cinematic Scene) */}
-      {leadEvent && (
-        <div className="relative w-screen left-1/2 -translate-x-1/2 h-screen overflow-hidden bg-[#071731] my-10 select-none">
-          {/* Fullscreen Photo (Edge-to-Edge 100vw × 100vh) */}
-          <img
-            src={leadEvent.image}
-            alt={leadEvent.name}
-            className="w-full h-full object-cover object-center scale-102 will-change-transform"
-          />
+        {/* 2. Featured Flagship Production: AI Global EXPO 2026 (100vw × 100vh Fullscreen Cinematic Scene) */}
+        {leadEvent && (
+          <div className="relative w-screen left-1/2 -translate-x-1/2 h-screen overflow-hidden bg-[#071731] my-10 select-none">
+            {/* Fullscreen Photo (Edge-to-Edge 100vw × 100vh) */}
+            <img
+              src={leadEvent.image}
+              alt={leadEvent.name}
+              className="w-full h-full object-cover object-center scale-102 will-change-transform"
+            />
 
-          {/* Directional Cinematic Scrim */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/65 via-50% to-[#071731]/25 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/45 to-transparent pointer-events-none" />
+            {/* Directional Cinematic Scrim */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/65 via-50% to-[#071731]/25 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/45 to-transparent pointer-events-none" />
 
-          {/* Typography Layered Directly Over Fullscreen Media */}
-          <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-between z-10 text-white">
-            
-            {/* Top Bar Meta */}
-            <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 bg-[#C8102E] text-white font-semibold uppercase tracking-wider rounded text-[11px] shadow-md">
-                  Upcoming Flagship Summit · {leadEvent.year}
-                </span>
-                <span className="px-3 py-1 bg-white/10 text-slate-200 border border-white/20 rounded text-[11px]">
-                  {leadEvent.category}
-                </span>
+            {/* Typography Layered Directly Over Fullscreen Media */}
+            <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-between z-10 text-white">
+
+              {/* Top Bar Meta */}
+              <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 bg-[#C8102E] text-white font-semibold uppercase tracking-wider rounded text-[11px] shadow-md">
+                    Upcoming Flagship Summit · {leadEvent.year}
+                  </span>
+                  <span className="px-3 py-1 bg-white/10 text-slate-200 border border-white/20 rounded text-[11px]">
+                    {leadEvent.category}
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-4 text-slate-300">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
+                    <span>{leadEvent.location}</span>
+                  </span>
+                  <span className="hidden sm:flex items-center gap-1.5">
+                    <Users className="w-3.5 h-3.5 text-[#C8102E]" />
+                    <span>24,000+ Trade Delegates</span>
+                  </span>
+                </div>
               </div>
 
-              <div className="flex items-center gap-4 text-slate-300">
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
-                  <span>{leadEvent.location}</span>
-                </span>
-                <span className="hidden sm:flex items-center gap-1.5">
-                  <Users className="w-3.5 h-3.5 text-[#C8102E]" />
-                  <span>24,000+ Trade Delegates</span>
-                </span>
+              {/* Main Editorial Composition Over Fullscreen Photo */}
+              <div className="max-w-4xl space-y-5 my-auto">
+                <div className="space-y-1">
+                  <span className="text-[#C8102E] font-mono text-xs uppercase tracking-widest font-semibold block">
+                    OPERATIONAL MASTER BLUEPRINT · Q1 {leadEvent.year}
+                  </span>
+                  <h3
+                    onClick={() => setSelectedProject(leadEvent)}
+                    className="font-heading text-3xl sm:text-5xl lg:text-[60px] font-bold text-white tracking-tight leading-[1.08] cursor-pointer hover:text-slate-100 transition-colors drop-shadow-lg"
+                  >
+                    {leadEvent.name}
+                  </h3>
+                </div>
+
+                <p className="font-sans text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-3xl drop-shadow-md">
+                  {leadEvent.shortDesc}
+                </p>
+
+                {/* Integrated Production Figures Directly Over Media */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 pt-4 border-t border-white/15 max-w-3xl">
+                  <div>
+                    <div className="text-2xl sm:text-4xl font-bold font-heading text-white tracking-tight">180+</div>
+                    <div className="text-[11px] font-mono text-slate-300 uppercase tracking-wider mt-0.5">Enterprise Pavilions</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">3 Multi-Hall Complexes</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl sm:text-4xl font-bold font-heading text-[#C8102E] tracking-tight">35</div>
+                    <div className="text-[11px] font-mono text-slate-300 uppercase tracking-wider mt-0.5">Ministerial Keynotes</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">Sovereign Protocol Cleared</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl sm:text-4xl font-bold font-heading text-white tracking-tight">24K+</div>
+                    <div className="text-[11px] font-mono text-slate-300 uppercase tracking-wider mt-0.5">Trade Delegates</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">ASEAN &amp; Global Buyers</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl sm:text-4xl font-bold font-heading text-white tracking-tight">100%</div>
+                    <div className="text-[11px] font-mono text-slate-300 uppercase tracking-wider mt-0.5">Turnkey Command</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">Zero Third-Party Relies</div>
+                  </div>
+                </div>
+
+                {/* Direct Actions Over Media */}
+                <div className="pt-4 flex flex-wrap items-center gap-3.5">
+                  <button
+                    onClick={() => setSelectedProject(leadEvent)}
+                    className="btn-editorial-red text-xs py-3 px-6 cursor-pointer flex items-center gap-2 shadow-xl"
+                  >
+                    <span>Inspect Full Event Record</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={handleViewArchive}
+                    className="btn-editorial-outline text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
+                  >
+                    <span>Browse All 2026 Summits</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                  </button>
+                </div>
               </div>
+
+              {/* Bottom Bar Info Over Media */}
+              <div className="flex items-center justify-between text-xs font-mono text-slate-400 border-t border-white/10 pt-3">
+                <span>VENUE PARTNER: INDONESIA CONVENTION EXHIBITION (ICE BSD)</span>
+                <span className="hidden sm:inline">CENTRAL SECRETARIAT: THE CITY TOWER JAKARTA</span>
+              </div>
+
             </div>
-
-            {/* Main Editorial Composition Over Fullscreen Photo */}
-            <div className="max-w-4xl space-y-5 my-auto">
-              <div className="space-y-1">
-                <span className="text-[#C8102E] font-mono text-xs uppercase tracking-widest font-semibold block">
-                  OPERATIONAL MASTER BLUEPRINT · Q1 {leadEvent.year}
-                </span>
-                <h3
-                  onClick={() => setSelectedProject(leadEvent)}
-                  className="font-heading text-3xl sm:text-5xl lg:text-[60px] font-bold text-white tracking-tight leading-[1.08] cursor-pointer hover:text-slate-100 transition-colors drop-shadow-lg"
-                >
-                  {leadEvent.name}
-                </h3>
-              </div>
-
-              <p className="font-sans text-base sm:text-lg text-slate-200 leading-relaxed font-normal max-w-3xl drop-shadow-md">
-                {leadEvent.shortDesc}
-              </p>
-
-              {/* Integrated Production Figures Directly Over Media */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 pt-4 border-t border-white/15 max-w-3xl">
-                <div>
-                  <div className="text-2xl sm:text-4xl font-bold font-heading text-white tracking-tight">180+</div>
-                  <div className="text-[11px] font-mono text-slate-300 uppercase tracking-wider mt-0.5">Enterprise Pavilions</div>
-                  <div className="text-[10px] text-slate-400 mt-0.5">3 Multi-Hall Complexes</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-4xl font-bold font-heading text-[#C8102E] tracking-tight">35</div>
-                  <div className="text-[11px] font-mono text-slate-300 uppercase tracking-wider mt-0.5">Ministerial Keynotes</div>
-                  <div className="text-[10px] text-slate-400 mt-0.5">Sovereign Protocol Cleared</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-4xl font-bold font-heading text-white tracking-tight">24K+</div>
-                  <div className="text-[11px] font-mono text-slate-300 uppercase tracking-wider mt-0.5">Trade Delegates</div>
-                  <div className="text-[10px] text-slate-400 mt-0.5">ASEAN &amp; Global Buyers</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-4xl font-bold font-heading text-white tracking-tight">100%</div>
-                  <div className="text-[11px] font-mono text-slate-300 uppercase tracking-wider mt-0.5">Turnkey Command</div>
-                  <div className="text-[10px] text-slate-400 mt-0.5">Zero Third-Party Relies</div>
-                </div>
-              </div>
-
-              {/* Direct Actions Over Media */}
-              <div className="pt-4 flex flex-wrap items-center gap-3.5">
-                <button
-                  onClick={() => setSelectedProject(leadEvent)}
-                  className="btn-editorial-red text-xs py-3 px-6 cursor-pointer flex items-center gap-2 shadow-xl"
-                >
-                  <span>Inspect Full Event Record</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  onClick={handleViewArchive}
-                  className="btn-editorial-outline text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2"
-                >
-                  <span>Browse All 2026 Summits</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E]" />
-                </button>
-              </div>
-            </div>
-
-            {/* Bottom Bar Info Over Media */}
-            <div className="flex items-center justify-between text-xs font-mono text-slate-400 border-t border-white/10 pt-3">
-              <span>VENUE PARTNER: INDONESIA CONVENTION EXHIBITION (ICE BSD)</span>
-              <span className="hidden sm:inline">CENTRAL SECRETARIAT: THE CITY TOWER JAKARTA</span>
-            </div>
-
           </div>
-        </div>
-      )}
+        )}
 
         {/* 3. Event Archive Header & Integrated Filters */}
         <div className="mt-16 pt-10 border-t border-[#E2E8F0] flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -212,11 +212,10 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium uppercase tracking-wider transition-all cursor-pointer border ${
-                    isActive
+                  className={`px-3.5 py-1.5 rounded-lg font-mono text-xs font-medium uppercase tracking-wider transition-all cursor-pointer border ${isActive
                       ? "bg-[#C8102E] text-white border-[#C8102E] shadow-xs"
                       : "bg-[#FAF9F6] text-[#334155] border-[#E2E8F0] hover:text-[#071731] hover:border-slate-400"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -227,7 +226,7 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
 
         {/* 4. Editorial Portfolio Layout (Crisp Light Cards) */}
         <div className="space-y-8">
-          
+
           {/* Top Tier: Two Wide Flagship Records */}
           {filteredEvents.length >= 2 && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

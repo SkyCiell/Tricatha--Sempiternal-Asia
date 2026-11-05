@@ -69,7 +69,7 @@ export default function AboutSection({ navigateTo }) {
       {/* 1. EDITORIAL HEADER & POSITIONING (Crisp Light Canvas) */}
       <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-12 sm:pb-16 border-b border-[#E2E8F0]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end">
-          
+
           <div className="lg:col-span-8 space-y-4">
             <h2 className="font-heading text-3xl sm:text-5xl lg:text-[52px] font-bold text-[#071731] tracking-tight leading-[1.08]">
               An Indonesian Multidisciplinary Company <br />
@@ -148,7 +148,7 @@ export default function AboutSection({ navigateTo }) {
 
       {/* 2. FULLSCREEN 100vw × 100vh CINEMATIC PLENARY STAGING SCENE */}
       <div className="relative w-screen h-screen overflow-hidden bg-[#071731] select-none">
-        
+
         {/* Fullscreen Photo (Edge-to-Edge) */}
         <img
           src={plenaryPhoto}
@@ -163,7 +163,7 @@ export default function AboutSection({ navigateTo }) {
 
         {/* Content Positioned Directly Over Fullscreen Media */}
         <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-between z-10 text-white">
-          
+
           {/* Top Bar Meta Over Media */}
           <div className="flex items-center justify-between font-mono text-xs text-white/90">
             <span className="text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold">

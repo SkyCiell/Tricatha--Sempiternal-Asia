@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { X, Play, Pause, Volume2, VolumeX, Maximize, RotateCcw } from "lucide-react";
 
-export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg.mp4" }) {
+export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg-web.mp4" }) {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
@@ -32,7 +32,7 @@ export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg
       document.body.style.overflow = "hidden";
       if (videoRef.current) {
         videoRef.current.currentTime = 0;
-        videoRef.current.play().catch(() => {});
+        videoRef.current.play().catch(() => { });
         setIsPlaying(true);
       }
     } else {
@@ -49,7 +49,7 @@ export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg
   const togglePlay = () => {
     if (!videoRef.current) return;
     if (videoRef.current.paused) {
-      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+      videoRef.current.play().then(() => setIsPlaying(true)).catch(() => { });
     } else {
       videoRef.current.pause();
       setIsPlaying(false);
@@ -102,7 +102,7 @@ export default function VideoCinemaModal({ isOpen, onClose, videoSrc = "/hero-bg
   const handleRestart = () => {
     if (videoRef.current) {
       videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
       setIsPlaying(true);
     }
   };

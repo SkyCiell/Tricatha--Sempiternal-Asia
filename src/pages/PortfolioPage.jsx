@@ -29,11 +29,11 @@ export default function PortfolioPage({ navigateTo }) {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#071731] font-sans pt-20 sm:pt-28 pb-20 selection:bg-[#C8102E] selection:text-white">
-      
+
       {/* 1. ARCHITECTURAL EDITORIAL HEADER */}
       <section className="max-w-[1520px] mx-auto px-4 sm:px-8 pt-6 sm:pt-10 pb-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-[#071731]/10">
-          
+
           {/* Left Title & Statement (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
             <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-[#071731] tracking-tight leading-[1.08]">
@@ -73,11 +73,10 @@ export default function PortfolioPage({ navigateTo }) {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-3.5 py-1.5 rounded transition-all cursor-pointer border ${
-                      isActive
+                    className={`px-3.5 py-1.5 rounded transition-all cursor-pointer border ${isActive
                         ? "bg-[#071731] text-white border-[#071731] font-semibold shadow-xs"
                         : "bg-white text-slate-700 border-[#071731]/10 hover:border-[#071731]/30"
-                    }`}
+                      }`}
                   >
                     <span>{cat}</span>
                   </button>
@@ -96,7 +95,7 @@ export default function PortfolioPage({ navigateTo }) {
       {/* 3. Image-Led Editorial Showcase */}
       <section className="py-16 sm:py-24 border-b border-[#071731]/10">
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8 space-y-16 sm:space-y-24">
-          
+
           {/* Lead Hero Project (Natural Responsive Editorial Showcase) */}
           {leadProject && (
             <div
@@ -187,7 +186,7 @@ export default function PortfolioPage({ navigateTo }) {
                         alt={project.name}
                         className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-500"
                       />
-                      
+
                       <div className="absolute top-3 left-3">
                         <span className="px-2.5 py-1 bg-white font-mono text-[10px] text-[#071731] font-medium rounded border border-[#071731]/10">
                           {project.category}

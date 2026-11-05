@@ -40,12 +40,12 @@ export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
       aria-modal="true"
       aria-labelledby="modal-case-title"
     >
-      <div 
+      <div
         data-lenis-prevent
         className="relative w-full max-w-[560px] sm:max-w-[620px] bg-[#0A1F44] text-[#F1F5F9] rounded-xl border border-white/20 shadow-2xl overflow-hidden my-auto flex flex-col max-h-[82vh] overscroll-contain"
         onClick={(e) => e.stopPropagation()}
       >
-        
+
         {/* Header Bar */}
         <div className="shrink-0 flex items-center justify-between px-5 py-3.5 bg-[#071731] border-b border-white/10">
           <div className="flex items-center gap-2.5 text-xs font-sans">
@@ -65,11 +65,11 @@ export default function CaseStudyModal({ project, onClose, onWorkTogether }) {
         </div>
 
         {/* Modal Body */}
-        <div 
+        <div
           data-lenis-prevent
           className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-5 space-y-4"
         >
-          
+
           {/* Main Title & Location */}
           <div className="space-y-1">
             <h2 id="modal-case-title" className="font-heading text-xl sm:text-2xl font-bold tracking-tight text-white">

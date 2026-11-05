@@ -121,18 +121,29 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
     });
   };
 
-  // Cache of themed sections to prevent repeated DOM queries during scroll
-  const themedElementsRef = useRef([]);
+  // Cached layout coordinates of themed sections to eliminate layout thrashing during scroll
+  const themedSectionsRef = useRef([]);
 
   const refreshThemedElements = useCallback(() => {
     try {
-      themedElementsRef.current = Array.from(document.querySelectorAll("[data-nav-theme], [data-theme]"));
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const elements = Array.from(document.querySelectorAll("[data-nav-theme], [data-theme]"));
+      themedSectionsRef.current = elements
+        .filter((elem) => elem && elem.isConnected)
+        .map((elem) => {
+          const rect = elem.getBoundingClientRect();
+          const top = rect.top + scrollY;
+          const bottom = top + rect.height;
+          const theme = elem.getAttribute("data-nav-theme") || elem.getAttribute("data-theme");
+          const area = rect.width * rect.height;
+          return { top, bottom, theme, area };
+        });
     } catch {
-      themedElementsRef.current = [];
+      themedSectionsRef.current = [];
     }
   }, []);
 
-  // Dynamic Theme Detection: checks the section or element directly beneath navbar vertical center
+  // Dynamic Theme Detection: checks the section directly beneath navbar vertical center using cached offsets (0ms DOM overhead)
   const evaluateNavbarTheme = useCallback(() => {
     if (mobileMenuOpen) return;
     const scrollY = window.scrollY || window.pageYOffset || 0;
@@ -147,22 +158,19 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
       return;
     }
 
-    const navbarCheckY = 42;
+    const checkY = scrollY + 42;
     let detectedTheme = null;
 
-    // 2. Query cached elements with explicit data-nav-theme
-    const elements = themedElementsRef.current;
-    if (elements.length > 0) {
+    // 2. Query cached section coordinates without any DOM getBoundingClientRect layout thrashing
+    const sections = themedSectionsRef.current;
+    if (sections.length > 0) {
       let smallestArea = Infinity;
-      for (let i = 0; i < elements.length; i++) {
-        const elem = elements[i];
-        if (!elem || !elem.isConnected) continue;
-        const rect = elem.getBoundingClientRect();
-        if (rect.top <= navbarCheckY && rect.bottom > navbarCheckY) {
-          const area = rect.height * rect.width;
-          if (area < smallestArea) {
-            smallestArea = area;
-            detectedTheme = elem.getAttribute("data-nav-theme") || elem.getAttribute("data-theme");
+      for (let i = 0; i < sections.length; i++) {
+        const sec = sections[i];
+        if (sec.top <= checkY && sec.bottom > checkY) {
+          if (sec.area < smallestArea) {
+            smallestArea = sec.area;
+            detectedTheme = sec.theme;
           }
         }
       }
@@ -236,15 +244,20 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize, { passive: true });
 
-    const timeoutId = setTimeout(() => {
+    const timeoutId1 = setTimeout(() => {
       refreshThemedElements();
       evaluateNavbarTheme();
     }, 80);
+    const timeoutId2 = setTimeout(() => {
+      refreshThemedElements();
+      evaluateNavbarTheme();
+    }, 600);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
-      clearTimeout(timeoutId);
+      clearTimeout(timeoutId1);
+      clearTimeout(timeoutId2);
     };
   }, [evaluateNavbarTheme, mobileMenuOpen, refreshThemedElements]);
 

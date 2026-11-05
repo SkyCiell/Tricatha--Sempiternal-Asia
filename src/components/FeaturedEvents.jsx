@@ -9,7 +9,7 @@ export default function FeaturedEvents({ scrollToSection }) {
   return (
     <section id="events" className="py-20 sm:py-28 bg-[#071A33] text-white border-b border-white/10 overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8">
-        
+
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-white/10 gap-6">
           <div>
@@ -26,11 +26,11 @@ export default function FeaturedEvents({ scrollToSection }) {
 
         {/* Interactive Gallery System: Large Featured Image + Event Selector */}
         <div className="pt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          
+
           {/* Left Column (7 cols): Large Interactive Featured Image Viewer */}
           <div className="lg:col-span-7 relative">
             <div className="relative border border-white/15 bg-[#0B1F3A] rounded-2xl overflow-hidden shadow-2xl">
-              
+
               {/* Image Frame with Smooth Transition */}
               <div className="relative aspect-[16/10] sm:aspect-[16/10] w-full overflow-hidden">
                 <img
@@ -102,11 +102,10 @@ export default function FeaturedEvents({ scrollToSection }) {
                 <div
                   key={event.id}
                   onClick={() => setActiveEventIndex(idx)}
-                  className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${
-                    isActive
+                  className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer ${isActive
                       ? "bg-[#0B1F3A] text-white border-[#C62828] shadow-2xl translate-x-2"
                       : "bg-[#0B1F3A]/40 text-white border-white/10 hover:border-white/30 hover:bg-[#0B1F3A]/80"
-                  }`}
+                    }`}
                 >
                   <div className="flex items-center justify-between font-mono text-xs mb-3">
                     <span className={`font-bold ${isActive ? "text-[#C62828]" : "text-[#94A3B8]"}`}>

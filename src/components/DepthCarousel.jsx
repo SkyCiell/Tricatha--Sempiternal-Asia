@@ -233,8 +233,8 @@ export default function DepthCarousel({
                 key={idx}
                 onClick={() => setActiveIndex(idx)}
                 className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex
-                    ? "w-9 bg-[#42D3A5]"
-                    : "w-2.5 bg-white/20 hover:bg-white/40"
+                  ? "w-9 bg-[#42D3A5]"
+                  : "w-2.5 bg-white/20 hover:bg-white/40"
                   }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />

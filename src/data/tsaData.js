@@ -211,8 +211,8 @@ export const featuredProjects = [
     overview: "High-level state convention convening directors general, ministry secretaries, and systems architects to deliberate digital sovereignty, sovereign cloud governance, and inter-agency data integration.",
     gallery: [
       "/events/thales-kadin-innovation-day/cover.jpg",
-      "/events/empowering-women-in-politics/photo-1.jpg",
-      "/events/book-launching-restorative-justice/photo-3.jpg"
+      "/events/thales-kadin-innovation-day/photo-1.jpg",
+      "/events/thales-kadin-innovation-day/photo-2.jpg"
     ]
   },
   {

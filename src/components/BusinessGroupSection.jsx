@@ -125,8 +125,8 @@ export default function BusinessGroupSection({ navigateTo }) {
                 key={unit.id}
                 onClick={() => setActiveUnitId(unit.id)}
                 className={`p-4 sm:p-5 text-left rounded-lg border transition-all duration-200 cursor-pointer flex items-center justify-between min-h-[88px] sm:min-h-[96px] h-full ${isSelected
-                    ? "bg-white border-[#071731] shadow-md ring-1 ring-[#071731]/15 text-[#071731]"
-                    : "bg-white/60 border-[#E2E8F0] text-[#475569] hover:bg-white hover:border-slate-400 hover:text-[#071731]"
+                  ? "bg-white border-[#071731] shadow-md ring-1 ring-[#071731]/15 text-[#071731]"
+                  : "bg-white/60 border-[#E2E8F0] text-[#475569] hover:bg-white hover:border-slate-400 hover:text-[#071731]"
                   }`}
               >
                 <div className="space-y-1 pr-2">

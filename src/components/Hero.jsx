@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
-import heroVideo from "../assets/0805.mp4";
+const heroVideo = "/hero-bg-web.mp4";
 const heroPoster = "/hero-poster.jpg";
 
 export default function Hero({ scrollToSection }) {

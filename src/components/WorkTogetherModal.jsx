@@ -54,12 +54,12 @@ export default function WorkTogetherModal({ isOpen, onClose }) {
       aria-modal="true"
       aria-labelledby="modal-work-title"
     >
-      <div 
+      <div
         data-lenis-prevent
         className="relative w-full max-w-2xl bg-[#0A1F44] text-[#F1F5F9] rounded border border-white/15 shadow-2xl overflow-hidden my-auto flex flex-col max-h-[90vh] overscroll-contain"
         onClick={(e) => e.stopPropagation()}
       >
-        
+
         {/* Modal Header */}
         <div className="shrink-0 flex items-center justify-between px-6 py-5 bg-[#071731] border-b border-white/10">
           <div>

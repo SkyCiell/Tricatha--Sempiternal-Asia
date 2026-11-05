@@ -120,8 +120,7 @@ export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
           poster="/hero-poster.jpg"
           className="w-full h-full object-cover object-center scale-[1.02] opacity-80 sm:opacity-85 transition-opacity duration-700"
         >
-          <source media="(max-width: 768px)" src="/hero-bg-720p.mp4" type="video/mp4" />
-          <source src="/hero-bg.mp4" type="video/mp4" />
+          <source src="/hero-bg-web.mp4" type="video/mp4" />
         </video>
 
         {/* Directional Scrim: keeps text legible while preserving authentic video clarity */}

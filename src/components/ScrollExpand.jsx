@@ -46,6 +46,21 @@ export default function ScrollExpand({
     let currentProgress = 0;
     let targetProgress = 0;
 
+    let isRunning = false;
+
+    const updateLoop = () => {
+      const diff = targetProgress - currentProgress;
+      if (Math.abs(diff) > 0.0005) {
+        currentProgress += diff * smoothing;
+        setProgress(currentProgress);
+        animationFrameId = requestAnimationFrame(updateLoop);
+      } else {
+        currentProgress = targetProgress;
+        setProgress(targetProgress);
+        isRunning = false;
+      }
+    };
+
     const handleScroll = () => {
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
@@ -56,20 +71,19 @@ export default function ScrollExpand({
       const scrolled = -rect.top;
       const rawProgress = Math.max(0, Math.min(1, scrolled / totalScrollableDistance));
       targetProgress = rawProgress;
-    };
 
-    const updateLoop = () => {
-      currentProgress += (targetProgress - currentProgress) * smoothing;
-      setProgress(currentProgress);
-      animationFrameId = requestAnimationFrame(updateLoop);
+      if (!isRunning) {
+        isRunning = true;
+        animationFrameId = requestAnimationFrame(updateLoop);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    animationFrameId = requestAnimationFrame(updateLoop);
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
   }, [smoothing, prefersReducedMotion]);
 

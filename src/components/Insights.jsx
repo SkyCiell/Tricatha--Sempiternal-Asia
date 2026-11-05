@@ -9,7 +9,7 @@ export default function Insights({ scrollToSection }) {
   return (
     <section id="insights" className="py-16 sm:py-24 bg-[#FAF9F6] text-[#071731] border-b border-[#071731]/10 overflow-hidden">
       <div className="max-w-[1560px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8">
-        
+
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-8 sm:pb-10 border-b border-[#071731]/10 gap-6">
           <div className="space-y-2">
@@ -45,7 +45,7 @@ export default function Insights({ scrollToSection }) {
 
           {/* Typography Positioned Directly Over Media */}
           <div className="absolute inset-0 p-6 sm:p-12 lg:p-16 flex flex-col justify-between z-10 text-white">
-            
+
             {/* Top Bar Meta */}
             <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
               <div className="flex items-center gap-2">

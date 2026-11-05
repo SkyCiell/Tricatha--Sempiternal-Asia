@@ -22,7 +22,7 @@ export default function SelectedProjects() {
   return (
     <section id="projects" className="py-20 sm:py-28 bg-[#071A33] text-white border-b border-white/10">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8">
-        
+
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-white/10 gap-6">
           <div>
@@ -43,11 +43,10 @@ export default function SelectedProjects() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${
-                activeCategory === cat
+              className={`px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all cursor-pointer ${activeCategory === cat
                   ? "bg-[#C62828] text-white shadow-lg"
                   : "bg-[#0B1F3A] text-[#94A3B8] hover:text-white border border-white/10"
-              }`}
+                }`}
             >
               {cat}
             </button>

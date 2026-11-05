@@ -172,8 +172,27 @@ export const EVENTS_DATA = [
     gallery: [
       "/events/thales-kadin-innovation-day/photo-1.jpg",
       "/events/thales-kadin-innovation-day/photo-2.jpg",
-      defaultFallbackPhotos.innovation,
-      defaultFallbackPhotos.summit
+      "/events/thales-kadin-innovation-day/photo-3.jpg",
+      "/events/thales-kadin-innovation-day/photo-4.jpg",
+      "/events/thales-kadin-innovation-day/photo-5.jpg",
+      "/events/thales-kadin-innovation-day/photo-6.jpg",
+      "/events/thales-kadin-innovation-day/photo-7.jpg",
+      "/events/thales-kadin-innovation-day/photo-8.jpg",
+      "/events/thales-kadin-innovation-day/photo-9.jpg",
+      "/events/thales-kadin-innovation-day/photo-10.jpg",
+      "/events/thales-kadin-innovation-day/photo-11.jpg",
+      "/events/thales-kadin-innovation-day/photo-12.jpg",
+      "/events/thales-kadin-innovation-day/photo-13.jpg",
+      "/events/thales-kadin-innovation-day/photo-14.jpg",
+      "/events/thales-kadin-innovation-day/photo-15.jpg",
+      "/events/thales-kadin-innovation-day/photo-16.jpg",
+      "/events/thales-kadin-innovation-day/photo-17.jpg",
+      "/events/thales-kadin-innovation-day/photo-18.jpg",
+      "/events/thales-kadin-innovation-day/photo-19.jpg",
+      "/events/thales-kadin-innovation-day/photo-20.jpg",
+      "/events/thales-kadin-innovation-day/photo-21.jpg",
+      "/events/thales-kadin-innovation-day/photo-22.jpg",
+      "/events/thales-kadin-innovation-day/photo-23.jpg"
     ]
   },
   {
