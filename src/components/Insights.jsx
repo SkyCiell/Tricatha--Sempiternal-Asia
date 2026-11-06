@@ -100,7 +100,7 @@ export default function Insights({ scrollToSection }) {
             {/* Bottom Bar Info Over Media */}
             <div className="flex items-center justify-between text-xs font-mono text-slate-400 border-t border-white/10 pt-3">
               <span>SECURITY PROTOCOL: PUBLIC MONOGRAPH</span>
-              <span>TSA RESEARCH GROUP · THE CITY TOWER JAKARTA</span>
+              <span>TSA RESEARCH GROUP · SUDIRMAN PARK JAKARTA</span>
             </div>
 
           </div>

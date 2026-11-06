@@ -53,7 +53,7 @@ export default function About() {
             </div>
 
             <p className="text-slate-300 text-base sm:text-lg font-normal leading-relaxed">
-              PT Tricatha Sempiternal Asia (TSA) is an integrated practice operating from The City Tower in Jakarta. We deliver end-to-end strategic solutions combining public policy advocacy, enterprise digital systems, broadcast studio production, and head-of-state diplomatic assemblies.
+              PT Tricatha Sempiternal Asia (TSA) is an integrated practice operating from Sudirman Park in Jakarta. We deliver end-to-end strategic solutions combining public policy advocacy, enterprise digital systems, broadcast studio production, and head-of-state diplomatic assemblies.
             </p>
           </motion.div>
 

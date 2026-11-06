@@ -172,7 +172,7 @@ export default function TechnologyPage({ navigateTo }) {
             </div>
             <div>
               <span className="text-slate-400 block text-[10px] uppercase">Operations Base</span>
-              <span className="text-white font-medium">The City Tower, Jakarta</span>
+              <span className="text-white font-medium">Sudirman Park, Jakarta</span>
             </div>
           </div>
         </div>

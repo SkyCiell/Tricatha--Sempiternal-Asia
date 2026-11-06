@@ -18,7 +18,7 @@ export default function ContactPage() {
             </h1>
 
             <p className="text-slate-600 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
-              Connect directly with the Executive Directorate at The City Tower in Central Jakarta. All inquiries and strategic project scopes are received under strict institutional confidentiality covenants.
+              Connect directly with the Executive Directorate at Sudirman Park in Central Jakarta. All inquiries and strategic project scopes are received under strict institutional confidentiality covenants.
             </p>
           </div>
 

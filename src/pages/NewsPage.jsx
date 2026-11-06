@@ -81,7 +81,7 @@ export default function NewsPage({ navigateTo }) {
             </h1>
 
             <p className="text-slate-600 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
-              Official communiqués, event management bulletins, and policy monographs issued directly from the Executive Secretariat at The City Tower in Central Jakarta.
+              Official communiqués, event management bulletins, and policy monographs issued directly from the Executive Secretariat at Sudirman Park in Central Jakarta.
             </p>
           </div>
 

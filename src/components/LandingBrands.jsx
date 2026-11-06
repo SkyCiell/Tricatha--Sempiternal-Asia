@@ -4,7 +4,7 @@ import ModalCards from "./ui/modal-cards";
 
 const techPhoto = "/final-photos/brands/technology/TSAIT.jpeg";
 const culinaryPhoto = "/events/illuminate-asia-exclusive-evening/cover.jpg";
-const broadcastPhoto = "/events/empowering-women-in-politics/cover.jpg";
+const broadcastPhoto = "/brands/dna-studio/dna-podcast.jpg";
 const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 const govAdvPhoto = "/final-photos/brands/gov-adv/GoADV.jpeg";
 

@@ -68,7 +68,7 @@ export default function FAQPage({ navigateTo }) {
             </h1>
 
             <p className="text-[#475569] text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
-              Clear institutional parameters regarding bilateral clearances, confidentiality covenants, ASEAN logistics, and turnkey production execution at The City Tower, Jakarta.
+              Clear institutional parameters regarding bilateral clearances, confidentiality covenants, ASEAN logistics, and turnkey production execution at Sudirman Park, Jakarta.
             </p>
           </div>
 
@@ -150,7 +150,7 @@ export default function FAQPage({ navigateTo }) {
           <div className="bg-[#0A1F44] border border-white/15 p-8 sm:p-14 rounded flex flex-col lg:flex-row lg:items-center justify-between gap-8 shadow-xl">
             <div className="space-y-3 max-w-2xl">
               <span className="font-mono text-xs text-[#C8102E] uppercase tracking-wider block font-semibold">
-                EXECUTIVE PROTOCOL DIRECTORATE · THE CITY TOWER
+                EXECUTIVE PROTOCOL DIRECTORATE · SUDIRMAN PARK
               </span>
               <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
                 Have an Unlisted Protocol Requirement?

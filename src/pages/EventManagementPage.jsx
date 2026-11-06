@@ -103,7 +103,7 @@ export default function EventManagementPage({ navigateTo }) {
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-500 font-mono">
-              Core Operational Disciplines · Delivered from The City Tower Jakarta
+              Core Operational Disciplines · Delivered from Sudirman Park Jakarta
             </p>
           </div>
 
@@ -213,7 +213,7 @@ export default function EventManagementPage({ navigateTo }) {
         <div className="max-w-[1520px] mx-auto px-4 sm:px-8">
           <div className="bg-[#071731] text-white rounded-xl p-10 sm:p-14 border border-[#071731] shadow-2xl text-center space-y-4">
             <span className="font-mono text-xs text-[#C8102E] font-semibold uppercase tracking-wider block">
-              THE CITY TOWER, JAKARTA
+              SUDIRMAN PARK, JAKARTA
             </span>
             <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
               Commission an Executive Mandate

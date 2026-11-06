@@ -186,7 +186,7 @@ export default function EventSection({ navigateTo, onOpenWorkModal }) {
               {/* Bottom Bar Info Over Media */}
               <div className="flex items-center justify-between text-xs font-mono text-slate-400 border-t border-white/10 pt-3">
                 <span>VENUE PARTNER: INDONESIA CONVENTION EXHIBITION (ICE BSD)</span>
-                <span className="hidden sm:inline">CENTRAL SECRETARIAT: THE CITY TOWER JAKARTA</span>
+                <span className="hidden sm:inline">CENTRAL SECRETARIAT: SUDIRMAN PARK JAKARTA</span>
               </div>
 
             </div>

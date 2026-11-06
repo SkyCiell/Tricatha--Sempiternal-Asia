@@ -6,12 +6,12 @@ const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 
 export default function BrandsPage({ navigateTo, initialUnit }) {
   const [activeUnit, setActiveUnit] = useState(() => {
-    if (initialUnit && ["tsa-tech", "enchante", "dna-studio", "gwi", "govadv"].includes(initialUnit)) {
+    if (initialUnit && ["tsa-tech", "gwi", "govadv", "enchante", "dna-studio"].includes(initialUnit)) {
       return initialUnit;
     }
     if (typeof window !== "undefined" && window.location.hash) {
       const h = window.location.hash.replace("#", "").toLowerCase();
-      if (["tsa-tech", "enchante", "dna-studio", "gwi", "govadv"].includes(h)) {
+      if (["tsa-tech", "gwi", "govadv", "enchante", "dna-studio"].includes(h)) {
         return h;
       }
     }
@@ -19,7 +19,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
   });
 
   useEffect(() => {
-    if (initialUnit && ["tsa-tech", "enchante", "dna-studio", "gwi", "govadv"].includes(initialUnit)) {
+    if (initialUnit && ["tsa-tech", "gwi", "govadv", "enchante", "dna-studio"].includes(initialUnit)) {
       setActiveUnit(initialUnit);
     }
   }, [initialUnit]);
@@ -27,7 +27,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
   useEffect(() => {
     const handleHash = () => {
       const hash = (window.location.hash || "").replace("#", "").toLowerCase();
-      if (hash && ["tsa-tech", "enchante", "dna-studio", "gwi", "govadv"].includes(hash)) {
+      if (hash && ["tsa-tech", "gwi", "govadv", "enchante", "dna-studio"].includes(hash)) {
         setActiveUnit(hash);
         const el = document.getElementById(hash) || document.getElementById("practice-detail") || document.getElementById("areas");
         if (el) {
@@ -99,60 +99,6 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
       }
     },
     {
-      id: "enchante",
-      domain: "Food & Beverage",
-      name: "ENCHANTÉE KITCHEN",
-      title: "Food & Beverage Division",
-      tagline: "Thoughtfully Prepared, Distinctively Presented",
-      mandate:
-        "Enchantée Kitchen is TSA’s food and beverage division, creating thoughtfully prepared culinary products and catering experiences for corporate, social, and private occasions. Every offering is developed with attention to flavour, quality, presentation, and the character of the occasion it is intended to complement. From intimate gatherings to larger-scale events, Enchantée Kitchen provides food and hospitality solutions tailored to each client’s requirements with warmth, refinement, and reliable service.",
-      metrics: [
-        { label: "Occasion Scope", value: "Corporate & Private" },
-        { label: "Culinary Standard", value: "Artisanal Quality" },
-        { label: "Service Ethos", value: "Warmth & Poise" }
-      ],
-      deliverables: [
-        "Corporate Dining & Executive Conference Catering",
-        "Social Celebrations & Private Occasion Hospitality",
-        "Curated Culinary Products & Bespoke Tasting Menus",
-        "Distinctive Presentation, Tablescape & Service Staffing"
-      ],
-      photo: "/events/illuminate-asia-exclusive-evening/cover.jpg",
-      photoCaption: "Thoughtfully Prepared Culinary Presentation · Enchantée Kitchen",
-      venues: "Corporate Plenaries · Private Estates · Five-Star Ballrooms · Curated Social Venues",
-      featuredEvent: {
-        name: "Annual Diplomatic Corps & Ambassadorial Gala",
-        slug: "diplomatic-corps-ambassadorial-gala-dinner-2024"
-      }
-    },
-    {
-      id: "dna-studio",
-      domain: "Broadcast Media",
-      name: "DNA STUDIO",
-      title: "4K Broadcast Scenography & Telepresence",
-      tagline: "Cinema-Grade Broadcast Suite & Leader Dialogue Soundstage",
-      mandate:
-        "Headquartered at The City Tower 12th Floor in Central Jakarta, DNA STUDIO is TSA's dedicated media engineering soundstage. We engineer 4K multi-camera telecasts, virtual AGM voting systems, live satellite feeds, and thought leadership forums viewed by millions across the region.",
-      metrics: [
-        { label: "Syndicated Viewers", value: "2.4M+" },
-        { label: "Multi-Cam Broadcast Suite", value: "4K Cinema" },
-        { label: "Studio Location", value: "The City Tower 12F" }
-      ],
-      deliverables: [
-        "4K Multi-Camera Live Broadcast Switching & Telepresence",
-        "Audited Hybrid AGM Electronic Proxy Voting Architecture",
-        "Leader Dialogue Broadcast Curation & Digital Distribution",
-        "Kinetic Soundstage Lighting & Acoustic Scenography"
-      ],
-      photo: "/events/empowering-women-in-politics/cover.jpg",
-      photoCaption: "DNA Studio Leader Dialogue: Geopolitical Horizons · Broadcast Suite",
-      venues: "The City Tower 12th Fl · Soehanna Hall SCBD · Live Satellite Up-Links",
-      featuredEvent: {
-        name: "DNA Studio Leader Dialogue: Geopolitical Horizons 2026",
-        slug: "dna-studio-leader-dialogue-geopolitical-horizons-2026"
-      }
-    },
-    {
       id: "gwi",
       domain: "Event Management",
       name: "GWI",
@@ -204,6 +150,60 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
       featuredEvent: {
         name: "National Digital Governance & GovTech Conclave",
         slug: "national-digital-governance-govtech-conclave-2024"
+      }
+    },
+    {
+      id: "enchante",
+      domain: "Food & Beverage",
+      name: "ENCHANTÉE KITCHEN",
+      title: "Food & Beverage Division",
+      tagline: "Thoughtfully Prepared, Distinctively Presented",
+      mandate:
+        "Enchantée Kitchen is TSA’s food and beverage division, creating thoughtfully prepared culinary products and catering experiences for corporate, social, and private occasions. Every offering is developed with attention to flavour, quality, presentation, and the character of the occasion it is intended to complement. From intimate gatherings to larger-scale events, Enchantée Kitchen provides food and hospitality solutions tailored to each client’s requirements with warmth, refinement, and reliable service.",
+      metrics: [
+        { label: "Occasion Scope", value: "Corporate & Private" },
+        { label: "Culinary Standard", value: "Artisanal Quality" },
+        { label: "Service Ethos", value: "Warmth & Poise" }
+      ],
+      deliverables: [
+        "Corporate Dining & Executive Conference Catering",
+        "Social Celebrations & Private Occasion Hospitality",
+        "Curated Culinary Products & Bespoke Tasting Menus",
+        "Distinctive Presentation, Tablescape & Service Staffing"
+      ],
+      photo: "/events/illuminate-asia-exclusive-evening/cover.jpg",
+      photoCaption: "Thoughtfully Prepared Culinary Presentation · Enchantée Kitchen",
+      venues: "Corporate Plenaries · Private Estates · Five-Star Ballrooms · Curated Social Venues",
+      featuredEvent: {
+        name: "Annual Diplomatic Corps & Ambassadorial Gala",
+        slug: "diplomatic-corps-ambassadorial-gala-dinner-2024"
+      }
+    },
+    {
+      id: "dna-studio",
+      domain: "Broadcast Media",
+      name: "DNA STUDIO",
+      title: "4K Broadcast Scenography & Telepresence",
+      tagline: "Cinema-Grade Broadcast Suite & Leader Dialogue Soundstage",
+      mandate:
+        "Headquartered at Sudirman Park in Central Jakarta, DNA STUDIO is TSA's dedicated media engineering soundstage. We engineer 4K multi-camera telecasts, virtual AGM voting systems, live satellite feeds, and thought leadership forums viewed by millions across the region.",
+      metrics: [
+        { label: "Syndicated Viewers", value: "2.4M+" },
+        { label: "Multi-Cam Broadcast Suite", value: "4K Cinema" },
+        { label: "Studio Location", value: "Sudirman Park, Jakarta" }
+      ],
+      deliverables: [
+        "4K Multi-Camera Live Broadcast Switching & Telepresence",
+        "Audited Hybrid AGM Electronic Proxy Voting Architecture",
+        "Leader Dialogue Broadcast Curation & Digital Distribution",
+        "Kinetic Soundstage Lighting & Acoustic Scenography"
+      ],
+      photo: "/brands/dna-studio/dna-podcast.jpg",
+      photoCaption: "DNA Studio Leader Dialogue: Geopolitical Horizons · Broadcast Suite",
+      venues: "Sudirman Park · Soehanna Hall SCBD · Live Satellite Up-Links",
+      featuredEvent: {
+        name: "DNA Studio Leader Dialogue: Geopolitical Horizons 2026",
+        slug: "dna-studio-leader-dialogue-geopolitical-horizons-2026"
       }
     }
   ];
@@ -262,7 +262,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
             </p>
 
             <p className="font-sans text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-              Strategic direction, fiduciary oversight, and unified executive command from The City Tower 12th Floor, Central Jakarta. All group practices operate under single-source accountability.
+              Strategic direction, fiduciary oversight, and unified executive command from Sudirman Park, Central Jakarta. All group practices operate under single-source accountability.
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2 font-mono text-xs border-t border-[#071731]/10 text-slate-600">
@@ -276,7 +276,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
               </div>
               <div className="col-span-2 sm:col-span-1">
                 <span className="text-[10px] text-slate-400 uppercase tracking-wider block">HEADQUARTERS</span>
-                <span className="font-semibold text-[#071731] block mt-0.5">The City Tower, Jakarta</span>
+                <span className="font-semibold text-[#071731] block mt-0.5">Sudirman Park, Jakarta</span>
               </div>
             </div>
           </div>
@@ -332,112 +332,109 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
 
       </section>
 
-      {/* 3. IN-DEPTH PRACTICE DOSSIER (Natural Responsive Editorial Card) */}
-      <section className="relative w-full bg-[#071731] text-white overflow-hidden rounded-2xl sm:rounded-3xl border border-white/10 my-8 sm:my-12 shadow-2xl flex flex-col justify-between">
-
-        {/* Background Photo Layer */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={currentEntity.id}
-              src={currentEntity.photo}
-              alt={currentEntity.name}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full h-full object-cover object-center"
-            />
-          </AnimatePresence>
-
-          {/* Directional Scrim for Supreme Readability without Obscuring Authentic Photo */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/85 via-50% to-[#071731]/40 pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/75 via-55% to-transparent pointer-events-none" />
-        </div>
-
-        {/* Center / Direct Typography Over Media */}
-        <div className="relative z-10 w-full p-6 sm:p-10 lg:p-14">
-          <div className="max-w-4xl space-y-4 sm:space-y-6">
+      {/* 3. IN-DEPTH PRACTICE DOSSIER (Refined Responsive Non-Mepet Layout for All Brands) */}
+      <div className="max-w-[1520px] mx-auto px-4 sm:px-8 my-6 sm:my-10">
+        <section className="relative w-full bg-[#071731] text-white overflow-hidden rounded-2xl border border-white/10 shadow-xl flex flex-col justify-between">
+          {/* Background Photo Layer */}
+          <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
             <AnimatePresence mode="wait">
-              <motion.div
+              <motion.img
                 key={currentEntity.id}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="space-y-4"
-              >
-                <h2 className="font-heading text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
-                  {currentEntity.name} <br />
-                  <span className="font-editorial italic font-normal text-slate-300 text-xl sm:text-3xl">
-                    {currentEntity.tagline}
-                  </span>
-                </h2>
-
-                <p className="font-sans text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-3xl">
-                  {currentEntity.mandate}
-                </p>
-
-                {/* Core Deliverables / Capabilities Badges */}
-                {currentEntity.deliverables && currentEntity.deliverables.length > 0 && (
-                  <div className="pt-2 space-y-2">
-                    <div className="text-[11px] font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
-                      Key Practice Capabilities:
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {currentEntity.deliverables.map((item, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs bg-white/5 border border-white/15 text-slate-200 px-3 py-1.5 rounded-xs"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Primary Action Button */}
-                <div className="pt-3 flex flex-wrap items-center gap-4">
-                  <button
-                    onClick={handleInquiry}
-                    className="btn-editorial-red text-xs sm:text-sm py-3 px-6 cursor-pointer inline-flex items-center gap-2"
-                  >
-                    <span>Inquire {currentEntity.name}</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </button>
-
-                  <button
-                    onClick={handleInquiry}
-                    className="px-4 py-3 text-xs font-medium text-slate-300 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5"
-                  >
-                    <span>Corporate Headquarters Consultation</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-[#C8102E]" />
-                  </button>
-                </div>
-              </motion.div>
+                src={currentEntity.photo}
+                alt={currentEntity.name}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="w-full h-full object-cover object-center"
+              />
             </AnimatePresence>
+            <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/85 via-50% to-[#071731]/40 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#071731]/95 via-[#071731]/75 via-55% to-transparent pointer-events-none" />
           </div>
-        </div>
 
-        {/* Bottom Metrics Bar Directly Over Media */}
-        <div className="relative z-10 w-full px-6 sm:px-10 lg:px-14 pb-6 sm:pb-8">
-          <div className="grid grid-cols-3 gap-6 pt-4 border-t border-white/15 font-mono max-w-4xl">
-            {currentEntity.metrics.map((m, idx) => (
-              <div key={idx} className="space-y-0.5">
-                <div className="text-xl sm:text-2xl font-bold text-white font-heading tracking-tight">
-                  {m.value}
-                </div>
-                <div className="text-[11px] text-slate-300 uppercase tracking-wider font-sans">
-                  {m.label}
-                </div>
-              </div>
-            ))}
+          {/* Content: Compact, Proportional & Breathable */}
+          <div className="relative z-10 w-full p-6 sm:p-8 lg:p-10">
+            <div className="max-w-3xl space-y-3 sm:space-y-4">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentEntity.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -12 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="space-y-2.5"
+                >
+                  <h2 className="font-heading text-xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)]">
+                    {currentEntity.name} <br />
+                    <span className="font-editorial italic font-normal text-slate-300 text-lg sm:text-2xl">
+                      {currentEntity.tagline}
+                    </span>
+                  </h2>
+
+                  <p className="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed font-normal max-w-2xl">
+                    {currentEntity.mandate}
+                  </p>
+
+                  {/* Core Deliverables / Capabilities Badges */}
+                  {currentEntity.deliverables && currentEntity.deliverables.length > 0 && (
+                    <div className="pt-1.5 space-y-1.5">
+                      <div className="text-[10px] sm:text-[11px] font-mono text-[#C8102E] uppercase tracking-wider font-semibold">
+                        Key Practice Capabilities:
+                      </div>
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {currentEntity.deliverables.map((item, idx) => (
+                          <span
+                            key={idx}
+                            className="text-[11px] sm:text-xs bg-white/5 border border-white/15 text-slate-200 px-2.5 py-1 rounded"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Primary Action Button */}
+                  <div className="pt-2 flex flex-wrap items-center gap-3">
+                    <button
+                      onClick={handleInquiry}
+                      className="btn-editorial-red text-xs py-2.5 px-5 cursor-pointer inline-flex items-center gap-2"
+                    >
+                      <span>Inquire {currentEntity.name}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
+
+                    <button
+                      onClick={handleInquiry}
+                      className="px-3 py-2 text-xs font-medium text-slate-300 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5"
+                    >
+                      <span>Corporate Headquarters Consultation</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#C8102E]" />
+                    </button>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
 
-      </section>
-
+          {/* Bottom Metrics Bar */}
+          <div className="relative z-10 w-full px-6 sm:px-8 lg:px-10 pb-5 sm:pb-6">
+            <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-3 border-t border-white/15 font-mono max-w-3xl">
+              {currentEntity.metrics.map((m, idx) => (
+                <div key={idx} className="space-y-0.5">
+                  <div className="text-lg sm:text-xl font-bold text-white font-heading tracking-tight">
+                    {m.value}
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-300 uppercase tracking-wider font-sans">
+                    {m.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
       {/* 4. MARKETS & PROTOCOL FOOTPRINT MATRIX */}
       <section id="partnerships" className="max-w-[1520px] mx-auto px-4 sm:px-8 py-16 sm:py-20 border-b border-[#071731]/10 scroll-mt-[80px]">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-[#071731]/10">
@@ -511,7 +508,7 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
                 Engage the TSA Business Group.
               </h2>
               <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                Coordinate with our executive directorate at The City Tower in Central Jakarta to align one or multiple group practices with your organization's strategic mandates.
+                Coordinate with our executive directorate at Sudirman Park in Central Jakarta to align one or multiple group practices with your organization's strategic mandates.
               </p>
             </div>
 

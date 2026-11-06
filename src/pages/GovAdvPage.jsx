@@ -404,7 +404,7 @@ export default function GovAdvPage({ navigateTo }) {
             </div>
             <div>
               <span className="text-slate-400 block text-[10px] uppercase">Location</span>
-              <span className="text-white font-medium">The City Tower, Jakarta Pusat</span>
+              <span className="text-white font-medium">Sudirman Park, Jakarta Pusat</span>
             </div>
           </div>
         </div>
@@ -419,7 +419,7 @@ export default function GovAdvPage({ navigateTo }) {
                 Advance Your Institutional Objectives.
               </h2>
               <p className="font-sans text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                Connect with our senior advisory team at The City Tower in Central Jakarta for confidential consultation on stakeholder mapping, public policy navigation, and institutional partnership frameworks.
+                Connect with our senior advisory team at Sudirman Park in Central Jakarta for confidential consultation on stakeholder mapping, public policy navigation, and institutional partnership frameworks.
               </p>
             </div>
 

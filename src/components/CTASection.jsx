@@ -21,7 +21,7 @@ export default function CTASection({ scrollToSection }) {
           </h2>
 
           <p className="font-normal text-base sm:text-lg text-[#CBD5E1] leading-relaxed max-w-2xl">
-            Initiate a confidential discussion with TSA's partners at The City Tower in Jakarta to deliberate sovereign affairs, diplomatic summit rollouts, or strategic market expansion across Southeast Asia.
+            Initiate a confidential discussion with TSA's partners at Sudirman Park in Jakarta to deliberate sovereign affairs, diplomatic summit rollouts, or strategic market expansion across Southeast Asia.
           </p>
 
           <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">

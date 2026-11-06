@@ -12,7 +12,7 @@ export default function CareersPage({ navigateTo }) {
       id: "protocol-liaison",
       title: "Sovereign Protocol & Diplomatic Liaison Officer",
       division: "Diplomatic Affairs & Summit Governance",
-      location: "Jakarta HQ (The City Tower) · Regional Travel",
+      location: "Jakarta HQ (Sudirman Park) · Regional Travel",
       type: "Full-Time Mandate",
       clearance: "Government Background Vetting Required",
       desc: "Lead high-level protocol coordination for bilateral ministerials, state delegations, and head-of-state diplomatic assemblies across ASEAN.",
@@ -40,7 +40,7 @@ export default function CareersPage({ navigateTo }) {
       id: "policy-analyst",
       title: "Geopolitical & Regulatory Policy Analyst",
       division: "TSA Sovereign Research Group",
-      location: "Jakarta HQ (The City Tower)",
+      location: "Jakarta HQ (Sudirman Park)",
       type: "Full-Time Mandate",
       clearance: "Institutional Confidentiality Covenants",
       desc: "Produce actionable executive monographs, cross-border regulatory feasibility briefs, and macroeconomic intelligence for sovereign clients.",
@@ -76,7 +76,7 @@ export default function CareersPage({ navigateTo }) {
           {/* Left Title & Statement (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
             <div className="text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
-              Talent Appointments · The City Tower, Jakarta
+              Talent Appointments · Sudirman Park, Jakarta
             </div>
             <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-[#071731] tracking-tight leading-[1.08]">
               Careers &amp; <br />
@@ -192,7 +192,7 @@ export default function CareersPage({ navigateTo }) {
           <div className="bg-[#071731] text-white border border-[#071731] p-8 sm:p-14 rounded-xl shadow-2xl flex flex-col lg:flex-row lg:items-center justify-between gap-8">
             <div className="space-y-3 max-w-2xl">
               <div className="text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
-                EXECUTIVE APPOINTMENTS · THE CITY TOWER
+                EXECUTIVE APPOINTMENTS · SUDIRMAN PARK
               </div>
               <h2 className="font-heading text-2xl sm:text-4xl font-semibold text-white tracking-tight">
                 Submit an Unsolicited Confidential Dossier.

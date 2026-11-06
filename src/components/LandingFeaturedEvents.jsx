@@ -44,7 +44,7 @@ export default function LandingFeaturedEvents({ navigateTo }) {
     >
       <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 sm:pb-14 border-b border-[#E2E8F0]">
+        <div className="pb-10 sm:pb-14 border-b border-[#E2E8F0]">
           <div className="space-y-3 max-w-3xl">
             <h2 className="font-heading text-3xl sm:text-5xl font-bold text-[#071731] tracking-tight leading-[1.1]">
               Featured Events.
@@ -52,17 +52,6 @@ export default function LandingFeaturedEvents({ navigateTo }) {
             <p className="font-sans text-sm sm:text-base text-[#64748B] leading-relaxed font-normal">
               Selected landmark productions demonstrating TSA's plenary architecture, MICE scale, and sovereign protocol standards.
             </p>
-          </div>
-
-          <div className="shrink-0">
-            <button
-              type="button"
-              onClick={handleViewAllEvents}
-              className="btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center gap-2 shadow-xs"
-            >
-              <span>Explore All Events</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </button>
           </div>
         </div>
 
@@ -72,6 +61,18 @@ export default function LandingFeaturedEvents({ navigateTo }) {
             items={featuredEvents}
             onItemNavigate={handleEventClick}
           />
+        </div>
+
+        {/* Explore All Events CTA placed cleanly below the event grid */}
+        <div className="pt-10 sm:pt-14 flex justify-center">
+          <button
+            type="button"
+            onClick={handleViewAllEvents}
+            className="btn-editorial-red text-xs sm:text-sm py-3.5 px-8 cursor-pointer inline-flex items-center justify-center gap-2 shadow-xs hover:shadow-md transition-all active:scale-[0.99]"
+          >
+            <span>Explore All Events</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </section>

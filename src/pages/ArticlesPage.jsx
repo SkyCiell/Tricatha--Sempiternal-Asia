@@ -15,7 +15,7 @@ export default function ArticlesPage({ navigateTo }) {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-3xl space-y-4">
               <div className="text-xs font-mono tracking-wider text-[#C8102E] font-semibold uppercase">
-                TSA Research Group · The City Tower, Jakarta
+                TSA Research Group · Sudirman Park, Jakarta
               </div>
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-[54px] font-semibold tracking-tight text-[#071731] leading-[1.14]">
                 Executive Journal &amp; <br />

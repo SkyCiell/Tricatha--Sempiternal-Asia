@@ -120,7 +120,7 @@ export default function StrategicEngagement({ scrollToSection }) {
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
               <span className="text-[10px] font-mono text-[#94A3B8]">
-                Protocol Verified · The City Tower HQ
+                Protocol Verified · Sudirman Park HQ
               </span>
             </div>
 

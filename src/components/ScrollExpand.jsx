@@ -4,7 +4,7 @@ const plenaryPhoto = "/events/appmbgi-national-summit-2026/photo-1.jpg";
 export default function ScrollExpand({
   image = plenaryPhoto,
   title = "Orchestrating High-Stakes Assemblies Across Southeast Asia",
-  subtitle = "From closed-door bilateral dialogues at The City Tower to monumental ministerial plenaries, TSA unites corporate strategy, sovereign protocol, and spatial scenography.",
+  subtitle = "From closed-door bilateral dialogues at Sudirman Park to monumental ministerial plenaries, TSA unites corporate strategy, sovereign protocol, and spatial scenography.",
   tag = "Jakarta Plenary Operations · Head-of-State Standard",
   startWidth = 42,
   startHeight = 58,

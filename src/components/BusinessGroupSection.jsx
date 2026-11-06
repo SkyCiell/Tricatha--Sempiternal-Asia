@@ -36,7 +36,7 @@ const visualMap = {
   "DNA STUDIO": {
     photo: aseanPhoto,
     caption: "4K Broadcast Suite & Telecast Command",
-    venue: "The City Tower 12th Fl · Central Jakarta",
+    venue: "Sudirman Park · Central Jakarta",
     statLabel: "Broadcasting Reach",
     statValue: "2.4M+ Syndicated Viewers",
     route: "/business-group#dna-studio"
@@ -100,7 +100,7 @@ export default function BusinessGroupSection({ navigateTo }) {
             </h2>
 
             <p className="font-sans text-sm sm:text-base text-slate-600 leading-relaxed font-normal pt-1">
-              Headquartered at The City Tower in Central Jakarta, PT Tricatha Sempiternal Asia operates specialized practice groups spanning mission-critical technology, bespoke food &amp; beverage, 4K broadcast production, experiential event management, and government advisory.
+              Headquartered at Sudirman Park in Central Jakarta, PT Tricatha Sempiternal Asia operates specialized practice groups spanning mission-critical technology, bespoke food &amp; beverage, 4K broadcast production, experiential event management, and government advisory.
             </p>
           </div>
 
@@ -262,7 +262,7 @@ export default function BusinessGroupSection({ navigateTo }) {
                   <Award className="w-4 h-4 text-[#071731]" />
                   <span className="font-semibold text-[#071731]">EXECUTIVE INTEGRATION:</span>
                 </div>
-                <span className="text-slate-500">The City Tower, Jakarta Pusat</span>
+                <span className="text-slate-500">Sudirman Park, Jakarta Pusat</span>
               </div>
 
             </div>

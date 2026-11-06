@@ -131,7 +131,7 @@ export default function InternshipPage({ _navigateTo }) {
     },
     {
       title: "Executive Panel Interview",
-      desc: "Meet with TSA Practice Directors and lead advisors at our headquarters at The City Tower in Central Jakarta to evaluate cultural alignment and poise."
+      desc: "Meet with TSA Practice Directors and lead advisors at our headquarters at Sudirman Park in Central Jakarta to evaluate cultural alignment and poise."
     },
     {
       title: "Venue Induction & Deployment",
@@ -204,14 +204,14 @@ export default function InternshipPage({ _navigateTo }) {
               </h2>
 
               <p className="font-sans text-sm sm:text-base text-slate-200 font-normal leading-relaxed max-w-3xl drop-shadow-md">
-                We believe exceptional professionals are forged through rigorous responsibility. At TSA, fellows do not observe from the sidelines: you will stand alongside our senior directors inside control booths, ministerial plenary suites, and broadcast control rooms across ICE BSD City, JCC Senayan, and The City Tower.
+                We believe exceptional professionals are forged through rigorous responsibility. At TSA, fellows do not observe from the sidelines: you will stand alongside our senior directors inside control booths, ministerial plenary suites, and broadcast control rooms across ICE BSD City, JCC Senayan, and Sudirman Park.
               </p>
 
               {/* Key Operational Tenets Over Media */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-3 border-t border-white/15 max-w-2xl font-mono text-xs text-slate-300">
                 <div>
                   <span className="text-[#C8102E] font-semibold uppercase block mb-0.5">THE ENVIRONMENT</span>
-                  <span>The City Tower HQ · JCC Senayan · ICE BSD City</span>
+                  <span>Sudirman Park HQ · JCC Senayan · ICE BSD City</span>
                 </div>
                 <div>
                   <span className="text-[#C8102E] font-semibold uppercase block mb-0.5">THE EXPECTATION</span>

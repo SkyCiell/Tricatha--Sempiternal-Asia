@@ -96,7 +96,7 @@ export default function AboutSection({ navigateTo }) {
 
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col justify-between items-start lg:items-end gap-4">
             <div className="space-y-1 text-left lg:text-right font-mono text-xs text-[#64748B]">
-              <div className="text-[#071731] font-semibold">HQ · The City Tower, Jakarta</div>
+              <div className="text-[#071731] font-semibold">HQ · Sudirman Park, Jakarta</div>
               <div>Indonesia · ASEAN Economic Corridor</div>
             </div>
 
@@ -172,7 +172,7 @@ export default function AboutSection({ navigateTo }) {
 
             <div className="hidden sm:flex items-center gap-2 text-slate-300">
               <MapPin className="w-3.5 h-3.5 text-[#C8102E]" />
-              <span>THE CITY TOWER · JAKARTA PUSAT</span>
+              <span>SUDIRMAN PARK · JAKARTA PUSAT</span>
             </div>
           </div>
 

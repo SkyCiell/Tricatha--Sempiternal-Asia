@@ -38,7 +38,7 @@ export default function AboutPage({ navigateTo }) {
       id: "network",
       title: "Jaringan Asia · Pan-Asian Network",
       tagline: "Direct Institutional Access Across ASEAN",
-      desc: "From our executive headquarters at The City Tower in Central Jakarta, TSA maintains accredited relationships with regional convention bureaus, diplomatic missions, and premier convention complexes across Southeast Asia.",
+      desc: "From our executive headquarters at Sudirman Park in Central Jakarta, TSA maintains accredited relationships with regional convention bureaus, diplomatic missions, and premier convention complexes across Southeast Asia.",
       points: [
         "Tier-1 venue priority (JCC, ICE BSD, BICC Bali, JIExpo)",
         "Inter-ministerial liaison & public-private partnerships",
@@ -52,7 +52,7 @@ export default function AboutPage({ navigateTo }) {
       period: "2018 - 2020",
       milestone: "Foundation & Sovereign Protocol Practice",
       detail: "Established in Jakarta as a specialized advisory focusing on diplomatic seating precedence, ministerial bilateral meetings, and high-level stakeholder convenings.",
-      photo: "/events/book-launching-restorative-justice/photo-2.jpg"
+      photo: "/milestones/milestone-1.jpg"
     },
     {
       period: "2021 – 2022",
@@ -63,14 +63,14 @@ export default function AboutPage({ navigateTo }) {
     {
       period: "2023 – 2024",
       milestone: "DNA Studio Broadcast Center & Holding Expansion",
-      detail: "Commissioned the dedicated 4K multi-camera soundstage at The City Tower 12th Floor, unifying broadcast telepresence, GWI civic activations, and GOADV state relations.",
-      photo: "/events/empowering-women-in-politics/photo-2.jpg"
+      detail: "Commissioned the dedicated 4K multi-camera soundstage at Sudirman Park, unifying broadcast telepresence, GWI civic activations, and GOADV state relations.",
+      photo: "/milestones/milestone-3.jpg"
     },
     {
       period: "2025 – 2026",
       milestone: "Flagship Regional Plenaries & Pan-ASEAN Delivery",
       detail: "Orchestrating sovereign summits and monumental clean energy expositions uniting 18 ministerial delegations and over 45,000 in-person participants.",
-      photo: "/events/indonesia-europe-investment-summit-2023/cover.jpg"
+      photo: "/milestones/milestone-4.jpg"
     }
   ];
 
@@ -90,7 +90,7 @@ export default function AboutPage({ navigateTo }) {
             </h1>
 
             <p className="text-slate-600 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
-              Headquartered at The City Tower in Central Jakarta, PT Tricatha Sempiternal Asia unites high-stakes event organization, sovereign protocol, business conferences, trade exhibitions, and multimedia broadcast into an integrated operational practice.
+              Headquartered at Sudirman Park in Central Jakarta, PT Tricatha Sempiternal Asia unites high-stakes event organization, sovereign protocol, business conferences, trade exhibitions, and multimedia broadcast into an integrated operational practice.
             </p>
           </div>
 
@@ -185,18 +185,18 @@ export default function AboutPage({ navigateTo }) {
             </p>
 
             <div className="pt-3 hidden sm:block">
-              <div className="relative rounded-lg overflow-hidden border border-[#071731]/10 aspect-[16/10] bg-[#071731] shadow-2xs group">
+              <div className="relative rounded-lg overflow-hidden border border-[#071731]/10 aspect-[4/3] bg-[#071731] shadow-2xs group">
                 <img
-                  src="/events/indonesia-europe-investment-summit-2023/photo-1.jpg"
-                  alt="TSA Diplomatic Protocol Precedence & Assembly Staging"
+                  src="/zero-error-delivery.jpg"
+                  alt="TSA Mission-Critical Operations & Joint Command Centre Staging"
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071731]/70 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute bottom-2 left-2 right-2 text-[10px] font-mono text-slate-200 bg-[#071731]/85 px-2.5 py-1 rounded border border-white/10 flex items-center justify-between">
-                  <span>Sovereign Signing Assembly</span>
-                  <span className="text-slate-300">Central Jakarta</span>
+                  <span>AI Driven Operations</span>
+                  <span className="text-slate-300">Joint Command Centre</span>
                 </div>
               </div>
             </div>
@@ -292,7 +292,7 @@ export default function AboutPage({ navigateTo }) {
                 Consult with our Practice Directors.
               </h2>
               <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                Connect directly with our senior leadership team at The City Tower in Jakarta to deliberate your upcoming sovereign assembly, trade expo, or corporate milestone.
+                Connect directly with our senior leadership team at Sudirman Park in Jakarta to deliberate your upcoming sovereign assembly, trade expo, or corporate milestone.
               </p>
             </div>
 

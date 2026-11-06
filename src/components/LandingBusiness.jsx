@@ -2,10 +2,10 @@ import React from "react";
 import { ArrowUpRight } from "lucide-react";
 import backgroundTSA from "../assets/Background_TSA.jpg";
 
-const techPhoto = "/final-photos/brands/technology/TSAIT.jpeg";
-const micePhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
-const govPhoto = "/final-photos/brands/gov-adv/GoADV.jpeg";
-const broadcastPhoto = "/events/empowering-women-in-politics/photo-3.jpg";
+const techPhoto = "/brands/technology/tsa-it.jpg";
+const micePhoto = "/brands/gwi/gwi.jpg";
+const govPhoto = "/brands/gov-adv/govadv.jpg";
+const broadcastPhoto = "/brands/dna-studio/dna-studio.jpg";
 const culinaryPhoto = "/events/illuminate-asia-exclusive-evening/photo-2.jpg";
 
 const BUSINESS_CHAPTERS = [

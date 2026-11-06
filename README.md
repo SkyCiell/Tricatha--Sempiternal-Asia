@@ -16,7 +16,7 @@ An integrated digital platform for Tricatha Sempiternal Asia, bringing together 
 
 ## Overview
 
-Tricatha Sempiternal Asia (TSA) is an integrated practice headquartered at The City Tower, Jakarta, Indonesia.
+Tricatha Sempiternal Asia (TSA) is an integrated practice headquartered at Sudirman Park, Jakarta, Indonesia.
 
 The website serves as a digital representation of TSA's operational capabilities, presenting its work across public advocacy, digital governance, broadcast media, and diplomatic summits.
 
@@ -158,7 +158,7 @@ The generated production assets are available in the `dist/` directory.
 
 **Tricatha Sempiternal Asia**
 
-The City Tower, 12th Floor  
+Sudirman Park  
 Jl. M.H. Thamrin No. 81  
 Jakarta Pusat 10310  
 Indonesia
