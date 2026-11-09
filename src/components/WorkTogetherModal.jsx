@@ -83,23 +83,46 @@ export default function WorkTogetherModal({ isOpen, onClose }) {
         {/* Modal Content */}
         <div data-lenis-prevent className="p-6 sm:p-8 space-y-6 flex-1 overflow-y-auto overscroll-contain">
           {submitted ? (
-            <div className="py-10 text-center space-y-4">
+            <div className="py-8 text-center space-y-5">
               <div className="w-14 h-14 rounded bg-[#071731] border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="font-heading text-2xl font-bold text-white">
-                Inquiry Received
-              </h3>
-              <p className="font-sans text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                Thank you. The TSA Executive Secretariat has logged your inquiry. Our directors will review your event requirements and respond within one business day.
-              </p>
-              <div className="pt-4">
+              <div className="space-y-2">
+                <h3 className="font-heading text-2xl font-bold text-white tracking-tight">
+                  Inquiry Logged
+                </h3>
+                <p className="font-sans text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
+                  Thank you, <span className="font-semibold text-white">{formData.name}</span>. Your inquiry on behalf of <span className="font-semibold text-white">{formData.organization || "your organization"}</span> has been recorded.
+                </p>
+              </div>
+
+              {/* Instant WhatsApp / Email Dispatch */}
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+                <a
+                  href={`https://wa.me/628121000784?text=${encodeURIComponent(
+                    `*INQUIRY MANDAT - PT TRICATHA SEMPITERNAL ASIA*\n\n` +
+                    `*Nama:* ${formData.name}\n` +
+                    `*Organisasi:* ${formData.organization}\n` +
+                    `*Email:* ${formData.email}\n` +
+                    `*Telepon:* ${formData.phone}\n` +
+                    `*Kategori:* ${formData.eventType}\n` +
+                    `*Estimasi Delegasi:* ${formData.estimatedAttendees || '-'}\n` +
+                    `*Objektif / Detail:*\n${formData.details || '-'}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-colors shadow-md"
+                >
+                  <span>Instant Forward to WhatsApp</span>
+                </a>
+
                 <button
+                  type="button"
                   onClick={() => {
                     setSubmitted(false);
                     onClose();
                   }}
-                  className="btn-editorial-red"
+                  className="w-full sm:w-auto px-4 py-2.5 rounded bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-xs transition-colors"
                 >
                   <span>Close Window</span>
                 </button>

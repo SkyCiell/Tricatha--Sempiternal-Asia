@@ -36,6 +36,28 @@ export default function LandingAbout({ navigateTo }) {
       className="bg-[#FAF9F6] text-[#071731] border-b border-[#E2E8F0] relative overflow-hidden"
       aria-label="About PT Tricatha Sempiternal Asia"
     >
+      {/* Editorial Trust & Institutional Recognition Bar */}
+      <div className="border-b border-[#E2E8F0] bg-white/60 py-5 sm:py-6">
+        <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <span className="text-[11px] font-mono text-[#64748B] uppercase tracking-wider font-semibold shrink-0">
+              Trusted Institutional Partner &amp; Production Lead:
+            </span>
+            <div className="flex flex-wrap items-center gap-x-6 sm:gap-x-8 gap-y-2.5 font-heading font-semibold text-xs sm:text-sm text-[#071731]/85 tracking-tight">
+              <span className="hover:text-[#C8102E] transition-colors">THALES GROUP</span>
+              <span className="text-[#CBD5E1]">·</span>
+              <span className="hover:text-[#C8102E] transition-colors">KADIN INDONESIA</span>
+              <span className="text-[#CBD5E1]">·</span>
+              <span className="hover:text-[#C8102E] transition-colors">BP TAPERA</span>
+              <span className="text-[#CBD5E1]">·</span>
+              <span className="hover:text-[#C8102E] transition-colors">ADOBE</span>
+              <span className="text-[#CBD5E1]">·</span>
+              <span className="hover:text-[#C8102E] transition-colors">INDONESIA-EUROPE BILATERAL CHAMBER</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* 1. Concise Editorial Typography and Narrative */}
       <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start pb-12 sm:pb-16 border-b border-[#E2E8F0]">

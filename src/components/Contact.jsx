@@ -118,11 +118,20 @@ export default function Contact({ preselectedService }) {
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider font-mono font-medium">TELEPHONE DESK</div>
+                  <div className="text-[10px] text-[#64748B] uppercase tracking-wider font-mono font-medium">TELEPHONE &amp; WHATSAPP</div>
                   <a href={`tel:${companyInfo.phone.replace(/\s+/g, '')}`} className="font-semibold text-[#071731] hover:text-[#C8102E] transition-colors mt-0.5 block">
                     {companyInfo.phone}
                   </a>
                   <div className="text-[#64748B] text-[11px]">Headquarters Secretariat</div>
+                  <a
+                    href="https://wa.me/628121000784?text=Halo%20Sekretariat%20TSA,%20saya%20ingin%20berkonsultasi%20mengenai%20mandat%20event%20dan%20layanan%20PT%20Tricatha%20Sempiternal%20Asia."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-200 text-[11px] font-semibold transition-colors"
+                  >
+                    <span>Chat Secretariat on WhatsApp</span>
+                    <ArrowUpRight className="w-3 h-3 text-emerald-700" />
+                  </a>
                 </div>
               </div>
 
@@ -153,23 +162,58 @@ export default function Contact({ preselectedService }) {
           <div className="lg:col-span-7 bg-[#071731] text-white border border-[#071731] p-8 sm:p-10 rounded-xl shadow-xl">
 
             {isSubmitted ? (
-              <div className="py-12 text-center space-y-4">
+              <div className="py-10 text-center space-y-5">
                 <div className="w-14 h-14 bg-[#0A1F44] border border-emerald-500/30 text-emerald-400 rounded-full flex items-center justify-center mx-auto">
                   <CheckCircle2 className="w-7 h-7" />
                 </div>
-                <h3 className="font-heading text-xl sm:text-2xl font-medium text-white">
-                  Mandate Brief Transmitted
-                </h3>
-                <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
-                  Thank you, {formData.firstName} {formData.lastName}. Your brief on behalf of <span className="font-medium text-white">{formData.company}</span> has been securely transmitted to TSA's executive directors at Sudirman Park Jakarta.
-                </p>
+                <div className="space-y-2">
+                  <h3 className="font-heading text-xl sm:text-2xl font-bold text-white tracking-tight">
+                    Mandate Brief Transmitted
+                  </h3>
+                  <p className="text-slate-300 text-sm max-w-md mx-auto leading-relaxed">
+                    Thank you, {formData.firstName} {formData.lastName}. Your mandate on behalf of <span className="font-semibold text-white">{formData.company}</span> has been logged for TSA’s executive directors.
+                  </p>
+                </div>
+
+                {/* Direct Instant Dispatch Actions */}
+                <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+                  <a
+                    href={`https://wa.me/628121000784?text=${encodeURIComponent(
+                      `*MANDAT INQUIRY - PT TRICATHA SEMPITERNAL ASIA*\n\n` +
+                      `*Nama:* ${formData.firstName} ${formData.lastName}\n` +
+                      `*Organisasi:* ${formData.company}\n` +
+                      `*Email:* ${formData.email}\n` +
+                      `*Telepon:* ${formData.phone || '-'}\n` +
+                      `*Kategori:* ${formData.category}\n` +
+                      `*Pesan / Brief:*\n${formData.message}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-colors shadow-md"
+                  >
+                    <span>Instant Forward to WhatsApp</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </a>
+
+                  <a
+                    href={`mailto:de@sempiternalasia.com?subject=${encodeURIComponent(
+                      `Mandate Inquiry - ${formData.company} (${formData.firstName} ${formData.lastName})`
+                    )}&body=${encodeURIComponent(
+                      `MANDAT INQUIRY\n\nNama: ${formData.firstName} ${formData.lastName}\nOrganisasi: ${formData.company}\nEmail: ${formData.email}\nTelepon: ${formData.phone || '-'}\nKategori: ${formData.category}\n\nBrief:\n${formData.message}`
+                    )}`}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium text-xs transition-colors"
+                  >
+                    <span>Send via Email Client</span>
+                  </a>
+                </div>
+
                 <div className="pt-2">
                   <button
                     onClick={() => {
                       setIsSubmitted(false);
-                      setFormData({ firstName: "", lastName: "", company: "", email: "", phone: "", category: "Strategic Advisory", message: "" });
+                      setFormData({ firstName: "", lastName: "", company: "", email: "", phone: "", category: "Corporate Events & AGMs", message: "" });
                     }}
-                    className="btn-editorial-red"
+                    className="text-xs font-mono text-slate-400 hover:text-white underline cursor-pointer"
                   >
                     Send Another Transmission
                   </button>

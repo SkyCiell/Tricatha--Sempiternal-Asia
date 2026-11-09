@@ -18,7 +18,7 @@ export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
         playPromise.catch(() => {
           const handleFirstGesture = () => {
             if (videoRef.current) {
-              videoRef.current.play().catch(() => {});
+              videoRef.current.play().catch(() => { });
             }
             window.removeEventListener("scroll", handleFirstGesture);
             window.removeEventListener("touchstart", handleFirstGesture);
@@ -43,7 +43,7 @@ export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
         entries.forEach((entry) => {
           if (!videoRef.current) return;
           if (entry.isIntersecting) {
-            videoRef.current.play().catch(() => {});
+            videoRef.current.play().catch(() => { });
           } else {
             videoRef.current.pause();
           }

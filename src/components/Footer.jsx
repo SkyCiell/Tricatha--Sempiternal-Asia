@@ -200,9 +200,54 @@ export default function Footer({ navigateTo }) {
         </div>
 
         {/* Footer Bottom Bar */}
-        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-slate-400 text-center sm:text-left">
-          <div>
-            © {currentYear} PT Tricatha Sempiternal Asia. All rights reserved.
+        <div className="pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-5 text-xs font-sans text-slate-400 text-center sm:text-left">
+          <div className="space-y-1">
+            <div>
+              © {currentYear} PT Tricatha Sempiternal Asia. All rights reserved.
+            </div>
+            <div className="text-[11px] text-slate-400">
+              Sudirman Park Apartment · Jakarta Pusat, Indonesia
+            </div>
+          </div>
+
+          {/* Social Channels */}
+          <div className="flex items-center gap-3">
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TSA LinkedIn"
+              className="w-8 h-8 rounded bg-white/5 border border-white/10 hover:border-[#C8102E] hover:text-[#C8102E] flex items-center justify-center transition-colors text-slate-300"
+            >
+              <LinkedinIcon />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TSA Instagram"
+              className="w-8 h-8 rounded bg-white/5 border border-white/10 hover:border-[#C8102E] hover:text-[#C8102E] flex items-center justify-center transition-colors text-slate-300"
+            >
+              <InstagramIcon />
+            </a>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TSA YouTube"
+              className="w-8 h-8 rounded bg-white/5 border border-white/10 hover:border-[#C8102E] hover:text-[#C8102E] flex items-center justify-center transition-colors text-slate-300"
+            >
+              <YoutubeIcon />
+            </a>
+            <a
+              href="https://wa.me/628121000784"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp Secretariat"
+              className="h-8 px-2.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 text-[11px] font-mono font-medium flex items-center gap-1.5 transition-colors"
+            >
+              <span>WA Secretariat</span>
+            </a>
           </div>
 
           <button
