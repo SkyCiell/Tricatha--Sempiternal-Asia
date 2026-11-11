@@ -79,10 +79,10 @@ export default function LandingAbout({ navigateTo }) {
               <button
                 type="button"
                 onClick={handleReadCharter}
-                className="w-full sm:w-auto btn-editorial-red text-xs py-3.5 sm:py-3 px-6 cursor-pointer inline-flex items-center justify-center gap-2 shadow-xs min-h-[44px] touch-manipulation active:scale-[0.99]"
+                className="group inline-flex items-center gap-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#071731] hover:text-[#C8102E] transition-colors py-2 cursor-pointer focus:outline-none"
               >
-                <span>Read Corporate Charter</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <span>Full Practice Overview</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
             </div>
           </div>

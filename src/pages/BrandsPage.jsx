@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import backgroundTSA from "../assets/Background_TSA.jpg";
 const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 
@@ -396,21 +396,13 @@ export default function BrandsPage({ navigateTo, initialUnit }) {
                   )}
 
                   {/* Primary Action Button */}
-                  <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <div className="pt-2">
                     <button
                       onClick={handleInquiry}
                       className="btn-editorial-red text-xs py-2.5 px-5 cursor-pointer inline-flex items-center gap-2"
                     >
                       <span>Inquire {currentEntity.name}</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <button
-                      onClick={handleInquiry}
-                      className="px-3 py-2 text-xs font-medium text-slate-300 hover:text-white transition-colors cursor-pointer inline-flex items-center gap-1.5"
-                    >
-                      <span>Corporate Headquarters Consultation</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#C8102E]" />
                     </button>
                   </div>
                 </motion.div>

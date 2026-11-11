@@ -179,14 +179,14 @@ export default function LandingBrands({ navigateTo }) {
             </p>
           </div>
 
-          <div className="shrink-0 w-full sm:w-auto">
+          <div className="shrink-0">
             <button
               type="button"
               onClick={handleViewAllBrands}
-              className="w-full sm:w-auto btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px] touch-manipulation"
+              className="group inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#64748B] hover:text-[#071731] transition-colors py-1 cursor-pointer focus:outline-none"
             >
-              <span>Explore Group Portfolio</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span>View Division Index</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
           </div>
         </div>

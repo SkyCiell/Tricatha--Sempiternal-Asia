@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Calendar, Volume2, VolumeX } from "lucide-react";
 
-export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
+export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk, onOpenWorkModal }) {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
@@ -84,7 +84,9 @@ export default function LandingHero({ navigateTo, onExploreWork, onLetsTalk }) {
   };
 
   const handleConsult = () => {
-    if (onLetsTalk) {
+    if (onOpenWorkModal) {
+      onOpenWorkModal();
+    } else if (onLetsTalk) {
       onLetsTalk();
     } else if (navigateTo) {
       navigateTo("/contact");

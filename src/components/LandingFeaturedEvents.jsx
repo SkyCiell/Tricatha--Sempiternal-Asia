@@ -70,7 +70,7 @@ export default function LandingFeaturedEvents({ navigateTo }) {
             onClick={handleViewAllEvents}
             className="btn-editorial-red text-xs sm:text-sm py-3.5 px-8 cursor-pointer inline-flex items-center justify-center gap-2 shadow-xs hover:shadow-md transition-all active:scale-[0.99]"
           >
-            <span>Explore All Events</span>
+            <span>View Full Event Archive</span>
             <ArrowUpRight className="w-4 h-4" />
           </button>
         </div>

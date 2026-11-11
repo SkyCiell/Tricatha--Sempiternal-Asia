@@ -176,10 +176,10 @@ export default function LandingBusiness({ navigateTo }) {
                 <button
                   type="button"
                   onClick={() => handleBrandClick("/business-group")}
-                  className="w-full sm:w-auto btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px] touch-manipulation active:scale-[0.99]"
+                  className="group inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[#071731] hover:text-[#C8102E] transition-colors py-1 cursor-pointer focus:outline-none"
                 >
-                  <span>Explore Group Ecosystem</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  <span>Explore Holding Structure</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </button>
               </div>
             </div>
@@ -253,10 +253,10 @@ export default function LandingBusiness({ navigateTo }) {
                     <button
                       type="button"
                       onClick={() => handleBrandClick(chapter.brandRoute)}
-                      className="w-full sm:w-auto btn-editorial-red text-xs py-3 px-6 cursor-pointer inline-flex items-center justify-center gap-2 min-h-[44px] touch-manipulation active:scale-[0.99]"
+                      className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#071731] hover:text-[#C8102E] transition-colors py-1 cursor-pointer focus:outline-none"
                     >
-                      <span>Explore {chapter.brandName}</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
+                      <span>{chapter.brandName} Specifications</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#C8102E] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </button>
                   </div>
                 </div>
