@@ -15,10 +15,6 @@ const NAV_ITEMS = [
     id: "business-group",
     dropdown: [
       {
-        name: "Overview (All Entities)",
-        path: "/business-group"
-      },
-      {
         name: "TSA IT & TECHNOLOGY",
         path: "/business-group#tsa-tech"
       },
@@ -27,7 +23,7 @@ const NAV_ITEMS = [
         path: "/business-group#gwi"
       },
       {
-        name: "GOVADV",
+        name: "GOVARD",
         path: "/business-group#govadv"
       },
       {
@@ -312,6 +308,7 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
         normalized === "/enchante-protocol" ||
         normalized === "/gwi" ||
         normalized === "/govadv" ||
+        normalized === "/govard" ||
         normalized === "/government-advisory"
       );
     }
@@ -362,6 +359,21 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
     closeMobileMenuAndResumeScroll();
     if (navigateTo) {
       navigateTo(item.path);
+    }
+    if (typeof window !== "undefined") {
+      if (item.path === "/business-group" && window.location.hash) {
+        window.history.pushState(null, "", item.path);
+      }
+      window.scrollTo(0, 0);
+      if (window.__lenis) {
+        window.__lenis.scrollTo(0, { immediate: true });
+      }
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        if (window.__lenis) {
+          window.__lenis.scrollTo(0, { immediate: true });
+        }
+      }, 50);
     }
   };
 
@@ -495,8 +507,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                 <div
                   key={item.id}
                   className="relative py-6 flex items-center group"
-                  onMouseEnter={() => (hasDropdown ? handleMouseEnter(item.id) : handleMouseEnter(null))}
-                  onMouseLeave={handleMouseLeave}
+                  onMouseEnter={() => (hasDropdown && item.id !== "business-group" ? handleMouseEnter(item.id) : null)}
+                  onMouseLeave={() => (item.id !== "business-group" ? handleMouseLeave() : null)}
                 >
                   {/* Main Nav Button with Separate Chevron for Dropdown */}
                   <div className="inline-flex items-center gap-1">

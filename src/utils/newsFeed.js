@@ -211,3 +211,4 @@ export async function fetchLiveIndonesianNews() {
     return DEFAULT_NEWS_ITEMS;
   }
 }
+

@@ -33,6 +33,7 @@ const VALID_ROUTES = [
   "/enchante",
   "/enchante-protocol",
   "/govadv",
+  "/govard",
   "/government-advisory",
   "/gwi",
   "/services",
@@ -242,6 +243,7 @@ export default function App() {
       case "/it-technology":
         return <BrandsPage key="business-group-tech" initialUnit="tsa-tech" navigateTo={navigateTo} />;
       case "/govadv":
+      case "/govard":
       case "/government-advisory":
         return <BrandsPage key="business-group-govadv" initialUnit="govadv" navigateTo={navigateTo} />;
       case "/gwi":

@@ -6,30 +6,31 @@ const gwiPhoto = "/events/appmbgi-national-summit-2026/photo-3.jpg";
 
 export default function BrandsPage({ navigateTo, initialUnit }) {
   const [activeUnit, setActiveUnit] = useState(() => {
-    if (initialUnit && ["tsa-tech", "gwi", "govadv", "enchante", "dna-studio"].includes(initialUnit)) {
-      return initialUnit;
+    if (initialUnit && ["tsa-tech", "gwi", "govadv", "govard", "enchante", "dna-studio"].includes(initialUnit)) {
+      return initialUnit === "govard" ? "govadv" : initialUnit;
     }
     if (typeof window !== "undefined" && window.location.hash) {
       const h = window.location.hash.replace("#", "").toLowerCase();
-      if (["tsa-tech", "gwi", "govadv", "enchante", "dna-studio"].includes(h)) {
-        return h;
+      if (["tsa-tech", "gwi", "govadv", "govard", "enchante", "dna-studio"].includes(h)) {
+        return h === "govard" ? "govadv" : h;
       }
     }
     return "tsa-tech";
   });
 
   useEffect(() => {
-    if (initialUnit && ["tsa-tech", "gwi", "govadv", "enchante", "dna-studio"].includes(initialUnit)) {
-      setActiveUnit(initialUnit);
+    if (initialUnit && ["tsa-tech", "gwi", "govadv", "govard", "enchante", "dna-studio"].includes(initialUnit)) {
+      setActiveUnit(initialUnit === "govard" ? "govadv" : initialUnit);
     }
   }, [initialUnit]);
 
   useEffect(() => {
     const handleHash = () => {
       const hash = (window.location.hash || "").replace("#", "").toLowerCase();
-      if (hash && ["tsa-tech", "gwi", "govadv", "enchante", "dna-studio"].includes(hash)) {
-        setActiveUnit(hash);
-        const el = document.getElementById(hash) || document.getElementById("practice-detail") || document.getElementById("areas");
+      const resolvedHash = hash === "govard" ? "govadv" : hash;
+      if (hash && ["tsa-tech", "gwi", "govadv", "govard", "enchante", "dna-studio"].includes(hash)) {
+        setActiveUnit(resolvedHash);
+        const el = document.getElementById(resolvedHash) || document.getElementById("practice-detail") || document.getElementById("areas");
         if (el) {
           if (window.__lenis) {
             window.__lenis.scrollTo(el, { offset: -80, duration: 1.0 });
