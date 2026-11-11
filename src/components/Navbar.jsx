@@ -280,7 +280,7 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [closeMobileMenuAndResumeScroll]);
 
-  // Click outside to close desktop dropdown
+  // Click/touch outside to close desktop dropdown
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (navContainerRef.current && !navContainerRef.current.contains(e.target)) {
@@ -288,7 +288,11 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, []);
 
   // Check if a nav item matches the current page route
@@ -345,9 +349,12 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
   };
 
   const handleMouseLeave = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 180);
+    }, 160);
   };
 
   // Main item click: clicking the main nav item navigates to the route and scrolls to top of page
@@ -382,6 +389,10 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
+    }
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
     }
     setActiveDropdown((prev) => (prev === item.id ? null : item.id));
   };
@@ -507,8 +518,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                 <div
                   key={item.id}
                   className="relative py-6 flex items-center group"
-                  onMouseEnter={() => (hasDropdown && item.id !== "business-group" ? handleMouseEnter(item.id) : null)}
-                  onMouseLeave={() => (item.id !== "business-group" ? handleMouseLeave() : null)}
+                  onMouseEnter={() => (hasDropdown ? handleMouseEnter(item.id) : null)}
+                  onMouseLeave={hasDropdown ? handleMouseLeave : undefined}
                 >
                   {/* Main Nav Button with Separate Chevron for Dropdown */}
                   <div className="inline-flex items-center gap-1">
@@ -543,7 +554,7 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                         onClick={(e) => handleChevronClick(item, e)}
                         aria-expanded={isDropdownOpen}
                         aria-label={`Toggle ${item.name} submenu`}
-                        className="p-1 cursor-pointer focus:outline-none"
+                        className="p-1 cursor-pointer focus:outline-none touch-manipulation"
                       >
                         <ChevronDown
                           className={`w-3.5 h-3.5 transition-transform duration-200 ${isDropdownOpen
@@ -566,6 +577,8 @@ export default function Navbar({ currentPath = "/", navigateTo }) {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 4 }}
                           transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                          onMouseEnter={() => handleMouseEnter(item.id)}
+                          onMouseLeave={handleMouseLeave}
                           className={`absolute top-[calc(100%-8px)] left-0 min-w-[240px] rounded-[3px] border p-1.5 z-50 text-left transition-colors duration-150 pointer-events-auto ${isLight
                             ? "bg-white border-[#071731]/10 text-[#071731] shadow-[0_12px_28px_rgba(7,23,49,0.09)]"
                             : "bg-[#071731] border-white/15 text-white shadow-[0_16px_36px_rgba(0,0,0,0.55)]"
