@@ -1,68 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
-import { editorialInsights } from "../data/tsaData";
+import { fetchLiveIndonesianNews, DEFAULT_NEWS_ITEMS } from "../utils/newsFeed";
+
+const FALLBACK_IMG = "/events/appmbgi-national-summit-2026/cover.jpg";
 
 export default function NewsPage({ navigateTo }) {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [newsItems, setNewsItems] = useState(DEFAULT_NEWS_ITEMS);
+  const [isLiveActive, setIsLiveActive] = useState(false);
 
-  const categories = ["All", "Events & Exhibitions", "Government & Protocol", "Corporate Governance", "Event Bulletins"];
+  useEffect(() => {
+    let isMounted = true;
+    fetchLiveIndonesianNews().then((items) => {
+      if (isMounted && Array.isArray(items) && items.length > 0) {
+        setNewsItems(items);
+        setIsLiveActive(items.some((i) => i.isLive));
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
-  // Real dispatches & monographs from TSA editorial data
-  const newsItems = [
-    {
-      id: "bulletin-ai-expo-2026",
-      type: "Flagship Bulletin",
-      category: "Events & Exhibitions",
-      title: "TSA Commences Multi-Hall Scenography Engineering for AI Global EXPO 2026 at ICE BSD",
-      date: "March 2026",
-      readTime: "4 min read",
-      excerpt: "Operational deployment begins across Halls 1, 2, and 3 at Indonesia Convention Exhibition (ICE) BSD City, accommodating 50,000+ delegates and international technology pavilions with zero margin for error.",
-      image: "/events/adobe-ai-art-revolution/cover.jpg",
-      author: "TSA Event Operations Directorate",
-      url: "/events/sea-energy-transition-clean-tech-mice-expo-2025"
-    },
-    {
-      id: "bulletin-asean-summit",
-      type: "Protocol Dispatch",
-      category: "Government & Protocol",
-      title: "Diplomatic Protocol Clearances Completed for Multilateral Plenary Assembly at JCC Senayan",
-      date: "February 2026",
-      readTime: "3 min read",
-      excerpt: "The TSA Executive Secretariat has formalized bilateral precedence schedules, encrypted telepresence conduits, and sovereign security perimeters uniting 18 ministerial delegations.",
-      image: "/events/indonesia-europe-investment-summit-2023/cover.jpg",
-      author: "Executive Secretariat",
-      url: "/events/asean-sovereign-strategic-diplomacy-plenary-2025"
-    },
-    ...editorialInsights.map((insight) => ({
-      id: insight.id,
-      type: "Research Monograph",
-      category: insight.category,
-      title: insight.title,
-      date: insight.date,
-      readTime: insight.readTime,
-      excerpt: insight.excerpt,
-      image: insight.image,
-      author: insight.author || "TSA Research Group",
-      url: "/events"
-    }))
+  const categories = [
+    "All",
+    "Live Dispatches",
+    "Events & Exhibitions",
+    "Government & Protocol",
+    "Corporate Governance"
   ];
 
   const filteredItems = activeCategory === "All"
     ? newsItems
-    : newsItems.filter(item => item.category === activeCategory || (activeCategory === "Event Bulletins" && (item.type.includes("Bulletin") || item.type.includes("Dispatch"))));
+    : activeCategory === "Live Dispatches"
+      ? newsItems.filter((item) => item.isLive)
+      : newsItems.filter((item) => item.category === activeCategory);
 
   const leadArticle = filteredItems[0] || newsItems[0];
   const secondaryArticles = filteredItems.slice(1, 3);
   const archivedDispatches = filteredItems.slice(3);
 
   const handleArticleClick = (item) => {
-    if (navigateTo && item.url) {
+    if (!item?.url) return;
+    if (item.url.startsWith("http")) {
+      window.open(item.url, "_blank", "noopener,noreferrer");
+    } else if (navigateTo) {
       navigateTo(item.url);
     }
   };
 
   const handleInquiry = () => {
     if (navigateTo) navigateTo("/contact");
+  };
+
+  const handleImgError = (e) => {
+    if (e.currentTarget.src !== FALLBACK_IMG) {
+      e.currentTarget.src = FALLBACK_IMG;
+    }
+  };
+
+  const getCategoryCount = (cat) => {
+    if (cat === "All") return newsItems.length;
+    if (cat === "Live Dispatches") return newsItems.filter((i) => i.isLive).length;
+    return newsItems.filter((i) => i.category === cat).length;
   };
 
   return (
@@ -73,6 +73,16 @@ export default function NewsPage({ navigateTo }) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end pb-8 border-b border-[#071731]/10">
 
           <div className="lg:col-span-8 space-y-4">
+            <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-emerald-700 font-semibold">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span>
+                {isLiveActive ? "Live National Wire · Synchronized Daily" : "Executive Newsroom & Dispatches"}
+              </span>
+            </div>
+
             <h1 className="font-heading text-3xl sm:text-5xl lg:text-[56px] font-semibold text-[#071731] tracking-tight leading-[1.08]">
               Newsroom &amp; <br />
               <span className="font-editorial italic font-normal text-slate-600">
@@ -81,7 +91,7 @@ export default function NewsPage({ navigateTo }) {
             </h1>
 
             <p className="text-slate-600 text-base sm:text-lg font-normal leading-relaxed max-w-2xl">
-              Official communiqués, event management bulletins, and policy monographs issued directly from the Executive Secretariat at Sudirman Park in Central Jakarta.
+              Live economic communiqués, national trade dispatches, and event management bulletins synchronized daily from official news wires and the Executive Secretariat in Jakarta.
             </p>
           </div>
 
@@ -105,9 +115,7 @@ export default function NewsPage({ navigateTo }) {
             <div className="flex items-center gap-2 whitespace-nowrap min-w-max font-mono text-xs">
               {categories.map((cat) => {
                 const isActive = activeCategory === cat;
-                const count = cat === "All"
-                  ? newsItems.length
-                  : newsItems.filter(i => i.category === cat || (cat === "Event Bulletins" && (i.type.includes("Bulletin") || i.type.includes("Dispatch")))).length;
+                const count = getCategoryCount(cat);
 
                 return (
                   <button
@@ -142,6 +150,7 @@ export default function NewsPage({ navigateTo }) {
               <img
                 src={leadArticle.image}
                 alt={leadArticle.title}
+                onError={handleImgError}
                 className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-1000 ease-out select-none"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#071731] via-[#071731]/75 via-50% to-[#071731]/30 pointer-events-none" />
@@ -154,6 +163,15 @@ export default function NewsPage({ navigateTo }) {
 
                 <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-300">
                   <span className="text-[#C8102E] font-semibold uppercase">{leadArticle.category}</span>
+                  {leadArticle.isLive && (
+                    <>
+                      <span>·</span>
+                      <span className="text-emerald-400 font-semibold uppercase flex items-center gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                        Live Wire
+                      </span>
+                    </>
+                  )}
                   <span>·</span>
                   <span>{leadArticle.date}</span>
                   <span>·</span>
@@ -170,8 +188,12 @@ export default function NewsPage({ navigateTo }) {
 
                 <div className="pt-2">
                   <span className="btn-editorial-red text-xs inline-flex items-center gap-2 shadow-xl">
-                    <span>Read Full Dispatch</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>{leadArticle.url?.startsWith("http") ? "Read Full Wire Dispatch" : "Read Full Dispatch"}</span>
+                    {leadArticle.url?.startsWith("http") ? (
+                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    ) : (
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    )}
                   </span>
                 </div>
 
@@ -202,13 +224,20 @@ export default function NewsPage({ navigateTo }) {
                     <img
                       src={article.image}
                       alt={article.title}
+                      onError={handleImgError}
                       className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                     />
                   </div>
 
                   <div className="p-6 space-y-2.5">
                     <div className="flex items-center gap-2 text-[11px] font-mono text-slate-500">
-                      <span>{article.category}</span>
+                      <span className="text-[#071731] font-semibold">{article.category}</span>
+                      {article.isLive && (
+                        <>
+                          <span>·</span>
+                          <span className="text-emerald-600 font-medium">Live</span>
+                        </>
+                      )}
                       <span>·</span>
                       <span>{article.date}</span>
                       <span>·</span>
@@ -225,10 +254,14 @@ export default function NewsPage({ navigateTo }) {
                 </div>
 
                 <div className="p-6 pt-0 flex items-center justify-between text-xs font-mono text-slate-500">
-                  <span>{article.author}</span>
-                  <span className="text-[#C8102E] font-medium flex items-center gap-1">
-                    <span>Read Article</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <span className="truncate max-w-[200px]">{article.author}</span>
+                  <span className="text-[#C8102E] font-medium flex items-center gap-1 shrink-0">
+                    <span>{article.url?.startsWith("http") ? "Read Wire" : "Read Article"}</span>
+                    {article.url?.startsWith("http") ? (
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    ) : (
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    )}
                   </span>
                 </div>
               </div>
@@ -242,7 +275,7 @@ export default function NewsPage({ navigateTo }) {
         <section className="max-w-[1520px] mx-auto px-4 sm:px-8 py-12 sm:py-16 border-b border-[#071731]/10">
           <div className="pb-6 border-b border-[#071731]/10 mb-2">
             <h3 className="font-heading text-xl sm:text-2xl font-semibold text-[#071731] tracking-tight">
-              Archived Publications
+              Archived Publications &amp; Live Feed
             </h3>
           </div>
 
@@ -258,6 +291,12 @@ export default function NewsPage({ navigateTo }) {
                     <span className="text-[#C8102E] font-semibold">{dispatch.date}</span>
                     <span>•</span>
                     <span>{dispatch.category}</span>
+                    {dispatch.isLive && (
+                      <>
+                        <span>•</span>
+                        <span className="text-emerald-600 font-medium">Live Wire</span>
+                      </>
+                    )}
                     <span>•</span>
                     <span>{dispatch.readTime}</span>
                   </div>
@@ -272,8 +311,12 @@ export default function NewsPage({ navigateTo }) {
                 </div>
 
                 <div className="flex items-center gap-2 font-mono text-xs text-[#C8102E] shrink-0 self-end md:self-center">
-                  <span>View Article</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  <span>{dispatch.url?.startsWith("http") ? "View Wire" : "View Article"}</span>
+                  {dispatch.url?.startsWith("http") ? (
+                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  ) : (
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  )}
                 </div>
               </div>
             ))}
